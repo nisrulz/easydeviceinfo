@@ -1,12 +1,146 @@
 package github.nisrulz.projecteasydeviceinfo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import github.nisrulz.easydeviceinfo.EasyDeviceInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
+
+  ArrayAdapter<String> adapter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+    TextView textView_header = (TextView) findViewById(R.id.textview_header);
+    textView_header.setText("EasyDeviceInfo");
+
+    EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo(this);
+
+    //Data Array List of Info Object
+    final ArrayList<String> data = new ArrayList<>();
+
+    //Get Lat-Long
+    double[] l = easyDeviceInfo.getLatLong();
+    String lat = String.valueOf(l[0]);
+    String lon = String.valueOf(l[1]);
+
+    String[] supportedABIS = easyDeviceInfo.getSupportedABIS();
+    StringBuilder supportedABI = new StringBuilder();
+    if (supportedABIS.length > 0) {
+      for (String abis : supportedABIS) {
+        supportedABI.append(abis).append("\n");
+      }
+    } else {
+      supportedABI.append("-");
+    }
+
+    String[] emailIds = easyDeviceInfo.getAccounts();
+    StringBuilder emailString = new StringBuilder();
+    if (emailIds.length > 0) {
+      for (String e : emailIds) {
+        emailString.append(e).append("\n");
+      }
+    } else {
+      emailString.append("-");
+    }
+
+    String[] supported32ABIS = easyDeviceInfo.getSupported32bitABIS();
+    StringBuilder supported32ABI = new StringBuilder();
+    if (supported32ABIS.length > 0) {
+      for (String abis : supported32ABIS) {
+        supported32ABI.append(abis).append("\n");
+      }
+    } else {
+      supported32ABI.append("-");
+    }
+
+    String[] supported64ABIS = easyDeviceInfo.getSupported64bitABIS();
+    StringBuilder supported64ABI = new StringBuilder();
+    if (supported32ABIS.length > 0) {
+      for (String abis : supported64ABIS) {
+        supported64ABI.append(abis).append("\n");
+      }
+    } else {
+      supported64ABI.append("-");
+    }
+
+    //Get Android Advertiser ID
+    easyDeviceInfo.getAndroidAdId(new EasyDeviceInfo.AdIdentifierCallback() {
+      @Override public void onSuccess(String adIdentifier, boolean adDonotTrack) {
+        // Add Data
+        data.add("Android Advertiser ID :" + adIdentifier);
+        data.add("Ad Do not Track :" + String.valueOf(adDonotTrack));
+        adapter.notifyDataSetChanged();
+      }
+    });
+
+    //Add Data
+    HashMap<String, String> deviceDataMap = new HashMap<>();
+    deviceDataMap.put("Time (ms)", String.valueOf(easyDeviceInfo.getTime()));
+    deviceDataMap.put("Formatted Time (24Hrs)", easyDeviceInfo.getFormatedTime());
+    deviceDataMap.put("Language", easyDeviceInfo.getLanguage());
+    deviceDataMap.put("Android ID", easyDeviceInfo.getAndroidID());
+    deviceDataMap.put("IMEI", easyDeviceInfo.getIMEI());
+    deviceDataMap.put("User-Agent", easyDeviceInfo.getUA());
+    deviceDataMap.put("IMSI", easyDeviceInfo.getIMSI());
+    deviceDataMap.put("GSF ID", easyDeviceInfo.getGSFID());
+    deviceDataMap.put("Pseudo ID", easyDeviceInfo.getPsuedoUniqueID());
+    deviceDataMap.put("Device Serial", easyDeviceInfo.getSerial());
+    deviceDataMap.put("SIM Serial Number", easyDeviceInfo.getSIMSerial());
+    deviceDataMap.put("Manufacturer", easyDeviceInfo.getManufacturer());
+    deviceDataMap.put("Model", easyDeviceInfo.getModel());
+    deviceDataMap.put("OS Codename", easyDeviceInfo.getOSCodename());
+    deviceDataMap.put("OS Version", easyDeviceInfo.getOSVersion());
+    deviceDataMap.put("Country", easyDeviceInfo.getCountry());
+    deviceDataMap.put("WIFI MAC Address", easyDeviceInfo.getWifiMAC());
+    deviceDataMap.put("BT MAC Address", easyDeviceInfo.getBluetoothMAC());
+    deviceDataMap.put("Display Resolution", easyDeviceInfo.getResolution());
+    deviceDataMap.put("Display Version", easyDeviceInfo.getDisplayVersion());
+    deviceDataMap.put("Phone Number", easyDeviceInfo.getPhoneNo());
+    deviceDataMap.put("Carrier", easyDeviceInfo.getCarrier());
+    deviceDataMap.put("Radio Version", easyDeviceInfo.getRadioVer());
+    deviceDataMap.put("Product ", easyDeviceInfo.getProduct());
+    deviceDataMap.put("Device", easyDeviceInfo.getDevice());
+    deviceDataMap.put("Board", easyDeviceInfo.getBoard());
+    deviceDataMap.put("Hardware", easyDeviceInfo.getHardware());
+    deviceDataMap.put("BootLoader", easyDeviceInfo.getBootloader());
+    deviceDataMap.put("IP Address", easyDeviceInfo.getIPAddress(true));
+    deviceDataMap.put("Network Type", easyDeviceInfo.getNetworkType());
+    deviceDataMap.put("Email ID", emailString.toString());
+    deviceDataMap.put("Latitude", lat);
+    deviceDataMap.put("Longitude", lon);
+    deviceDataMap.put("Fingerprint", easyDeviceInfo.getFingerprint());
+    deviceDataMap.put("Screen Density", easyDeviceInfo.getDensity());
+    deviceDataMap.put("Installer Store", easyDeviceInfo.getStore());
+    deviceDataMap.put("Network Available", String.valueOf(easyDeviceInfo.isNetworkAvailable()));
+    deviceDataMap.put("Running on emulator", String.valueOf(easyDeviceInfo.isRunningOnEmulator()));
+    deviceDataMap.put("Build Brand", easyDeviceInfo.getBuildBrand());
+    deviceDataMap.put("Build Host", easyDeviceInfo.getBuildHost());
+    deviceDataMap.put("Build Tag", easyDeviceInfo.getBuildTags());
+    deviceDataMap.put("Build Time", String.valueOf(easyDeviceInfo.getBuildTime()));
+    deviceDataMap.put("Build User", easyDeviceInfo.getBuildUser());
+    deviceDataMap.put("Build Version Release", easyDeviceInfo.getBuildVersionRelease());
+    deviceDataMap.put("Screen Display ID", easyDeviceInfo.getScreenDisplayID());
+    deviceDataMap.put("Build Version Codename", easyDeviceInfo.getBuildVersionCodename());
+    deviceDataMap.put("Build Version Increment", easyDeviceInfo.getBuildVersionIncremental());
+    deviceDataMap.put("Build Version SDK", String.valueOf(easyDeviceInfo.getBuildVersionSDK()));
+    deviceDataMap.put("Build ID", easyDeviceInfo.getBuildID());
+    deviceDataMap.put("Supported ABIS", easyDeviceInfo.getStringSupportedABIS());
+    deviceDataMap.put("Supported 32 bit ABIS", easyDeviceInfo.getStringSupported32bitABIS());
+    deviceDataMap.put("Supported 64 bit ABIS", easyDeviceInfo.getStringSupported64bitABIS());
+
+    for (String key : deviceDataMap.keySet()) {
+      data.add(0, key + deviceDataMap.get(key));
+    }
+
+    ListView lv = (ListView) findViewById(R.id.listview);
+    adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+    lv.setAdapter(adapter);
   }
 }
