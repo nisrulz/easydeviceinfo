@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import github.nisrulz.easydeviceinfo.EasyDeviceInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,10 +15,7 @@ public class MainActivity extends AppCompatActivity {
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    TextView textView_header = (TextView) findViewById(R.id.textview_header);
-    textView_header.setText("EasyDeviceInfo");
-
+    
     EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo(this);
 
     //Data Array List of Info Object
@@ -136,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Supported 64 bit ABIS", easyDeviceInfo.getStringSupported64bitABIS());
 
     for (String key : deviceDataMap.keySet()) {
-      data.add(0, key + deviceDataMap.get(key));
+      data.add(0, key + " : " + deviceDataMap.get(key));
     }
 
     ListView lv = (ListView) findViewById(R.id.listview);
