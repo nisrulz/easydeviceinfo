@@ -5,7 +5,7 @@ Android library to get device information in a super easy way.
 Checkout the app using the same in [Playstore](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
 
 #Integration
-- ScreenShott is available in the MavenCentral, so getting it as simple as adding it as a dependency
+- EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
 ```gradle
 compile 'com.github.nisrulz:easydeviceinfo:1.1.7'
 ```
