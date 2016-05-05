@@ -85,6 +85,12 @@ double[] l = easyDeviceInfo.getLatLong();
 String lat = String.valueOf(l[0]);
 String lon = String.valueOf(l[1]);
 ```
+> Include the required permission in your AndoridManifest.xml
+
+> ```xml 
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+```
+
 
 + To get Email IDs
 ```java
@@ -95,6 +101,11 @@ StringBuilder emailIDs = new StringBuilder();
         };
 
 String emailId=emailIDs.toString();
+```
+> Include the required permission in your AndoridManifest.xml
+
+> ```xml 
+<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 ```
 
 + To get Supported ABIS
