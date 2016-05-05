@@ -53,25 +53,46 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
+/**
+ * Easy device info class
+ */
 public class EasyDeviceInfo {
 
   private final Context context;
   private final TelephonyManager tm;
   private final String initialVal;
-  public static final String LOGTAG = "EasyDeviceInfo";
+  /**
+   * The constant LOGTAG.
+   */
+  private static final String LOGTAG = "EasyDeviceInfo";
 
+  /**
+   * Instantiates a new Easy device info.
+   *
+   * @param context the context
+   */
   public EasyDeviceInfo(Context context) {
     this.context = context;
     tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     initialVal = "na";
   }
 
+  /**
+   * Gets library version.
+   *
+   * @return the library version
+   */
   public String getLibraryVersion() {
     String version = "1.1.7";
     int versionCode = 9;
     return version + "-" + versionCode;
   }
 
+  /**
+   * Gets android id.
+   *
+   * @return the android id
+   */
   public String getAndroidID() {
     String result = initialVal;
     try {
@@ -85,6 +106,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets model.
+   *
+   * @return the model
+   */
   public String getModel() {
     String result = initialVal;
     try {
@@ -98,6 +124,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets build brand.
+   *
+   * @return the build brand
+   */
   public String getBuildBrand() {
     String result = initialVal;
     try {
@@ -111,6 +142,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets build host.
+   *
+   * @return the build host
+   */
   public String getBuildHost() {
     String result = initialVal;
     try {
@@ -124,6 +160,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build tags.
+   *
+   * @return the build tags
+   */
   public String getBuildTags() {
     String result = initialVal;
     try {
@@ -137,6 +178,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build time.
+   *
+   * @return the build time
+   */
   public long getBuildTime() {
     long result = 0;
     try {
@@ -147,6 +193,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build user.
+   *
+   * @return the build user
+   */
   public String getBuildUser() {
     String result = initialVal;
     try {
@@ -160,6 +211,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build version release.
+   *
+   * @return the build version release
+   */
   public String getBuildVersionRelease() {
     String result = initialVal;
     try {
@@ -173,6 +229,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets screen display id.
+   *
+   * @return the screen display id
+   */
   public String getScreenDisplayID() {
     String result = initialVal;
     try {
@@ -188,6 +249,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build version codename.
+   *
+   * @return the build version codename
+   */
   public String getBuildVersionCodename() {
     String result = initialVal;
     try {
@@ -201,6 +267,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build version incremental.
+   *
+   * @return the build version incremental
+   */
   public String getBuildVersionIncremental() {
     String result = initialVal;
     try {
@@ -214,6 +285,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build version sdk.
+   *
+   * @return the build version sdk
+   */
   public int getBuildVersionSDK() {
     int result = 0;
     try {
@@ -224,6 +300,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets build id.
+   *
+   * @return the build id
+   */
   public String getBuildID() {
     String result = initialVal;
     try {
@@ -237,6 +318,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Get supported abis string [ ].
+   *
+   * @return the string [ ]
+   */
   public String[] getSupportedABIS() {
     String[] result = new String[] { "-" };
     try {
@@ -252,6 +338,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets string supported abis.
+   *
+   * @return the string supported abis
+   */
   public String getStringSupportedABIS() {
     String result = initialVal;
     try {
@@ -278,6 +369,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets string supported 32 bit abis.
+   *
+   * @return the string supported 32 bit abis
+   */
   public String getStringSupported32bitABIS() {
     String result = initialVal;
     try {
@@ -306,6 +402,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets string supported 64 bit abis.
+   *
+   * @return the string supported 64 bit abis
+   */
   public String getStringSupported64bitABIS() {
     String result = initialVal;
     try {
@@ -332,6 +433,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Get supported 32 bit abis string [ ].
+   *
+   * @return the string [ ]
+   */
   public String[] getSupported32bitABIS() {
     String[] result = new String[] { "-" };
     try {
@@ -347,6 +453,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Get supported 64 bit abis string [ ].
+   *
+   * @return the string [ ]
+   */
   public String[] getSupported64bitABIS() {
     String[] result = new String[] { "-" };
     try {
@@ -362,6 +473,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets manufacturer.
+   *
+   * @return the manufacturer
+   */
   public String getManufacturer() {
     String result = initialVal;
     try {
@@ -375,6 +491,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets resolution.
+   *
+   * @return the resolution
+   */
   public String getResolution() {
     String result = initialVal;
     try {
@@ -394,6 +515,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets carrier.
+   *
+   * @return the carrier
+   */
   public String getCarrier() {
     String result = initialVal;
     try {
@@ -409,6 +535,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets device.
+   *
+   * @return the device
+   */
   public String getDevice() {
     String result = initialVal;
     try {
@@ -422,6 +553,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets bootloader.
+   *
+   * @return the bootloader
+   */
   public String getBootloader() {
     String result = initialVal;
     try {
@@ -435,6 +571,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets board.
+   *
+   * @return the board
+   */
   public String getBoard() {
     String result = initialVal;
     try {
@@ -448,6 +589,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets display version.
+   *
+   * @return the display version
+   */
   public String getDisplayVersion() {
     String result = initialVal;
     try {
@@ -461,6 +607,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets language.
+   *
+   * @return the language
+   */
   public String getLanguage() {
     String result = initialVal;
     try {
@@ -474,6 +625,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets country.
+   *
+   * @return the country
+   */
   public String getCountry() {
     String result = initialVal;
     try {
@@ -492,6 +648,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets network type.
+   *
+   * @return the network type
+   */
   public String getNetworkType() {
     int networkStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE);
@@ -559,6 +720,11 @@ public class EasyDeviceInfo {
     return handleIllegalCharacterInResult(result);
   }
 
+  /**
+   * Gets os codename.
+   *
+   * @return the os codename
+   */
   public String getOSCodename() {
     String codename = initialVal;
     switch (Build.VERSION.SDK_INT) {
@@ -618,6 +784,11 @@ public class EasyDeviceInfo {
     return codename;
   }
 
+  /**
+   * Gets os version.
+   *
+   * @return the os version
+   */
   public String getOSVersion() {
     String result = initialVal;
     try {
@@ -631,6 +802,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets wifi mac.
+   *
+   * @return the wifi mac
+   */
   public String getWifiMAC() {
     String result = initialVal;
     try {
@@ -650,6 +826,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets imei.
+   *
+   * @return the imei
+   */
   public String getIMEI() {
     String result = initialVal;
     boolean hasReadPhoneStatePermission =
@@ -667,6 +848,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets imsi.
+   *
+   * @return the imsi
+   */
   public String getIMSI() {
     String result = initialVal;
     boolean hasReadPhoneStatePermission =
@@ -683,6 +869,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets serial.
+   *
+   * @return the serial
+   */
   public String getSerial() {
     String result = initialVal;
     try {
@@ -696,6 +887,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets sim serial.
+   *
+   * @return the sim serial
+   */
   public String getSIMSerial() {
     String result = initialVal;
     try {
@@ -709,6 +905,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets gsfid.
+   *
+   * @return the gsfid
+   */
   public String getGSFID() {
     final Uri URI = Uri.parse("content://com.google.android.gsf.gservices");
     final String ID_KEY = "android_id";
@@ -730,6 +931,11 @@ public class EasyDeviceInfo {
     }
   }
 
+  /**
+   * Gets bluetooth mac.
+   *
+   * @return the bluetooth mac
+   */
   public String getBluetoothMAC() {
     String result = initialVal;
     try {
@@ -747,6 +953,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets psuedo unique id.
+   *
+   * @return the psuedo unique id
+   */
   public String getPsuedoUniqueID() {
     // If all else fails, if the user does have lower than API 9 (lower
     // than Gingerbread), has reset their phone or 'Secure.ANDROID_ID'
@@ -786,6 +997,11 @@ public class EasyDeviceInfo {
     return new UUID(devIDShort.hashCode(), serial.hashCode()).toString();
   }
 
+  /**
+   * Gets phone no.
+   *
+   * @return the phone no
+   */
   public String getPhoneNo() {
     String result = initialVal;
     try {
@@ -804,6 +1020,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets product.
+   *
+   * @return the product
+   */
   public String getProduct() {
     String result = initialVal;
     try {
@@ -817,6 +1038,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets fingerprint.
+   *
+   * @return the fingerprint
+   */
   public String getFingerprint() {
     String result = initialVal;
     try {
@@ -830,6 +1056,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets hardware.
+   *
+   * @return the hardware
+   */
   public String getHardware() {
     String result = initialVal;
     try {
@@ -843,6 +1074,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets radio ver.
+   *
+   * @return the radio ver
+   */
   public String getRadioVer() {
     String result = initialVal;
     try {
@@ -859,6 +1095,12 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets ip address.
+   *
+   * @param useIPv4 the use i pv 4
+   * @return the ip address
+   */
   public String getIPAddress(boolean useIPv4) {
     String result = initialVal;
     try {
@@ -889,6 +1131,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets ua.
+   *
+   * @return the ua
+   */
   public String getUA() {
     final String system_ua = System.getProperty("http.agent");
     String result = system_ua;
@@ -909,6 +1156,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Get lat long double [ ].
+   *
+   * @return the double [ ]
+   */
   @TargetApi(Build.VERSION_CODES.M) public double[] getLatLong() {
     boolean hasFineLocationPermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -964,6 +1216,12 @@ public class EasyDeviceInfo {
     return gps;
   }
 
+  /**
+   * Get display xy coordinates int [ ].
+   *
+   * @param event the event
+   * @return the int [ ]
+   */
   public int[] getDisplayXYCoordinates(MotionEvent event) {
     int[] coordinates = new int[2];
     coordinates[0] = 0;
@@ -979,10 +1237,20 @@ public class EasyDeviceInfo {
     return coordinates;
   }
 
+  /**
+   * Gets time.
+   *
+   * @return the time
+   */
   public long getTime() {
     return System.currentTimeMillis();
   }
 
+  /**
+   * Gets formated time.
+   *
+   * @return the formated time
+   */
   public String getFormatedTime() {
     Calendar cal = Calendar.getInstance();
     cal.setTimeInMillis(System.currentTimeMillis());
@@ -990,6 +1258,11 @@ public class EasyDeviceInfo {
         Calendar.SECOND);
   }
 
+  /**
+   * Gets app name.
+   *
+   * @return the app name
+   */
   public String getAppName() {
     String result;
     final PackageManager pm = context.getPackageManager();
@@ -1004,6 +1277,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets app version.
+   *
+   * @return the app version
+   */
   public String getAppVersion() {
     String result = initialVal;
     try {
@@ -1017,6 +1295,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets app version code.
+   *
+   * @return the app version code
+   */
   public String getAppVersionCode() {
     String result = initialVal;
     try {
@@ -1031,6 +1314,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets activity name.
+   *
+   * @return the activity name
+   */
   public String getActivityName() {
     String result = initialVal;
     try {
@@ -1044,6 +1332,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets package name.
+   *
+   * @return the package name
+   */
   public String getPackageName() {
     String result = initialVal;
     try {
@@ -1057,6 +1350,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets store.
+   *
+   * @return the store
+   */
   public String getStore() {
     String result = initialVal;
     if (Build.VERSION.SDK_INT >= 3) {
@@ -1072,6 +1370,11 @@ public class EasyDeviceInfo {
     return result;
   }
 
+  /**
+   * Gets density.
+   *
+   * @return the density
+   */
   public String getDensity() {
     String densityStr = initialVal;
     final int density = context.getResources().getDisplayMetrics().densityDpi;
@@ -1104,6 +1407,11 @@ public class EasyDeviceInfo {
     return densityStr;
   }
 
+  /**
+   * Get accounts string [ ].
+   *
+   * @return the string [ ]
+   */
   public String[] getAccounts() {
     try {
 
@@ -1122,6 +1430,11 @@ public class EasyDeviceInfo {
     return null;
   }
 
+  /**
+   * Is network available boolean.
+   *
+   * @return the boolean
+   */
   public boolean isNetworkAvailable() {
     if (context.checkCallingOrSelfPermission(Manifest.permission.INTERNET)
         == PackageManager.PERMISSION_GRANTED) {
@@ -1133,6 +1446,11 @@ public class EasyDeviceInfo {
     return false;
   }
 
+  /**
+   * Is running on emulator boolean.
+   *
+   * @return the boolean
+   */
   public static boolean isRunningOnEmulator() {
     return Build.BRAND.contains("generic")
         || Build.DEVICE.contains("generic")
@@ -1144,6 +1462,11 @@ public class EasyDeviceInfo {
         || Build.HARDWARE.contains("vbox86");
   }
 
+  /**
+   * Gets android ad id.
+   *
+   * @param callback the callback
+   */
   public void getAndroidAdId(final AdIdentifierCallback callback) {
     new Thread(new Runnable() {
       @Override public void run() {
@@ -1171,7 +1494,16 @@ public class EasyDeviceInfo {
     }).start();
   }
 
+  /**
+   * The interface Ad identifier callback.
+   */
   public interface AdIdentifierCallback {
+    /**
+     * On success.
+     *
+     * @param adIdentifier the ad identifier
+     * @param adDonotTrack the ad donot track
+     */
     void onSuccess(String adIdentifier, boolean adDonotTrack);
   }
 
