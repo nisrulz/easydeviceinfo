@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Easydeviceinfo by nisrulz</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Easydeviceinfo</h1>
+        <h2>Android library to get device information in a super easy way.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/nisrulz/easydeviceinfo/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/nisrulz/easydeviceinfo/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/nisrulz/easydeviceinfo" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="easydeviceinfo----" class="anchor" href="#easydeviceinfo----" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EasyDeviceInfo    <a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a>
+</h1>
+
+<p>Android library to get device information in a super easy way.</p>
+
+<p>Checkout the app using the same in <a href="https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo">Playstore</a></p>
+
+<h1>
+<a id="integration" class="anchor" href="#integration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integration</h1>
+
+<ul>
+<li>EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
+</ul>
+
+<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:1.1.7<span class="pl-pds">'</span></span></pre></div>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
+
+<ul>
+<li>Create an instance of <strong><em>EasyDeviceInfo</em></strong> class</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyDeviceInfo</span> easyDeviceInfo<span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>(context);</pre></div>
+
+<ul>
+<li>Next call the required function on the <strong><em>easyDeviceInfo</em></strong> instance such as</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> value<span class="pl-k">=</span>easyDeviceInfo<span class="pl-k">.</span>functionName();</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Formatted Time (24Hr)</td>
+<td><code>getFormatedTime()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Time (ms)</td>
+<td><code>getTime()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Language</td>
+<td><code>getLanguage()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Android ID</td>
+<td><code>getAndroidID()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>IMEI</td>
+<td><code>getIMEI()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>IMSI</td>
+<td><code>getIMSI()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>GSFID</td>
+<td><code>getGSFID()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Pseudo ID</td>
+<td><code>getPsuedoUniqueID()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Device Serial Number</td>
+<td><code>getSerial()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>SIM Serial Number</td>
+<td><code>getSIMSerial()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Manufacturer</td>
+<td><code>getManufacturer()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Model</td>
+<td><code>getModel()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>OS Codename</td>
+<td><code>getOSCodename()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>OS Version</td>
+<td><code>getOSVersion()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Country</td>
+<td><code>getCountry()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>
+<code>(*)</code> User-Agent</td>
+<td><code>getUA()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>WiFi MAC Address</td>
+<td><code>getWifiMAC()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Bluetooth MAC Address</td>
+<td><code>getBluetoothMAC()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Display Resolution</td>
+<td><code>getResolution()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Phone Number</td>
+<td><code>getPhoneNo()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>ISP/Carrier</td>
+<td><code>getCarrier()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Radio Hardware Version</td>
+<td><code>getRadioVer()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Product</td>
+<td><code>getProduct()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Device</td>
+<td><code>getDevice()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Board</td>
+<td><code>getBoard()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td><code>getHardware()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Bootloader</td>
+<td><code>getBootloader()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>IP Address</td>
+<td><code>getIPAddress(true)</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Type of Network</td>
+<td><code>getNetworkType()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Fingerprint</td>
+<td><code>getFingerprint()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Screen Density</td>
+<td><code>getDensity()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Installer Store</td>
+<td><code>getStore()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Is Internet available</td>
+<td><code>isNetworkAvailable()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>Is running on emulator</td>
+<td><code>isRunningOnEmulator()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>Build Brand</td>
+<td><code>getBuildBrand()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Host</td>
+<td><code>getBuildHost()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Tags</td>
+<td><code>getBuildTags()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Time</td>
+<td><code>getBuildTime()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Build User</td>
+<td><code>getBuildUser()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Version Release</td>
+<td><code>getBuildVersionRelease()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Screen Display ID</td>
+<td><code>getScreenDisplayID()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Version Codename</td>
+<td><code>getBuildVersionCodename()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Version Incremental</td>
+<td><code>getBuildVersionIncremental()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Version SDK</td>
+<td><code>getBuildVersionSDK()</code></td>
+<td>int</td>
+</tr>
+<tr>
+<td>Build ID</td>
+<td><code>getBuildID()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Supported ABIS</td>
+<td><code>getStringSupportedABIS()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Supported 32 bit ABIS</td>
+<td><code>getStringSupported32bitABIS()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Supported 64 bit ABIS</td>
+<td><code>getStringSupported64bitABIS()</code></td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><code>(*)</code> : IMPORTANT: Call this method from UI thread only</p>
+</blockquote>
+
+<h2></h2>
+
+<ul>
+<li>To get Latitude-Longitude (Geo)</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//Get Lat-Long</span>
+<span class="pl-k">double</span>[] l <span class="pl-k">=</span> easyDeviceInfo<span class="pl-k">.</span>getLatLong();
+<span class="pl-smi">String</span> lat <span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(l[<span class="pl-c1">0</span>]);
+<span class="pl-smi">String</span> lon <span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(l[<span class="pl-c1">1</span>]);</pre></div>
+
+<blockquote>
+<p>Include the required permission in your AndoridManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_FINE_LOCATION<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</blockquote>
+
+<ul>
+<li>To get Email IDs</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//Get Google Email ID</span>
+<span class="pl-smi">StringBuilder</span> emailIDs <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+    <span class="pl-k">for</span> (<span class="pl-smi">String</span> eid <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getAccounts(<span class="pl-v">this</span>)) {
+            emailIDs<span class="pl-k">.</span>append(eid)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+        };
+
+<span class="pl-smi">String</span> emailId<span class="pl-k">=</span>emailIDs<span class="pl-k">.</span>toString();</pre></div>
+
+<blockquote>
+<p>Include the required permission in your AndoridManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.GET_ACCOUNTS<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</blockquote>
+
+<ul>
+<li>To get Supported ABIS</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> supportABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getSupportedABIS()) {
+       supportABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+   }
+
+<span class="pl-smi">String</span> supportedABI<span class="pl-k">=</span>supportABI<span class="pl-k">.</span>toString();</pre></div>
+
+<ul>
+<li>To get Supported 32 Bit ABIS</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> support32ABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getSupported32bitABIS()) {
+       support32ABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+   }
+
+<span class="pl-smi">String</span> supported32ABI<span class="pl-k">=</span>support32ABI<span class="pl-k">.</span>toString();</pre></div>
+
+<ul>
+<li>To get Supported 64 Bit ABIS</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> support64ABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getSupported64bitABIS()) {
+       support64ABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+   }
+
+<span class="pl-smi">String</span> supported64ABI<span class="pl-k">=</span>support64ABI<span class="pl-k">.</span>toString();</pre></div>
+
+<ul>
+<li>To get Advertiser's ID</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//Get Android Advertiser ID</span>
+easyDeviceInfo<span class="pl-k">.</span>getAndroidAdId(<span class="pl-smi">MainActivity</span><span class="pl-k">.</span><span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>.<span class="pl-smi">AdIdentifierCallback</span>() {
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onSuccess</span>(<span class="pl-smi">String</span> <span class="pl-v">adIdentifier</span>, <span class="pl-k">boolean</span> <span class="pl-v">adDonotTrack</span>) {
+        <span class="pl-c">// Do something with the advertiser's ID</span>
+    }
+});</pre></div>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+
+<pre><code>Copyright 2016 Nishant Srivastava
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
