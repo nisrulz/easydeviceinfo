@@ -807,7 +807,7 @@ public class EasyDeviceInfo {
    *
    * @return the wifi mac
    */
-  public String getWifiMAC() {
+  @SuppressWarnings("MissingPermission") public String getWifiMAC() {
     String result = initialVal;
     try {
 
@@ -936,7 +936,7 @@ public class EasyDeviceInfo {
    *
    * @return the bluetooth mac
    */
-  public String getBluetoothMAC() {
+  @SuppressWarnings("MissingPermission") public String getBluetoothMAC() {
     String result = initialVal;
     try {
       if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
@@ -1161,7 +1161,8 @@ public class EasyDeviceInfo {
    *
    * @return the double [ ]
    */
-  @TargetApi(Build.VERSION_CODES.M) public double[] getLatLong() {
+  @SuppressWarnings("MissingPermission") @TargetApi(Build.VERSION_CODES.M)
+  public double[] getLatLong() {
     boolean hasFineLocationPermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED ? true : false;
@@ -1412,7 +1413,7 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  public String[] getAccounts() {
+  @SuppressWarnings("MissingPermission") public String[] getAccounts() {
     try {
 
       if (context.checkCallingOrSelfPermission(Manifest.permission.GET_ACCOUNTS)
@@ -1437,6 +1438,8 @@ public class EasyDeviceInfo {
    */
   public boolean isNetworkAvailable() {
     if (context.checkCallingOrSelfPermission(Manifest.permission.INTERNET)
+        == PackageManager.PERMISSION_GRANTED
+        && context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE)
         == PackageManager.PERMISSION_GRANTED) {
       ConnectivityManager cm = (ConnectivityManager) context.getApplicationContext()
           .getSystemService(Context.CONNECTIVITY_SERVICE);

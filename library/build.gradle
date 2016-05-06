@@ -27,6 +27,11 @@ android {
     versionCode 9
     versionName "1.1.7"
   }
+
+  lintOptions {
+    abortOnError false
+  }
+
   buildTypes {
     debug {
       minifyEnabled false

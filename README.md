@@ -27,9 +27,7 @@ String value=easyDeviceInfo.functionName();
 |Time (ms)|`getTime()`|long
 |Language|`getLanguage()`|String
 |Android ID|`getAndroidID()`|String
-|IMEI|`getIMEI()`|String
 |IMSI|`getIMSI()`|String
-|GSFID|`getGSFID()`|String
 |Pseudo ID|`getPsuedoUniqueID()`|String
 |Device Serial Number|`getSerial()`|String
 |SIM Serial Number|`getSIMSerial()`|String
@@ -39,8 +37,6 @@ String value=easyDeviceInfo.functionName();
 |OS Version|`getOSVersion()`|String
 |Country|`getCountry()`|String
 |`(*)` User-Agent|`getUA()`|String 
-|WiFi MAC Address|`getWifiMAC()`|String
-|Bluetooth MAC Address|`getBluetoothMAC()`|String
 |Display Resolution|`getResolution()`|String
 |Phone Number|`getPhoneNo()`|String
 |ISP/Carrier|`getCarrier()`|String
@@ -51,11 +47,9 @@ String value=easyDeviceInfo.functionName();
 |Hardware|`getHardware()`|String
 |Bootloader|`getBootloader()`|String
 |IP Address|`getIPAddress(true)`|String
-|Type of Network|`getNetworkType()`|String
 |Fingerprint|`getFingerprint()`|String
 |Screen Density|`getDensity()`|String
 |Installer Store|`getStore()`|String
-|Is Internet available|`isNetworkAvailable()`|boolean
 |Is running on emulator|`isRunningOnEmulator()`|boolean
 |Build Brand|`getBuildBrand()`|String
 |Build Host|`getBuildHost()`|String
@@ -78,6 +72,68 @@ String value=easyDeviceInfo.functionName();
 
 -
 
+
+###Methods that need you to declare permisson in `AndroidManifest.xml`
+  
++ To get IMEI
+ ```java
+  String imei = getIMEI()
+  ```
+
+> Include the required permission in your AndroidManifest.xml
+
+> ```xml 
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+```
+
+
++ To check the type of network or checking is internet avaialble
+ ```java
+  String network_type = getNetworkType();
+  boolean is_network_available = isNetworkAvailable();
+  ```
+
+> Include the required permission in your AndroidManifest.xml
+
+> ```xml 
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
++ To get GSF ID
+ ```java
+  String gsf_id = getGSFID();
+  ```
+
+> Include the required permission in your AndroidManifest.xml
+
+> ```xml 
+<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+```
+
++ To get WiFi MAC Address
+ ```java
+  String wifi_mac = getWifiMAC();
+  ```
+
+> Include the required permission in your AndroidManifest.xml
+
+> ```xml 
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+```
+
++ To get Bluetooth MAC Address|``|String
+```java
+String bluetooth_mac = getBluetoothMAC();
+```
+
+> Include the required permission in your AndroidManifest.xml
+
+> ```xml 
+<uses-permission android:name="android.permission.BLUETOOTH"/>
+```
+
+
 + To get Latitude-Longitude (Geo)
 ```java
 //Get Lat-Long
@@ -85,7 +141,7 @@ double[] l = easyDeviceInfo.getLatLong();
 String lat = String.valueOf(l[0]);
 String lon = String.valueOf(l[1]);
 ```
-> Include the required permission in your AndoridManifest.xml
+> Include the required permission in your AndroidManifest.xml
 
 > ```xml 
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -102,11 +158,13 @@ StringBuilder emailIDs = new StringBuilder();
 
 String emailId=emailIDs.toString();
 ```
-> Include the required permission in your AndoridManifest.xml
+> Include the required permission in your AndroidManifest.xml
 
 > ```xml 
 <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
 ```
+
+###Other multi-value details can be retrieved as below
 
 + To get Supported ABIS
 ```java
