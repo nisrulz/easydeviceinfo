@@ -2,7 +2,10 @@
 
 Android library to get device information in a super easy way.
 
-Checkout the app using the same in [Playstore](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+Checkout the app using the same
+
+[![playstore](https://github.com/nisrulz/easydeviceinfo/raw/master/img/google-play-store.png)](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+
 
 #Integration
 - EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
