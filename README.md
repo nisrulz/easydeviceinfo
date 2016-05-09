@@ -76,7 +76,7 @@ String value=easyDeviceInfo.functionName();
 -
 
 
-###Methods that need you to declare permisson in `AndroidManifest.xml`
+###Methods that need you to declare permission in `AndroidManifest.xml`
   
 + To get IMEI
  ```java
@@ -90,7 +90,7 @@ String value=easyDeviceInfo.functionName();
 ```
 
 
-+ To check the type of network or checking is internet avaialble
++ To check the type of network or checking is internet available
  ```java
   String network_type = getNetworkType();
   boolean is_network_available = isNetworkAvailable();
@@ -125,7 +125,7 @@ String value=easyDeviceInfo.functionName();
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 ```
 
-+ To get Bluetooth MAC Address|``|String
++ To get Bluetooth MAC Address
 ```java
 String bluetooth_mac = getBluetoothMAC();
 ```
