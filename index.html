@@ -1,33 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
     <title>Easydeviceinfo by nisrulz</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
-
-    <header>
-      <div class="container">
+    <div class="wrapper">
+      <header>
         <h1>Easydeviceinfo</h1>
-        <h2>Android library to get device information in a super easy way.</h2>
-
-        <section id="downloads">
-          <a href="https://github.com/nisrulz/easydeviceinfo/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/nisrulz/easydeviceinfo/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/nisrulz/easydeviceinfo" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
-
-    <div class="container">
-      <section id="main_content">
+        <p>Android library to get device information in a super easy way.</p>
+        <p class="view"><a href="https://github.com/nisrulz/easydeviceinfo">View the Project on GitHub <small>nisrulz/easydeviceinfo</small></a></p>
+        <ul>
+          <li><a href="https://github.com/nisrulz/easydeviceinfo/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/nisrulz/easydeviceinfo/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/nisrulz/easydeviceinfo">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
         <h1>
 <a id="easydeviceinfo-----" class="anchor" href="#easydeviceinfo-----" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EasyDeviceInfo    <a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a> <a href="https://android-arsenal.com/details/1/3562"><img src="https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true" alt="Android Arsenal"></a>
 </h1>
@@ -292,14 +291,14 @@
 <h2></h2>
 
 <h3>
-<a id="methods-that-need-you-to-declare-permisson-in-androidmanifestxml" class="anchor" href="#methods-that-need-you-to-declare-permisson-in-androidmanifestxml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods that need you to declare permisson in <code>AndroidManifest.xml</code>
+<a id="methods-that-need-you-to-declare-permission-in-androidmanifestxml" class="anchor" href="#methods-that-need-you-to-declare-permission-in-androidmanifestxml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods that need you to declare permission in <code>AndroidManifest.xml</code>
 </h3>
 
 <ul>
-<li>To get IMEI
-<code>java
-String imei = getIMEI()
-</code>
+<li>
+<p>To get IMEI</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> imei <span class="pl-k">=</span> getIMEI()</pre></div>
 </li>
 </ul>
 
@@ -310,11 +309,11 @@ String imei = getIMEI()
 </blockquote>
 
 <ul>
-<li>To check the type of network or checking is internet avaialble
-<code>java
-String network_type = getNetworkType();
-boolean is_network_available = isNetworkAvailable();
-</code>
+<li>
+<p>To check the type of network or checking is internet available</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> network_type <span class="pl-k">=</span> getNetworkType();
+<span class="pl-k">boolean</span> is_network_available <span class="pl-k">=</span> isNetworkAvailable();</pre></div>
 </li>
 </ul>
 
@@ -326,10 +325,10 @@ boolean is_network_available = isNetworkAvailable();
 </blockquote>
 
 <ul>
-<li>To get GSF ID
-<code>java
-String gsf_id = getGSFID();
-</code>
+<li>
+<p>To get GSF ID</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> gsf_id <span class="pl-k">=</span> getGSFID();</pre></div>
 </li>
 </ul>
 
@@ -340,10 +339,10 @@ String gsf_id = getGSFID();
 </blockquote>
 
 <ul>
-<li>To get WiFi MAC Address
-<code>java
-String wifi_mac = getWifiMAC();
-</code>
+<li>
+<p>To get WiFi MAC Address</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> wifi_mac <span class="pl-k">=</span> getWifiMAC();</pre></div>
 </li>
 </ul>
 
@@ -354,7 +353,7 @@ String wifi_mac = getWifiMAC();
 </blockquote>
 
 <ul>
-<li>To get Bluetooth MAC Address|``|String</li>
+<li>To get Bluetooth MAC Address</li>
 </ul>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> bluetooth_mac <span class="pl-k">=</span> getBluetoothMAC();</pre></div>
@@ -465,7 +464,11 @@ limitations under the License.
 </code></pre>
       </section>
     </div>
-
+    <footer>
+      <p>Project maintained by <a href="https://github.com/nisrulz">nisrulz</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
   </body>
 </html>
