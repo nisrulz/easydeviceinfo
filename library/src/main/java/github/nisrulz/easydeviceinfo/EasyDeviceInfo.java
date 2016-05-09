@@ -43,6 +43,8 @@ import android.webkit.WebView;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -316,6 +318,23 @@ public class EasyDeviceInfo {
       result = initialVal;
     }
     return result;
+  }
+
+  /**
+   * Is Device rooted boolean
+   *
+   * @return the boolean
+   */
+  public boolean isDeviceRooted() {
+    String su = "su";
+    String[] locations = {"/sbin/", "/system/bin/", "/system/xbin/", "/system/sd/xbin/", "/system/bin/failsafe/",
+            "/data/local/xbin/", "/data/local/bin/", "/data/local/"};
+    for (String location: locations) {
+      if (new File(location + su).exists()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

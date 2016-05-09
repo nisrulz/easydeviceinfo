@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("BootLoader", easyDeviceInfo.getBootloader());
     deviceDataMap.put("IP Address", easyDeviceInfo.getIPAddress(true));
     deviceDataMap.put("Network Type", easyDeviceInfo.getNetworkType());
+    deviceDataMap.put("Device Rooted", String.valueOf(easyDeviceInfo.isDeviceRooted()));
     deviceDataMap.put("Email ID", emailString.toString());
     deviceDataMap.put("Latitude", lat);
     deviceDataMap.put("Longitude", lon);
