@@ -29,12 +29,14 @@
     <div class="container">
       <section id="main_content">
         <h1>
-<a id="easydeviceinfo----" class="anchor" href="#easydeviceinfo----" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EasyDeviceInfo    <a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a>
+<a id="easydeviceinfo-----" class="anchor" href="#easydeviceinfo-----" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EasyDeviceInfo    <a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a> <a href="https://android-arsenal.com/details/1/3562"><img src="https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true" alt="Android Arsenal"></a>
 </h1>
 
 <p>Android library to get device information in a super easy way.</p>
 
-<p>Checkout the app using the same in <a href="https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo">Playstore</a></p>
+<p>Checkout the app using the same</p>
+
+<p><a href="https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo"><img src="https://github.com/nisrulz/easydeviceinfo/raw/master/img/google-play-store.png" alt="playstore"></a></p>
 
 <h1>
 <a id="integration" class="anchor" href="#integration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integration</h1>
@@ -90,18 +92,8 @@
 <td>String</td>
 </tr>
 <tr>
-<td>IMEI</td>
-<td><code>getIMEI()</code></td>
-<td>String</td>
-</tr>
-<tr>
 <td>IMSI</td>
 <td><code>getIMSI()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>GSFID</td>
-<td><code>getGSFID()</code></td>
 <td>String</td>
 </tr>
 <tr>
@@ -148,16 +140,6 @@
 <td>
 <code>(*)</code> User-Agent</td>
 <td><code>getUA()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>WiFi MAC Address</td>
-<td><code>getWifiMAC()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>Bluetooth MAC Address</td>
-<td><code>getBluetoothMAC()</code></td>
 <td>String</td>
 </tr>
 <tr>
@@ -211,11 +193,6 @@
 <td>String</td>
 </tr>
 <tr>
-<td>Type of Network</td>
-<td><code>getNetworkType()</code></td>
-<td>String</td>
-</tr>
-<tr>
 <td>Fingerprint</td>
 <td><code>getFingerprint()</code></td>
 <td>String</td>
@@ -229,11 +206,6 @@
 <td>Installer Store</td>
 <td><code>getStore()</code></td>
 <td>String</td>
-</tr>
-<tr>
-<td>Is Internet available</td>
-<td><code>isNetworkAvailable()</code></td>
-<td>boolean</td>
 </tr>
 <tr>
 <td>Is running on emulator</td>
@@ -319,6 +291,80 @@
 
 <h2></h2>
 
+<h3>
+<a id="methods-that-need-you-to-declare-permisson-in-androidmanifestxml" class="anchor" href="#methods-that-need-you-to-declare-permisson-in-androidmanifestxml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods that need you to declare permisson in <code>AndroidManifest.xml</code>
+</h3>
+
+<ul>
+<li>To get IMEI
+<code>java
+String imei = getIMEI()
+</code>
+</li>
+</ul>
+
+<blockquote>
+<p>Include the required permission in your AndroidManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.READ_PHONE_STATE<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</blockquote>
+
+<ul>
+<li>To check the type of network or checking is internet avaialble
+<code>java
+String network_type = getNetworkType();
+boolean is_network_available = isNetworkAvailable();
+</code>
+</li>
+</ul>
+
+<blockquote>
+<p>Include the required permission in your AndroidManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_NETWORK_STATE<span class="pl-pds">"</span></span>/&gt;
+&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.INTERNET<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</blockquote>
+
+<ul>
+<li>To get GSF ID
+<code>java
+String gsf_id = getGSFID();
+</code>
+</li>
+</ul>
+
+<blockquote>
+<p>Include the required permission in your AndroidManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>com.google.android.providers.gsf.permission.READ_GSERVICES<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</blockquote>
+
+<ul>
+<li>To get WiFi MAC Address
+<code>java
+String wifi_mac = getWifiMAC();
+</code>
+</li>
+</ul>
+
+<blockquote>
+<p>Include the required permission in your AndroidManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_WIFI_STATE<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</blockquote>
+
+<ul>
+<li>To get Bluetooth MAC Address|``|String</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> bluetooth_mac <span class="pl-k">=</span> getBluetoothMAC();</pre></div>
+
+<blockquote>
+<p>Include the required permission in your AndroidManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.BLUETOOTH<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</blockquote>
+
 <ul>
 <li>To get Latitude-Longitude (Geo)</li>
 </ul>
@@ -329,7 +375,7 @@
 <span class="pl-smi">String</span> lon <span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(l[<span class="pl-c1">1</span>]);</pre></div>
 
 <blockquote>
-<p>Include the required permission in your AndoridManifest.xml</p>
+<p>Include the required permission in your AndroidManifest.xml</p>
 
 <div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_FINE_LOCATION<span class="pl-pds">"</span></span>/&gt;</pre></div>
 </blockquote>
@@ -347,10 +393,13 @@
 <span class="pl-smi">String</span> emailId<span class="pl-k">=</span>emailIDs<span class="pl-k">.</span>toString();</pre></div>
 
 <blockquote>
-<p>Include the required permission in your AndoridManifest.xml</p>
+<p>Include the required permission in your AndroidManifest.xml</p>
 
 <div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.GET_ACCOUNTS<span class="pl-pds">"</span></span>/&gt;</pre></div>
 </blockquote>
+
+<h3>
+<a id="other-multi-value-details-can-be-retrieved-as-below" class="anchor" href="#other-multi-value-details-can-be-retrieved-as-below" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other multi-value details can be retrieved as below</h3>
 
 <ul>
 <li>To get Supported ABIS</li>
