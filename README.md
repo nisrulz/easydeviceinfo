@@ -61,6 +61,10 @@ String value=easyDeviceInfo.functionName();
 |Build Time|`getBuildTime()`|long
 |Build User|`getBuildUser()`|String
 |Build Version Release|`getBuildVersionRelease()`|String
+|Battery Percentage|`getBatteryPercentage()`|float
+|Is Battery charging|`isBatteryCharging()`|boolean
+|Is Battery charging via USB|`isBatteryChargingUSB()`|boolean
+|Is Battery charging via AC|`isBatteryChargingAC()`|boolean
 |Screen Display ID|`getScreenDisplayID()`|String
 |Build Version Codename|`getBuildVersionCodename()`|String
 |Build Version Incremental|`getBuildVersionIncremental()`|String
