@@ -10,7 +10,7 @@ Checkout the app using the same
 #Integration
 - EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
 ```gradle
-compile 'com.github.nisrulz:easydeviceinfo:1.1.7'
+compile 'com.github.nisrulz:easydeviceinfo:1.1.8'
 ```
 
 

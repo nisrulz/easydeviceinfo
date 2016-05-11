@@ -87,8 +87,8 @@ public class EasyDeviceInfo {
    * @return the library version
    */
   public String getLibraryVersion() {
-    String version = "1.1.7";
-    int versionCode = 9;
+    String version = "1.1.8";
+    int versionCode = 10;
     return version + "-" + versionCode;
   }
 
