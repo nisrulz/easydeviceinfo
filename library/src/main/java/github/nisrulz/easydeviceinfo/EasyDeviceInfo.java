@@ -22,6 +22,8 @@ import android.accounts.AccountManager;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -31,6 +33,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -43,6 +46,8 @@ import android.webkit.WebView;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+
+import java.io.File;
 import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -316,6 +321,23 @@ public class EasyDeviceInfo {
       result = initialVal;
     }
     return result;
+  }
+
+  /**
+   * Is Device rooted boolean
+   *
+   * @return the boolean
+   */
+  public boolean isDeviceRooted() {
+    String su = "su";
+    String[] locations = {"/sbin/", "/system/bin/", "/system/xbin/", "/system/sd/xbin/", "/system/bin/failsafe/",
+            "/data/local/xbin/", "/data/local/bin/", "/data/local/"};
+    for (String location: locations) {
+      if (new File(location + su).exists()) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
@@ -646,6 +668,57 @@ public class EasyDeviceInfo {
       result = initialVal;
     }
     return handleIllegalCharacterInResult(result);
+  }
+
+  /**
+   * Gets battery percentage
+   *
+   * @return the battery percentage
+   */
+  public float getBatteryPercentage() {
+    float percentage = 0;
+    Intent batteryStatus = getBatteryStatusIntent();
+    if (batteryStatus != null) {
+      int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+      int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+      percentage = level / (float)scale;
+    }
+
+    return percentage;
+  }
+
+  /**
+   * Checks if battery is charging or not
+   *
+   * @return is battery charging boolean
+   */
+  public boolean isBatteryCharging() {
+    Intent batteryStatus = getBatteryStatusIntent();
+    int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+    return (status == BatteryManager.BATTERY_STATUS_CHARGING ||
+            status == BatteryManager.BATTERY_STATUS_FULL);
+  }
+
+  /**
+   * Checks if battery is charging via USB
+   *
+   * @return is battery charging via USB boolean
+   */
+  public boolean isBatteryChargingUSB() {
+    Intent batteryStatus = getBatteryStatusIntent();
+    int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+    return (chargePlug == BatteryManager.BATTERY_PLUGGED_USB);
+  }
+
+  /**
+   * Checks if battery is charging via AC
+   *
+   * @return is battery charging via AC boolean
+   */
+  public boolean isBatteryChargingAC() {
+    Intent batteryStatus = getBatteryStatusIntent();
+    int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+    return (chargePlug == BatteryManager.BATTERY_PLUGGED_AC);
   }
 
   /**
@@ -1518,5 +1591,11 @@ public class EasyDeviceInfo {
       result = result.replaceAll(" ", "_");
     }
     return result;
+  }
+
+  private Intent getBatteryStatusIntent() {
+    IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+    Intent batteryStatus = context.registerReceiver(null, batFilter);
+    return batteryStatus;
   }
 }

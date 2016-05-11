@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("BootLoader", easyDeviceInfo.getBootloader());
     deviceDataMap.put("IP Address", easyDeviceInfo.getIPAddress(true));
     deviceDataMap.put("Network Type", easyDeviceInfo.getNetworkType());
+    deviceDataMap.put("Device Rooted", String.valueOf(easyDeviceInfo.isDeviceRooted()));
     deviceDataMap.put("Email ID", emailString.toString());
     deviceDataMap.put("Latitude", lat);
     deviceDataMap.put("Longitude", lon);
@@ -138,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Build Time", String.valueOf(easyDeviceInfo.getBuildTime()));
     deviceDataMap.put("Build User", easyDeviceInfo.getBuildUser());
     deviceDataMap.put("Build Version Release", easyDeviceInfo.getBuildVersionRelease());
+    deviceDataMap.put("Battery Percentage", String.valueOf(easyDeviceInfo.getBatteryPercentage()));
+    deviceDataMap.put("Battery charging", String.valueOf(easyDeviceInfo.isBatteryCharging()));
+    deviceDataMap.put("Battery charging via USB", String.valueOf(easyDeviceInfo.isBatteryChargingUSB()));
+    deviceDataMap.put("Battery charging via AC", String.valueOf(easyDeviceInfo.isBatteryChargingAC()));
     deviceDataMap.put("Screen Display ID", easyDeviceInfo.getScreenDisplayID());
     deviceDataMap.put("Build Version Codename", easyDeviceInfo.getBuildVersionCodename());
     deviceDataMap.put("Build Version Increment", easyDeviceInfo.getBuildVersionIncremental());

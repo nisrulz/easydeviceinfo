@@ -39,7 +39,7 @@ String value=easyDeviceInfo.functionName();
 |OS Codename|`getOSCodename()`|String
 |OS Version|`getOSVersion()`|String
 |Country|`getCountry()`|String
-|`(*)` User-Agent|`getUA()`|String 
+|`(*)` User-Agent|`getUA()`|String
 |Display Resolution|`getResolution()`|String
 |Phone Number|`getPhoneNo()`|String
 |ISP/Carrier|`getCarrier()`|String
@@ -54,12 +54,17 @@ String value=easyDeviceInfo.functionName();
 |Screen Density|`getDensity()`|String
 |Installer Store|`getStore()`|String
 |Is running on emulator|`isRunningOnEmulator()`|boolean
+|Is Device rooted|`isDeviceRooted()`|boolean
 |Build Brand|`getBuildBrand()`|String
 |Build Host|`getBuildHost()`|String
 |Build Tags|`getBuildTags()`|String
 |Build Time|`getBuildTime()`|long
 |Build User|`getBuildUser()`|String
 |Build Version Release|`getBuildVersionRelease()`|String
+|Battery Percentage|`getBatteryPercentage()`|float
+|Is Battery charging|`isBatteryCharging()`|boolean
+|Is Battery charging via USB|`isBatteryChargingUSB()`|boolean
+|Is Battery charging via AC|`isBatteryChargingAC()`|boolean
 |Screen Display ID|`getScreenDisplayID()`|String
 |Build Version Codename|`getBuildVersionCodename()`|String
 |Build Version Incremental|`getBuildVersionIncremental()`|String
@@ -77,15 +82,15 @@ String value=easyDeviceInfo.functionName();
 
 
 ###Methods that need you to declare permission in `AndroidManifest.xml`
-  
+
 + To get IMEI
   ```java
     String imei = getIMEI()
   ```
 
   + Include the required permission in your AndroidManifest.xml
-  
-  ```xml 
+
+  ```xml
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
   ```
 
@@ -97,7 +102,7 @@ String value=easyDeviceInfo.functionName();
   ```
 
   + Include the required permission in your AndroidManifest.xml
-   ```xml 
+   ```xml
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.INTERNET"/>
   ```
@@ -108,8 +113,8 @@ String value=easyDeviceInfo.functionName();
   ```
 
   + Include the required permission in your AndroidManifest.xml
-  
-  ```xml 
+
+  ```xml
   <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
   ```
 
@@ -117,10 +122,10 @@ String value=easyDeviceInfo.functionName();
  ```java
   String wifi_mac = getWifiMAC();
   ```
-  
+
   + Include the required permission in your AndroidManifest.xml
-  
-  ```xml 
+
+  ```xml
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
   ```
 
@@ -130,8 +135,8 @@ String value=easyDeviceInfo.functionName();
   ```
 
   + Include the required permission in your AndroidManifest.xml
-  
-  ```xml 
+
+  ```xml
   <uses-permission android:name="android.permission.BLUETOOTH"/>
   ```
 
@@ -144,8 +149,8 @@ String value=easyDeviceInfo.functionName();
   String lon = String.valueOf(l[1]);
   ```
   + Include the required permission in your AndroidManifest.xml
-  
-  ```xml 
+
+  ```xml
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
   ```
 
@@ -157,12 +162,12 @@ String value=easyDeviceInfo.functionName();
       for (String eid : easyDeviceInfo.getAccounts(this)) {
               emailIDs.append(eid).append("\n");
           };
-  
+
   String emailId=emailIDs.toString();
   ```
   + Include the required permission in your AndroidManifest.xml
-  
-  ```xml 
+
+  ```xml
   <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
   ```
 
