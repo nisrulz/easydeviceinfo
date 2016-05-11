@@ -676,13 +676,13 @@ public class EasyDeviceInfo {
    *
    * @return the battery percentage
    */
-  public float getBatteryPercentage() {
-    float percentage = 0;
+  public int getBatteryPercentage() {
+    int percentage = 0;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
       int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
       int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-      percentage = (level / scale) * 100;
+      percentage = (int) ((level / (float) scale) * 100);
     }
 
     return percentage;
