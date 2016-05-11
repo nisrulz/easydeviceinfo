@@ -51,7 +51,6 @@ import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -1325,15 +1324,18 @@ public class EasyDeviceInfo {
   }
 
   /**
-   * Gets formated time.
+   * Gets formatted time.
    *
-   * @return the formated time
+   * @return the formatted time
    */
   public String getFormatedTime() {
-    Calendar cal = Calendar.getInstance();
-    cal.setTimeInMillis(System.currentTimeMillis());
-    return cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(
-        Calendar.SECOND);
+
+    long millis = System.currentTimeMillis();
+    int sec = (int) (millis / 1000) % 60;
+    int min = (int) ((millis / (1000 * 60)) % 60);
+    int hr = (int) ((millis / (1000 * 60 * 60)) % 24);
+
+    return String.format("%02d:%02d:%02d", hr, min, sec);
   }
 
   /**
