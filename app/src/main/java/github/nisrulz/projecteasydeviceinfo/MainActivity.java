@@ -139,10 +139,13 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Build Time", String.valueOf(easyDeviceInfo.getBuildTime()));
     deviceDataMap.put("Build User", easyDeviceInfo.getBuildUser());
     deviceDataMap.put("Build Version Release", easyDeviceInfo.getBuildVersionRelease());
-    deviceDataMap.put("Battery Percentage", String.valueOf(easyDeviceInfo.getBatteryPercentage()));
-    deviceDataMap.put("Battery charging", String.valueOf(easyDeviceInfo.isBatteryCharging()));
-    deviceDataMap.put("Battery charging via USB", String.valueOf(easyDeviceInfo.isBatteryChargingUSB()));
-    deviceDataMap.put("Battery charging via AC", String.valueOf(easyDeviceInfo.isBatteryChargingAC()));
+    deviceDataMap.put("Battery Percentage",
+        String.valueOf(easyDeviceInfo.getBatteryPercentage()) + "%");
+    deviceDataMap.put("Is device charging", String.valueOf(easyDeviceInfo.isDeviceCharging()));
+    deviceDataMap.put("Device charging via USB",
+        String.valueOf(easyDeviceInfo.isDeviceChargingUSB()));
+    deviceDataMap.put("Device charging via AC",
+        String.valueOf(easyDeviceInfo.isDeviceChargingAC()));
     deviceDataMap.put("Screen Display ID", easyDeviceInfo.getScreenDisplayID());
     deviceDataMap.put("Build Version Codename", easyDeviceInfo.getBuildVersionCodename());
     deviceDataMap.put("Build Version Increment", easyDeviceInfo.getBuildVersionIncremental());

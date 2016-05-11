@@ -39,7 +39,6 @@ String value=easyDeviceInfo.functionName();
 |OS Codename|`getOSCodename()`|String
 |OS Version|`getOSVersion()`|String
 |Country|`getCountry()`|String
-|`(*)` User-Agent|`getUA()`|String
 |Display Resolution|`getResolution()`|String
 |Phone Number|`getPhoneNo()`|String
 |ISP/Carrier|`getCarrier()`|String
@@ -62,9 +61,9 @@ String value=easyDeviceInfo.functionName();
 |Build User|`getBuildUser()`|String
 |Build Version Release|`getBuildVersionRelease()`|String
 |Battery Percentage|`getBatteryPercentage()`|float
-|Is Battery charging|`isBatteryCharging()`|boolean
-|Is Battery charging via USB|`isBatteryChargingUSB()`|boolean
-|Is Battery charging via AC|`isBatteryChargingAC()`|boolean
+|Is Device charging|`isDeviceCharging()`|boolean
+|Is Device charging via USB|`isDeviceChargingUSB()`|boolean
+|Is Device charging via AC|`isDeviceChargingAC()`|boolean
 |Screen Display ID|`getScreenDisplayID()`|String
 |Build Version Codename|`getBuildVersionCodename()`|String
 |Build Version Incremental|`getBuildVersionIncremental()`|String
@@ -75,10 +74,16 @@ String value=easyDeviceInfo.functionName();
 |Supported 64 bit ABIS|`getStringSupported64bitABIS()`|String
 
 
-> `(*)` : IMPORTANT: Call this method from UI thread only
-
-
 -
+
+
+###Methods that need you to call it from the UI thread only
+
++ To get User-Agent
+
+  ```java
+    String ua = getUA()
+  ```
 
 
 ###Methods that need you to declare permission in `AndroidManifest.xml`

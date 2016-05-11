@@ -46,7 +46,6 @@ import android.webkit.WebView;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.Inet4Address;
@@ -330,9 +329,11 @@ public class EasyDeviceInfo {
    */
   public boolean isDeviceRooted() {
     String su = "su";
-    String[] locations = {"/sbin/", "/system/bin/", "/system/xbin/", "/system/sd/xbin/", "/system/bin/failsafe/",
-            "/data/local/xbin/", "/data/local/bin/", "/data/local/"};
-    for (String location: locations) {
+    String[] locations = {
+        "/sbin/", "/system/bin/", "/system/xbin/", "/system/sd/xbin/", "/system/bin/failsafe/",
+        "/data/local/xbin/", "/data/local/bin/", "/data/local/"
+    };
+    for (String location : locations) {
       if (new File(location + su).exists()) {
         return true;
       }
@@ -681,41 +682,41 @@ public class EasyDeviceInfo {
     if (batteryStatus != null) {
       int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
       int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-      percentage = level / (float)scale;
+      percentage = (level / scale) * 100;
     }
 
     return percentage;
   }
 
   /**
-   * Checks if battery is charging or not
+   * Is device charging boolean.
    *
    * @return is battery charging boolean
    */
-  public boolean isBatteryCharging() {
+  public boolean isDeviceCharging() {
     Intent batteryStatus = getBatteryStatusIntent();
     int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-    return (status == BatteryManager.BATTERY_STATUS_CHARGING ||
-            status == BatteryManager.BATTERY_STATUS_FULL);
+    return (status == BatteryManager.BATTERY_STATUS_CHARGING
+        || status == BatteryManager.BATTERY_STATUS_FULL);
   }
 
   /**
-   * Checks if battery is charging via USB
+   * Is device charging usb boolean.
    *
    * @return is battery charging via USB boolean
    */
-  public boolean isBatteryChargingUSB() {
+  public boolean isDeviceChargingUSB() {
     Intent batteryStatus = getBatteryStatusIntent();
     int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
     return (chargePlug == BatteryManager.BATTERY_PLUGGED_USB);
   }
 
   /**
-   * Checks if battery is charging via AC
+   * Is device charging ac boolean.
    *
    * @return is battery charging via AC boolean
    */
-  public boolean isBatteryChargingAC() {
+  public boolean isDeviceChargingAC() {
     Intent batteryStatus = getBatteryStatusIntent();
     int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
     return (chargePlug == BatteryManager.BATTERY_PLUGGED_AC);
@@ -991,7 +992,7 @@ public class EasyDeviceInfo {
     Cursor c = context.getContentResolver().query(URI, null, null, params, null);
 
     if (c == null || !c.moveToFirst() || c.getColumnCount() < 2) {
-      if(c != null) {
+      if (c != null) {
         c.close();
       }
       c.close();
@@ -1595,7 +1596,6 @@ public class EasyDeviceInfo {
 
   private Intent getBatteryStatusIntent() {
     IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-    Intent batteryStatus = context.registerReceiver(null, batFilter);
-    return batteryStatus;
+    return context.registerReceiver(null, batFilter);
   }
 }
