@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     String[] emailIds = easyDeviceInfo.getAccounts();
     StringBuilder emailString = new StringBuilder();
-    if (emailIds.length > 0) {
+    if (emailIds != null && emailIds.length > 0) {
       for (String e : emailIds) {
         emailString.append(e).append("\n");
       }
