@@ -990,12 +990,9 @@ public class EasyDeviceInfo {
     String[] params = { ID_KEY };
     Cursor c = context.getContentResolver().query(URI, null, null, params, null);
 
-    if (c == null || !c.moveToFirst() || c.getColumnCount() < 2) {
-      if (c != null) {
-        c.close();
-      }
+    if (c != null && !c.moveToFirst() || c.getColumnCount() < 2) {
       c.close();
-      return null;
+      return initialVal;
     }
     try {
       String gsfID = Long.toHexString(Long.parseLong(c.getString(1)));
