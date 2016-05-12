@@ -995,7 +995,6 @@ public class EasyDeviceInfo {
       if (c != null) {
         c.close();
       }
-      c.close();
       return null;
     }
     try {
