@@ -146,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
         String.valueOf(easyDeviceInfo.isDeviceChargingUSB()));
     deviceDataMap.put("Device charging via AC",
         String.valueOf(easyDeviceInfo.isDeviceChargingAC()));
+    deviceDataMap.put("Wi-Fi state", easyDeviceInfo.getWifiState());
+    deviceDataMap.put("Ringer mode", easyDeviceInfo.getDeviceRingerMode());
     deviceDataMap.put("Screen Display ID", easyDeviceInfo.getScreenDisplayID());
     deviceDataMap.put("Build Version Codename", easyDeviceInfo.getBuildVersionCodename());
     deviceDataMap.put("Build Version Increment", easyDeviceInfo.getBuildVersionIncremental());

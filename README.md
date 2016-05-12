@@ -64,6 +64,8 @@ String value=easyDeviceInfo.functionName();
 |Is Device charging|`isDeviceCharging()`|boolean
 |Is Device charging via USB|`isDeviceChargingUSB()`|boolean
 |Is Device charging via AC|`isDeviceChargingAC()`|boolean
+|WiFi State|`getWifiState()`|String
+|Ringer Mode|`getDeviceRingerMode()`|String
 |Screen Display ID|`getScreenDisplayID()`|String
 |Build Version Codename|`getBuildVersionCodename()`|String
 |Build Version Incremental|`getBuildVersionIncremental()`|String
