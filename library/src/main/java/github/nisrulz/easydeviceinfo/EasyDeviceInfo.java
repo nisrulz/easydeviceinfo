@@ -21,6 +21,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -29,6 +30,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -1574,6 +1576,42 @@ public class EasyDeviceInfo {
         }
       }
     }).start();
+  }
+
+  /**
+   * Gets WiFi state
+   *
+   * @return WiFi state
+   */
+  public String getWifiState() {
+    String wifiState = "na";
+
+    WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+    if (wifiManager != null) {
+      wifiState = wifiManager.isWifiEnabled() ? "enabled" : "disabled";
+    }
+    return wifiState;
+  }
+
+  /**
+   * Gets Device Ringer Mode
+   *
+   * @return Device Ringer Mode
+   */
+  public String getDeviceRingerMode() {
+    String ringerMode = "na";
+    AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+    switch (audioManager.getRingerMode()) {
+      case AudioManager.RINGER_MODE_NORMAL:
+        ringerMode = "normal";
+        break;
+      case AudioManager.RINGER_MODE_SILENT:
+        ringerMode = "silent";
+        break;
+      case AudioManager.RINGER_MODE_VIBRATE:
+        ringerMode = "vibrate";
+    }
+    return ringerMode;
   }
 
   /**
