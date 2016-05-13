@@ -146,8 +146,7 @@ public class MainActivity extends AppCompatActivity {
         String.valueOf(easyDeviceInfo.isDeviceChargingUSB()));
     deviceDataMap.put("Device charging via AC",
         String.valueOf(easyDeviceInfo.isDeviceChargingAC()));
-    deviceDataMap.put("Wi-Fi state", easyDeviceInfo.getWifiState());
-    deviceDataMap.put("Ringer mode", easyDeviceInfo.getDeviceRingerMode());
+    deviceDataMap.put("Wi-Fi enabled", String.valueOf(easyDeviceInfo.isWifiEnabled()));
     deviceDataMap.put("Screen Display ID", easyDeviceInfo.getScreenDisplayID());
     deviceDataMap.put("Build Version Codename", easyDeviceInfo.getBuildVersionCodename());
     deviceDataMap.put("Build Version Increment", easyDeviceInfo.getBuildVersionIncremental());
@@ -156,6 +155,18 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Supported ABIS", easyDeviceInfo.getStringSupportedABIS());
     deviceDataMap.put("Supported 32 bit ABIS", easyDeviceInfo.getStringSupported32bitABIS());
     deviceDataMap.put("Supported 64 bit ABIS", easyDeviceInfo.getStringSupported64bitABIS());
+
+    switch (easyDeviceInfo.getDeviceRingerMode()) {
+      case EasyDeviceInfo.RINGER_MODE_NORMAL:
+        deviceDataMap.put("Ringer mode", "normal");
+        break;
+      case EasyDeviceInfo.RINGER_MODE_VIBRATE:
+        deviceDataMap.put("Ringer mode", "vibrate");
+        break;
+      case EasyDeviceInfo.RINGER_MODE_SILENT:
+        deviceDataMap.put("Ringer mode", "silent");
+        break;
+    }
 
     for (String key : deviceDataMap.keySet()) {
       data.add(0, key + " : " + deviceDataMap.get(key));

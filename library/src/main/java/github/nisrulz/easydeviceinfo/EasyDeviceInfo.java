@@ -21,7 +21,6 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -66,6 +65,11 @@ public class EasyDeviceInfo {
   private final Context context;
   private final TelephonyManager tm;
   private final String initialVal;
+
+  public static final int RINGER_MODE_SILENT = 0;
+  public static final int RINGER_MODE_NORMAL = 1;
+  public static final int RINGER_MODE_VIBRATE = 2;
+
   /**
    * The constant LOGTAG.
    */
@@ -1579,16 +1583,16 @@ public class EasyDeviceInfo {
   }
 
   /**
-   * Gets WiFi state
+   * Is wifi enabled
    *
-   * @return WiFi state
+   * @return the boolean
    */
-  public String getWifiState() {
-    String wifiState = "na";
+  public boolean isWifiEnabled() {
+    boolean wifiState = false;
 
     WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     if (wifiManager != null) {
-      wifiState = wifiManager.isWifiEnabled() ? "enabled" : "disabled";
+      wifiState = wifiManager.isWifiEnabled() ? true : false;
     }
     return wifiState;
   }
@@ -1598,18 +1602,18 @@ public class EasyDeviceInfo {
    *
    * @return Device Ringer Mode
    */
-  public String getDeviceRingerMode() {
-    String ringerMode = "na";
+  public int getDeviceRingerMode() {
+    int ringerMode = RINGER_MODE_NORMAL;
     AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     switch (audioManager.getRingerMode()) {
       case AudioManager.RINGER_MODE_NORMAL:
-        ringerMode = "normal";
+        ringerMode = RINGER_MODE_NORMAL;
         break;
       case AudioManager.RINGER_MODE_SILENT:
-        ringerMode = "silent";
+        ringerMode = RINGER_MODE_SILENT;
         break;
       case AudioManager.RINGER_MODE_VIBRATE:
-        ringerMode = "vibrate";
+        ringerMode = RINGER_MODE_VIBRATE;
     }
     return ringerMode;
   }

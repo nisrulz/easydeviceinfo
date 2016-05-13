@@ -64,8 +64,7 @@ String value=easyDeviceInfo.functionName();
 |Is Device charging|`isDeviceCharging()`|boolean
 |Is Device charging via USB|`isDeviceChargingUSB()`|boolean
 |Is Device charging via AC|`isDeviceChargingAC()`|boolean
-|WiFi State|`getWifiState()`|String
-|Ringer Mode|`getDeviceRingerMode()`|String
+|WiFi State|`isWifiEnabled()`|boolean
 |Screen Display ID|`getScreenDisplayID()`|String
 |Build Version Codename|`getBuildVersionCodename()`|String
 |Build Version Incremental|`getBuildVersionIncremental()`|String
@@ -221,6 +220,32 @@ easyDeviceInfo.getAndroidAdId(MainActivity.this, new EasyDeviceInfo.AdIdentifier
     }
 });
 ```
+
++ To get device ringer mode
+  ```java
+  int device_ringer_mode = easyDeviceInfo.getDeviceRingerMode();
+  ```
+  
+  Then match it against the constants provided
+  
+  ```java
+  switch (device_ringer_mode) {
+    case EasyDeviceInfo.RINGER_MODE_NORMAL:
+      System.out.println("normal");
+      break;
+    case EasyDeviceInfo.RINGER_MODE_VIBRATE:
+      System.out.println("vibrate");
+      break;
+    case EasyDeviceInfo.RINGER_MODE_SILENT:
+      System.out.println("silent");
+      break;
+  }
+  ```
+  
+  where constants available are 
+    + `EasyDeviceInfo.RINGER_MODE_NORMAL`
+    + `EasyDeviceInfo.RINGER_MODE_VIBRATE`
+    + `EasyDeviceInfo.RINGER_MODE_SILENT`
 
 License
 =======
