@@ -60,7 +60,7 @@ String value=easyDeviceInfo.functionName();
 |Build Time|`getBuildTime()`|long
 |Build User|`getBuildUser()`|String
 |Build Version Release|`getBuildVersionRelease()`|String
-|Battery Percentage|`getBatteryPercentage()`|float
+|Battery Percentage|`getBatteryPercentage()`|int
 |Is Device charging|`isDeviceCharging()`|boolean
 |Is Device charging via USB|`isDeviceChargingUSB()`|boolean
 |Is Device charging via AC|`isDeviceChargingAC()`|boolean
