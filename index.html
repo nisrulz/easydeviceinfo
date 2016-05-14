@@ -44,7 +44,7 @@
 <li>EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
 </ul>
 
-<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:1.1.8<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:1.1.9<span class="pl-pds">'</span></span></pre></div>
 
 <h1>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
@@ -261,6 +261,11 @@
 <td>boolean</td>
 </tr>
 <tr>
+<td>WiFi State</td>
+<td><code>isWifiEnabled()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
 <td>Screen Display ID</td>
 <td><code>getScreenDisplayID()</code></td>
 <td>String</td>
@@ -458,6 +463,36 @@ easyDeviceInfo<span class="pl-k">.</span>getAndroidAdId(<span class="pl-smi">Mai
         <span class="pl-c">// Do something with the advertiser's ID</span>
     }
 });</pre></div>
+
+<ul>
+<li>
+<p>To get device ringer mode</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> device_ringer_mode <span class="pl-k">=</span> easyDeviceInfo<span class="pl-k">.</span>getDeviceRingerMode();</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (device_ringer_mode) {
+  <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_NORMAL</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>normal<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_VIBRATE</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>vibrate<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_SILENT</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>silent<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+}</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyDeviceInfo.RINGER_MODE_NORMAL</code></li>
+<li><code>EasyDeviceInfo.RINGER_MODE_VIBRATE</code></li>
+<li><code>EasyDeviceInfo.RINGER_MODE_SILENT</code></li>
+</ul>
+</li>
+</ul>
 
 <h1>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
