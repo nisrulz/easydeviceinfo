@@ -4,6 +4,8 @@
 
 Android library to get device information in a super easy way.
 
+Listed on [awesome-android](https://github.com/snowdream/awesome-android#utility)
+
 Checkout the app using the same
 
 [![playstore](https://github.com/nisrulz/easydeviceinfo/raw/master/img/google-play-store.png)](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
