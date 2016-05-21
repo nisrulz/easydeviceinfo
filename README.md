@@ -250,6 +250,40 @@ easyDeviceInfo.getAndroidAdId(MainActivity.this, new EasyDeviceInfo.AdIdentifier
     + `EasyDeviceInfo.RINGER_MODE_NORMAL`
     + `EasyDeviceInfo.RINGER_MODE_VIBRATE`
     + `EasyDeviceInfo.RINGER_MODE_SILENT`
+    
++ To get device type
+  ```java
+  int device_type =easyDeviceInfo.getDeviceType(activity)
+  ```
+  
+  Then match it against the constants provided
+  
+  ```java
+  switch (device_type) {
+     case EasyDeviceInfo.DEVICE_TYPE_WATCH:
+       deviceDataMap.put("Device type", "watch");
+       break;
+     case EasyDeviceInfo.DEVICE_TYPE_PHONE:
+       deviceDataMap.put("Device type", "phone");
+       break;
+     case EasyDeviceInfo.DEVICE_TYPE_PHABLET:
+       deviceDataMap.put("Device type", "phablet");
+       break;
+     case EasyDeviceInfo.DEVICE_TYPE_TABLET:
+       deviceDataMap.put("Device type", "tablet");
+       break;
+     case EasyDeviceInfo.DEVICE_TYPE_TV:
+       deviceDataMap.put("Device type", "tv");
+       break;
+   }
+  ```
+  
+  where constants available are 
+    + `EasyDeviceInfo.DEVICE_TYPE_WATCH`
+    + `EasyDeviceInfo.DEVICE_TYPE_PHONE`
+    + `EasyDeviceInfo.DEVICE_TYPE_PHABLET`
+    + `EasyDeviceInfo.DEVICE_TYPE_TABLET`
+    + `EasyDeviceInfo.DEVICE_TYPE_TV`
 
 License
 =======

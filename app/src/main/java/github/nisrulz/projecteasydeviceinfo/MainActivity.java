@@ -168,6 +168,24 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
+    switch (easyDeviceInfo.getDeviceType(this)) {
+      case EasyDeviceInfo.DEVICE_TYPE_WATCH:
+        deviceDataMap.put("Device type", "watch");
+        break;
+      case EasyDeviceInfo.DEVICE_TYPE_PHONE:
+        deviceDataMap.put("Device type", "phone");
+        break;
+      case EasyDeviceInfo.DEVICE_TYPE_PHABLET:
+        deviceDataMap.put("Device type", "phablet");
+        break;
+      case EasyDeviceInfo.DEVICE_TYPE_TABLET:
+        deviceDataMap.put("Device type", "tablet");
+        break;
+      case EasyDeviceInfo.DEVICE_TYPE_TV:
+        deviceDataMap.put("Device type", "tv");
+        break;
+    }
+
     for (String key : deviceDataMap.keySet()) {
       data.add(0, key + " : " + deviceDataMap.get(key));
     }
