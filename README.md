@@ -5,7 +5,7 @@
 
 Android library to get device information in a super easy way.
 
-The library is built for simplicity and approachability. It not only eliminates most boilerplate code for dealing with device information, but also provides a easy and simple API to retrieve them.
+The library is built for simplicity and approachability. It not only eliminates most boilerplate code for dealing with device information, but also provides an easy and simple API to retrieve them.
 
 >[![awesome-android](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/snowdream/awesome-android#utility) - Featured in awesome android list
 >
@@ -13,7 +13,7 @@ The library is built for simplicity and approachability. It not only eliminates 
 
 # Changelog
 
-Starting with `1.1.`8, Changes exist in the [releases tab](https://github.com/nisrulz/easydeviceinfo/releases).
+Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/nisrulz/easydeviceinfo/releases).
 
 # Including in your project
 - EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
@@ -26,7 +26,7 @@ For more detailed usage, check the [Wiki](https://github.com/nisrulz/easydevicei
 
 # Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
-  1. Match coding style (braces, spacing, etc.) This is best achieved using CMD+Option+L (Reformat code) on Mac (not sure for Windows) with Android Studio defaults.
+  1. Match coding style (braces, spacing, etc.) This is best achieved using `CMD`+`Option`+`L` (Reformat code) on Mac (not sure for Windows) with Android Studio defaults.
   2. If its a feature, bugfix, or anything please only change code to what you specify.
   3. Please keep PR titles easy to read and descriptive of changes, this will make them easier to merge :)
   4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the maintainers) will get rejected.
