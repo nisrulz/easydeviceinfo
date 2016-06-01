@@ -20,6 +20,7 @@ import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
@@ -69,6 +70,12 @@ public class EasyDeviceInfo {
   public static final int RINGER_MODE_SILENT = 0;
   public static final int RINGER_MODE_NORMAL = 1;
   public static final int RINGER_MODE_VIBRATE = 2;
+
+  public static final int DEVICE_TYPE_WATCH = 0;
+  public static final int DEVICE_TYPE_PHONE = 1;
+  public static final int DEVICE_TYPE_PHABLET = 2;
+  public static final int DEVICE_TYPE_TABLET = 3;
+  public static final int DEVICE_TYPE_TV = 4;
 
   /**
    * The constant LOGTAG.
@@ -541,6 +548,33 @@ public class EasyDeviceInfo {
       result = initialVal;
     }
     return result;
+  }
+
+  /**
+   * Device type int.
+   * Based on metric : https://design.google.com/devices/
+   *
+   * @param activity the activity
+   * @return the int
+   */
+  public int getDeviceType(Activity activity) {
+    DisplayMetrics metrics = new DisplayMetrics();
+    activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+    float yInches = metrics.heightPixels / metrics.ydpi;
+    float xInches = metrics.widthPixels / metrics.xdpi;
+    double diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
+    if (diagonalInches > 10.1) {
+      return DEVICE_TYPE_TV;
+    } else if (diagonalInches <= 10.1 && diagonalInches > 7) {
+      return DEVICE_TYPE_TABLET;
+    } else if (diagonalInches <= 7 && diagonalInches > 6.5) {
+      return DEVICE_TYPE_PHABLET;
+    } else if (diagonalInches <= 6.5 && diagonalInches >= 2) {
+      return DEVICE_TYPE_PHONE;
+    } else {
+      return DEVICE_TYPE_WATCH;
+    }
   }
 
   /**
