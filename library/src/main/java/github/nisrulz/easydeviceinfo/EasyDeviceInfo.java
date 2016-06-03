@@ -19,7 +19,6 @@ package github.nisrulz.easydeviceinfo;
 import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
@@ -40,7 +39,6 @@ import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.WindowManager;
@@ -65,7 +63,6 @@ public class EasyDeviceInfo {
 
   private final Context context;
   private final TelephonyManager tm;
-  private final String initialVal;
 
   public static final int RINGER_MODE_SILENT = 0;
   public static final int RINGER_MODE_NORMAL = 1;
@@ -90,7 +87,6 @@ public class EasyDeviceInfo {
   public EasyDeviceInfo(Context context) {
     this.context = context;
     tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-    initialVal = "na";
   }
 
   /**
@@ -109,17 +105,9 @@ public class EasyDeviceInfo {
    *
    * @return the android id
    */
-  public String getAndroidID() {
-    String result = initialVal;
-    try {
-      result = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getAndroidID() throws Exception {
+    return checkValidData(
+        Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID));
   }
 
   /**
@@ -127,17 +115,8 @@ public class EasyDeviceInfo {
    *
    * @return the model
    */
-  public String getModel() {
-    String result = initialVal;
-    try {
-      result = Build.MODEL;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+  public String getModel() throws Exception {
+    return checkValidData(handleIllegalCharacterInResult(Build.MODEL));
   }
 
   /**
@@ -145,17 +124,8 @@ public class EasyDeviceInfo {
    *
    * @return the build brand
    */
-  public String getBuildBrand() {
-    String result = initialVal;
-    try {
-      result = Build.BRAND;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+  public String getBuildBrand() throws Exception {
+    return checkValidData(handleIllegalCharacterInResult(Build.BRAND));
   }
 
   /**
@@ -163,17 +133,8 @@ public class EasyDeviceInfo {
    *
    * @return the build host
    */
-  public String getBuildHost() {
-    String result = initialVal;
-    try {
-      result = Build.HOST;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBuildHost() throws Exception {
+    return checkValidData(Build.HOST);
   }
 
   /**
@@ -181,17 +142,8 @@ public class EasyDeviceInfo {
    *
    * @return the build tags
    */
-  public String getBuildTags() {
-    String result = initialVal;
-    try {
-      result = Build.TAGS;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBuildTags() throws Exception {
+    return checkValidData(Build.TAGS);
   }
 
   /**
@@ -199,14 +151,8 @@ public class EasyDeviceInfo {
    *
    * @return the build time
    */
-  public long getBuildTime() {
-    long result = 0;
-    try {
-      result = Build.TIME;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return result;
+  public long getBuildTime() throws Exception {
+    return Build.TIME;
   }
 
   /**
@@ -214,17 +160,8 @@ public class EasyDeviceInfo {
    *
    * @return the build user
    */
-  public String getBuildUser() {
-    String result = initialVal;
-    try {
-      result = Build.USER;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBuildUser() throws Exception {
+    return checkValidData(Build.USER);
   }
 
   /**
@@ -232,17 +169,8 @@ public class EasyDeviceInfo {
    *
    * @return the build version release
    */
-  public String getBuildVersionRelease() {
-    String result = initialVal;
-    try {
-      result = Build.VERSION.RELEASE;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBuildVersionRelease() throws Exception {
+    return checkValidData(Build.VERSION.RELEASE);
   }
 
   /**
@@ -250,19 +178,10 @@ public class EasyDeviceInfo {
    *
    * @return the screen display id
    */
-  public String getScreenDisplayID() {
-    String result = initialVal;
-    try {
-      WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-      Display display = wm.getDefaultDisplay();
-      result = String.valueOf(display.getDisplayId());
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getScreenDisplayID() throws Exception {
+    WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    Display display = wm.getDefaultDisplay();
+    return checkValidData(String.valueOf(display.getDisplayId()));
   }
 
   /**
@@ -270,17 +189,8 @@ public class EasyDeviceInfo {
    *
    * @return the build version codename
    */
-  public String getBuildVersionCodename() {
-    String result = initialVal;
-    try {
-      result = Build.VERSION.CODENAME;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBuildVersionCodename() throws Exception {
+    return checkValidData(Build.VERSION.CODENAME);
   }
 
   /**
@@ -288,17 +198,8 @@ public class EasyDeviceInfo {
    *
    * @return the build version incremental
    */
-  public String getBuildVersionIncremental() {
-    String result = initialVal;
-    try {
-      result = Build.VERSION.INCREMENTAL;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBuildVersionIncremental() throws Exception {
+    return checkValidData(Build.VERSION.INCREMENTAL);
   }
 
   /**
@@ -306,14 +207,8 @@ public class EasyDeviceInfo {
    *
    * @return the build version sdk
    */
-  public int getBuildVersionSDK() {
-    int result = 0;
-    try {
-      result = Build.VERSION.SDK_INT;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return result;
+  public int getBuildVersionSDK() throws Exception {
+    return Build.VERSION.SDK_INT;
   }
 
   /**
@@ -321,17 +216,8 @@ public class EasyDeviceInfo {
    *
    * @return the build id
    */
-  public String getBuildID() {
-    String result = initialVal;
-    try {
-      result = Build.ID;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBuildID() throws Exception {
+    return checkValidData(Build.ID);
   }
 
   /**
@@ -358,19 +244,12 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  public String[] getSupportedABIS() {
+  public String[] getSupportedABIS() throws Exception {
     String[] result = new String[] { "-" };
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        result = Build.SUPPORTED_ABIS;
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      result = Build.SUPPORTED_ABIS;
     }
-    if (result == null || result.length == 0) {
-      result = new String[] { "-" };
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -378,30 +257,22 @@ public class EasyDeviceInfo {
    *
    * @return the string supported abis
    */
-  public String getStringSupportedABIS() {
-    String result = initialVal;
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        String[] supportedABIS = Build.SUPPORTED_ABIS;
-
-        StringBuilder supportedABIString = new StringBuilder();
-        if (supportedABIS.length > 0) {
-          for (String abis : supportedABIS) {
-            supportedABIString.append(abis).append("_");
-          }
-          supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
-        } else {
-          supportedABIString.append(initialVal);
+  public String getStringSupportedABIS() throws Exception {
+    String result = null;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      String[] supportedABIS = Build.SUPPORTED_ABIS;
+      StringBuilder supportedABIString = new StringBuilder();
+      if (supportedABIS.length > 0) {
+        for (String abis : supportedABIS) {
+          supportedABIString.append(abis).append("_");
         }
-        result = supportedABIString.toString();
+        supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
+      } else {
+        supportedABIString.append("");
       }
-    } catch (Exception e) {
-      e.printStackTrace();
+      result = supportedABIString.toString();
     }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+    return checkValidData(handleIllegalCharacterInResult(result));
   }
 
   /**
@@ -409,32 +280,26 @@ public class EasyDeviceInfo {
    *
    * @return the string supported 32 bit abis
    */
-  public String getStringSupported32bitABIS() {
-    String result = initialVal;
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        String[] supportedABIS = Build.SUPPORTED_32_BIT_ABIS;
+  public String getStringSupported32bitABIS() throws Exception {
+    String result = null;
 
-        StringBuilder supportedABIString = new StringBuilder();
-        if (supportedABIS.length > 0) {
-          for (String abis : supportedABIS) {
-            supportedABIString.append(abis).append("_");
-          }
-          supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
-        } else {
-          supportedABIString.append(initialVal);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      String[] supportedABIS = Build.SUPPORTED_32_BIT_ABIS;
+
+      StringBuilder supportedABIString = new StringBuilder();
+      if (supportedABIS.length > 0) {
+        for (String abis : supportedABIS) {
+          supportedABIString.append(abis).append("_");
         }
-
-        result = supportedABIString.toString();
+        supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
+      } else {
+        supportedABIString.append("");
       }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
+
+      result = supportedABIString.toString();
     }
 
-    return handleIllegalCharacterInResult(result);
+    return checkValidData(handleIllegalCharacterInResult(result));
   }
 
   /**
@@ -442,30 +307,23 @@ public class EasyDeviceInfo {
    *
    * @return the string supported 64 bit abis
    */
-  public String getStringSupported64bitABIS() {
-    String result = initialVal;
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        String[] supportedABIS = Build.SUPPORTED_64_BIT_ABIS;
+  public String getStringSupported64bitABIS() throws Exception {
+    String result = null;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      String[] supportedABIS = Build.SUPPORTED_64_BIT_ABIS;
 
-        StringBuilder supportedABIString = new StringBuilder();
-        if (supportedABIS.length > 0) {
-          for (String abis : supportedABIS) {
-            supportedABIString.append(abis).append("_");
-          }
-          supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
-        } else {
-          supportedABIString.append(initialVal);
+      StringBuilder supportedABIString = new StringBuilder();
+      if (supportedABIS.length > 0) {
+        for (String abis : supportedABIS) {
+          supportedABIString.append(abis).append("_");
         }
-        result = supportedABIString.toString();
+        supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
+      } else {
+        supportedABIString.append("");
       }
-    } catch (Exception e) {
-      e.printStackTrace();
+      result = supportedABIString.toString();
     }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+    return checkValidData(handleIllegalCharacterInResult(result));
   }
 
   /**
@@ -473,19 +331,12 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  public String[] getSupported32bitABIS() {
+  public String[] getSupported32bitABIS() throws Exception {
     String[] result = new String[] { "-" };
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        result = Build.SUPPORTED_32_BIT_ABIS;
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      result = Build.SUPPORTED_32_BIT_ABIS;
     }
-    if (result == null || result.length == 0) {
-      result = new String[] { "-" };
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -493,19 +344,12 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  public String[] getSupported64bitABIS() {
+  public String[] getSupported64bitABIS() throws Exception {
     String[] result = new String[] { "-" };
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        result = Build.SUPPORTED_64_BIT_ABIS;
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      result = Build.SUPPORTED_64_BIT_ABIS;
     }
-    if (result == null || result.length == 0) {
-      result = new String[] { "-" };
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -513,17 +357,8 @@ public class EasyDeviceInfo {
    *
    * @return the manufacturer
    */
-  public String getManufacturer() {
-    String result = initialVal;
-    try {
-      result = Build.MANUFACTURER;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+  public String getManufacturer() throws Exception {
+    return checkValidData(handleIllegalCharacterInResult(Build.MANUFACTURER));
   }
 
   /**
@@ -531,23 +366,12 @@ public class EasyDeviceInfo {
    *
    * @return the resolution
    */
-  public String getResolution() {
-    String result = initialVal;
-    try {
-      WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-
-      Display display = wm.getDefaultDisplay();
-
-      DisplayMetrics metrics = new DisplayMetrics();
-      display.getMetrics(metrics);
-      result = metrics.heightPixels + "x" + metrics.widthPixels;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getResolution() throws Exception {
+    WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    Display display = wm.getDefaultDisplay();
+    DisplayMetrics metrics = new DisplayMetrics();
+    display.getMetrics(metrics);
+    return checkValidData(metrics.heightPixels + "x" + metrics.widthPixels);
   }
 
   /**
@@ -582,19 +406,12 @@ public class EasyDeviceInfo {
    *
    * @return the carrier
    */
-  public String getCarrier() {
-    String result = initialVal;
-    try {
-      if (tm != null && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) {
-        result = tm.getNetworkOperatorName().toLowerCase(Locale.getDefault());
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+  public String getCarrier() throws Exception {
+    String result = null;
+    if (tm != null && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) {
+      result = tm.getNetworkOperatorName().toLowerCase(Locale.getDefault());
     }
-    if (result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+    return checkValidData(handleIllegalCharacterInResult(result));
   }
 
   /**
@@ -602,17 +419,8 @@ public class EasyDeviceInfo {
    *
    * @return the device
    */
-  public String getDevice() {
-    String result = initialVal;
-    try {
-      result = Build.DEVICE;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getDevice() throws Exception {
+    return checkValidData(Build.DEVICE);
   }
 
   /**
@@ -620,17 +428,8 @@ public class EasyDeviceInfo {
    *
    * @return the bootloader
    */
-  public String getBootloader() {
-    String result = initialVal;
-    try {
-      result = Build.BOOTLOADER;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBootloader() throws Exception {
+    return checkValidData(Build.BOOTLOADER);
   }
 
   /**
@@ -638,17 +437,8 @@ public class EasyDeviceInfo {
    *
    * @return the board
    */
-  public String getBoard() {
-    String result = initialVal;
-    try {
-      result = Build.BOARD;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getBoard() throws Exception {
+    return checkValidData(Build.BOARD);
   }
 
   /**
@@ -656,17 +446,8 @@ public class EasyDeviceInfo {
    *
    * @return the display version
    */
-  public String getDisplayVersion() {
-    String result = initialVal;
-    try {
-      result = Build.DISPLAY;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getDisplayVersion() throws Exception {
+    return checkValidData(Build.DISPLAY);
   }
 
   /**
@@ -674,17 +455,8 @@ public class EasyDeviceInfo {
    *
    * @return the language
    */
-  public String getLanguage() {
-    String result = initialVal;
-    try {
-      result = Locale.getDefault().getLanguage();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getLanguage() throws Exception {
+    return checkValidData(Locale.getDefault().getLanguage());
   }
 
   /**
@@ -692,22 +464,15 @@ public class EasyDeviceInfo {
    *
    * @return the country
    */
-  public String getCountry() {
-    String result = initialVal;
-    try {
-      if (tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
-        result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
-      } else {
-        Locale locale = Locale.getDefault();
-        result = locale.getCountry().toLowerCase(locale);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+  public String getCountry() throws Exception {
+    String result;
+    if (tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
+      result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
+    } else {
+      Locale locale = Locale.getDefault();
+      result = locale.getCountry().toLowerCase(locale);
     }
-    if (result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+    return checkValidData(handleIllegalCharacterInResult(result));
   }
 
   /**
@@ -715,7 +480,7 @@ public class EasyDeviceInfo {
    *
    * @return the battery percentage
    */
-  public int getBatteryPercentage() {
+  public int getBatteryPercentage() throws Exception {
     int percentage = 0;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
@@ -766,71 +531,64 @@ public class EasyDeviceInfo {
    *
    * @return the network type
    */
-  public String getNetworkType() {
+  @SuppressWarnings("MissingPermission") public String getNetworkType() throws Exception {
     int networkStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE);
 
-    String result = initialVal;
+    String result = null;
 
     if (networkStatePermission == PackageManager.PERMISSION_GRANTED) {
-      try {
-        ConnectivityManager cm =
-            (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+      ConnectivityManager cm =
+          (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork == null) {
-          result = "Unknown";
-        } else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
-            || activeNetwork.getType() == ConnectivityManager.TYPE_WIMAX) {
-          result = "Wifi/WifiMax";
-        } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
-          TelephonyManager manager =
-              (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-          if (manager.getSimState() == TelephonyManager.SIM_STATE_READY) {
-            switch (manager.getNetworkType()) {
+      NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+      if (activeNetwork == null) {
+        result = "Unknown";
+      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
+          || activeNetwork.getType() == ConnectivityManager.TYPE_WIMAX) {
+        result = "Wifi/WifiMax";
+      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+        TelephonyManager manager =
+            (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (manager.getSimState() == TelephonyManager.SIM_STATE_READY) {
+          switch (manager.getNetworkType()) {
 
-              // Unknown
-              case TelephonyManager.NETWORK_TYPE_UNKNOWN:
-                result = "Cellular - Unknown";
-                break;
-              // Cellular Data–2G
-              case TelephonyManager.NETWORK_TYPE_EDGE:
-              case TelephonyManager.NETWORK_TYPE_GPRS:
-              case TelephonyManager.NETWORK_TYPE_CDMA:
-              case TelephonyManager.NETWORK_TYPE_IDEN:
-              case TelephonyManager.NETWORK_TYPE_1xRTT:
-                result = "Cellular - 2G";
-                break;
-              // Cellular Data–3G
-              case TelephonyManager.NETWORK_TYPE_UMTS:
-              case TelephonyManager.NETWORK_TYPE_HSDPA:
-              case TelephonyManager.NETWORK_TYPE_HSPA:
-              case TelephonyManager.NETWORK_TYPE_HSPAP:
-              case TelephonyManager.NETWORK_TYPE_HSUPA:
-              case TelephonyManager.NETWORK_TYPE_EVDO_0:
-              case TelephonyManager.NETWORK_TYPE_EVDO_A:
-              case TelephonyManager.NETWORK_TYPE_EVDO_B:
-                result = "Cellular - 3G";
-                break;
-              // Cellular Data–4G
-              case TelephonyManager.NETWORK_TYPE_LTE:
-                result = "Cellular - 4G";
-                break;
-              // Cellular Data–Unknown Generation
-              default:
-                result = "Cellular - Unknown Generation";
-                break;
-            }
+            // Unknown
+            case TelephonyManager.NETWORK_TYPE_UNKNOWN:
+              result = "Cellular - Unknown";
+              break;
+            // Cellular Data–2G
+            case TelephonyManager.NETWORK_TYPE_EDGE:
+            case TelephonyManager.NETWORK_TYPE_GPRS:
+            case TelephonyManager.NETWORK_TYPE_CDMA:
+            case TelephonyManager.NETWORK_TYPE_IDEN:
+            case TelephonyManager.NETWORK_TYPE_1xRTT:
+              result = "Cellular - 2G";
+              break;
+            // Cellular Data–3G
+            case TelephonyManager.NETWORK_TYPE_UMTS:
+            case TelephonyManager.NETWORK_TYPE_HSDPA:
+            case TelephonyManager.NETWORK_TYPE_HSPA:
+            case TelephonyManager.NETWORK_TYPE_HSPAP:
+            case TelephonyManager.NETWORK_TYPE_HSUPA:
+            case TelephonyManager.NETWORK_TYPE_EVDO_0:
+            case TelephonyManager.NETWORK_TYPE_EVDO_A:
+            case TelephonyManager.NETWORK_TYPE_EVDO_B:
+              result = "Cellular - 3G";
+              break;
+            // Cellular Data–4G
+            case TelephonyManager.NETWORK_TYPE_LTE:
+              result = "Cellular - 4G";
+              break;
+            // Cellular Data–Unknown Generation
+            default:
+              result = "Cellular - Unknown Generation";
+              break;
           }
         }
-      } catch (Exception e) {
-        e.printStackTrace();
       }
     }
-    if (result.length() == 0) {
-      result = initialVal;
-    }
-    return handleIllegalCharacterInResult(result);
+    return checkValidData(handleIllegalCharacterInResult(result));
   }
 
   /**
@@ -839,7 +597,7 @@ public class EasyDeviceInfo {
    * @return the os codename
    */
   public String getOSCodename() {
-    String codename = initialVal;
+    String codename;
     switch (Build.VERSION.SDK_INT) {
       case Build.VERSION_CODES.BASE:
         codename = "First Android Version. Yay !";
@@ -893,6 +651,9 @@ public class EasyDeviceInfo {
       case Build.VERSION_CODES.M:
         codename = "Marshmallow";
         break;
+      default:
+        codename = "NA";
+        break;
     }
     return codename;
   }
@@ -902,17 +663,8 @@ public class EasyDeviceInfo {
    *
    * @return the os version
    */
-  public String getOSVersion() {
-    String result = initialVal;
-    try {
-      result = Build.VERSION.RELEASE;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getOSVersion() throws Exception {
+    return checkValidData(Build.VERSION.RELEASE);
   }
 
   /**
@@ -920,23 +672,14 @@ public class EasyDeviceInfo {
    *
    * @return the wifi mac
    */
-  @SuppressWarnings("MissingPermission") public String getWifiMAC() {
-    String result = initialVal;
-    try {
-
-      if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
-          == PackageManager.PERMISSION_GRANTED) {
-
-        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        result = wm.getConnectionInfo().getMacAddress();
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+  @SuppressWarnings("MissingPermission") public String getWifiMAC() throws Exception {
+    String result = null;
+    if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
+        == PackageManager.PERMISSION_GRANTED) {
+      WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+      result = wm.getConnectionInfo().getMacAddress();
     }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -944,21 +687,15 @@ public class EasyDeviceInfo {
    *
    * @return the imei
    */
-  public String getIMEI() {
-    String result = initialVal;
+
+  @SuppressWarnings("MissingPermission") public String getIMEI() throws Exception {
+    String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
             == PackageManager.PERMISSION_GRANTED;
-    try {
-      if (hasReadPhoneStatePermission) result = tm.getDeviceId();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    if (hasReadPhoneStatePermission) result = tm.getDeviceId();
 
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -966,20 +703,14 @@ public class EasyDeviceInfo {
    *
    * @return the imsi
    */
-  public String getIMSI() {
-    String result = initialVal;
+  @SuppressWarnings("MissingPermission") public String getIMSI() throws Exception {
+    String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
             == PackageManager.PERMISSION_GRANTED;
-    try {
-      if (hasReadPhoneStatePermission) result = tm.getSubscriberId();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+    if (hasReadPhoneStatePermission) result = tm.getSubscriberId();
+
+    return checkValidData(result);
   }
 
   /**
@@ -987,17 +718,8 @@ public class EasyDeviceInfo {
    *
    * @return the serial
    */
-  public String getSerial() {
-    String result = initialVal;
-    try {
-      result = Build.SERIAL;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getSerial() throws Exception {
+    return checkValidData(Build.SERIAL);
   }
 
   /**
@@ -1005,20 +727,13 @@ public class EasyDeviceInfo {
    *
    * @return the sim serial
    */
-  public String getSIMSerial() {
-    String result = initialVal;
+  @SuppressWarnings("MissingPermission") public String getSIMSerial() throws Exception {
+    String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
             == PackageManager.PERMISSION_GRANTED;
-    try {
-      if (hasReadPhoneStatePermission) result = tm.getSimSerialNumber();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+    if (hasReadPhoneStatePermission) result = tm.getSimSerialNumber();
+    return checkValidData(result);
   }
 
   /**
@@ -1026,7 +741,8 @@ public class EasyDeviceInfo {
    *
    * @return the gsfid
    */
-  public String getGSFID() {
+
+  @SuppressWarnings("MissingPermission") public String getGSFID() {
     final Uri URI = Uri.parse("content://com.google.android.gsf.gservices");
     final String ID_KEY = "android_id";
 
@@ -1034,10 +750,10 @@ public class EasyDeviceInfo {
     Cursor c = context.getContentResolver().query(URI, null, null, params, null);
 
     if (c == null) {
-      return initialVal;
+      return "NA";
     } else if (!c.moveToFirst() || c.getColumnCount() < 2) {
       c.close();
-      return initialVal;
+      return "NA";
     }
 
     try {
@@ -1046,7 +762,7 @@ public class EasyDeviceInfo {
       return gsfID;
     } catch (NumberFormatException e) {
       c.close();
-      return initialVal;
+      return "NA";
     }
   }
 
@@ -1055,21 +771,14 @@ public class EasyDeviceInfo {
    *
    * @return the bluetooth mac
    */
-  @SuppressWarnings("MissingPermission") public String getBluetoothMAC() {
-    String result = initialVal;
-    try {
-      if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
-          == PackageManager.PERMISSION_GRANTED) {
-        BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
-        result = bta.getAddress();
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+  @SuppressWarnings("MissingPermission") public String getBluetoothMAC() throws Exception {
+    String result = null;
+    if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
+        == PackageManager.PERMISSION_GRANTED) {
+      BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
+      result = bta.getAddress();
     }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -1121,27 +830,16 @@ public class EasyDeviceInfo {
    *
    * @return the phone no
    */
-  public String getPhoneNo() {
-    String result = initialVal;
+  @SuppressWarnings("MissingPermission") public String getPhoneNo() throws Exception {
+    String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_SMS)
             == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission) {
-      try {
-        if (tm.getLine1Number() != null) {
-          result = tm.getLine1Number();
-          if (result.equals("")) {
-            result = initialVal;
-          }
-        }
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
+    if (hasReadPhoneStatePermission && tm.getLine1Number() != null) {
+      result = tm.getLine1Number();
     }
-    if (result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+
+    return checkValidData(result);
   }
 
   /**
@@ -1149,17 +847,8 @@ public class EasyDeviceInfo {
    *
    * @return the product
    */
-  public String getProduct() {
-    String result = initialVal;
-    try {
-      result = Build.PRODUCT;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getProduct() throws Exception {
+    return checkValidData(Build.PRODUCT);
   }
 
   /**
@@ -1167,17 +856,9 @@ public class EasyDeviceInfo {
    *
    * @return the fingerprint
    */
-  public String getFingerprint() {
-    String result = initialVal;
-    try {
-      result = Build.FINGERPRINT;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+
+  public String getFingerprint() throws Exception {
+    return checkValidData(Build.FINGERPRINT);
   }
 
   /**
@@ -1185,17 +866,8 @@ public class EasyDeviceInfo {
    *
    * @return the hardware
    */
-  public String getHardware() {
-    String result = initialVal;
-    try {
-      result = Build.HARDWARE;
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getHardware() throws Exception {
+    return checkValidData(Build.HARDWARE);
   }
 
   /**
@@ -1203,20 +875,12 @@ public class EasyDeviceInfo {
    *
    * @return the radio ver
    */
-  public String getRadioVer() {
-    String result = initialVal;
-    try {
-
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-        result = Build.getRadioVersion();
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+  public String getRadioVer() throws Exception {
+    String result = null;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+      result = Build.getRadioVersion();
     }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -1225,34 +889,28 @@ public class EasyDeviceInfo {
    * @param useIPv4 the use i pv 4
    * @return the ip address
    */
-  public String getIPAddress(boolean useIPv4) {
-    String result = initialVal;
-    try {
-      List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
-      for (NetworkInterface intf : interfaces) {
-        List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
-        for (InetAddress addr : addrs) {
-          if (!addr.isLoopbackAddress()) {
-            String sAddr = addr.getHostAddress().toUpperCase();
-            boolean isIPv4 = addr instanceof Inet4Address;
-            if (useIPv4) {
-              if (isIPv4) result = sAddr;
-            } else {
-              if (!isIPv4) {
-                int delim = sAddr.indexOf('%'); // drop ip6 port suffix
-                result = delim < 0 ? sAddr : sAddr.substring(0, delim);
-              }
+  public String getIPAddress(boolean useIPv4) throws Exception {
+    String result = null;
+    List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+    for (NetworkInterface intf : interfaces) {
+      List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
+      for (InetAddress addr : addrs) {
+        if (!addr.isLoopbackAddress()) {
+          String sAddr = addr.getHostAddress().toUpperCase();
+          boolean isIPv4 = addr instanceof Inet4Address;
+          if (useIPv4) {
+            if (isIPv4) result = sAddr;
+          } else {
+            if (!isIPv4) {
+              int delim = sAddr.indexOf('%'); // drop ip6 port suffix
+              result = delim < 0 ? sAddr : sAddr.substring(0, delim);
             }
           }
         }
       }
-    } catch (Exception e) {
-      e.printStackTrace();
     }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+
+    return checkValidData(result);
   }
 
   /**
@@ -1260,24 +918,17 @@ public class EasyDeviceInfo {
    *
    * @return the ua
    */
-  public String getUA() {
+  public String getUA() throws Exception {
     final String system_ua = System.getProperty("http.agent");
-    String result = system_ua;
-    try {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-        result = new WebView(context).getSettings().getDefaultUserAgent(context) +
-            "__" + system_ua;
-      } else {
-        result = new WebView(context).getSettings().getUserAgentString() +
-            "__" + system_ua;
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+    String result;
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+      result = new WebView(context).getSettings().getDefaultUserAgent(context) +
+          "__" + system_ua;
+    } else {
+      result = new WebView(context).getSettings().getUserAgentString() +
+          "__" + system_ua;
     }
-    if (result.length() < 0 || result == null) {
-      result = system_ua;
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -1285,8 +936,7 @@ public class EasyDeviceInfo {
    *
    * @return the double [ ]
    */
-  @SuppressWarnings("MissingPermission") @TargetApi(Build.VERSION_CODES.M)
-  public double[] getLatLong() {
+  @SuppressWarnings("MissingPermission") public double[] getLatLong() throws Exception {
     boolean hasFineLocationPermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED ? true : false;
@@ -1296,47 +946,43 @@ public class EasyDeviceInfo {
     gps[0] = 0;
     gps[1] = 0;
     if (hasFineLocationPermission) {
-      try {
-        LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+      LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
-        isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+      isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+      isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-        Location net_loc = null, gps_loc = null, final_loc = null;
+      Location net_loc = null, gps_loc = null, final_loc = null;
 
-        if (isGPSEnabled) {
-          gps_loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
-        if (isNetworkEnabled) {
-          net_loc = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        }
-
-        if (gps_loc != null && net_loc != null) {
-          if (gps_loc.getAccuracy() >= net_loc.getAccuracy()) {
-            final_loc = gps_loc;
-          } else {
-            final_loc = net_loc;
-          }
-        } else {
-          if (gps_loc != null) {
-            final_loc = gps_loc;
-          } else if (net_loc != null) {
-            final_loc = net_loc;
-          } else {
-            // GPS and Network both are null so try passive
-            final_loc = lm.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-          }
-        }
-
-        if (final_loc != null) {
-          gps[0] = final_loc.getLatitude();
-          gps[1] = final_loc.getLongitude();
-        }
-
-        return gps;
-      } catch (Exception e) {
-        e.printStackTrace();
+      if (isGPSEnabled) {
+        gps_loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
       }
+      if (isNetworkEnabled) {
+        net_loc = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+      }
+
+      if (gps_loc != null && net_loc != null) {
+        if (gps_loc.getAccuracy() >= net_loc.getAccuracy()) {
+          final_loc = gps_loc;
+        } else {
+          final_loc = net_loc;
+        }
+      } else {
+        if (gps_loc != null) {
+          final_loc = gps_loc;
+        } else if (net_loc != null) {
+          final_loc = net_loc;
+        } else {
+          // GPS and Network both are null so try passive
+          final_loc = lm.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+        }
+      }
+
+      if (final_loc != null) {
+        gps[0] = final_loc.getLatitude();
+        gps[1] = final_loc.getLongitude();
+      }
+
+      return gps;
     }
     return gps;
   }
@@ -1347,17 +993,13 @@ public class EasyDeviceInfo {
    * @param event the event
    * @return the int [ ]
    */
-  public int[] getDisplayXYCoordinates(MotionEvent event) {
+  public int[] getDisplayXYCoordinates(MotionEvent event) throws Exception {
     int[] coordinates = new int[2];
     coordinates[0] = 0;
     coordinates[1] = 0;
-    try {
-      if (event.getAction() == MotionEvent.ACTION_DOWN) {
-        coordinates[0] = (int) event.getX();     // X Coordinates
-        coordinates[1] = (int) event.getY();     // Y Coordinates
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+      coordinates[0] = (int) event.getX();     // X Coordinates
+      coordinates[1] = (int) event.getY();     // Y Coordinates
     }
     return coordinates;
   }
@@ -1391,18 +1033,12 @@ public class EasyDeviceInfo {
    *
    * @return the app name
    */
-  public String getAppName() {
+  public String getAppName() throws PackageManager.NameNotFoundException {
     String result;
     final PackageManager pm = context.getPackageManager();
-    ApplicationInfo ai;
-    try {
-      ai = pm.getApplicationInfo(context.getPackageName(), 0);
-    } catch (PackageManager.NameNotFoundException e) {
-      ai = null;
-      e.printStackTrace();
-    }
-    result = (String) (ai != null ? pm.getApplicationLabel(ai) : initialVal);
-    return result;
+    ApplicationInfo ai = pm.getApplicationInfo(context.getPackageName(), 0);
+    result = (ai != null ? (String) pm.getApplicationLabel(ai) : null);
+    return checkValidData(result);
   }
 
   /**
@@ -1410,17 +1046,9 @@ public class EasyDeviceInfo {
    *
    * @return the app version
    */
-  public String getAppVersion() {
-    String result = initialVal;
-    try {
-      result = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-    } catch (PackageManager.NameNotFoundException e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getAppVersion() throws PackageManager.NameNotFoundException {
+    return checkValidData(
+        context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName);
   }
 
   /**
@@ -1428,18 +1056,9 @@ public class EasyDeviceInfo {
    *
    * @return the app version code
    */
-  public String getAppVersionCode() {
-    String result = initialVal;
-    try {
-      result = String.valueOf(
-          context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode);
-    } catch (PackageManager.NameNotFoundException e) {
-      e.printStackTrace();
-    }
-    if (result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getAppVersionCode() throws PackageManager.NameNotFoundException {
+    return checkValidData(String.valueOf(
+        context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode));
   }
 
   /**
@@ -1447,17 +1066,8 @@ public class EasyDeviceInfo {
    *
    * @return the activity name
    */
-  public String getActivityName() {
-    String result = initialVal;
-    try {
-      result = context.getClass().getSimpleName();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getActivityName() throws Exception {
+    return checkValidData(context.getClass().getSimpleName());
   }
 
   /**
@@ -1465,17 +1075,8 @@ public class EasyDeviceInfo {
    *
    * @return the package name
    */
-  public String getPackageName() {
-    String result = initialVal;
-    try {
-      result = context.getPackageName();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+  public String getPackageName() throws Exception {
+    return checkValidData(context.getPackageName());
   }
 
   /**
@@ -1483,19 +1084,12 @@ public class EasyDeviceInfo {
    *
    * @return the store
    */
-  public String getStore() {
-    String result = initialVal;
+  public String getStore() throws Exception {
+    String result = null;
     if (Build.VERSION.SDK_INT >= 3) {
-      try {
-        result = context.getPackageManager().getInstallerPackageName(context.getPackageName());
-      } catch (Exception e) {
-        Log.i(LOGTAG, "Can't get Installer package");
-      }
+      result = context.getPackageManager().getInstallerPackageName(context.getPackageName());
     }
-    if (result == null || result.length() == 0) {
-      result = initialVal;
-    }
-    return result;
+    return checkValidData(result);
   }
 
   /**
@@ -1504,7 +1098,7 @@ public class EasyDeviceInfo {
    * @return the density
    */
   public String getDensity() {
-    String densityStr = initialVal;
+    String densityStr = null;
     final int density = context.getResources().getDisplayMetrics().densityDpi;
     switch (density) {
       case DisplayMetrics.DENSITY_LOW:
@@ -1532,7 +1126,7 @@ public class EasyDeviceInfo {
         densityStr = "XXXHDPI";
         break;
     }
-    return densityStr;
+    return checkValidData(densityStr);
   }
 
   /**
@@ -1540,22 +1134,18 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  @SuppressWarnings("MissingPermission") public String[] getAccounts() {
-    try {
 
-      if (context.checkCallingOrSelfPermission(Manifest.permission.GET_ACCOUNTS)
-          == PackageManager.PERMISSION_GRANTED) {
-        Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
-        String[] result = new String[accounts.length];
-        for (int i = 0; i < accounts.length; i++) {
-          result[i] = accounts[i].name;
-        }
-        return result;
+  @SuppressWarnings("MissingPermission") public String[] getAccounts() throws Exception {
+    String[] result = null;
+    if (context.checkCallingOrSelfPermission(Manifest.permission.GET_ACCOUNTS)
+        == PackageManager.PERMISSION_GRANTED) {
+      Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
+      result = new String[accounts.length];
+      for (int i = 0; i < accounts.length; i++) {
+        result[i] = accounts[i].name;
       }
-    } catch (Exception e) {
-      e.printStackTrace();
     }
-    return null;
+    return checkValidData(result);
   }
 
   /**
@@ -1563,7 +1153,7 @@ public class EasyDeviceInfo {
    *
    * @return the boolean
    */
-  public boolean isNetworkAvailable() {
+  @SuppressWarnings("MissingPermission") public boolean isNetworkAvailable() {
     if (context.checkCallingOrSelfPermission(Manifest.permission.INTERNET)
         == PackageManager.PERMISSION_GRANTED
         && context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE)
@@ -1683,5 +1273,19 @@ public class EasyDeviceInfo {
   private Intent getBatteryStatusIntent() {
     IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     return context.registerReceiver(null, batFilter);
+  }
+
+  private String checkValidData(String data) {
+    if (data == null || data.length() == 0) {
+      data = "NA";
+    }
+    return data;
+  }
+
+  private String[] checkValidData(String[] data) {
+    if (data == null || data.length == 0) {
+      data = new String[] { "-" };
+    }
+    return data;
   }
 }
