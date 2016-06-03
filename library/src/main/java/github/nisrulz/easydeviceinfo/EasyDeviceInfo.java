@@ -1007,8 +1007,11 @@ public class EasyDeviceInfo {
    */
   public String getSIMSerial() {
     String result = initialVal;
+    boolean hasReadPhoneStatePermission =
+        context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
+            == PackageManager.PERMISSION_GRANTED;
     try {
-      result = tm.getSimSerialNumber();
+      if (hasReadPhoneStatePermission) result = tm.getSimSerialNumber();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -1120,15 +1123,20 @@ public class EasyDeviceInfo {
    */
   public String getPhoneNo() {
     String result = initialVal;
-    try {
-      if (tm.getLine1Number() != null) {
-        result = tm.getLine1Number();
-        if (result.equals("")) {
-          result = initialVal;
+    boolean hasReadPhoneStatePermission =
+        context.checkCallingOrSelfPermission(Manifest.permission.READ_SMS)
+            == PackageManager.PERMISSION_GRANTED;
+    if (hasReadPhoneStatePermission) {
+      try {
+        if (tm.getLine1Number() != null) {
+          result = tm.getLine1Number();
+          if (result.equals("")) {
+            result = initialVal;
+          }
         }
+      } catch (Exception e) {
+        e.printStackTrace();
       }
-    } catch (Exception e) {
-      e.printStackTrace();
     }
     if (result.length() == 0) {
       result = initialVal;
