@@ -18,7 +18,7 @@ Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/ni
 # Including in your project
 - EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
 ```gradle
-compile 'com.github.nisrulz:easydeviceinfo:1.2.0'
+compile 'com.github.nisrulz:easydeviceinfo:1.2.1'
 ```
 
 # Usage Docs/Wiki
