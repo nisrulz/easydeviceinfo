@@ -58,11 +58,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     String[] emailIds = new String[0];
-    try {
       emailIds = easyDeviceInfo.getAccounts();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+
     StringBuilder emailString = new StringBuilder();
     if (emailIds != null && emailIds.length > 0) {
       for (String e : emailIds) {
