@@ -51,6 +51,7 @@ import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -64,20 +65,39 @@ public class EasyDeviceInfo {
   private final Context context;
   private final TelephonyManager tm;
 
+  /**
+   * The constant RINGER_MODE_SILENT.
+   */
   public static final int RINGER_MODE_SILENT = 0;
+  /**
+   * The constant RINGER_MODE_NORMAL.
+   */
   public static final int RINGER_MODE_NORMAL = 1;
+  /**
+   * The constant RINGER_MODE_VIBRATE.
+   */
   public static final int RINGER_MODE_VIBRATE = 2;
 
-  public static final int DEVICE_TYPE_WATCH = 0;
-  public static final int DEVICE_TYPE_PHONE = 1;
-  public static final int DEVICE_TYPE_PHABLET = 2;
-  public static final int DEVICE_TYPE_TABLET = 3;
-  public static final int DEVICE_TYPE_TV = 4;
-
   /**
-   * The constant LOGTAG.
+   * The constant DEVICE_TYPE_WATCH.
    */
-  private static final String LOGTAG = "EasyDeviceInfo";
+  public static final int DEVICE_TYPE_WATCH = 0;
+  /**
+   * The constant DEVICE_TYPE_PHONE.
+   */
+  public static final int DEVICE_TYPE_PHONE = 1;
+  /**
+   * The constant DEVICE_TYPE_PHABLET.
+   */
+  public static final int DEVICE_TYPE_PHABLET = 2;
+  /**
+   * The constant DEVICE_TYPE_TABLET.
+   */
+  public static final int DEVICE_TYPE_TABLET = 3;
+  /**
+   * The constant DEVICE_TYPE_TV.
+   */
+  public static final int DEVICE_TYPE_TV = 4;
 
   /**
    * Instantiates a new Easy device info.
@@ -105,7 +125,7 @@ public class EasyDeviceInfo {
    *
    * @return the android id
    */
-  public String getAndroidID() throws Exception {
+  public String getAndroidID() {
     return checkValidData(
         Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID));
   }
@@ -115,7 +135,7 @@ public class EasyDeviceInfo {
    *
    * @return the model
    */
-  public String getModel() throws Exception {
+  public String getModel() {
     return checkValidData(handleIllegalCharacterInResult(Build.MODEL));
   }
 
@@ -124,7 +144,7 @@ public class EasyDeviceInfo {
    *
    * @return the build brand
    */
-  public String getBuildBrand() throws Exception {
+  public String getBuildBrand() {
     return checkValidData(handleIllegalCharacterInResult(Build.BRAND));
   }
 
@@ -133,7 +153,7 @@ public class EasyDeviceInfo {
    *
    * @return the build host
    */
-  public String getBuildHost() throws Exception {
+  public String getBuildHost() {
     return checkValidData(Build.HOST);
   }
 
@@ -142,7 +162,7 @@ public class EasyDeviceInfo {
    *
    * @return the build tags
    */
-  public String getBuildTags() throws Exception {
+  public String getBuildTags() {
     return checkValidData(Build.TAGS);
   }
 
@@ -151,7 +171,7 @@ public class EasyDeviceInfo {
    *
    * @return the build time
    */
-  public long getBuildTime() throws Exception {
+  public long getBuildTime() {
     return Build.TIME;
   }
 
@@ -160,7 +180,7 @@ public class EasyDeviceInfo {
    *
    * @return the build user
    */
-  public String getBuildUser() throws Exception {
+  public String getBuildUser() {
     return checkValidData(Build.USER);
   }
 
@@ -169,7 +189,7 @@ public class EasyDeviceInfo {
    *
    * @return the build version release
    */
-  public String getBuildVersionRelease() throws Exception {
+  public String getBuildVersionRelease() {
     return checkValidData(Build.VERSION.RELEASE);
   }
 
@@ -178,7 +198,7 @@ public class EasyDeviceInfo {
    *
    * @return the screen display id
    */
-  public String getScreenDisplayID() throws Exception {
+  public String getScreenDisplayID() {
     WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     Display display = wm.getDefaultDisplay();
     return checkValidData(String.valueOf(display.getDisplayId()));
@@ -189,7 +209,7 @@ public class EasyDeviceInfo {
    *
    * @return the build version codename
    */
-  public String getBuildVersionCodename() throws Exception {
+  public String getBuildVersionCodename() {
     return checkValidData(Build.VERSION.CODENAME);
   }
 
@@ -198,7 +218,7 @@ public class EasyDeviceInfo {
    *
    * @return the build version incremental
    */
-  public String getBuildVersionIncremental() throws Exception {
+  public String getBuildVersionIncremental() {
     return checkValidData(Build.VERSION.INCREMENTAL);
   }
 
@@ -207,7 +227,7 @@ public class EasyDeviceInfo {
    *
    * @return the build version sdk
    */
-  public int getBuildVersionSDK() throws Exception {
+  public int getBuildVersionSDK() {
     return Build.VERSION.SDK_INT;
   }
 
@@ -216,7 +236,7 @@ public class EasyDeviceInfo {
    *
    * @return the build id
    */
-  public String getBuildID() throws Exception {
+  public String getBuildID() {
     return checkValidData(Build.ID);
   }
 
@@ -244,7 +264,7 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  public String[] getSupportedABIS() throws Exception {
+  public String[] getSupportedABIS() {
     String[] result = new String[] { "-" };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_ABIS;
@@ -257,7 +277,7 @@ public class EasyDeviceInfo {
    *
    * @return the string supported abis
    */
-  public String getStringSupportedABIS() throws Exception {
+  public String getStringSupportedABIS() {
     String result = null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       String[] supportedABIS = Build.SUPPORTED_ABIS;
@@ -280,7 +300,7 @@ public class EasyDeviceInfo {
    *
    * @return the string supported 32 bit abis
    */
-  public String getStringSupported32bitABIS() throws Exception {
+  public String getStringSupported32bitABIS() {
     String result = null;
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -307,7 +327,7 @@ public class EasyDeviceInfo {
    *
    * @return the string supported 64 bit abis
    */
-  public String getStringSupported64bitABIS() throws Exception {
+  public String getStringSupported64bitABIS() {
     String result = null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       String[] supportedABIS = Build.SUPPORTED_64_BIT_ABIS;
@@ -331,7 +351,7 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  public String[] getSupported32bitABIS() throws Exception {
+  public String[] getSupported32bitABIS() {
     String[] result = new String[] { "-" };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_32_BIT_ABIS;
@@ -344,7 +364,7 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-  public String[] getSupported64bitABIS() throws Exception {
+  public String[] getSupported64bitABIS() {
     String[] result = new String[] { "-" };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_64_BIT_ABIS;
@@ -357,7 +377,7 @@ public class EasyDeviceInfo {
    *
    * @return the manufacturer
    */
-  public String getManufacturer() throws Exception {
+  public String getManufacturer() {
     return checkValidData(handleIllegalCharacterInResult(Build.MANUFACTURER));
   }
 
@@ -366,7 +386,7 @@ public class EasyDeviceInfo {
    *
    * @return the resolution
    */
-  public String getResolution() throws Exception {
+  public String getResolution() {
     WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     Display display = wm.getDefaultDisplay();
     DisplayMetrics metrics = new DisplayMetrics();
@@ -406,7 +426,7 @@ public class EasyDeviceInfo {
    *
    * @return the carrier
    */
-  public String getCarrier() throws Exception {
+  public String getCarrier() {
     String result = null;
     if (tm != null && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) {
       result = tm.getNetworkOperatorName().toLowerCase(Locale.getDefault());
@@ -419,7 +439,7 @@ public class EasyDeviceInfo {
    *
    * @return the device
    */
-  public String getDevice() throws Exception {
+  public String getDevice() {
     return checkValidData(Build.DEVICE);
   }
 
@@ -428,7 +448,7 @@ public class EasyDeviceInfo {
    *
    * @return the bootloader
    */
-  public String getBootloader() throws Exception {
+  public String getBootloader() {
     return checkValidData(Build.BOOTLOADER);
   }
 
@@ -437,7 +457,7 @@ public class EasyDeviceInfo {
    *
    * @return the board
    */
-  public String getBoard() throws Exception {
+  public String getBoard() {
     return checkValidData(Build.BOARD);
   }
 
@@ -446,7 +466,7 @@ public class EasyDeviceInfo {
    *
    * @return the display version
    */
-  public String getDisplayVersion() throws Exception {
+  public String getDisplayVersion() {
     return checkValidData(Build.DISPLAY);
   }
 
@@ -455,7 +475,7 @@ public class EasyDeviceInfo {
    *
    * @return the language
    */
-  public String getLanguage() throws Exception {
+  public String getLanguage() {
     return checkValidData(Locale.getDefault().getLanguage());
   }
 
@@ -464,7 +484,7 @@ public class EasyDeviceInfo {
    *
    * @return the country
    */
-  public String getCountry() throws Exception {
+  public String getCountry() {
     String result;
     if (tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
       result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
@@ -480,7 +500,7 @@ public class EasyDeviceInfo {
    *
    * @return the battery percentage
    */
-  public int getBatteryPercentage() throws Exception {
+  public int getBatteryPercentage() {
     int percentage = 0;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
@@ -531,7 +551,7 @@ public class EasyDeviceInfo {
    *
    * @return the network type
    */
-  @SuppressWarnings("MissingPermission") public String getNetworkType() throws Exception {
+  @SuppressWarnings("MissingPermission") public String getNetworkType() {
     int networkStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE);
 
@@ -663,7 +683,7 @@ public class EasyDeviceInfo {
    *
    * @return the os version
    */
-  public String getOSVersion() throws Exception {
+  public String getOSVersion() {
     return checkValidData(Build.VERSION.RELEASE);
   }
 
@@ -672,7 +692,7 @@ public class EasyDeviceInfo {
    *
    * @return the wifi mac
    */
-  @SuppressWarnings("MissingPermission") public String getWifiMAC() throws Exception {
+  @SuppressWarnings("MissingPermission") public String getWifiMAC() {
     String result = null;
     if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
         == PackageManager.PERMISSION_GRANTED) {
@@ -687,8 +707,7 @@ public class EasyDeviceInfo {
    *
    * @return the imei
    */
-
-  @SuppressWarnings("MissingPermission") public String getIMEI() throws Exception {
+  @SuppressWarnings("MissingPermission") public String getIMEI() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
@@ -703,7 +722,7 @@ public class EasyDeviceInfo {
    *
    * @return the imsi
    */
-  @SuppressWarnings("MissingPermission") public String getIMSI() throws Exception {
+  @SuppressWarnings("MissingPermission") public String getIMSI() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
@@ -718,7 +737,7 @@ public class EasyDeviceInfo {
    *
    * @return the serial
    */
-  public String getSerial() throws Exception {
+  public String getSerial() {
     return checkValidData(Build.SERIAL);
   }
 
@@ -727,7 +746,7 @@ public class EasyDeviceInfo {
    *
    * @return the sim serial
    */
-  @SuppressWarnings("MissingPermission") public String getSIMSerial() throws Exception {
+  @SuppressWarnings("MissingPermission") public String getSIMSerial() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
@@ -741,7 +760,6 @@ public class EasyDeviceInfo {
    *
    * @return the gsfid
    */
-
   @SuppressWarnings("MissingPermission") public String getGSFID() {
     final Uri URI = Uri.parse("content://com.google.android.gsf.gservices");
     final String ID_KEY = "android_id";
@@ -771,7 +789,7 @@ public class EasyDeviceInfo {
    *
    * @return the bluetooth mac
    */
-  @SuppressWarnings("MissingPermission") public String getBluetoothMAC() throws Exception {
+  @SuppressWarnings("MissingPermission") public String getBluetoothMAC() {
     String result = null;
     if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
         == PackageManager.PERMISSION_GRANTED) {
@@ -786,7 +804,7 @@ public class EasyDeviceInfo {
    *
    * @return the psuedo unique id
    */
-  public String getPsuedoUniqueID() {
+  public String getPseudoUniqueID() {
     // If all else fails, if the user does have lower than API 9 (lower
     // than Gingerbread), has reset their phone or 'Secure.ANDROID_ID'
     // returns 'null', then simply the ID returned will be solely based
@@ -830,7 +848,7 @@ public class EasyDeviceInfo {
    *
    * @return the phone no
    */
-  @SuppressWarnings("MissingPermission") public String getPhoneNo() throws Exception {
+  @SuppressWarnings("MissingPermission") public String getPhoneNo() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_SMS)
@@ -847,7 +865,7 @@ public class EasyDeviceInfo {
    *
    * @return the product
    */
-  public String getProduct() throws Exception {
+  public String getProduct() {
     return checkValidData(Build.PRODUCT);
   }
 
@@ -856,8 +874,7 @@ public class EasyDeviceInfo {
    *
    * @return the fingerprint
    */
-
-  public String getFingerprint() throws Exception {
+  public String getFingerprint() {
     return checkValidData(Build.FINGERPRINT);
   }
 
@@ -866,7 +883,7 @@ public class EasyDeviceInfo {
    *
    * @return the hardware
    */
-  public String getHardware() throws Exception {
+  public String getHardware() {
     return checkValidData(Build.HARDWARE);
   }
 
@@ -875,7 +892,7 @@ public class EasyDeviceInfo {
    *
    * @return the radio ver
    */
-  public String getRadioVer() throws Exception {
+  public String getRadioVer() {
     String result = null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
       result = Build.getRadioVersion();
@@ -889,27 +906,30 @@ public class EasyDeviceInfo {
    * @param useIPv4 the use i pv 4
    * @return the ip address
    */
-  public String getIPAddress(boolean useIPv4) throws Exception {
+  public String getIPAddress(boolean useIPv4) {
     String result = null;
-    List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
-    for (NetworkInterface intf : interfaces) {
-      List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
-      for (InetAddress addr : addrs) {
-        if (!addr.isLoopbackAddress()) {
-          String sAddr = addr.getHostAddress().toUpperCase();
-          boolean isIPv4 = addr instanceof Inet4Address;
-          if (useIPv4) {
-            if (isIPv4) result = sAddr;
-          } else {
-            if (!isIPv4) {
-              int delim = sAddr.indexOf('%'); // drop ip6 port suffix
-              result = delim < 0 ? sAddr : sAddr.substring(0, delim);
+    try {
+      List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
+      for (NetworkInterface intf : interfaces) {
+        List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
+        for (InetAddress addr : addrs) {
+          if (!addr.isLoopbackAddress()) {
+            String sAddr = addr.getHostAddress().toUpperCase();
+            boolean isIPv4 = addr instanceof Inet4Address;
+            if (useIPv4) {
+              if (isIPv4) result = sAddr;
+            } else {
+              if (!isIPv4) {
+                int delim = sAddr.indexOf('%'); // drop ip6 port suffix
+                result = delim < 0 ? sAddr : sAddr.substring(0, delim);
+              }
             }
           }
         }
       }
+    } catch (SocketException e) {
+      e.printStackTrace();
     }
-
     return checkValidData(result);
   }
 
@@ -918,7 +938,7 @@ public class EasyDeviceInfo {
    *
    * @return the ua
    */
-  public String getUA() throws Exception {
+  public String getUA() {
     final String system_ua = System.getProperty("http.agent");
     String result;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
@@ -936,7 +956,7 @@ public class EasyDeviceInfo {
    *
    * @return the double [ ]
    */
-  @SuppressWarnings("MissingPermission") public double[] getLatLong() throws Exception {
+  @SuppressWarnings("MissingPermission") public double[] getLatLong() {
     boolean hasFineLocationPermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED ? true : false;
@@ -993,7 +1013,7 @@ public class EasyDeviceInfo {
    * @param event the event
    * @return the int [ ]
    */
-  public int[] getDisplayXYCoordinates(MotionEvent event) throws Exception {
+  public int[] getDisplayXYCoordinates(MotionEvent event) {
     int[] coordinates = new int[2];
     coordinates[0] = 0;
     coordinates[1] = 0;
@@ -1018,7 +1038,7 @@ public class EasyDeviceInfo {
    *
    * @return the formatted time
    */
-  public String getFormatedTime() {
+  public String getFormattedTime() {
 
     long millis = System.currentTimeMillis();
     int sec = (int) (millis / 1000) % 60;
@@ -1033,10 +1053,15 @@ public class EasyDeviceInfo {
    *
    * @return the app name
    */
-  public String getAppName() throws PackageManager.NameNotFoundException {
+  public String getAppName() {
     String result;
     final PackageManager pm = context.getPackageManager();
-    ApplicationInfo ai = pm.getApplicationInfo(context.getPackageName(), 0);
+    ApplicationInfo ai = null;
+    try {
+      ai = pm.getApplicationInfo(context.getPackageName(), 0);
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
     result = (ai != null ? (String) pm.getApplicationLabel(ai) : null);
     return checkValidData(result);
   }
@@ -1046,9 +1071,14 @@ public class EasyDeviceInfo {
    *
    * @return the app version
    */
-  public String getAppVersion() throws PackageManager.NameNotFoundException {
-    return checkValidData(
-        context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName);
+  public String getAppVersion() {
+    String result = null;
+    try {
+      result = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
+    return checkValidData(result);
   }
 
   /**
@@ -1056,9 +1086,15 @@ public class EasyDeviceInfo {
    *
    * @return the app version code
    */
-  public String getAppVersionCode() throws PackageManager.NameNotFoundException {
-    return checkValidData(String.valueOf(
-        context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode));
+  public String getAppVersionCode() {
+    String result = null;
+    try {
+      result = String.valueOf(
+          context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode);
+    } catch (PackageManager.NameNotFoundException e) {
+      e.printStackTrace();
+    }
+    return checkValidData(result);
   }
 
   /**
@@ -1066,7 +1102,7 @@ public class EasyDeviceInfo {
    *
    * @return the activity name
    */
-  public String getActivityName() throws Exception {
+  public String getActivityName() {
     return checkValidData(context.getClass().getSimpleName());
   }
 
@@ -1075,7 +1111,7 @@ public class EasyDeviceInfo {
    *
    * @return the package name
    */
-  public String getPackageName() throws Exception {
+  public String getPackageName() {
     return checkValidData(context.getPackageName());
   }
 
@@ -1084,7 +1120,7 @@ public class EasyDeviceInfo {
    *
    * @return the store
    */
-  public String getStore() throws Exception {
+  public String getStore() {
     String result = null;
     if (Build.VERSION.SDK_INT >= 3) {
       result = context.getPackageManager().getInstallerPackageName(context.getPackageName());
@@ -1134,8 +1170,7 @@ public class EasyDeviceInfo {
    *
    * @return the string [ ]
    */
-
-  @SuppressWarnings("MissingPermission") public String[] getAccounts() throws Exception {
+  @SuppressWarnings("MissingPermission") public String[] getAccounts() {
     String[] result = null;
     if (context.checkCallingOrSelfPermission(Manifest.permission.GET_ACCOUNTS)
         == PackageManager.PERMISSION_GRANTED) {

@@ -22,6 +22,17 @@ compile 'com.github.nisrulz:easydeviceinfo:1.2.0'
 ```
 
 # Usage Docs/Wiki
+
++ Create an instance of ***EasyDeviceInfo*** class
+```java
+EasyDeviceInfo easyDeviceInfo=new EasyDeviceInfo(context);
+```
++ Next call the required function on the ***easyDeviceInfo*** instance such as
+```java
+String formatted_time=easyDeviceInfo.getFormattedTime();
+String language=easyDeviceInfo.getLanguage();
+```
+
 For more detailed usage, check the [Wiki](https://github.com/nisrulz/easydeviceinfo/wiki)
 
 # Pull Requests
