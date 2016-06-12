@@ -1161,6 +1161,9 @@ public class EasyDeviceInfo {
       case DisplayMetrics.DENSITY_XXXHIGH:
         densityStr = "XXXHDPI";
         break;
+      default:
+        //do nothing
+        break;
     }
     return checkValidData(densityStr);
   }
@@ -1281,6 +1284,10 @@ public class EasyDeviceInfo {
         break;
       case AudioManager.RINGER_MODE_VIBRATE:
         ringerMode = RINGER_MODE_VIBRATE;
+        break;
+      default:
+        //do nothing
+        break;
     }
     return ringerMode;
   }
@@ -1299,10 +1306,11 @@ public class EasyDeviceInfo {
   }
 
   private String handleIllegalCharacterInResult(String result) {
+    String tempResult = result;
     if (result.indexOf(" ") > 0) {
-      result = result.replaceAll(" ", "_");
+      tempResult = result.replaceAll(" ", "_");
     }
-    return result;
+    return tempResult;
   }
 
   private Intent getBatteryStatusIntent() {
@@ -1311,16 +1319,18 @@ public class EasyDeviceInfo {
   }
 
   private String checkValidData(String data) {
+    String tempData = data;
     if (data == null || data.length() == 0) {
-      data = "NA";
+      tempData = "NA";
     }
-    return data;
+    return tempData;
   }
 
   private String[] checkValidData(String[] data) {
+    String[] tempData = data;
     if (data == null || data.length == 0) {
-      data = new String[] { "-" };
+      tempData = new String[] { "-" };
     }
-    return data;
+    return tempData;
   }
 }

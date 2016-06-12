@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-  ArrayAdapter<String> adapter;
+  private ArrayAdapter<String> adapter;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     String[] emailIds = new String[0];
-      emailIds = easyDeviceInfo.getAccounts();
+    emailIds = easyDeviceInfo.getAccounts();
 
     StringBuilder emailString = new StringBuilder();
     if (emailIds != null && emailIds.length > 0) {
@@ -177,6 +177,9 @@ public class MainActivity extends AppCompatActivity {
       case EasyDeviceInfo.RINGER_MODE_SILENT:
         deviceDataMap.put("Ringer mode", "silent");
         break;
+      default:
+        //do nothing
+        break;
     }
 
     switch (easyDeviceInfo.getDeviceType(this)) {
@@ -194,6 +197,9 @@ public class MainActivity extends AppCompatActivity {
         break;
       case EasyDeviceInfo.DEVICE_TYPE_TV:
         deviceDataMap.put("Device type", "tv");
+        break;
+      default:
+        //do nothing
         break;
     }
 
