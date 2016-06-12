@@ -960,7 +960,8 @@ public class EasyDeviceInfo {
     boolean hasFineLocationPermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED ? true : false;
-    boolean isGPSEnabled, isNetworkEnabled;
+    boolean isGPSEnabled;
+    boolean isNetworkEnabled;
 
     double[] gps = new double[2];
     gps[0] = 0;
@@ -971,7 +972,9 @@ public class EasyDeviceInfo {
       isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
       isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-      Location net_loc = null, gps_loc = null, final_loc = null;
+      Location net_loc = null;
+      Location gps_loc = null;
+      Location final_loc;
 
       if (isGPSEnabled) {
         gps_loc = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);

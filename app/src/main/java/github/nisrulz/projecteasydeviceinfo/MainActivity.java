@@ -27,7 +27,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
   private ArrayAdapter<String> adapter;
-
+  
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
@@ -38,15 +38,12 @@ public class MainActivity extends AppCompatActivity {
     final ArrayList<String> data = new ArrayList<>();
 
     //Get Lat-Long
-    double[] l = new double[0];
-
-    l = easyDeviceInfo.getLatLong();
+    double[] l = easyDeviceInfo.getLatLong();
 
     String lat = String.valueOf(l[0]);
     String lon = String.valueOf(l[1]);
 
-    String[] supportedABIS = new String[0];
-    supportedABIS = easyDeviceInfo.getSupportedABIS();
+    String[] supportedABIS = easyDeviceInfo.getSupportedABIS();
 
     StringBuilder supportedABI = new StringBuilder();
     if (supportedABIS.length > 0) {
@@ -57,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
       supportedABI.append("-");
     }
 
-    String[] emailIds = new String[0];
-    emailIds = easyDeviceInfo.getAccounts();
+    String[] emailIds = easyDeviceInfo.getAccounts();
 
     StringBuilder emailString = new StringBuilder();
     if (emailIds != null && emailIds.length > 0) {
