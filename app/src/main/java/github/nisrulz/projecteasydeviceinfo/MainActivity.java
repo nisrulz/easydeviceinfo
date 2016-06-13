@@ -174,6 +174,21 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
+    switch (easyDeviceMod.getOrientation(this)) {
+      case EasyDeviceMod.ORIENTATION_LANDSCAPE:
+        deviceDataMap.put("Orientation", "Landscape");
+        break;
+      case EasyDeviceMod.ORIENTATION_PORTRAIT:
+        deviceDataMap.put("Orientation", "Portrait");
+        break;
+      case EasyDeviceMod.ORIENTATION_UNKNOWN:
+        deviceDataMap.put("Orientation", "Unknown");
+        break;
+      default:
+        deviceDataMap.put("Orientation", "Unknown");
+        break;
+    }
+
     // App Mod
     EasyAppMod easyAppMod = new EasyAppMod(this);
     deviceDataMap.put("Installer Store", easyAppMod.getStore());

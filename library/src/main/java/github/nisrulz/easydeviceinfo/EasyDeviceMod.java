@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
@@ -49,6 +50,19 @@ public class EasyDeviceMod {
    * The constant PHONE_TYPE_NONE.
    */
   public static final int PHONE_TYPE_NONE = 2;
+
+  /**
+   * The constant ORIENTATION_PORTRAIT.
+   */
+  public static final int ORIENTATION_PORTRAIT = 0;
+  /**
+   * The constant ORIENTATION_LANDSCAPE.
+   */
+  public static final int ORIENTATION_LANDSCAPE = 1;
+  /**
+   * The constant ORIENTATION_UNKNOWN.
+   */
+  public static final int ORIENTATION_UNKNOWN = 2;
   private final TelephonyManager tm;
   private Context context;
 
@@ -450,5 +464,22 @@ public class EasyDeviceMod {
    */
   public String getOSVersion() {
     return CheckValidityUtil.checkValidData(Build.VERSION.RELEASE);
+  }
+
+  /**
+   * Gets orientation.
+   *
+   * @param activity the activity
+   * @return the orientation
+   */
+  public int getOrientation(Activity activity) {
+    switch (activity.getResources().getConfiguration().orientation) {
+      case Configuration.ORIENTATION_PORTRAIT:
+        return ORIENTATION_PORTRAIT;
+      case Configuration.ORIENTATION_LANDSCAPE:
+        return ORIENTATION_LANDSCAPE;
+      default:
+        return ORIENTATION_UNKNOWN;
+    }
   }
 }
