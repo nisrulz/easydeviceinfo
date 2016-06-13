@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Memory Mod
     EasyMemoryMod easyMemoryMod = new EasyMemoryMod(this);
-    deviceDataMap.put("Available RAM", String.valueOf(easyMemoryMod.getTotalMemory()) + " Mb");
+    deviceDataMap.put("Available RAM", String.valueOf(easyMemoryMod.getTotalRAM()) + " Mb");
     deviceDataMap.put("Available Internal Memory",
         String.valueOf(easyMemoryMod.getAvailableInternalMemorySize()) + " Mb");
     deviceDataMap.put("Available External Memory",

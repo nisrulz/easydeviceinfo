@@ -7,6 +7,8 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
 import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 
 import static android.os.Build.VERSION;
 import static android.os.Build.VERSION_CODES;
@@ -26,16 +28,31 @@ public class EasyMemoryMod {
     this.context = context;
   }
 
-  public long getTotalMemory() {
-    MemoryInfo mi = new MemoryInfo();
-    ActivityManager activityManager =
-        (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
-    activityManager.getMemoryInfo(mi);
-    long memory_available_in_Mbs = 0;
+  /**
+   * Gets total ram.
+   *
+   * @return the total ram
+   */
+  public long getTotalRAM() {
+    long total_memory_in_Mbs = 0;
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
-      memory_available_in_Mbs = mi.totalMem / 1048576L;
+      MemoryInfo mi = new MemoryInfo();
+      ActivityManager activityManager =
+          (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
+      activityManager.getMemoryInfo(mi);
+      total_memory_in_Mbs = mi.totalMem / 1048576L;
+    } else {
+      RandomAccessFile reader;
+      String load;
+      try {
+        reader = new RandomAccessFile("/proc/meminfo", "r");
+        load = reader.readLine().replaceAll("\\D+", "");
+        total_memory_in_Mbs = Integer.parseInt(load) / 1024;
+      } catch (IOException ex) {
+        ex.printStackTrace();
+      }
     }
-    return memory_available_in_Mbs;
+    return total_memory_in_Mbs;
   }
 
   private boolean externalMemoryAvailable() {
@@ -43,6 +60,11 @@ public class EasyMemoryMod {
         .equals(android.os.Environment.MEDIA_MOUNTED);
   }
 
+  /**
+   * Gets available internal memory size.
+   *
+   * @return the available internal memory size
+   */
   public long getAvailableInternalMemorySize() {
     File path = Environment.getDataDirectory();
     StatFs stat = new StatFs(path.getPath());
@@ -58,6 +80,11 @@ public class EasyMemoryMod {
     return (availableBlocks * blockSize) / (1024 * 1024);
   }
 
+  /**
+   * Gets total internal memory size.
+   *
+   * @return the total internal memory size
+   */
   public long getTotalInternalMemorySize() {
     File path = Environment.getDataDirectory();
     StatFs stat = new StatFs(path.getPath());
@@ -73,6 +100,11 @@ public class EasyMemoryMod {
     return (totalBlocks * blockSize) / (1024 * 1024);
   }
 
+  /**
+   * Gets available external memory size.
+   *
+   * @return the available external memory size
+   */
   public long getAvailableExternalMemorySize() {
     if (externalMemoryAvailable()) {
       File path = Environment.getExternalStorageDirectory();
@@ -92,6 +124,11 @@ public class EasyMemoryMod {
     }
   }
 
+  /**
+   * Gets total external memory size.
+   *
+   * @return the total external memory size
+   */
   public long getTotalExternalMemorySize() {
     if (externalMemoryAvailable()) {
       File path = Environment.getExternalStorageDirectory();
