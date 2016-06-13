@@ -11,6 +11,31 @@ import android.os.BatteryManager;
 public class EasyDIBatteryMod {
 
   private Context context;
+  /**
+   * The constant CHARGING_VIA_USB.
+   */
+  public static final int CHARGING_VIA_USB = 0;
+  /**
+   * The constant CHARGING_VIA_AC.
+   */
+  public static final int CHARGING_VIA_AC = 1;
+  /**
+   * The constant CHARGING_VIA_WIRELESS.
+   */
+  public static final int CHARGING_VIA_WIRELESS = 2;
+  /**
+   * The constant CHARGING_VIA_UNKNOWN_SOURCE.
+   */
+  public static final int CHARGING_VIA_UNKNOWN_SOURCE = 3;
+
+  /**
+   * The constant HEALTH_HAVING_ISSUES.
+   */
+  public static final int HEALTH_HAVING_ISSUES = 0;
+  /**
+   * The constant HEALTH_GOOD.
+   */
+  public static final int HEALTH_GOOD = 1;
 
   /**
    * Instantiates a new Easy di battery mod.
@@ -50,30 +75,95 @@ public class EasyDIBatteryMod {
         || status == BatteryManager.BATTERY_STATUS_FULL);
   }
 
-  /**
-   * Is device charging usb boolean.
-   *
-   * @return is battery charging via USB boolean
-   */
-  public boolean isDeviceChargingUSB() {
-    Intent batteryStatus = getBatteryStatusIntent();
-    int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
-    return (chargePlug == BatteryManager.BATTERY_PLUGGED_USB);
-  }
-
-  /**
-   * Is device charging ac boolean.
-   *
-   * @return is battery charging via AC boolean
-   */
-  public boolean isDeviceChargingAC() {
-    Intent batteryStatus = getBatteryStatusIntent();
-    int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
-    return (chargePlug == BatteryManager.BATTERY_PLUGGED_AC);
-  }
-
   private Intent getBatteryStatusIntent() {
     IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
     return context.registerReceiver(null, batFilter);
+  }
+
+  /**
+   * Gets battery health.
+   *
+   * @return the battery health
+   */
+  public int getBatteryHealth() {
+    int health = HEALTH_HAVING_ISSUES;
+    Intent batteryStatus = getBatteryStatusIntent();
+    if (batteryStatus != null) {
+      health = batteryStatus.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
+      if (health == BatteryManager.BATTERY_HEALTH_GOOD) {
+        health = HEALTH_GOOD;
+      } else {
+        health = HEALTH_HAVING_ISSUES;
+      }
+    }
+    return health;
+  }
+
+  /**
+   * Gets battery technology.
+   *
+   * @return the battery technology
+   */
+  public String getBatteryTechnology() {
+    return CheckValidityUtil.checkValidData(
+        getBatteryStatusIntent().getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY));
+  }
+
+  /**
+   * Gets battery temprature.
+   *
+   * @return the battery temprature
+   */
+  public float getBatteryTemprature() {
+    float temp = 0.0f;
+    Intent batteryStatus = getBatteryStatusIntent();
+    if (batteryStatus != null) {
+      temp = (float) (batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10);
+    }
+    return temp;
+  }
+
+  /**
+   * Gets battery voltage.
+   *
+   * @return the battery voltage
+   */
+  public int getBatteryVoltage() {
+    int volt = 0;
+    Intent batteryStatus = getBatteryStatusIntent();
+    if (batteryStatus != null) {
+      volt = batteryStatus.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
+    }
+    return volt;
+  }
+
+  /**
+   * Gets charging source.
+   *
+   * @return the charging source
+   */
+  public int getChargingSource() {
+    Intent batteryStatus = getBatteryStatusIntent();
+    int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
+
+    switch (chargePlug) {
+      case BatteryManager.BATTERY_PLUGGED_AC:
+        return CHARGING_VIA_AC;
+      case BatteryManager.BATTERY_PLUGGED_USB:
+        return CHARGING_VIA_USB;
+      case BatteryManager.BATTERY_PLUGGED_WIRELESS:
+        return CHARGING_VIA_WIRELESS;
+      default:
+        return CHARGING_VIA_UNKNOWN_SOURCE;
+    }
+  }
+
+  /**
+   * Is battery present boolean.
+   *
+   * @return the boolean
+   */
+  public boolean isBatteryPresent() {
+    return getBatteryStatusIntent().getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
   }
 }

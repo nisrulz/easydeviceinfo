@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     //Add Data
     HashMap<String, String> deviceDataMap = new HashMap<>();
 
+    // Library Info
     EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo();
     data.add(easyDeviceInfo.getLibraryVersion());
 
@@ -195,10 +196,41 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Battery Percentage",
         String.valueOf(easyDIBatteryMod.getBatteryPercentage()) + "%");
     deviceDataMap.put("Is device charging", String.valueOf(easyDIBatteryMod.isDeviceCharging()));
-    deviceDataMap.put("Device charging via USB",
-        String.valueOf(easyDIBatteryMod.isDeviceChargingUSB()));
-    deviceDataMap.put("Device charging via AC",
-        String.valueOf(easyDIBatteryMod.isDeviceChargingAC()));
+    deviceDataMap.put("Battery present", String.valueOf(easyDIBatteryMod.isBatteryPresent()));
+    deviceDataMap.put("Battery technology",
+        String.valueOf(easyDIBatteryMod.getBatteryTechnology()));
+    deviceDataMap.put("Battery temperature",
+        String.valueOf(easyDIBatteryMod.getBatteryTemprature()) + " deg C");
+    deviceDataMap.put("Battery voltage", String.valueOf(easyDIBatteryMod.getBatteryVoltage())+" mV");
+    switch (easyDIBatteryMod.getBatteryHealth()) {
+      case EasyDIBatteryMod.HEALTH_GOOD:
+        deviceDataMap.put("Battery health", "Good");
+        break;
+      case EasyDIBatteryMod.HEALTH_HAVING_ISSUES:
+        deviceDataMap.put("Battery health", "Having isues");
+        break;
+      default:
+        deviceDataMap.put("Battery health", "Having isues");
+        break;
+    }
+
+    switch (easyDIBatteryMod.getChargingSource()) {
+      case EasyDIBatteryMod.CHARGING_VIA_AC:
+        deviceDataMap.put("Device charging via ", "AC");
+        break;
+      case EasyDIBatteryMod.CHARGING_VIA_USB:
+        deviceDataMap.put("Device charging via ", "USB");
+        break;
+      case EasyDIBatteryMod.CHARGING_VIA_WIRELESS:
+        deviceDataMap.put("Device charging via ", "Wireless");
+        break;
+      case EasyDIBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE:
+        deviceDataMap.put("Device charging via ", "Unknown Source");
+        break;
+      default:
+        deviceDataMap.put("Device charging via ", "Unknown Source");
+        break;
+    }
 
     //Bluetooth Mod
     EasyDIBluetoothMod easyDIBluetoothMod = new EasyDIBluetoothMod(this);
