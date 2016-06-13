@@ -25,13 +25,13 @@ import github.nisrulz.easydeviceinfo.EasyBatteryMod;
 import github.nisrulz.easydeviceinfo.EasyBluetoothMod;
 import github.nisrulz.easydeviceinfo.EasyConfigMod;
 import github.nisrulz.easydeviceinfo.EasyCpuMod;
+import github.nisrulz.easydeviceinfo.EasyDeviceInfo;
 import github.nisrulz.easydeviceinfo.EasyDeviceMod;
 import github.nisrulz.easydeviceinfo.EasyDisplayMod;
 import github.nisrulz.easydeviceinfo.EasyIdMod;
 import github.nisrulz.easydeviceinfo.EasyLocationMod;
 import github.nisrulz.easydeviceinfo.EasyNetworkMod;
 import github.nisrulz.easydeviceinfo.EasySimMod;
-import github.nisrulz.easydeviceinfo.EasyDeviceInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -159,6 +159,21 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
+    switch (easyDeviceMod.getPhoneType()) {
+      case EasyDeviceMod.PHONE_TYPE_CDMA:
+        deviceDataMap.put("Phone Type", "CDMA");
+        break;
+      case EasyDeviceMod.PHONE_TYPE_GSM:
+        deviceDataMap.put("Phone Type", "GSM");
+        break;
+      case EasyDeviceMod.PHONE_TYPE_NONE:
+        deviceDataMap.put("Phone Type", "None");
+        break;
+      default:
+        deviceDataMap.put("Phone Type", "Unknown");
+        break;
+    }
+
     // App Mod
     EasyAppMod easyAppMod = new EasyAppMod(this);
     deviceDataMap.put("Installer Store", easyAppMod.getStore());
@@ -197,11 +212,11 @@ public class MainActivity extends AppCompatActivity {
         String.valueOf(easyBatteryMod.getBatteryPercentage()) + "%");
     deviceDataMap.put("Is device charging", String.valueOf(easyBatteryMod.isDeviceCharging()));
     deviceDataMap.put("Battery present", String.valueOf(easyBatteryMod.isBatteryPresent()));
-    deviceDataMap.put("Battery technology",
-        String.valueOf(easyBatteryMod.getBatteryTechnology()));
+    deviceDataMap.put("Battery technology", String.valueOf(easyBatteryMod.getBatteryTechnology()));
     deviceDataMap.put("Battery temperature",
         String.valueOf(easyBatteryMod.getBatteryTemprature()) + " deg C");
-    deviceDataMap.put("Battery voltage", String.valueOf(easyBatteryMod.getBatteryVoltage())+" mV");
+    deviceDataMap.put("Battery voltage",
+        String.valueOf(easyBatteryMod.getBatteryVoltage()) + " mV");
     switch (easyBatteryMod.getBatteryHealth()) {
       case EasyBatteryMod.HEALTH_GOOD:
         deviceDataMap.put("Battery health", "Good");

@@ -36,6 +36,19 @@ public class EasyDeviceMod {
    * The constant DEVICE_TYPE_TV.
    */
   public static final int DEVICE_TYPE_TV = 4;
+
+  /**
+   * The constant PHONE_TYPE_GSM.
+   */
+  public static final int PHONE_TYPE_GSM = 0;
+  /**
+   * The constant PHONE_TYPE_CDMA.
+   */
+  public static final int PHONE_TYPE_CDMA = 1;
+  /**
+   * The constant PHONE_TYPE_NONE.
+   */
+  public static final int PHONE_TYPE_NONE = 2;
   private final TelephonyManager tm;
   private Context context;
 
@@ -47,6 +60,26 @@ public class EasyDeviceMod {
   public EasyDeviceMod(Context context) {
     this.context = context;
     tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+  }
+
+  /**
+   * Gets phone type.
+   *
+   * @return the phone type
+   */
+  public int getPhoneType() {
+    switch (tm.getPhoneType()) {
+      case TelephonyManager.PHONE_TYPE_NONE:
+        return PHONE_TYPE_NONE;
+
+      case TelephonyManager.PHONE_TYPE_GSM:
+        return PHONE_TYPE_GSM;
+
+      case TelephonyManager.PHONE_TYPE_CDMA:
+        return PHONE_TYPE_CDMA;
+      default:
+        return PHONE_TYPE_NONE;
+    }
   }
 
   /**
