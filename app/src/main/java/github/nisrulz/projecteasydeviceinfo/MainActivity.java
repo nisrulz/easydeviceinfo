@@ -65,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
       emailString.append("-");
     }
 
-    String[] supported32ABIS = new String[0];
-    supported32ABIS = easyDeviceInfo.getSupported32bitABIS();
+    String[] supported32ABIS = easyDeviceInfo.getSupported32bitABIS();
     StringBuilder supported32ABI = new StringBuilder();
     if (supported32ABIS.length > 0) {
       for (String abis : supported32ABIS) {
@@ -76,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
       supported32ABI.append("-");
     }
 
-    String[] supported64ABIS = new String[0];
-    supported64ABIS = easyDeviceInfo.getSupported64bitABIS();
+    String[] supported64ABIS = easyDeviceInfo.getSupported64bitABIS();
 
     StringBuilder supported64ABI = new StringBuilder();
     if (supported32ABIS.length > 0) {
