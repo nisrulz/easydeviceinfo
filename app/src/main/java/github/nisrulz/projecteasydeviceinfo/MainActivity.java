@@ -30,6 +30,7 @@ import github.nisrulz.easydeviceinfo.EasyDeviceMod;
 import github.nisrulz.easydeviceinfo.EasyDisplayMod;
 import github.nisrulz.easydeviceinfo.EasyIdMod;
 import github.nisrulz.easydeviceinfo.EasyLocationMod;
+import github.nisrulz.easydeviceinfo.EasyMemoryMod;
 import github.nisrulz.easydeviceinfo.EasyNetworkMod;
 import github.nisrulz.easydeviceinfo.EasySimMod;
 import java.util.ArrayList;
@@ -280,6 +281,18 @@ public class MainActivity extends AppCompatActivity {
     String lon = String.valueOf(l[1]);
     deviceDataMap.put("Latitude", lat);
     deviceDataMap.put("Longitude", lon);
+
+    // Memory Mod
+    EasyMemoryMod easyMemoryMod = new EasyMemoryMod(this);
+    deviceDataMap.put("Available RAM", String.valueOf(easyMemoryMod.getTotalMemory()) + " Mb");
+    deviceDataMap.put("Available Internal Memory",
+        String.valueOf(easyMemoryMod.getAvailableInternalMemorySize()) + " Mb");
+    deviceDataMap.put("Available External Memory",
+        String.valueOf(easyMemoryMod.getAvailableExternalMemorySize()) + " Mb");
+    deviceDataMap.put("Total Internal Memory",
+        String.valueOf(easyMemoryMod.getTotalInternalMemorySize()) + " Mb");
+    deviceDataMap.put("Total External memory",
+        String.valueOf(easyMemoryMod.getTotalExternalMemorySize()) + " Mb");
 
     // CPU Mod
     EasyCpuMod easyCpuMod = new EasyCpuMod();
