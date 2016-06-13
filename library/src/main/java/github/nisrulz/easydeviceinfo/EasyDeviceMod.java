@@ -90,7 +90,7 @@ public class EasyDeviceMod {
   @SuppressWarnings("MissingPermission") public String getPhoneNo() {
     String result = null;
     boolean hasReadPhoneStatePermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.READ_SMS)
+        context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
             == PackageManager.PERMISSION_GRANTED;
     if (hasReadPhoneStatePermission && tm.getLine1Number() != null) {
       result = tm.getLine1Number();
