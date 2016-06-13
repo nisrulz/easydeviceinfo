@@ -5,7 +5,7 @@ import android.os.Build;
 /**
  * The type Easy di cpu mod.
  */
-public class EasyDICpuMod {
+public class EasyCpuMod {
   /**
    * Get supported abis string [ ].
    *

@@ -6,10 +6,10 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 
-public class EasyDILocationMod {
+public class EasyLocationMod {
   private Context context;
 
-  public EasyDILocationMod(Context context) {
+  public EasyLocationMod(Context context) {
     this.context = context;
   }
 

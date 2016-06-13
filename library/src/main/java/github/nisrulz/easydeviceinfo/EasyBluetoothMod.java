@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 /**
  * The type Easy di bluetooth mod.
  */
-public class EasyDIBluetoothMod {
+public class EasyBluetoothMod {
   private Context context;
 
   /**
@@ -16,7 +16,7 @@ public class EasyDIBluetoothMod {
    *
    * @param context the context
    */
-  public EasyDIBluetoothMod(Context context) {
+  public EasyBluetoothMod(Context context) {
     this.context = context;
   }
 

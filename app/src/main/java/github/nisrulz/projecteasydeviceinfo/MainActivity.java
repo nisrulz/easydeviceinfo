@@ -20,17 +20,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import github.nisrulz.easydeviceinfo.EasyDIAppMod;
-import github.nisrulz.easydeviceinfo.EasyDIBatteryMod;
-import github.nisrulz.easydeviceinfo.EasyDIBluetoothMod;
-import github.nisrulz.easydeviceinfo.EasyDIConfigMod;
-import github.nisrulz.easydeviceinfo.EasyDICpuMod;
-import github.nisrulz.easydeviceinfo.EasyDIDeviceMod;
-import github.nisrulz.easydeviceinfo.EasyDIDisplayMod;
-import github.nisrulz.easydeviceinfo.EasyDIIdMod;
-import github.nisrulz.easydeviceinfo.EasyDILocationMod;
-import github.nisrulz.easydeviceinfo.EasyDINetworkMod;
-import github.nisrulz.easydeviceinfo.EasyDISimMod;
+import github.nisrulz.easydeviceinfo.EasyAppMod;
+import github.nisrulz.easydeviceinfo.EasyBatteryMod;
+import github.nisrulz.easydeviceinfo.EasyBluetoothMod;
+import github.nisrulz.easydeviceinfo.EasyConfigMod;
+import github.nisrulz.easydeviceinfo.EasyCpuMod;
+import github.nisrulz.easydeviceinfo.EasyDeviceMod;
+import github.nisrulz.easydeviceinfo.EasyDisplayMod;
+import github.nisrulz.easydeviceinfo.EasyIdMod;
+import github.nisrulz.easydeviceinfo.EasyLocationMod;
+import github.nisrulz.easydeviceinfo.EasyNetworkMod;
+import github.nisrulz.easydeviceinfo.EasySimMod;
 import github.nisrulz.easydeviceinfo.EasyDeviceInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
     data.add(easyDeviceInfo.getLibraryVersion());
 
     // ID Mod
-    EasyDIIdMod easyDIIdMod = new EasyDIIdMod(this);
+    EasyIdMod easyIdMod = new EasyIdMod(this);
 
-    String[] emailIds = easyDIIdMod.getAccounts();
+    String[] emailIds = easyIdMod.getAccounts();
     StringBuilder emailString = new StringBuilder();
     if (emailIds != null && emailIds.length > 0) {
       for (String e : emailIds) {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
       emailString.append("-");
     }
 
-    easyDIIdMod.getAndroidAdId(new EasyDIIdMod.AdIdentifierCallback() {
+    easyIdMod.getAndroidAdId(new EasyIdMod.AdIdentifierCallback() {
       @Override public void onSuccess(String adIdentifier, boolean adDonotTrack) {
         // Add Data
         data.add("Android Advertiser ID :" + adIdentifier);
@@ -76,18 +76,20 @@ public class MainActivity extends AppCompatActivity {
     });
 
     // Config Mod
-    EasyDIConfigMod easyDIConfigMod = new EasyDIConfigMod(this);
-    deviceDataMap.put("Time (ms)", String.valueOf(easyDIConfigMod.getTime()));
-    deviceDataMap.put("Formatted Time (24Hrs)", easyDIConfigMod.getFormattedTime());
-    deviceDataMap.put("Running on emulator", String.valueOf(easyDIConfigMod.isRunningOnEmulator()));
-    switch (easyDIConfigMod.getDeviceRingerMode()) {
-      case EasyDIConfigMod.RINGER_MODE_NORMAL:
+    EasyConfigMod easyConfigMod = new EasyConfigMod(this);
+    deviceDataMap.put("Time (ms)", String.valueOf(easyConfigMod.getTime()));
+    deviceDataMap.put("Formatted Time (24Hrs)", easyConfigMod.getFormattedTime());
+    deviceDataMap.put("UpTime (ms)", String.valueOf(easyConfigMod.getUpTime()));
+    deviceDataMap.put("Formatted Up Time (24Hrs)", easyConfigMod.getFormattedUpTime());
+    deviceDataMap.put("Running on emulator", String.valueOf(easyConfigMod.isRunningOnEmulator()));
+    switch (easyConfigMod.getDeviceRingerMode()) {
+      case EasyConfigMod.RINGER_MODE_NORMAL:
         deviceDataMap.put("Ringer mode", "normal");
         break;
-      case EasyDIConfigMod.RINGER_MODE_VIBRATE:
+      case EasyConfigMod.RINGER_MODE_VIBRATE:
         deviceDataMap.put("Ringer mode", "vibrate");
         break;
-      case EasyDIConfigMod.RINGER_MODE_SILENT:
+      case EasyConfigMod.RINGER_MODE_SILENT:
         deviceDataMap.put("Ringer mode", "silent");
         break;
       default:
@@ -95,63 +97,61 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
-    // Device Mod
-    EasyDIDeviceMod easyDIDeviceMod = new EasyDIDeviceMod(this);
-    deviceDataMap.put("Language", easyDIDeviceMod.getLanguage());
-    deviceDataMap.put("Android ID", easyDIIdMod.getAndroidID());
-    deviceDataMap.put("IMEI", easyDIDeviceMod.getIMEI());
-    deviceDataMap.put("User-Agent", easyDIIdMod.getUA());
-    deviceDataMap.put("GSF ID", easyDIIdMod.getGSFID());
-    deviceDataMap.put("Pseudo ID", easyDIIdMod.getPseudoUniqueID());
-
     // SIM Mod
-    EasyDISimMod easyDISimMod = new EasyDISimMod(this);
-    deviceDataMap.put("IMSI", easyDISimMod.getIMSI());
-    deviceDataMap.put("SIM Serial Number", easyDISimMod.getSIMSerial());
-    deviceDataMap.put("Country", easyDISimMod.getCountry());
-    deviceDataMap.put("Carrier", easyDISimMod.getCarrier());
+    EasySimMod easySimMod = new EasySimMod(this);
+    deviceDataMap.put("IMSI", easySimMod.getIMSI());
+    deviceDataMap.put("SIM Serial Number", easySimMod.getSIMSerial());
+    deviceDataMap.put("Country", easySimMod.getCountry());
+    deviceDataMap.put("Carrier", easySimMod.getCarrier());
 
     // Device Mod
-    deviceDataMap.put("Device Serial", easyDIDeviceMod.getSerial());
-    deviceDataMap.put("Manufacturer", easyDIDeviceMod.getManufacturer());
-    deviceDataMap.put("Model", easyDIDeviceMod.getModel());
-    deviceDataMap.put("OS Codename", easyDIDeviceMod.getOSCodename());
-    deviceDataMap.put("OS Version", easyDIDeviceMod.getOSVersion());
-    deviceDataMap.put("Display Version", easyDIDeviceMod.getDisplayVersion());
-    deviceDataMap.put("Phone Number", easyDIDeviceMod.getPhoneNo());
-    deviceDataMap.put("Radio Version", easyDIDeviceMod.getRadioVer());
-    deviceDataMap.put("Product ", easyDIDeviceMod.getProduct());
-    deviceDataMap.put("Device", easyDIDeviceMod.getDevice());
-    deviceDataMap.put("Board", easyDIDeviceMod.getBoard());
-    deviceDataMap.put("Hardware", easyDIDeviceMod.getHardware());
-    deviceDataMap.put("BootLoader", easyDIDeviceMod.getBootloader());
-    deviceDataMap.put("Device Rooted", String.valueOf(easyDIDeviceMod.isDeviceRooted()));
-    deviceDataMap.put("Fingerprint", easyDIDeviceMod.getFingerprint());
-    deviceDataMap.put("Build Brand", easyDIDeviceMod.getBuildBrand());
-    deviceDataMap.put("Build Host", easyDIDeviceMod.getBuildHost());
-    deviceDataMap.put("Build Tag", easyDIDeviceMod.getBuildTags());
-    deviceDataMap.put("Build Time", String.valueOf(easyDIDeviceMod.getBuildTime()));
-    deviceDataMap.put("Build User", easyDIDeviceMod.getBuildUser());
-    deviceDataMap.put("Build Version Release", easyDIDeviceMod.getBuildVersionRelease());
-    deviceDataMap.put("Screen Display ID", easyDIDeviceMod.getScreenDisplayID());
-    deviceDataMap.put("Build Version Codename", easyDIDeviceMod.getBuildVersionCodename());
-    deviceDataMap.put("Build Version Increment", easyDIDeviceMod.getBuildVersionIncremental());
-    deviceDataMap.put("Build Version SDK", String.valueOf(easyDIDeviceMod.getBuildVersionSDK()));
-    deviceDataMap.put("Build ID", easyDIDeviceMod.getBuildID());
-    switch (easyDIDeviceMod.getDeviceType(this)) {
-      case EasyDIDeviceMod.DEVICE_TYPE_WATCH:
+    EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this);
+    deviceDataMap.put("Language", easyDeviceMod.getLanguage());
+    deviceDataMap.put("Android ID", easyIdMod.getAndroidID());
+    deviceDataMap.put("IMEI", easyDeviceMod.getIMEI());
+    deviceDataMap.put("User-Agent", easyIdMod.getUA());
+    deviceDataMap.put("GSF ID", easyIdMod.getGSFID());
+    deviceDataMap.put("Pseudo ID", easyIdMod.getPseudoUniqueID());
+    deviceDataMap.put("Device Serial", easyDeviceMod.getSerial());
+    deviceDataMap.put("Manufacturer", easyDeviceMod.getManufacturer());
+    deviceDataMap.put("Model", easyDeviceMod.getModel());
+    deviceDataMap.put("OS Codename", easyDeviceMod.getOSCodename());
+    deviceDataMap.put("OS Version", easyDeviceMod.getOSVersion());
+    deviceDataMap.put("Display Version", easyDeviceMod.getDisplayVersion());
+    deviceDataMap.put("Phone Number", easyDeviceMod.getPhoneNo());
+    deviceDataMap.put("Radio Version", easyDeviceMod.getRadioVer());
+    deviceDataMap.put("Product ", easyDeviceMod.getProduct());
+    deviceDataMap.put("Device", easyDeviceMod.getDevice());
+    deviceDataMap.put("Board", easyDeviceMod.getBoard());
+    deviceDataMap.put("Hardware", easyDeviceMod.getHardware());
+    deviceDataMap.put("BootLoader", easyDeviceMod.getBootloader());
+    deviceDataMap.put("Device Rooted", String.valueOf(easyDeviceMod.isDeviceRooted()));
+    deviceDataMap.put("Fingerprint", easyDeviceMod.getFingerprint());
+    deviceDataMap.put("Build Brand", easyDeviceMod.getBuildBrand());
+    deviceDataMap.put("Build Host", easyDeviceMod.getBuildHost());
+    deviceDataMap.put("Build Tag", easyDeviceMod.getBuildTags());
+    deviceDataMap.put("Build Time", String.valueOf(easyDeviceMod.getBuildTime()));
+    deviceDataMap.put("Build User", easyDeviceMod.getBuildUser());
+    deviceDataMap.put("Build Version Release", easyDeviceMod.getBuildVersionRelease());
+    deviceDataMap.put("Screen Display ID", easyDeviceMod.getScreenDisplayID());
+    deviceDataMap.put("Build Version Codename", easyDeviceMod.getBuildVersionCodename());
+    deviceDataMap.put("Build Version Increment", easyDeviceMod.getBuildVersionIncremental());
+    deviceDataMap.put("Build Version SDK", String.valueOf(easyDeviceMod.getBuildVersionSDK()));
+    deviceDataMap.put("Build ID", easyDeviceMod.getBuildID());
+    switch (easyDeviceMod.getDeviceType(this)) {
+      case EasyDeviceMod.DEVICE_TYPE_WATCH:
         deviceDataMap.put("Device type", "watch");
         break;
-      case EasyDIDeviceMod.DEVICE_TYPE_PHONE:
+      case EasyDeviceMod.DEVICE_TYPE_PHONE:
         deviceDataMap.put("Device type", "phone");
         break;
-      case EasyDIDeviceMod.DEVICE_TYPE_PHABLET:
+      case EasyDeviceMod.DEVICE_TYPE_PHABLET:
         deviceDataMap.put("Device type", "phablet");
         break;
-      case EasyDIDeviceMod.DEVICE_TYPE_TABLET:
+      case EasyDeviceMod.DEVICE_TYPE_TABLET:
         deviceDataMap.put("Device type", "tablet");
         break;
-      case EasyDIDeviceMod.DEVICE_TYPE_TV:
+      case EasyDeviceMod.DEVICE_TYPE_TV:
         deviceDataMap.put("Device type", "tv");
         break;
       default:
@@ -160,30 +160,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // App Mod
-    EasyDIAppMod easyDIAppMod = new EasyDIAppMod(this);
-    deviceDataMap.put("Installer Store", easyDIAppMod.getStore());
+    EasyAppMod easyAppMod = new EasyAppMod(this);
+    deviceDataMap.put("Installer Store", easyAppMod.getStore());
 
     //Network Mod
-    EasyDINetworkMod easyDINetworkMod = new EasyDINetworkMod(this);
-    deviceDataMap.put("WIFI MAC Address", easyDINetworkMod.getWifiMAC());
-    deviceDataMap.put("IPv4 Address", easyDINetworkMod.getIPv4Address());
-    deviceDataMap.put("IPv6 Address", easyDINetworkMod.getIPv6Address());
-    deviceDataMap.put("Network Available", String.valueOf(easyDINetworkMod.isNetworkAvailable()));
-    deviceDataMap.put("Wi-Fi enabled", String.valueOf(easyDINetworkMod.isWifiEnabled()));
-    switch (easyDINetworkMod.getNetworkType()) {
-      case EasyDINetworkMod.CELLULAR_UNKNOWN:
+    EasyNetworkMod easyNetworkMod = new EasyNetworkMod(this);
+    deviceDataMap.put("WIFI MAC Address", easyNetworkMod.getWifiMAC());
+    deviceDataMap.put("IPv4 Address", easyNetworkMod.getIPv4Address());
+    deviceDataMap.put("IPv6 Address", easyNetworkMod.getIPv6Address());
+    deviceDataMap.put("Network Available", String.valueOf(easyNetworkMod.isNetworkAvailable()));
+    deviceDataMap.put("Wi-Fi enabled", String.valueOf(easyNetworkMod.isWifiEnabled()));
+    switch (easyNetworkMod.getNetworkType()) {
+      case EasyNetworkMod.CELLULAR_UNKNOWN:
         deviceDataMap.put("Network Type", "Unknown");
         break;
-      case EasyDINetworkMod.CELLULAR_UNIDENTIFIED_GEN:
+      case EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN:
         deviceDataMap.put("Network Type", "Cellular Unidentified Generation");
         break;
-      case EasyDINetworkMod.CELLULAR_2G:
+      case EasyNetworkMod.CELLULAR_2G:
         deviceDataMap.put("Network Type", "Cellular 2G");
         break;
-      case EasyDINetworkMod.CELLULAR_3G:
+      case EasyNetworkMod.CELLULAR_3G:
         deviceDataMap.put("Network Type", "Cellular 3G");
         break;
-      case EasyDINetworkMod.CELLULAR_4G:
+      case EasyNetworkMod.CELLULAR_4G:
         deviceDataMap.put("Network Type", "Cellular 4G");
         break;
       default:
@@ -192,21 +192,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Battery Mod
-    EasyDIBatteryMod easyDIBatteryMod = new EasyDIBatteryMod(this);
+    EasyBatteryMod easyBatteryMod = new EasyBatteryMod(this);
     deviceDataMap.put("Battery Percentage",
-        String.valueOf(easyDIBatteryMod.getBatteryPercentage()) + "%");
-    deviceDataMap.put("Is device charging", String.valueOf(easyDIBatteryMod.isDeviceCharging()));
-    deviceDataMap.put("Battery present", String.valueOf(easyDIBatteryMod.isBatteryPresent()));
+        String.valueOf(easyBatteryMod.getBatteryPercentage()) + "%");
+    deviceDataMap.put("Is device charging", String.valueOf(easyBatteryMod.isDeviceCharging()));
+    deviceDataMap.put("Battery present", String.valueOf(easyBatteryMod.isBatteryPresent()));
     deviceDataMap.put("Battery technology",
-        String.valueOf(easyDIBatteryMod.getBatteryTechnology()));
+        String.valueOf(easyBatteryMod.getBatteryTechnology()));
     deviceDataMap.put("Battery temperature",
-        String.valueOf(easyDIBatteryMod.getBatteryTemprature()) + " deg C");
-    deviceDataMap.put("Battery voltage", String.valueOf(easyDIBatteryMod.getBatteryVoltage())+" mV");
-    switch (easyDIBatteryMod.getBatteryHealth()) {
-      case EasyDIBatteryMod.HEALTH_GOOD:
+        String.valueOf(easyBatteryMod.getBatteryTemprature()) + " deg C");
+    deviceDataMap.put("Battery voltage", String.valueOf(easyBatteryMod.getBatteryVoltage())+" mV");
+    switch (easyBatteryMod.getBatteryHealth()) {
+      case EasyBatteryMod.HEALTH_GOOD:
         deviceDataMap.put("Battery health", "Good");
         break;
-      case EasyDIBatteryMod.HEALTH_HAVING_ISSUES:
+      case EasyBatteryMod.HEALTH_HAVING_ISSUES:
         deviceDataMap.put("Battery health", "Having isues");
         break;
       default:
@@ -214,17 +214,17 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
-    switch (easyDIBatteryMod.getChargingSource()) {
-      case EasyDIBatteryMod.CHARGING_VIA_AC:
+    switch (easyBatteryMod.getChargingSource()) {
+      case EasyBatteryMod.CHARGING_VIA_AC:
         deviceDataMap.put("Device charging via ", "AC");
         break;
-      case EasyDIBatteryMod.CHARGING_VIA_USB:
+      case EasyBatteryMod.CHARGING_VIA_USB:
         deviceDataMap.put("Device charging via ", "USB");
         break;
-      case EasyDIBatteryMod.CHARGING_VIA_WIRELESS:
+      case EasyBatteryMod.CHARGING_VIA_WIRELESS:
         deviceDataMap.put("Device charging via ", "Wireless");
         break;
-      case EasyDIBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE:
+      case EasyBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE:
         deviceDataMap.put("Device charging via ", "Unknown Source");
         break;
       default:
@@ -233,27 +233,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Bluetooth Mod
-    EasyDIBluetoothMod easyDIBluetoothMod = new EasyDIBluetoothMod(this);
-    deviceDataMap.put("BT MAC Address", easyDIBluetoothMod.getBluetoothMAC());
+    EasyBluetoothMod easyBluetoothMod = new EasyBluetoothMod(this);
+    deviceDataMap.put("BT MAC Address", easyBluetoothMod.getBluetoothMAC());
 
     // Display Mod
-    EasyDIDisplayMod easyDIDisplayMod = new EasyDIDisplayMod(this);
-    deviceDataMap.put("Display Resolution", easyDIDisplayMod.getResolution());
-    deviceDataMap.put("Screen Density", easyDIDisplayMod.getDensity());
+    EasyDisplayMod easyDisplayMod = new EasyDisplayMod(this);
+    deviceDataMap.put("Display Resolution", easyDisplayMod.getResolution());
+    deviceDataMap.put("Screen Density", easyDisplayMod.getDensity());
 
     deviceDataMap.put("Email ID", emailString.toString());
 
     // Location Mod
-    EasyDILocationMod easyDILocationMod = new EasyDILocationMod(this);
-    double[] l = easyDILocationMod.getLatLong();
+    EasyLocationMod easyLocationMod = new EasyLocationMod(this);
+    double[] l = easyLocationMod.getLatLong();
     String lat = String.valueOf(l[0]);
     String lon = String.valueOf(l[1]);
     deviceDataMap.put("Latitude", lat);
     deviceDataMap.put("Longitude", lon);
 
     // CPU Mod
-    EasyDICpuMod easyDICpuMod = new EasyDICpuMod();
-    String[] supportedABIS = easyDICpuMod.getSupportedABIS();
+    EasyCpuMod easyCpuMod = new EasyCpuMod();
+    String[] supportedABIS = easyCpuMod.getSupportedABIS();
 
     StringBuilder supportedABI = new StringBuilder();
     if (supportedABIS.length > 0) {
@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
       supportedABI.append("-");
     }
 
-    String[] supported32ABIS = easyDICpuMod.getSupported32bitABIS();
+    String[] supported32ABIS = easyCpuMod.getSupported32bitABIS();
     StringBuilder supported32ABI = new StringBuilder();
     if (supported32ABIS.length > 0) {
       for (String abis : supported32ABIS) {
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
       supported32ABI.append("-");
     }
 
-    String[] supported64ABIS = easyDICpuMod.getSupported64bitABIS();
+    String[] supported64ABIS = easyCpuMod.getSupported64bitABIS();
 
     StringBuilder supported64ABI = new StringBuilder();
     if (supported32ABIS.length > 0) {
@@ -285,9 +285,9 @@ public class MainActivity extends AppCompatActivity {
       supported64ABI.append("-");
     }
 
-    deviceDataMap.put("Supported ABIS", easyDICpuMod.getStringSupportedABIS());
-    deviceDataMap.put("Supported 32 bit ABIS", easyDICpuMod.getStringSupported32bitABIS());
-    deviceDataMap.put("Supported 64 bit ABIS", easyDICpuMod.getStringSupported64bitABIS());
+    deviceDataMap.put("Supported ABIS", easyCpuMod.getStringSupportedABIS());
+    deviceDataMap.put("Supported 32 bit ABIS", easyCpuMod.getStringSupported32bitABIS());
+    deviceDataMap.put("Supported 64 bit ABIS", easyCpuMod.getStringSupported64bitABIS());
 
     for (String key : deviceDataMap.keySet()) {
       data.add(key + " : " + deviceDataMap.get(key));

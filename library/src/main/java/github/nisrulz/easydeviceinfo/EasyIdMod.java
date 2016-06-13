@@ -19,7 +19,7 @@ import java.util.UUID;
 /**
  * The type Easy di id mod.
  */
-public class EasyDIIdMod {
+public class EasyIdMod {
   private Context context;
 
   /**
@@ -27,7 +27,7 @@ public class EasyDIIdMod {
    *
    * @param context the context
    */
-  public EasyDIIdMod(Context context) {
+  public EasyIdMod(Context context) {
     this.context = context;
   }
 

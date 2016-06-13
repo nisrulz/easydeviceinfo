@@ -8,7 +8,7 @@ import android.os.Build;
 /**
  * The type Easy di app mod.
  */
-public class EasyDIAppMod {
+public class EasyAppMod {
 
   private Context context;
 
@@ -17,7 +17,7 @@ public class EasyDIAppMod {
    *
    * @param context the context
    */
-  public EasyDIAppMod(Context context) {
+  public EasyAppMod(Context context) {
     this.context = context;
   }
 

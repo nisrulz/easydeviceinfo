@@ -3,11 +3,12 @@ package github.nisrulz.easydeviceinfo;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Build;
+import android.os.SystemClock;
 
 /**
  * The type Easy di config mod.
  */
-public class EasyDIConfigMod {
+public class EasyConfigMod {
   /**
    * The constant RINGER_MODE_SILENT.
    */
@@ -27,7 +28,7 @@ public class EasyDIConfigMod {
    *
    * @param context the context
    */
-  public EasyDIConfigMod(Context context) {
+  public EasyConfigMod(Context context) {
     this.context = context;
   }
 
@@ -89,6 +90,30 @@ public class EasyDIConfigMod {
   public String getFormattedTime() {
 
     long millis = System.currentTimeMillis();
+    int sec = (int) (millis / 1000) % 60;
+    int min = (int) ((millis / (1000 * 60)) % 60);
+    int hr = (int) ((millis / (1000 * 60 * 60)) % 24);
+
+    return String.format("%02d:%02d:%02d", hr, min, sec);
+  }
+
+  /**
+   * Gets up time.
+   *
+   * @return the up time
+   */
+  public long getUpTime() {
+    return SystemClock.uptimeMillis();
+  }
+
+  /**
+   * Gets formatted up time.
+   *
+   * @return the formatted up time
+   */
+  public String getFormattedUpTime() {
+
+    long millis = SystemClock.uptimeMillis();
     int sec = (int) (millis / 1000) % 60;
     int min = (int) ((millis / (1000 * 60)) % 60);
     int hr = (int) ((millis / (1000 * 60 * 60)) % 24);

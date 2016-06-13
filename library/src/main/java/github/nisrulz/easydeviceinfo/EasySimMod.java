@@ -9,7 +9,7 @@ import java.util.Locale;
 /**
  * The type Easy di sim mod.
  */
-public class EasyDISimMod {
+public class EasySimMod {
   private final TelephonyManager tm;
   private Context context;
 
@@ -18,7 +18,7 @@ public class EasyDISimMod {
    *
    * @param context the context
    */
-  public EasyDISimMod(Context context) {
+  public EasySimMod(Context context) {
     this.context = context;
     tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
   }

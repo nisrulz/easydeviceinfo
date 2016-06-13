@@ -8,7 +8,7 @@ import android.os.BatteryManager;
 /**
  * The type Easy di battery mod.
  */
-public class EasyDIBatteryMod {
+public class EasyBatteryMod {
 
   private Context context;
   /**
@@ -42,7 +42,7 @@ public class EasyDIBatteryMod {
    *
    * @param context the context
    */
-  public EasyDIBatteryMod(Context context) {
+  public EasyBatteryMod(Context context) {
     this.context = context;
   }
 

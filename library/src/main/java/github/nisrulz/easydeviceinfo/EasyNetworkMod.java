@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * The type Easy di network mod.
  */
-public class EasyDINetworkMod {
+public class EasyNetworkMod {
   private Context context;
 
   /**
@@ -54,7 +54,7 @@ public class EasyDINetworkMod {
    *
    * @param context the context
    */
-  public EasyDINetworkMod(Context context) {
+  public EasyNetworkMod(Context context) {
     this.context = context;
   }
 

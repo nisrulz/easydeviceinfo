@@ -9,7 +9,7 @@ import android.view.WindowManager;
 /**
  * The type Easy di display mod.
  */
-public class EasyDIDisplayMod {
+public class EasyDisplayMod {
   private Context context;
 
   /**
@@ -17,7 +17,7 @@ public class EasyDIDisplayMod {
    *
    * @param context the context
    */
-  public EasyDIDisplayMod(Context context) {
+  public EasyDisplayMod(Context context) {
     this.context = context;
   }
 

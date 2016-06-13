@@ -15,7 +15,7 @@ import java.util.Locale;
 /**
  * The type Easy di device mod.
  */
-public class EasyDIDeviceMod {
+public class EasyDeviceMod {
   /**
    * The constant DEVICE_TYPE_WATCH.
    */
@@ -44,7 +44,7 @@ public class EasyDIDeviceMod {
    *
    * @param context the context
    */
-  public EasyDIDeviceMod(Context context) {
+  public EasyDeviceMod(Context context) {
     this.context = context;
     tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
   }
