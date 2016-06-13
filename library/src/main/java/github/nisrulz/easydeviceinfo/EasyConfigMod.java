@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.SystemClock;
+import java.util.Locale;
 
 /**
  * The type Easy di config mod.
@@ -21,7 +22,7 @@ public class EasyConfigMod {
    * The constant RINGER_MODE_VIBRATE.
    */
   public static final int RINGER_MODE_VIBRATE = 2;
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di config mod.
@@ -37,7 +38,7 @@ public class EasyConfigMod {
    *
    * @return the boolean
    */
-  public static boolean isRunningOnEmulator() {
+  public boolean isRunningOnEmulator() {
     return Build.BRAND.contains("generic")
         || Build.DEVICE.contains("generic")
         || Build.PRODUCT.contains("sdk")
@@ -94,7 +95,7 @@ public class EasyConfigMod {
     int min = (int) ((millis / (1000 * 60)) % 60);
     int hr = (int) ((millis / (1000 * 60 * 60)) % 24);
 
-    return String.format("%02d:%02d:%02d", hr, min, sec);
+    return String.format(Locale.US, "%02d:%02d:%02d", hr, min, sec);
   }
 
   /**
@@ -118,6 +119,6 @@ public class EasyConfigMod {
     int min = (int) ((millis / (1000 * 60)) % 60);
     int hr = (int) ((millis / (1000 * 60 * 60)) % 24);
 
-    return String.format("%02d:%02d:%02d", hr, min, sec);
+    return String.format(Locale.US, "%02d:%02d:%02d", hr, min, sec);
   }
 }

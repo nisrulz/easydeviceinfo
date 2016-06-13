@@ -10,7 +10,7 @@ import android.os.Build;
  */
 public class EasyAppMod {
 
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di app mod.

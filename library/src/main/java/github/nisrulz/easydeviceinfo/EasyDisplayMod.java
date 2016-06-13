@@ -10,7 +10,7 @@ import android.view.WindowManager;
  * The type Easy di display mod.
  */
 public class EasyDisplayMod {
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di display mod.

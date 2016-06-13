@@ -18,7 +18,7 @@ import java.util.List;
  * The type Easy di network mod.
  */
 public class EasyNetworkMod {
-  private Context context;
+  private final Context context;
 
   /**
    * The constant UNKNOWN.
@@ -68,7 +68,7 @@ public class EasyNetworkMod {
 
     WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     if (wifiManager != null) {
-      wifiState = wifiManager.isWifiEnabled() ? true : false;
+      wifiState = wifiManager.isWifiEnabled();
     }
     return wifiState;
   }

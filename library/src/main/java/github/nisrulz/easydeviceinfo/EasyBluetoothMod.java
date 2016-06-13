@@ -9,7 +9,7 @@ import android.content.pm.PackageManager;
  * The type Easy di bluetooth mod.
  */
 public class EasyBluetoothMod {
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di bluetooth mod.

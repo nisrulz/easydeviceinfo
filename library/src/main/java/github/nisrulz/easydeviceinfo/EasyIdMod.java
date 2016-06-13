@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
@@ -20,7 +21,7 @@ import java.util.UUID;
  * The type Easy di id mod.
  */
 public class EasyIdMod {
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di id mod.
@@ -49,13 +50,11 @@ public class EasyIdMod {
           }
 
           //Send Data to callback
-          callback.onSuccess(androidAdId, (adDoNotTrack && adDoNotTrack));
-        } catch (IOException e) {
+          callback.onSuccess(androidAdId, adDoNotTrack);
+        } catch (IOException | GooglePlayServicesNotAvailableException e) {
           // Unrecoverable error connecting to Google Play services (e.g.,
           // the old version of the service doesn't support getting AdvertisingId).
 
-        } catch (GooglePlayServicesNotAvailableException e) {
-          // Google Play services is not available entirely.
         } catch (GooglePlayServicesRepairableException e) {
           e.printStackTrace();
         }
@@ -100,7 +99,7 @@ public class EasyIdMod {
     final String system_ua = System.getProperty("http.agent");
     String result;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      result = new WebView(context).getSettings().getDefaultUserAgent(context) +
+      result = WebSettings.getDefaultUserAgent(context) +
           "__" + system_ua;
     } else {
       result = new WebView(context).getSettings().getUserAgentString() +
@@ -114,7 +113,7 @@ public class EasyIdMod {
    *
    * @return the psuedo unique id
    */
-  public String getPseudoUniqueID() {
+  @SuppressWarnings("deprecation") public String getPseudoUniqueID() {
     // If all else fails, if the user does have lower than API 9 (lower
     // than Gingerbread), has reset their phone or 'Secure.ANDROID_ID'
     // returns 'null', then simply the ID returned will be solely based

@@ -64,7 +64,7 @@ public class EasyDeviceMod {
    */
   public static final int ORIENTATION_UNKNOWN = 2;
   private final TelephonyManager tm;
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di device mod.

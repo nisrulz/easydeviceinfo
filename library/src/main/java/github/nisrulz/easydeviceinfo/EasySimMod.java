@@ -11,7 +11,7 @@ import java.util.Locale;
  */
 public class EasySimMod {
   private final TelephonyManager tm;
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di sim mod.

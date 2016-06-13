@@ -6,7 +6,7 @@ import android.content.Context;
  * The type Easy di memory mod.
  */
 public class EasyMemoryMod {
-  private Context context;
+  private final Context context;
 
   /**
    * Instantiates a new Easy di memory mod.

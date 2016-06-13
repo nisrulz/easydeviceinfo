@@ -7,7 +7,7 @@ import android.location.Location;
 import android.location.LocationManager;
 
 public class EasyLocationMod {
-  private Context context;
+  private final Context context;
 
   public EasyLocationMod(Context context) {
     this.context = context;
@@ -21,7 +21,7 @@ public class EasyLocationMod {
   @SuppressWarnings("MissingPermission") public double[] getLatLong() {
     boolean hasFineLocationPermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED ? true : false;
+            == PackageManager.PERMISSION_GRANTED;
     boolean isGPSEnabled;
     boolean isNetworkEnabled;
 

@@ -10,7 +10,7 @@ import android.os.BatteryManager;
  */
 public class EasyBatteryMod {
 
-  private Context context;
+  private final Context context;
   /**
    * The constant CHARGING_VIA_USB.
    */
