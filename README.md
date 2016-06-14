@@ -18,22 +18,18 @@ Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/ni
 # Including in your project
 - EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
 ```gradle
-compile 'com.github.nisrulz:easydeviceinfo:1.2.1'
+compile 'com.github.nisrulz:easydeviceinfo:2.0.0'
 ```
 
 # Usage Docs/Wiki
 
-+ Create an instance of ***EasyDeviceInfo*** class
-```java
-EasyDeviceInfo easyDeviceInfo=new EasyDeviceInfo(context);
-```
-+ Next call the required function on the ***easyDeviceInfo*** instance such as
-```java
-String formatted_time=easyDeviceInfo.getFormattedTime();
-String language=easyDeviceInfo.getLanguage();
-```
+Introducing **Mods** in **EasyDeviceInfo v2.0.0**!
 
-For more detailed usage, check the [Wiki](https://github.com/nisrulz/easydeviceinfo/wiki)
+***Mods*** or *Modules* are the new way to retrieve information. They let you get information in a very segmented manner and the best part is you only initialize the Mods you need in your project. Pretty rad , eh ?  I know. 
+
+The whole api has been reworked however the functions remain the same, hence now you need to migrate to v2.x.x from 1.x.x. 
+
+Checkout the new way to use the API in [Wiki](https://github.com/nisrulz/easydeviceinfo/wiki)
 
 # Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
