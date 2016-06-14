@@ -24,8 +24,8 @@ android {
   defaultConfig {
     minSdkVersion 9
     targetSdkVersion 23
-    versionCode 13
-    versionName "1.2.1"
+    versionCode 14
+    versionName "2.0.0"
   }
 
   lintOptions {
@@ -47,7 +47,7 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
-  compile 'com.google.android.gms:play-services-base:9.0.1'
+  compile 'com.google.android.gms:play-services-base:9.0.2'
 }
 
 
