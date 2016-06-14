@@ -27,40 +27,63 @@
         </ul>
       </header>
       <section>
-        <h1>
-<a id="easydeviceinfo" class="anchor" href="#easydeviceinfo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EasyDeviceInfo</h1>
+        <p><a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a> <a href="https://android-arsenal.com/api?level=9"><img src="https://img.shields.io/badge/API-9%2B-orange.svg?style=flat" alt="API"></a></p>
 
-<p><a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a> <a href="https://android-arsenal.com/details/1/3562"><img src="https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true" alt="Android Arsenal"></a> <a href="http://twitter.com/nisrulz"><img src="https://img.shields.io/badge/Twitter-@nisrulz-blue.svg?style=flat" alt="Twitter"></a></p>
+<p><a href="https://android-arsenal.com/details/1/3562"><img src="https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true" alt="Android Arsenal"></a> <a href="http://androidweekly.net/issues/issue-209"><img src="https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg" alt="Android Weekly"></a> <a href="https://github.com/snowdream/awesome-android#utility"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="awesome-android"></a></p>
+
+<p><a href="http://twitter.com/nisrulz"><img src="https://img.shields.io/badge/Twitter-@nisrulz-blue.svg?style=flat" alt="Twitter"></a></p>
 
 <p>Android library to get device information in a super easy way.</p>
 
-<p>Checkout the app using the same</p>
+<p>The library is built for simplicity and approachability. It not only eliminates most boilerplate code for dealing with device information, but also provides an easy and simple API to retrieve them.</p>
+
+<p>Demo App</p>
 
 <p><a href="https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo"><img src="https://github.com/nisrulz/easydeviceinfo/raw/master/img/google-play-store.png" alt="playstore"></a></p>
 
 <h1>
-<a id="integration" class="anchor" href="#integration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integration</h1>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Changelog</h1>
+
+<p>Starting with <code>1.1.8</code>, Changes exist in the <a href="https://github.com/nisrulz/easydeviceinfo/releases">releases tab</a>.</p>
+
+<h1>
+<a id="including-in-your-project" class="anchor" href="#including-in-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Including in your project</h1>
 
 <ul>
 <li>EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
 </ul>
 
-<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:1.2.0<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:2.0.0<span class="pl-pds">'</span></span></pre></div>
+
+<h1>
+<a id="usage-docswiki" class="anchor" href="#usage-docswiki" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage Docs/Wiki</h1>
+
+<p>Introducing <strong>Mods</strong> in <strong>EasyDeviceInfo</strong>!</p>
+
+<p><strong><em>Mods</em></strong> or <em>Modules</em> are the new way to retrieve information. They let you get information in a very segmented manner and the best part is you only initialize the Mods you need in your project. Pretty rad , eh ?  I know. </p>
+
+<p>The whole api has been reworked however the functions remain the same, hence now you need to migrate to v2.x.x from 1.x.x. </p>
 
 <h1>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
 
-<ul>
-<li>Create an instance of <strong><em>EasyDeviceInfo</em></strong> class</li>
-</ul>
+<p>Create an instance of  <strong>Easy*Mod</strong> class, i.e <code>EasyConfigMod</code></p>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyDeviceInfo</span> easyDeviceInfo<span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>(context);</pre></div>
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyConfigMod</span> easyConfigMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyConfigMod</span>(context);</pre></div>
 
-<ul>
-<li>Next call the required function on the <strong><em>easyDeviceInfo</em></strong> instance such as</li>
-</ul>
+<p>Next call an available function on the <strong><em>easyConfigMod</em></strong> instance such as</p>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> value<span class="pl-k">=</span>easyDeviceInfo<span class="pl-k">.</span>functionName();</pre></div>
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> time_in_ms<span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(easyConfigMod<span class="pl-k">.</span>getTime());</pre></div>
+
+<p>Now each <strong>Mods</strong> houses a certain set of functions you can use to retrieve device information. </p>
+
+<p>The list is as follows</p>
+
+<h4>
+<a id="easyidmod" class="anchor" href="#easyidmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyIdMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyIdMod</span> easyIdMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyIdMod</span>(context);</pre></div>
 
 <table>
 <thead>
@@ -72,18 +95,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Formatted Time (24Hr)</td>
-<td><code>getFormatedTime()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>Time (ms)</td>
-<td><code>getTime()</code></td>
-<td>long</td>
-</tr>
-<tr>
-<td>Language</td>
-<td><code>getLanguage()</code></td>
+<td>PseudoID</td>
+<td><code>getPseudoUniqueID()</code></td>
 <td>String</td>
 </tr>
 <tr>
@@ -91,24 +104,577 @@
 <td><code>getAndroidID()</code></td>
 <td>String</td>
 </tr>
+</tbody>
+</table>
+
+<p>More Functions</p>
+
+<ul>
+<li>
+<p>To get User-Agent, call it from the UI thread <strong>ONLY</strong></p>
+
+<div class="highlight highlight-source-java"><pre>  <span class="pl-smi">String</span> ua <span class="pl-k">=</span> easyDeviceMod<span class="pl-k">.</span>getUA()</pre></div>
+</li>
+<li>
+<p>To get GSF ID</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> gsf_id <span class="pl-k">=</span> getGSFID();</pre></div>
+
+<ul>
+<li>Include the required permission in your AndroidManifest.xml</li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>com.google.android.providers.gsf.permission.READ_GSERVICES<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</li>
+<li>
+<p>To get Email IDs</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//Get Google Email ID</span>
+<span class="pl-k">String</span>[] emailIds <span class="pl-k">=</span> easyIdMod<span class="pl-k">.</span>getAccounts();
+  <span class="pl-smi">StringBuilder</span> emailString <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+  <span class="pl-k">if</span> (emailIds <span class="pl-k">!=</span> <span class="pl-c1">null</span> <span class="pl-k">&amp;&amp;</span> emailIds<span class="pl-k">.</span>length <span class="pl-k">&gt;</span> <span class="pl-c1">0</span>) {
+    <span class="pl-k">for</span> (<span class="pl-smi">String</span> e <span class="pl-k">:</span> emailIds) {
+      emailString<span class="pl-k">.</span>append(e)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+    }
+  } <span class="pl-k">else</span> {
+    emailString<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span>-<span class="pl-pds">"</span></span>);
+  }
+
+<span class="pl-smi">String</span> emailId<span class="pl-k">=</span>emailString<span class="pl-k">.</span>toString();</pre></div>
+
+<ul>
+<li>Include the required permission in your AndroidManifest.xml</li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.GET_ACCOUNTS<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</li>
+<li>
+<p>To get Advertiser's ID</p>
+
+<div class="highlight highlight-source-java"><pre>   <span class="pl-c">//Get Android Advertiser ID</span>
+   easyIdMod<span class="pl-k">.</span>getAndroidAdId(<span class="pl-smi">MainActivity</span><span class="pl-k">.</span><span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">EasyIdMod</span>.<span class="pl-smi">AdIdentifierCallback</span>() {
+     <span class="pl-k">@Override</span>
+     <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onSuccess</span>(<span class="pl-smi">String</span> <span class="pl-v">adIdentifier</span>, <span class="pl-k">boolean</span> <span class="pl-v">adDonotTrack</span>) {
+        <span class="pl-c">// Do something with the advertiser's ID</span>
+     }
+});</pre></div>
+</li>
+</ul>
+
+<h4>
+<a id="easyconfigmod" class="anchor" href="#easyconfigmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyConfigMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyConfigMod</span> easyConfigMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyConfigMod</span>(context);</pre></div>
+
+<table>
+<thead>
 <tr>
-<td>IMSI</td>
-<td><code>getIMSI()</code></td>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Is running on emulator</td>
+<td><code>isRunningOnEmulator()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>Time (ms)</td>
+<td><code>getTime()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Formatted Time (24Hr)</td>
+<td><code>getFormattedTime()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>Pseudo ID</td>
-<td><code>getPsuedoUniqueID()</code></td>
+<td>Up Time (ms)</td>
+<td><code>getUpTime()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Formatted Up Time (24Hr)</td>
+<td><code>getFormattedUpTime()</code></td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<p>Functions which return multiple results</p>
+
+<ul>
+<li>
+<p>Device Ringer Mode</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> ringer_mode <span class="pl-k">=</span>easyConfigMod<span class="pl-k">.</span>getDeviceRingerMode();</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (ringer_mode) {
+    <span class="pl-k">case</span> <span class="pl-smi">EasyConfigMod</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_NORMAL</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Ringer mode : Normal<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyConfigMod</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_VIBRATE</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Ringer mode : Vibrate<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyConfigMod</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_SILENT</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Ringer mode : Silent<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">default</span><span class="pl-k">:</span>
+      <span class="pl-c">//do nothing</span>
+      <span class="pl-k">break</span>;
+  }</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyConfigMod.RINGER_MODE_NORMAL</code></li>
+<li><code>EasyConfigMod.RINGER_MODE_VIBRATE</code></li>
+<li><code>EasyConfigMod.RINGER_MODE_SILENT</code></li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="easynetworkmod" class="anchor" href="#easynetworkmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyNetworkMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyNetworkMod</span> easyNetworkMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyNetworkMod</span>(context);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WiFi State</td>
+<td><code>isNetworkAvailable()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>WiFi State</td>
+<td><code>isWifiEnabled()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>IPv4 Address</td>
+<td><code>getIPv4Address()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>Device Serial Number</td>
-<td><code>getSerial()</code></td>
+<td>IPv6 Address</td>
+<td><code>getIPv6Address()</code></td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>
+<p>To get WiFi MAC Address</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> wifi_mac <span class="pl-k">=</span> easyNetworkMod<span class="pl-k">.</span>getWifiMAC();</pre></div>
+
+<ul>
+<li>Include the required permission in your AndroidManifest.xml</li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_WIFI_STATE<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</li>
+</ul>
+
+<p>Functions which return multiple results</p>
+
+<ul>
+<li>
+<p>To get network type</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> network_type <span class="pl-k">=</span>easyNetworkMod<span class="pl-k">.</span>getNetworkType();</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> () {
+  <span class="pl-k">case</span> <span class="pl-smi">EasyNetworkMod</span><span class="pl-c1"><span class="pl-k">.</span>CELLULAR_UNKNOWN</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Network Type : Unknown<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">case</span> <span class="pl-smi">EasyNetworkMod</span><span class="pl-c1"><span class="pl-k">.</span>CELLULAR_UNIDENTIFIED_GEN</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Network Type : Cellular Unidentified Generation<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">case</span> <span class="pl-smi">EasyNetworkMod</span><span class="pl-c1"><span class="pl-k">.</span>CELLULAR_2G</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Network Type : Cellular 2G<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">case</span> <span class="pl-smi">EasyNetworkMod</span><span class="pl-c1"><span class="pl-k">.</span>CELLULAR_3G</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Network Type : Cellular 3G<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">case</span> <span class="pl-smi">EasyNetworkMod</span><span class="pl-c1"><span class="pl-k">.</span>CELLULAR_4G</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Network Type : Cellular 4G<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">case</span> <span class="pl-smi">EasyNetworkMod</span><span class="pl-c1"><span class="pl-k">.</span>WIFI_WIFIMAX</span><span class="pl-k">:</span>
+    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Network Type : WIFI<span class="pl-pds">"</span></span>);
+    <span class="pl-k">break</span>;
+  <span class="pl-k">default</span><span class="pl-k">:</span>
+    <span class="pl-c">// Do nothing</span>
+    <span class="pl-k">break</span>;
+}</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyNetworkMod.CELLULAR_UNKNOWN</code></li>
+<li><code>EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN</code></li>
+<li><code>EasyNetworkMod.CELLULAR_2G</code></li>
+<li><code>EasyNetworkMod.CELLULAR_3G</code></li>
+<li><code>EasyNetworkMod.CELLULAR_4G</code></li>
+<li><code>EasyNetworkMod.WIFI_WIFIMAX</code></li>
+</ul>
+</li>
+<li>
+<p>Include the required permission in your AndroidManifest.xml</p>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_NETWORK_STATE<span class="pl-pds">"</span></span>/&gt;
+&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.INTERNET<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</li>
+</ul>
+
+<h4>
+<a id="easymemorymod" class="anchor" href="#easymemorymod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyMemoryMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyMemoryMod</span> easyMemoryMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyMemoryMod</span>(context);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total RAM(Mb)</td>
+<td><code>getTotalRAM()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Available Internal Memory(Mb)</td>
+<td><code>getAvailableInternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Available External Memory(Mb)</td>
+<td><code>getAvailableExternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Total Internal Memory(Mb)</td>
+<td><code>getTotalInternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Total External Memory(Mb)</td>
+<td><code>getTotalExternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="easyappmod" class="anchor" href="#easyappmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyAppMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyAppMod</span> easyAppMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyAppMod</span>(context);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity Name</td>
+<td><code>getActivityName()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>SIM Serial Number</td>
-<td><code>getSIMSerial()</code></td>
+<td>Package Name</td>
+<td><code>getPackageName()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>AppStore</td>
+<td><code>getStore()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>App Name</td>
+<td><code>getAppName()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>App Version</td>
+<td><code>getAppVersion()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>App Version Code</td>
+<td><code>getAppVersionCode()</code></td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="easybatterymod" class="anchor" href="#easybatterymod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyBatteryMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyBatteryMod</span> easyBatteryMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyBatteryMod</span>(context);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Battery Percentage (%)</td>
+<td><code>getBatteryPercentage()</code></td>
+<td>int</td>
+</tr>
+<tr>
+<td>Is Device Charging</td>
+<td><code>isDeviceCharging()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>Technology used by battery</td>
+<td><code>getBatteryTechnology()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Temprature (Deg Celsius)</td>
+<td><code>getBatteryTemprature()</code></td>
+<td>float</td>
+</tr>
+<tr>
+<td>Voltage (mV)</td>
+<td><code>getBatteryVoltage()</code></td>
+<td>int</td>
+</tr>
+<tr>
+<td>Is battery present</td>
+<td><code>isBatteryPresent()</code></td>
+<td>boolean</td>
+</tr>
+</tbody>
+</table>
+
+<p>Functions which return multiple results</p>
+
+<ul>
+<li>
+<p>Battery Health</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> battery_health <span class="pl-k">=</span>easyBatteryMod<span class="pl-k">.</span>getBatteryHealth();</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (battery_health) {
+    <span class="pl-k">case</span> <span class="pl-smi">EasyBatteryMod</span><span class="pl-c1"><span class="pl-k">.</span>HEALTH_GOOD</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Battery health : Good<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyBatteryMod</span><span class="pl-c1"><span class="pl-k">.</span>HEALTH_HAVING_ISSUES</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Battery health : Having issues<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">default</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Battery health : Having issues<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+  }</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyBatteryMod.HEALTH_GOOD</code></li>
+<li><code>EasyBatteryMod.HEALTH_HAVING_ISSUES</code></li>
+</ul>
+</li>
+<li>
+<p>Charging Source</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> charging_source <span class="pl-k">=</span>easyBatteryMod<span class="pl-k">.</span>getChargingSource();</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (charging_source) {
+    <span class="pl-k">case</span> <span class="pl-smi">EasyBatteryMod</span><span class="pl-c1"><span class="pl-k">.</span>CHARGING_VIA_AC</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Device charging via AC<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyBatteryMod</span><span class="pl-c1"><span class="pl-k">.</span>CHARGING_VIA_USB</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Device charging via USB<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyBatteryMod</span><span class="pl-c1"><span class="pl-k">.</span>CHARGING_VIA_WIRELESS</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Device charging via Wireless<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyBatteryMod</span><span class="pl-c1"><span class="pl-k">.</span>CHARGING_VIA_UNKNOWN_SOURCE</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Device charging via Unknown Source<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">default</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Device charging via Unknown Source<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+  }</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyBatteryMod.CHARGING_VIA_AC:</code></li>
+<li><code>EasyBatteryMod.CHARGING_VIA_USB</code></li>
+<li><code>EasyBatteryMod.CHARGING_VIA_WIRELESS</code></li>
+<li><code>EasyBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE</code></li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="easybluetoothmod" class="anchor" href="#easybluetoothmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyBluetoothMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyBluetoothMod</span> easyBluetoothMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyBluetoothMod</span>(context);</pre></div>
+
+<ul>
+<li>
+<p>To get Bluetooth MAC Address</p>
+
+<div class="highlight highlight-source-java"><pre>
+<span class="pl-smi">String</span> bluetooth_mac <span class="pl-k">=</span> easyBluetoothMod<span class="pl-k">.</span>getBluetoothMAC();</pre></div>
+
+<ul>
+<li>Include the required permission in your AndroidManifest.xml</li>
+</ul>
+
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.BLUETOOTH<span class="pl-pds">"</span></span>/&gt;</pre></div>
+</li>
+</ul>
+
+<h4>
+<a id="easycpumod" class="anchor" href="#easycpumod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyCpuMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre> <span class="pl-smi">EasyCpuMod</span> easyCpuMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyCpuMod</span>();</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supported ABIS</td>
+<td><code>getStringSupportedABIS()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Supported 32 bit ABIS</td>
+<td><code>getStringSupported32bitABIS()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Supported 64 bit ABIS</td>
+<td><code>getStringSupported64bitABIS()</code></td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
+
+<p>Functions which return multiple results</p>
+
+<ul>
+<li>To get Supported ABIS</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> supportABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyCpuMod<span class="pl-k">.</span>getSupportedABIS()) {
+       supportABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+   }
+
+<span class="pl-smi">String</span> supportedABI<span class="pl-k">=</span>supportABI<span class="pl-k">.</span>toString();</pre></div>
+
+<ul>
+<li>To get Supported 32 Bit ABIS</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> support32ABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyCpuMod<span class="pl-k">.</span>getSupported32bitABIS()) {
+       support32ABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+   }
+
+<span class="pl-smi">String</span> supported32ABI<span class="pl-k">=</span>support32ABI<span class="pl-k">.</span>toString();</pre></div>
+
+<ul>
+<li>To get Supported 64 Bit ABIS</li>
+</ul>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> support64ABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
+   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyCpuMod<span class="pl-k">.</span>getSupported64bitABIS()) {
+       support64ABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
+   }
+
+<span class="pl-smi">String</span> supported64ABI<span class="pl-k">=</span>support64ABI<span class="pl-k">.</span>toString();</pre></div>
+
+<h4>
+<a id="easydevicemod" class="anchor" href="#easydevicemod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyDeviceMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre> <span class="pl-smi">EasyDeviceMod</span> easyDeviceMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyDeviceMod</span>(context);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Screen Display ID</td>
+<td><code>getScreenDisplayID()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Version Codename</td>
+<td><code>getBuildVersionCodename()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Version Incremental</td>
+<td><code>getBuildVersionIncremental()</code></td>
+<td>String</td>
+</tr>
+<tr>
+<td>Build Version SDK</td>
+<td><code>getBuildVersionSDK()</code></td>
+<td>int</td>
+</tr>
+<tr>
+<td>Build ID</td>
+<td><code>getBuildID()</code></td>
 <td>String</td>
 </tr>
 <tr>
@@ -132,23 +698,8 @@
 <td>String</td>
 </tr>
 <tr>
-<td>Country</td>
-<td><code>getCountry()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>Display Resolution</td>
-<td><code>getResolution()</code></td>
-<td>String</td>
-</tr>
-<tr>
 <td>Phone Number</td>
 <td><code>getPhoneNo()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>ISP/Carrier</td>
-<td><code>getCarrier()</code></td>
 <td>String</td>
 </tr>
 <tr>
@@ -182,29 +733,9 @@
 <td>String</td>
 </tr>
 <tr>
-<td>IP Address</td>
-<td><code>getIPAddress(true)</code></td>
-<td>String</td>
-</tr>
-<tr>
 <td>Fingerprint</td>
 <td><code>getFingerprint()</code></td>
 <td>String</td>
-</tr>
-<tr>
-<td>Screen Density</td>
-<td><code>getDensity()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>Installer Store</td>
-<td><code>getStore()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>Is running on emulator</td>
-<td><code>isRunningOnEmulator()</code></td>
-<td>boolean</td>
 </tr>
 <tr>
 <td>Is Device rooted</td>
@@ -241,154 +772,192 @@
 <td><code>getBuildVersionRelease()</code></td>
 <td>String</td>
 </tr>
+</tbody>
+</table>
+
+<p>Functions which return multiple results</p>
+
+<ul>
+<li>
+<p>To get device type</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> device_type <span class="pl-k">=</span> easyDeviceMod<span class="pl-k">.</span>getDeviceType(activity);</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (device_type) {
+   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_WATCH</span><span class="pl-k">:</span>
+     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>watch<span class="pl-pds">"</span></span>);
+     <span class="pl-k">break</span>;
+   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_PHONE</span><span class="pl-k">:</span>
+     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span>);
+     <span class="pl-k">break</span>;
+   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_PHABLET</span><span class="pl-k">:</span>
+     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>phablet<span class="pl-pds">"</span></span>);
+     <span class="pl-k">break</span>;
+   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_TABLET</span><span class="pl-k">:</span>
+     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>tablet<span class="pl-pds">"</span></span>);
+     <span class="pl-k">break</span>;
+   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_TV</span><span class="pl-k">:</span>
+     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>tv<span class="pl-pds">"</span></span>);
+     <span class="pl-k">break</span>;
+}</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyDeviceMod.DEVICE_TYPE_WATCH</code></li>
+<li><code>EasyDeviceMod.DEVICE_TYPE_PHONE</code></li>
+<li><code>EasyDeviceMod.DEVICE_TYPE_PHABLET</code></li>
+<li><code>EasyDeviceMod.DEVICE_TYPE_TABLET</code></li>
+<li><code>EasyDeviceMod.DEVICE_TYPE_TV</code></li>
+</ul>
+</li>
+<li>
+<p>To get phone type</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> phone_type <span class="pl-k">=</span> easyDeviceMod<span class="pl-k">.</span>getPhoneType();</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (phone_type) {
+    <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>PHONE_TYPE_CDMA</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Phone Type : CDMA<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>PHONE_TYPE_GSM</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Phone Type : GSM<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>PHONE_TYPE_NONE</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Phone Type : None<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">default</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Phone Type : Unknown<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+  }</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyDeviceMod.PHONE_TYPE_CDMA</code></li>
+<li><code>EasyDeviceMod.PHONE_TYPE_GSM</code></li>
+<li><code>EasyDeviceMod.PHONE_TYPE_NONE</code></li>
+</ul>
+</li>
+<li>
+<p>To get device orientation</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> device_orientation <span class="pl-k">=</span> easyDeviceMod<span class="pl-k">.</span>getOrientation(activity)</pre></div>
+
+<p>Then match it against the constants provided</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (device_orientation) {
+    <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>ORIENTATION_LANDSCAPE</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Orientation : Landscape<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>ORIENTATION_PORTRAIT</span><span class="pl-k">:</span>
+     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Orientation : Portrait<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceMod</span><span class="pl-c1"><span class="pl-k">.</span>ORIENTATION_UNKNOWN</span><span class="pl-k">:</span>
+     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Orientation : Unknown<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+    <span class="pl-k">default</span><span class="pl-k">:</span>
+      <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Orientation : Unknown<span class="pl-pds">"</span></span>);
+      <span class="pl-k">break</span>;
+  }</pre></div>
+
+<p>where constants available are </p>
+
+<ul>
+<li><code>EasyDeviceMod.ORIENTATION_LANDSCAPE</code></li>
+<li><code>EasyDeviceMod.ORIENTATION_PORTRAIT</code></li>
+<li><code>EasyDeviceMod.ORIENTATION_UNKNOWN</code></li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="easydisplaymod" class="anchor" href="#easydisplaymod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyDisplayMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre> <span class="pl-smi">EasyDisplayMod</span> easyDisplayMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyDisplayMod</span>(context);</pre></div>
+
+<table>
+<thead>
 <tr>
-<td>Battery Percentage</td>
-<td><code>getBatteryPercentage()</code></td>
-<td>int</td>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td>Is Device charging</td>
-<td><code>isDeviceCharging()</code></td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>Is Device charging via USB</td>
-<td><code>isDeviceChargingUSB()</code></td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>Is Device charging via AC</td>
-<td><code>isDeviceChargingAC()</code></td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>WiFi State</td>
-<td><code>isWifiEnabled()</code></td>
-<td>boolean</td>
-</tr>
-<tr>
-<td>Screen Display ID</td>
-<td><code>getScreenDisplayID()</code></td>
+<td>Display Resolution</td>
+<td><code>getResolution()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>Build Version Codename</td>
-<td><code>getBuildVersionCodename()</code></td>
+<td>Screen Density</td>
+<td><code>getDensity()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>Build Version Incremental</td>
-<td><code>getBuildVersionIncremental()</code></td>
+<td>Display XY Coordinate</td>
+<td><code>getDisplayXYCoordinates(motionevent)</code></td>
+<td>int[]</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="easysimmod" class="anchor" href="#easysimmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasySimMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasySimMod</span> easySimMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasySimMod</span>(context);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IMSI</td>
+<td><code>getIMSI()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>Build Version SDK</td>
-<td><code>getBuildVersionSDK()</code></td>
-<td>int</td>
-</tr>
-<tr>
-<td>Build ID</td>
-<td><code>getBuildID()</code></td>
+<td>SIM Serial Number</td>
+<td><code>getSIMSerial()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>Supported ABIS</td>
-<td><code>getStringSupportedABIS()</code></td>
+<td>Country</td>
+<td><code>getCountry()</code></td>
 <td>String</td>
 </tr>
 <tr>
-<td>Supported 32 bit ABIS</td>
-<td><code>getStringSupported32bitABIS()</code></td>
-<td>String</td>
-</tr>
-<tr>
-<td>Supported 64 bit ABIS</td>
-<td><code>getStringSupported64bitABIS()</code></td>
+<td>Carrier</td>
+<td><code>getCarrier()</code></td>
 <td>String</td>
 </tr>
 </tbody>
 </table>
 
-<h2></h2>
+<h4>
+<a id="easylocationmod" class="anchor" href="#easylocationmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyLocationMod</strong>
+</h4>
 
-<h3>
-<a id="methods-that-need-you-to-call-it-from-the-ui-thread-only" class="anchor" href="#methods-that-need-you-to-call-it-from-the-ui-thread-only" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods that need you to call it from the UI thread only</h3>
-
-<ul>
-<li>
-<p>To get User-Agent</p>
-
-<div class="highlight highlight-source-java"><pre>  <span class="pl-smi">String</span> ua <span class="pl-k">=</span> getUA()</pre></div>
-</li>
-</ul>
-
-<h3>
-<a id="methods-that-need-you-to-declare-permission-in-androidmanifestxml" class="anchor" href="#methods-that-need-you-to-declare-permission-in-androidmanifestxml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods that need you to declare permission in <code>AndroidManifest.xml</code>
-</h3>
+<div class="highlight highlight-source-java"><pre> <span class="pl-smi">EasyLocationMod</span> easyLocationMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyLocationMod</span>(context);</pre></div>
 
 <ul>
-<li>
-<p>To get IMEI</p>
-
-<div class="highlight highlight-source-java"><pre>  <span class="pl-smi">String</span> imei <span class="pl-k">=</span> getIMEI()</pre></div>
-
-<ul>
-<li>Include the required permission in your AndroidManifest.xml</li>
-</ul>
-
-<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.READ_PHONE_STATE<span class="pl-pds">"</span></span>/&gt;</pre></div>
-</li>
-<li>
-<p>To check the type of network or checking is internet available</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> network_type <span class="pl-k">=</span> getNetworkType();
-<span class="pl-k">boolean</span> is_network_available <span class="pl-k">=</span> isNetworkAvailable();</pre></div>
-
-<ul>
-<li>Include the required permission in your AndroidManifest.xml</li>
-</ul>
-
-<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_NETWORK_STATE<span class="pl-pds">"</span></span>/&gt;
-&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.INTERNET<span class="pl-pds">"</span></span>/&gt;</pre></div>
-</li>
-<li>
-<p>To get GSF ID</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> gsf_id <span class="pl-k">=</span> getGSFID();</pre></div>
-
-<ul>
-<li>Include the required permission in your AndroidManifest.xml</li>
-</ul>
-
-<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>com.google.android.providers.gsf.permission.READ_GSERVICES<span class="pl-pds">"</span></span>/&gt;</pre></div>
-</li>
-<li>
-<p>To get WiFi MAC Address</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> wifi_mac <span class="pl-k">=</span> getWifiMAC();</pre></div>
-
-<ul>
-<li>Include the required permission in your AndroidManifest.xml</li>
-</ul>
-
-<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_WIFI_STATE<span class="pl-pds">"</span></span>/&gt;</pre></div>
-</li>
-<li>
-<p>To get Bluetooth MAC Address</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> bluetooth_mac <span class="pl-k">=</span> getBluetoothMAC();</pre></div>
-
-<ul>
-<li>Include the required permission in your AndroidManifest.xml</li>
-</ul>
-
-<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.BLUETOOTH<span class="pl-pds">"</span></span>/&gt;</pre></div>
-</li>
 <li>
 <p>To get Latitude-Longitude (Geo)</p>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-c">//Get Lat-Long</span>
-<span class="pl-k">double</span>[] l <span class="pl-k">=</span> easyDeviceInfo<span class="pl-k">.</span>getLatLong();
+<span class="pl-k">double</span>[] l <span class="pl-k">=</span> easyLocationMod<span class="pl-k">.</span>getLatLong();
 <span class="pl-smi">String</span> lat <span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(l[<span class="pl-c1">0</span>]);
 <span class="pl-smi">String</span> lon <span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(l[<span class="pl-c1">1</span>]);</pre></div>
 
@@ -398,137 +967,30 @@
 
 <div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_FINE_LOCATION<span class="pl-pds">"</span></span>/&gt;</pre></div>
 </li>
-<li>
-<p>To get Email IDs</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-c">//Get Google Email ID</span>
-<span class="pl-smi">StringBuilder</span> emailIDs <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
-    <span class="pl-k">for</span> (<span class="pl-smi">String</span> eid <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getAccounts(<span class="pl-v">this</span>)) {
-            emailIDs<span class="pl-k">.</span>append(eid)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
-        };
-
-<span class="pl-smi">String</span> emailId<span class="pl-k">=</span>emailIDs<span class="pl-k">.</span>toString();</pre></div>
-
-<ul>
-<li>Include the required permission in your AndroidManifest.xml</li>
 </ul>
 
-<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.GET_ACCOUNTS<span class="pl-pds">"</span></span>/&gt;</pre></div>
-</li>
-</ul>
+<h4>
+<a id="easydeviceinfo" class="anchor" href="#easydeviceinfo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyDeviceInfo</strong>
+</h4>
 
-<h3>
-<a id="other-multi-value-details-can-be-retrieved-as-below" class="anchor" href="#other-multi-value-details-can-be-retrieved-as-below" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Other multi-value details can be retrieved as below</h3>
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyDeviceInfo</span> easyDeviceInfo <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>(context);</pre></div>
 
-<ul>
-<li>To get Supported ABIS</li>
-</ul>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> supportABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
-   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getSupportedABIS()) {
-       supportABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
-   }
-
-<span class="pl-smi">String</span> supportedABI<span class="pl-k">=</span>supportABI<span class="pl-k">.</span>toString();</pre></div>
-
-<ul>
-<li>To get Supported 32 Bit ABIS</li>
-</ul>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> support32ABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
-   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getSupported32bitABIS()) {
-       support32ABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
-   }
-
-<span class="pl-smi">String</span> supported32ABI<span class="pl-k">=</span>support32ABI<span class="pl-k">.</span>toString();</pre></div>
-
-<ul>
-<li>To get Supported 64 Bit ABIS</li>
-</ul>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">StringBuilder</span> support64ABI <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">StringBuilder</span>();
-   <span class="pl-k">for</span> (<span class="pl-smi">String</span> abis <span class="pl-k">:</span> easyDeviceInfo<span class="pl-k">.</span>getSupported64bitABIS()) {
-       support64ABI<span class="pl-k">.</span>append(abis)<span class="pl-k">.</span>append(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\n</span><span class="pl-pds">"</span></span>);
-   }
-
-<span class="pl-smi">String</span> supported64ABI<span class="pl-k">=</span>support64ABI<span class="pl-k">.</span>toString();</pre></div>
-
-<ul>
-<li>To get Advertiser's ID</li>
-</ul>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-c">//Get Android Advertiser ID</span>
-easyDeviceInfo<span class="pl-k">.</span>getAndroidAdId(<span class="pl-smi">MainActivity</span><span class="pl-k">.</span><span class="pl-v">this</span>, <span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>.<span class="pl-smi">AdIdentifierCallback</span>() {
-    <span class="pl-k">@Override</span>
-    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onSuccess</span>(<span class="pl-smi">String</span> <span class="pl-v">adIdentifier</span>, <span class="pl-k">boolean</span> <span class="pl-v">adDonotTrack</span>) {
-        <span class="pl-c">// Do something with the advertiser's ID</span>
-    }
-});</pre></div>
-
-<ul>
-<li>
-<p>To get device ringer mode</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> device_ringer_mode <span class="pl-k">=</span> easyDeviceInfo<span class="pl-k">.</span>getDeviceRingerMode();</pre></div>
-
-<p>Then match it against the constants provided</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (device_ringer_mode) {
-  <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_NORMAL</span><span class="pl-k">:</span>
-    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>normal<span class="pl-pds">"</span></span>);
-    <span class="pl-k">break</span>;
-  <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_VIBRATE</span><span class="pl-k">:</span>
-    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>vibrate<span class="pl-pds">"</span></span>);
-    <span class="pl-k">break</span>;
-  <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>RINGER_MODE_SILENT</span><span class="pl-k">:</span>
-    <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>silent<span class="pl-pds">"</span></span>);
-    <span class="pl-k">break</span>;
-}</pre></div>
-
-<p>where constants available are </p>
-
-<ul>
-<li><code>EasyDeviceInfo.RINGER_MODE_NORMAL</code></li>
-<li><code>EasyDeviceInfo.RINGER_MODE_VIBRATE</code></li>
-<li><code>EasyDeviceInfo.RINGER_MODE_SILENT</code></li>
-</ul>
-</li>
-<li>
-<p>To get device type</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-k">int</span> device_type <span class="pl-k">=</span>easyDeviceInfo<span class="pl-k">.</span>getDeviceType(activity)</pre></div>
-
-<p>Then match it against the constants provided</p>
-
-<div class="highlight highlight-source-java"><pre><span class="pl-k">switch</span> (device_type) {
-   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_WATCH</span><span class="pl-k">:</span>
-     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>watch<span class="pl-pds">"</span></span>);
-     <span class="pl-k">break</span>;
-   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_PHONE</span><span class="pl-k">:</span>
-     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>phone<span class="pl-pds">"</span></span>);
-     <span class="pl-k">break</span>;
-   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_PHABLET</span><span class="pl-k">:</span>
-     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>phablet<span class="pl-pds">"</span></span>);
-     <span class="pl-k">break</span>;
-   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_TABLET</span><span class="pl-k">:</span>
-     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>tablet<span class="pl-pds">"</span></span>);
-     <span class="pl-k">break</span>;
-   <span class="pl-k">case</span> <span class="pl-smi">EasyDeviceInfo</span><span class="pl-c1"><span class="pl-k">.</span>DEVICE_TYPE_TV</span><span class="pl-k">:</span>
-     <span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>tv<span class="pl-pds">"</span></span>);
-     <span class="pl-k">break</span>;
-}</pre></div>
-
-<p>where constants available are </p>
-
-<ul>
-<li><code>EasyDeviceInfo.DEVICE_TYPE_WATCH</code></li>
-<li><code>EasyDeviceInfo.DEVICE_TYPE_PHONE</code></li>
-<li><code>EasyDeviceInfo.DEVICE_TYPE_PHABLET</code></li>
-<li><code>EasyDeviceInfo.DEVICE_TYPE_TABLET</code></li>
-<li><code>EasyDeviceInfo.DEVICE_TYPE_TV</code></li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Library version</td>
+<td><code>getLibraryVersion()</code></td>
+<td>String</td>
+</tr>
+</tbody>
+</table>
 
 <h1>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
