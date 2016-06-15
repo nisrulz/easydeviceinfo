@@ -193,6 +193,11 @@ public class MainActivity extends AppCompatActivity {
     // App Mod
     EasyAppMod easyAppMod = new EasyAppMod(this);
     deviceDataMap.put("Installer Store", easyAppMod.getStore());
+    deviceDataMap.put("App Name", easyAppMod.getAppName());
+    deviceDataMap.put("Package Name", easyAppMod.getPackageName());
+    deviceDataMap.put("Activity Name", easyAppMod.getActivityName());
+    deviceDataMap.put("App version", easyAppMod.getAppVersion());
+    deviceDataMap.put("App versioncode", easyAppMod.getAppVersionCode());
 
     //Network Mod
     EasyNetworkMod easyNetworkMod = new EasyNetworkMod(this);
