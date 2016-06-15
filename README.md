@@ -1,17 +1,19 @@
 ![Image](https://github.com/nisrulz/easydeviceinfo/blob/master/img/github_banner.png)
 
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo) [![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A1.2.0"><img src="https://img.shields.io/badge/Methods and size-core: 192 | deps: 15687 | 18 KB-e91e63.svg"/></a>
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo) [![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true)](https://android-arsenal.com/details/1/3562) [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg)](http://androidweekly.net/issues/issue-209) [![awesome-android](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/snowdream/awesome-android#utility)
 
-[![Twitter](https://img.shields.io/badge/Twitter-@nisrulz-blue.svg?style=flat)](http://twitter.com/nisrulz)
+[![Twitter Follow](https://img.shields.io/twitter/follow/nisrulz.svg?style=social)](https://twitter.com/nisrulz)
+
 
 Android library to get device information in a super easy way.
 
 The library is built for simplicity and approachability. It not only eliminates most boilerplate code for dealing with device information, but also provides an easy and simple API to retrieve them.
 
 Demo App
+
 [![playstore](https://github.com/nisrulz/easydeviceinfo/raw/master/img/google-play-store.png)](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
 
 # Changelog
