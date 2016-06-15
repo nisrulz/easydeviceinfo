@@ -27,8 +27,8 @@ public class EasyDeviceInfo {
    */
   public String getLibraryVersion() {
     String name = "EasyDeviceInfo";
-    String version = "v2.0.0";
-    int versionCode = 14;
+    String version = "v2.0.1";
+    int versionCode = 15;
     return name + " : " + version + " [build-" + versionCode+"]";
   }
 }

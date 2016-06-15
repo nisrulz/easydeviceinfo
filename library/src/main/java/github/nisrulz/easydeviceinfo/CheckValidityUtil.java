@@ -29,8 +29,8 @@ class CheckValidityUtil {
    */
   static String handleIllegalCharacterInResult(String result) {
     String tempResult = result;
-    if (result.indexOf(" ") > 0) {
-      tempResult = result.replaceAll(" ", "_");
+    if (tempResult!=null && tempResult.indexOf(" ") > 0) {
+      tempResult = tempResult.replaceAll(" ", "_");
     }
     return tempResult;
   }
@@ -43,7 +43,7 @@ class CheckValidityUtil {
    */
   static String checkValidData(String data) {
     String tempData = data;
-    if (data == null || data.length() == 0) {
+    if (tempData == null || tempData.length() == 0) {
       tempData = "NA";
     }
     return tempData;
@@ -57,7 +57,7 @@ class CheckValidityUtil {
    */
   static String[] checkValidData(String[] data) {
     String[] tempData = data;
-    if (data == null || data.length == 0) {
+    if (tempData == null || tempData.length == 0) {
       tempData = new String[] { "-" };
     }
     return tempData;
