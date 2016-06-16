@@ -130,7 +130,7 @@ public class EasyBatteryMod {
    *
    * @return the battery temprature
    */
-  public float getBatteryTemprature() {
+  public float getBatteryTemperature() {
     float temp = 0.0f;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {

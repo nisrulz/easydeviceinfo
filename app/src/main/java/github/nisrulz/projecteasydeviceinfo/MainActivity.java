@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Battery present", String.valueOf(easyBatteryMod.isBatteryPresent()));
     deviceDataMap.put("Battery technology", String.valueOf(easyBatteryMod.getBatteryTechnology()));
     deviceDataMap.put("Battery temperature",
-        String.valueOf(easyBatteryMod.getBatteryTemprature()) + " deg C");
+        String.valueOf(easyBatteryMod.getBatteryTemperature()) + " deg C");
     deviceDataMap.put("Battery voltage",
         String.valueOf(easyBatteryMod.getBatteryVoltage()) + " mV");
     switch (easyBatteryMod.getBatteryHealth()) {
