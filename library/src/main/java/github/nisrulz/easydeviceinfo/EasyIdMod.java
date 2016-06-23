@@ -34,13 +34,13 @@ import java.io.IOException;
 import java.util.UUID;
 
 /**
- * The type Easy di id mod.
+ * The type Easy  id mod.
  */
 public class EasyIdMod {
   private final Context context;
 
   /**
-   * Instantiates a new Easy di id mod.
+   * Instantiates a new Easy id mod.
    *
    * @param context the context
    */

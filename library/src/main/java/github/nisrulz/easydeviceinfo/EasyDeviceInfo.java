@@ -29,6 +29,6 @@ public class EasyDeviceInfo {
     String name = "EasyDeviceInfo";
     String version = "v2.0.1";
     int versionCode = 15;
-    return name + " : " + version + " [build-" + versionCode+"]";
+    return name + " : " + version + " [build-" + versionCode + "]";
   }
 }

@@ -23,13 +23,13 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 
 /**
- * The type Easy di display mod.
+ * The type Easy  display mod.
  */
 public class EasyDisplayMod {
   private final Context context;
 
   /**
-   * Instantiates a new Easy di display mod.
+   * Instantiates a new Easy display mod.
    *
    * @param context the context
    */

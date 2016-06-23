@@ -23,7 +23,7 @@ import android.os.SystemClock;
 import java.util.Locale;
 
 /**
- * The type Easy di config mod.
+ * The type Easy config mod.
  */
 public class EasyConfigMod {
   /**
@@ -41,7 +41,7 @@ public class EasyConfigMod {
   private final Context context;
 
   /**
-   * Instantiates a new Easy di config mod.
+   * Instantiates a new Easy config mod.
    *
    * @param context the context
    */

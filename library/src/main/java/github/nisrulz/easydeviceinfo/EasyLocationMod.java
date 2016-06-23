@@ -23,10 +23,21 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
 
+/**
+ * The type Easy location mod.
+ *
+ * Permission warning suppressed since it will be provided by the client
+ */
 @SuppressWarnings("MissingPermission") public class EasyLocationMod {
-  private boolean hasFineLocationPermission, hasCoarseLocationPermission;
+  private final boolean hasFineLocationPermission;
+  private final boolean hasCoarseLocationPermission;
   private LocationManager lm;
 
+  /**
+   * Instantiates a new Easy location mod.
+   *
+   * @param context the context
+   */
   public EasyLocationMod(Context context) {
     hasFineLocationPermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)

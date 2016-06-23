@@ -19,7 +19,7 @@ package github.nisrulz.easydeviceinfo;
 import android.os.Build;
 
 /**
- * The type Easy di cpu mod.
+ * The type Easy  cpu mod.
  */
 public class EasyCpuMod {
   /**

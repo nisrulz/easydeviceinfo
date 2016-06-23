@@ -30,13 +30,15 @@ import static android.os.Build.VERSION;
 import static android.os.Build.VERSION_CODES;
 
 /**
- * The type Easy di memory mod.
+ * The type Easy memory mod.
+ *
+ * Deprecation warning suppressed since it is handled in the code
  */
-public class EasyMemoryMod {
+@SuppressWarnings("deprecation") public class EasyMemoryMod {
   private final Context context;
 
   /**
-   * Instantiates a new Easy di memory mod.
+   * Instantiates a new Easy memory mod.
    *
    * @param context the context
    */

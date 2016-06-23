@@ -23,14 +23,14 @@ import android.telephony.TelephonyManager;
 import java.util.Locale;
 
 /**
- * The type Easy di sim mod.
+ * The type Easy  sim mod.
  */
 public class EasySimMod {
   private final TelephonyManager tm;
   private final Context context;
 
   /**
-   * Instantiates a new Easy di sim mod.
+   * Instantiates a new Easy  sim mod.
    *
    * @param context the context
    */

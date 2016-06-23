@@ -22,14 +22,14 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 
 /**
- * The type Easy di app mod.
+ * The type Easy  app mod.
  */
 public class EasyAppMod {
 
   private final Context context;
 
   /**
-   * Instantiates a new Easy di app mod.
+   * Instantiates a new Easy app mod.
    *
    * @param context the context
    */

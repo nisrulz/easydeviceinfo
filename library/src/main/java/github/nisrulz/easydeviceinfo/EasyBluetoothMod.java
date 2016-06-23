@@ -22,13 +22,13 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 
 /**
- * The type Easy di bluetooth mod.
+ * The type Easy bluetooth mod.
  */
 public class EasyBluetoothMod {
   private final Context context;
 
   /**
-   * Instantiates a new Easy di bluetooth mod.
+   * Instantiates a new Easy bluetooth mod.
    *
    * @param context the context
    */

@@ -30,7 +30,7 @@ import java.io.File;
 import java.util.Locale;
 
 /**
- * The type Easy di device mod.
+ * The type Easy device mod.
  */
 public class EasyDeviceMod {
   /**
@@ -83,7 +83,7 @@ public class EasyDeviceMod {
   private final Context context;
 
   /**
-   * Instantiates a new Easy di device mod.
+   * Instantiates a new Easy  device mod.
    *
    * @param context the context
    */

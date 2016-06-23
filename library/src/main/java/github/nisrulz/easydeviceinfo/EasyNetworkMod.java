@@ -31,11 +31,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The type Easy di network mod.
+ * The type Easy network mod.
  */
 public class EasyNetworkMod {
-  private final Context context;
-
   /**
    * The constant UNKNOWN.
    */
@@ -64,9 +62,10 @@ public class EasyNetworkMod {
    * The constant CELLULAR_UNIDENTIFIED_GEN.
    */
   public static final int CELLULAR_UNIDENTIFIED_GEN = 6;
+  private final Context context;
 
   /**
-   * Instantiates a new Easy di network mod.
+   * Instantiates a new Easy  network mod.
    *
    * @param context the context
    */

@@ -22,11 +22,10 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 
 /**
- * The type Easy di battery mod.
+ * The type Easy battery mod.
  */
 public class EasyBatteryMod {
 
-  private final Context context;
   /**
    * The constant CHARGING_VIA_USB.
    */
@@ -43,7 +42,6 @@ public class EasyBatteryMod {
    * The constant CHARGING_VIA_UNKNOWN_SOURCE.
    */
   public static final int CHARGING_VIA_UNKNOWN_SOURCE = 3;
-
   /**
    * The constant HEALTH_HAVING_ISSUES.
    */
@@ -52,9 +50,10 @@ public class EasyBatteryMod {
    * The constant HEALTH_GOOD.
    */
   public static final int HEALTH_GOOD = 1;
+  private final Context context;
 
   /**
-   * Instantiates a new Easy di battery mod.
+   * Instantiates a new Easy battery mod.
    *
    * @param context the context
    */
