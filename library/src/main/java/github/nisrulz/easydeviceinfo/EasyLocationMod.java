@@ -23,7 +23,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
 
-public class EasyLocationMod {
+@SuppressWarnings("MissingPermission") public class EasyLocationMod {
   private boolean hasFineLocationPermission, hasCoarseLocationPermission;
   private LocationManager lm;
 
@@ -46,7 +46,7 @@ public class EasyLocationMod {
    *
    * @return the double [ ]
    */
-  @SuppressWarnings("MissingPermission") public double[] getLatLong() {
+  public double[] getLatLong() {
     double[] gps = new double[2];
     gps[0] = 0;
     gps[1] = 0;
