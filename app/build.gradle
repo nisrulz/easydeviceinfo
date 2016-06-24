@@ -27,13 +27,8 @@ android {
     versionCode 1
     versionName "1.0"
     jackOptions {
-      enabled true
+      enabled false
     }
-  }
-
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_7
-    targetCompatibility JavaVersion.VERSION_1_7
   }
 
   buildTypes {
