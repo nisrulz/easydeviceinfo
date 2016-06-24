@@ -8,6 +8,7 @@
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true)](https://android-arsenal.com/details/1/3562) [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg)](http://androidweekly.net/issues/issue-209) [![AndroidDev Digest](https://img.shields.io/badge/AndroidDev%20Digest-Issue%20%3A%2023%20July%2C%2016-blue.svg)](http://us2.campaign-archive1.com/?u=869610fc59cf83e08b6e0635a&id=b123cc7fb0&e=abe3a482d3) [![awesome-android](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://snowdream.github.io/awesome-android/Other.html#Utility)
 
 ### Show some :heart:
+[![GitHub stars](https://img.shields.io/github/stars/nisrulz/easydeviceinfo.svg?style=social&label=Star)](https://github.com/nisrulz/easydeviceinfo) [![GitHub forks](https://img.shields.io/github/forks/nisrulz/easydeviceinfo.svg?style=social&label=Fork)](https://github.com/nisrulz/easydeviceinfo/fork) [![GitHub watchers](https://img.shields.io/github/watchers/nisrulz/easydeviceinfo.svg?style=social&label=Watch)](https://github.com/nisrulz/easydeviceinfo) [![GitHub followers](https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow)](https://github.com/nisrulz/easydeviceinfo)  
 [![Twitter Follow](https://img.shields.io/twitter/follow/nisrulz.svg?style=social)](https://twitter.com/nisrulz) 
 
 
@@ -26,7 +27,7 @@ Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/ni
 # Including in your project
 - EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
 ```gradle
-compile 'com.github.nisrulz:easydeviceinfo:2.0.1'
+compile 'com.github.nisrulz:easydeviceinfo:2.0.2'
 ```
 
 # Usage Docs/Wiki
