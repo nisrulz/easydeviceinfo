@@ -301,38 +301,6 @@ public class MainActivity extends AppCompatActivity {
 
     // CPU Mod
     EasyCpuMod easyCpuMod = new EasyCpuMod();
-    String[] supportedABIS = easyCpuMod.getSupportedABIS();
-
-    StringBuilder supportedABI = new StringBuilder();
-    if (supportedABIS.length > 0) {
-      for (String abis : supportedABIS) {
-        supportedABI.append(abis).append("\n");
-      }
-    } else {
-      supportedABI.append("-");
-    }
-
-    String[] supported32ABIS = easyCpuMod.getSupported32bitABIS();
-    StringBuilder supported32ABI = new StringBuilder();
-    if (supported32ABIS.length > 0) {
-      for (String abis : supported32ABIS) {
-        supported32ABI.append(abis).append("\n");
-      }
-    } else {
-      supported32ABI.append("-");
-    }
-
-    String[] supported64ABIS = easyCpuMod.getSupported64bitABIS();
-
-    StringBuilder supported64ABI = new StringBuilder();
-    if (supported32ABIS.length > 0) {
-      for (String abis : supported64ABIS) {
-        supported64ABI.append(abis).append("\n");
-      }
-    } else {
-      supported64ABI.append("-");
-    }
-
     deviceDataMap.put("Supported ABIS", easyCpuMod.getStringSupportedABIS());
     deviceDataMap.put("Supported 32 bit ABIS", easyCpuMod.getStringSupported32bitABIS());
     deviceDataMap.put("Supported 64 bit ABIS", easyCpuMod.getStringSupported64bitABIS());
