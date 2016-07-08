@@ -231,10 +231,42 @@ public class EasyNetworkMod {
    */
   @SuppressWarnings("MissingPermission") public String getWifiMAC() {
     String result = null;
-    if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
-        == PackageManager.PERMISSION_GRANTED) {
-      WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-      result = wm.getConnectionInfo().getMacAddress();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        Enumeration<NetworkInterface> interfaces = null;
+        try {
+            interfaces = NetworkInterface.getNetworkInterfaces();
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        while (interfaces != null && interfaces.hasMoreElements()) {
+            NetworkInterface iF = interfaces.nextElement();
+
+            byte[] addr = new byte[0];
+            try {
+                addr = iF.getHardwareAddress();
+            } catch (SocketException e) {
+                e.printStackTrace();
+            }
+            if (addr == null || addr.length == 0) {
+                continue;
+            }
+
+            StringBuilder buf = new StringBuilder();
+            for (byte b : addr) {
+                buf.append(String.format("%02X:", b));
+            }
+            if (buf.length() > 0) {
+                buf.deleteCharAt(buf.length() - 1);
+            }
+            String mac = buf.toString();
+            result = iF.getName().equals("wlan0") ? mac : result;
+        }
+    } else {
+        if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
+                == PackageManager.PERMISSION_GRANTED) {
+            WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            result = wm.getConnectionInfo().getMacAddress();
+        }
     }
     return CheckValidityUtil.checkValidData(result);
   }
