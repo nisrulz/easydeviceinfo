@@ -15,7 +15,9 @@
  */
 
 apply plugin: 'com.android.library'
-apply from: 'https://raw.github.com/nisrulz/gradle-mvn-push/master/gradle-mvn-push.gradle'
+
+// Uncomment below while publishing to maven central
+//apply from: 'https://raw.github.com/nisrulz/gradle-mvn-push/master/gradle-mvn-push.gradle'
 
 android {
   compileSdkVersion 24
