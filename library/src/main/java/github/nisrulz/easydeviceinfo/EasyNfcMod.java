@@ -24,7 +24,7 @@ import android.nfc.NfcAdapter;
  */
 public class EasyNfcMod {
 
-  private final Context context;
+  private NfcAdapter nfcAdapter = null;
 
   /**
    * Instantiates a new Easy nfc mod.
@@ -32,7 +32,9 @@ public class EasyNfcMod {
    * @param context the context
    */
   public EasyNfcMod(Context context) {
-    this.context = context;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD_MR1) {
+      nfcAdapter = NfcAdapter.getDefaultAdapter(context);
+    }
   }
 
   /**
@@ -41,14 +43,14 @@ public class EasyNfcMod {
    * @return the boolean
    */
   public boolean isNfcPresent() {
-    boolean result = false;
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD_MR1) {
-      NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(context);
-      if (nfcAdapter != null) {
-        // Has NFC functionality
-        result = true;
-      }
+    if (nfcAdapter != null) {
+      // Has NFC functionality
+      return true;
     }
-    return result;
+    return false;
+  }
+
+  public boolean isNfcEnabled() {
+    return (nfcAdapter != null && nfcAdapter.isEnabled());
   }
 }

@@ -309,6 +309,7 @@ public class MainActivity extends AppCompatActivity {
     // NFC Mod
     EasyNfcMod easyNfcMod = new EasyNfcMod(this);
     deviceDataMap.put("is NFC present", String.valueOf(easyNfcMod.isNfcPresent()));
+    deviceDataMap.put("is NFC enabled", String.valueOf(easyNfcMod.isNfcEnabled()));
 
     for (String key : deviceDataMap.keySet()) {
       data.add(key + " : " + deviceDataMap.get(key));
