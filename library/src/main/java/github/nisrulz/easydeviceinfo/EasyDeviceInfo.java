@@ -28,8 +28,8 @@ public class EasyDeviceInfo {
    * @return the library version
    */
   public final String getLibraryVersion() {
-    String version = "v2.0.2";
-    int versionCode = 16;
+    String version = "v2.1.0";
+    int versionCode = 17;
     return name + " : " + version + " [build-" + versionCode + "]";
   }
 }
