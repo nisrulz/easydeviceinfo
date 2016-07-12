@@ -27,7 +27,7 @@ public class EasyCpuMod {
    *
    * @return the string [ ]
    */
-  public String[] getSupportedABIS() {
+  public final String[] getSupportedABIS() {
     String[] result = new String[] { "-" };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_ABIS;
@@ -40,7 +40,7 @@ public class EasyCpuMod {
    *
    * @return the string supported abis
    */
-  public String getStringSupportedABIS() {
+  public final String getStringSupportedABIS() {
     String result = null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       String[] supportedABIS = Build.SUPPORTED_ABIS;
@@ -64,7 +64,7 @@ public class EasyCpuMod {
    *
    * @return the string supported 32 bit abis
    */
-  public String getStringSupported32bitABIS() {
+  public final String getStringSupported32bitABIS() {
     String result = null;
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -92,7 +92,7 @@ public class EasyCpuMod {
    *
    * @return the string supported 64 bit abis
    */
-  public String getStringSupported64bitABIS() {
+  public final String getStringSupported64bitABIS() {
     String result = null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       String[] supportedABIS = Build.SUPPORTED_64_BIT_ABIS;
@@ -117,7 +117,7 @@ public class EasyCpuMod {
    *
    * @return the string [ ]
    */
-  public String[] getSupported32bitABIS() {
+  public final String[] getSupported32bitABIS() {
     String[] result = new String[] { "-" };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_32_BIT_ABIS;
@@ -130,7 +130,7 @@ public class EasyCpuMod {
    *
    * @return the string [ ]
    */
-  public String[] getSupported64bitABIS() {
+  public final String[] getSupported64bitABIS() {
     String[] result = new String[] { "-" };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_64_BIT_ABIS;

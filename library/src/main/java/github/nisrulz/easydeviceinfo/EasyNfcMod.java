@@ -31,7 +31,7 @@ public class EasyNfcMod {
    *
    * @param context the context
    */
-  public EasyNfcMod(Context context) {
+  public EasyNfcMod(final Context context) {
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD_MR1) {
       nfcAdapter = NfcAdapter.getDefaultAdapter(context);
     }
@@ -42,15 +42,16 @@ public class EasyNfcMod {
    *
    * @return the boolean
    */
-  public boolean isNfcPresent() {
-    if (nfcAdapter != null) {
-      // Has NFC functionality
-      return true;
-    }
-    return false;
+  public final boolean isNfcPresent() {
+    return nfcAdapter != null;
   }
 
-  public boolean isNfcEnabled() {
+  /**
+   * Is nfc enabled boolean.
+   *
+   * @return the boolean
+   */
+  public final boolean isNfcEnabled() {
     return (nfcAdapter != null && nfcAdapter.isEnabled());
   }
 }

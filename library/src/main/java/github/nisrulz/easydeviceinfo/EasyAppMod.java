@@ -33,7 +33,7 @@ public class EasyAppMod {
    *
    * @param context the context
    */
-  public EasyAppMod(Context context) {
+  public EasyAppMod(final Context context) {
     this.context = context;
   }
 
@@ -42,7 +42,7 @@ public class EasyAppMod {
    *
    * @return the activity name
    */
-  public String getActivityName() {
+  public final String getActivityName() {
     return CheckValidityUtil.checkValidData(context.getClass().getSimpleName());
   }
 
@@ -51,7 +51,7 @@ public class EasyAppMod {
    *
    * @return the package name
    */
-  public String getPackageName() {
+  public final String getPackageName() {
     return CheckValidityUtil.checkValidData(context.getPackageName());
   }
 
@@ -60,9 +60,9 @@ public class EasyAppMod {
    *
    * @return the store
    */
-  public String getStore() {
+  public final String getStore() {
     String result = null;
-    if (Build.VERSION.SDK_INT >= 3) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
       result = context.getPackageManager().getInstallerPackageName(context.getPackageName());
     }
     return CheckValidityUtil.checkValidData(result);
@@ -73,7 +73,7 @@ public class EasyAppMod {
    *
    * @return the app name
    */
-  public String getAppName() {
+  public final String getAppName() {
     String result;
     final PackageManager pm = context.getPackageManager();
     ApplicationInfo ai = null;
@@ -91,7 +91,7 @@ public class EasyAppMod {
    *
    * @return the app version
    */
-  public String getAppVersion() {
+  public final String getAppVersion() {
     String result = null;
     try {
       result = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
@@ -106,7 +106,7 @@ public class EasyAppMod {
    *
    * @return the app version code
    */
-  public String getAppVersionCode() {
+  public final String getAppVersionCode() {
     String result = null;
     try {
       result = String.valueOf(

@@ -71,16 +71,16 @@ public class EasyNetworkMod {
    *
    * @param context the context
    */
-  public EasyNetworkMod(Context context) {
+  public EasyNetworkMod(final Context context) {
     this.context = context;
   }
 
   /**
-   * Is wifi enabled
+   * Is wifi enabled.
    *
    * @return the boolean
    */
-  public boolean isWifiEnabled() {
+  public final boolean isWifiEnabled() {
     boolean wifiState = false;
 
     WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -95,7 +95,7 @@ public class EasyNetworkMod {
    *
    * @return the boolean
    */
-  @SuppressWarnings("MissingPermission") public boolean isNetworkAvailable() {
+  @SuppressWarnings("MissingPermission") public final boolean isNetworkAvailable() {
     if (context.checkCallingOrSelfPermission(Manifest.permission.INTERNET)
         == PackageManager.PERMISSION_GRANTED
         && context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE)
@@ -109,11 +109,11 @@ public class EasyNetworkMod {
   }
 
   /**
-   * Gets ip address v4
+   * Gets ip address v4.
    *
    * @return the ip address
    */
-  public String getIPv4Address() {
+  public final String getIPv4Address() {
     String result = null;
     try {
       List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
@@ -123,7 +123,9 @@ public class EasyNetworkMod {
           if (!addr.isLoopbackAddress()) {
             String sAddr = addr.getHostAddress().toUpperCase();
             boolean isIPv4 = addr instanceof Inet4Address;
-            if (isIPv4) result = sAddr;
+            if (isIPv4) {
+              result = sAddr;
+            }
           }
         }
       }
@@ -134,11 +136,11 @@ public class EasyNetworkMod {
   }
 
   /**
-   * Gets ip address v6
+   * Gets ip address v6.
    *
    * @return the ip address
    */
-  public String getIPv6Address() {
+  public final String getIPv6Address() {
     String result = null;
     try {
       List<NetworkInterface> interfaces = Collections.list(NetworkInterface.getNetworkInterfaces());
@@ -166,7 +168,7 @@ public class EasyNetworkMod {
    *
    * @return the network type
    */
-  @SuppressWarnings("MissingPermission") public int getNetworkType() {
+  @SuppressWarnings("MissingPermission") public final int getNetworkType() {
     int networkStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE);
 
@@ -231,7 +233,7 @@ public class EasyNetworkMod {
    *
    * @return the wifi mac
    */
-  @SuppressWarnings("MissingPermission") public String getWifiMAC() {
+  @SuppressWarnings("MissingPermission") public final String getWifiMAC() {
     String result = "02:00:00:00:00:00";
     if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
         == PackageManager.PERMISSION_GRANTED) {

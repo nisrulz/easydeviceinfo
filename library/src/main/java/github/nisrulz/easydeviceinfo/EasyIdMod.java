@@ -44,7 +44,7 @@ public class EasyIdMod {
    *
    * @param context the context
    */
-  public EasyIdMod(Context context) {
+  public EasyIdMod(final Context context) {
     this.context = context;
   }
 
@@ -53,7 +53,7 @@ public class EasyIdMod {
    *
    * @param callback the callback
    */
-  public void getAndroidAdId(final AdIdentifierCallback callback) {
+  public final void getAndroidAdId(final AdIdentifierCallback callback) {
     new Thread(new Runnable() {
       @Override public void run() {
         AdvertisingIdClient.Info adInfo;
@@ -83,7 +83,7 @@ public class EasyIdMod {
    *
    * @return the android id
    */
-  public String getAndroidID() {
+  public final String getAndroidID() {
     return CheckValidityUtil.checkValidData(
         Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID));
   }
@@ -93,7 +93,7 @@ public class EasyIdMod {
    *
    * @return the string [ ]
    */
-  @SuppressWarnings("MissingPermission") public String[] getAccounts() {
+  @SuppressWarnings("MissingPermission") public final String[] getAccounts() {
     String[] result = null;
     if (context.checkCallingOrSelfPermission(Manifest.permission.GET_ACCOUNTS)
         == PackageManager.PERMISSION_GRANTED) {
@@ -111,15 +111,13 @@ public class EasyIdMod {
    *
    * @return the ua
    */
-  public String getUA() {
+  public final String getUA() {
     final String system_ua = System.getProperty("http.agent");
     String result;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      result = WebSettings.getDefaultUserAgent(context) +
-          "__" + system_ua;
+      result = WebSettings.getDefaultUserAgent(context) + "__" + system_ua;
     } else {
-      result = new WebView(context).getSettings().getUserAgentString() +
-          "__" + system_ua;
+      result = new WebView(context).getSettings().getUserAgentString() + "__" + system_ua;
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -129,7 +127,7 @@ public class EasyIdMod {
    *
    * @return the psuedo unique id
    */
-  @SuppressWarnings("deprecation") public String getPseudoUniqueID() {
+  @SuppressWarnings("deprecation") public final String getPseudoUniqueID() {
     // If all else fails, if the user does have lower than API 9 (lower
     // than Gingerbread), has reset their phone or 'Secure.ANDROID_ID'
     // returns 'null', then simply the ID returned will be solely based
@@ -137,8 +135,7 @@ public class EasyIdMod {
     // can happen.
     // Try not to use DISPLAY, HOST or ID - these items could change.
     // If there are collisions, there will be overlapping data
-    String devIDShort = "35" +
-        (Build.BOARD.length() % 10) + (Build.BRAND.length() % 10);
+    String devIDShort = "35" + (Build.BOARD.length() % 10) + (Build.BRAND.length() % 10);
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       devIDShort += (Build.SUPPORTED_ABIS[0].length() % 10);
@@ -173,7 +170,7 @@ public class EasyIdMod {
    *
    * @return the gsfid
    */
-  @SuppressWarnings("MissingPermission") public String getGSFID() {
+  @SuppressWarnings("MissingPermission") public final String getGSFID() {
     final Uri URI = Uri.parse("content://com.google.android.gsf.gservices");
     final String ID_KEY = "android_id";
 

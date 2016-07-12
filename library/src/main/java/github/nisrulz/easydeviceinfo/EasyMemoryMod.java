@@ -42,7 +42,7 @@ import static android.os.Build.VERSION_CODES;
    *
    * @param context the context
    */
-  public EasyMemoryMod(Context context) {
+  public EasyMemoryMod(final Context context) {
     this.context = context;
   }
 
@@ -51,7 +51,7 @@ import static android.os.Build.VERSION_CODES;
    *
    * @return the total ram
    */
-  public long getTotalRAM() {
+  public final long getTotalRAM() {
     long total_memory_in_Mbs = 0;
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
       MemoryInfo mi = new MemoryInfo();
@@ -66,6 +66,7 @@ import static android.os.Build.VERSION_CODES;
         reader = new RandomAccessFile("/proc/meminfo", "r");
         load = reader.readLine().replaceAll("\\D+", "");
         total_memory_in_Mbs = Integer.parseInt(load) / 1024;
+        reader.close();
       } catch (IOException ex) {
         ex.printStackTrace();
       }
@@ -83,7 +84,7 @@ import static android.os.Build.VERSION_CODES;
    *
    * @return the available internal memory size
    */
-  public long getAvailableInternalMemorySize() {
+  public final long getAvailableInternalMemorySize() {
     File path = Environment.getDataDirectory();
     StatFs stat = new StatFs(path.getPath());
     long blockSize;
@@ -103,7 +104,7 @@ import static android.os.Build.VERSION_CODES;
    *
    * @return the total internal memory size
    */
-  public long getTotalInternalMemorySize() {
+  public final long getTotalInternalMemorySize() {
     File path = Environment.getDataDirectory();
     StatFs stat = new StatFs(path.getPath());
     long blockSize;
@@ -123,7 +124,7 @@ import static android.os.Build.VERSION_CODES;
    *
    * @return the available external memory size
    */
-  public long getAvailableExternalMemorySize() {
+  public final long getAvailableExternalMemorySize() {
     if (externalMemoryAvailable()) {
       File path = Environment.getExternalStorageDirectory();
       StatFs stat = new StatFs(path.getPath());
@@ -147,7 +148,7 @@ import static android.os.Build.VERSION_CODES;
    *
    * @return the total external memory size
    */
-  public long getTotalExternalMemorySize() {
+  public final long getTotalExternalMemorySize() {
     if (externalMemoryAvailable()) {
       File path = Environment.getExternalStorageDirectory();
       StatFs stat = new StatFs(path.getPath());

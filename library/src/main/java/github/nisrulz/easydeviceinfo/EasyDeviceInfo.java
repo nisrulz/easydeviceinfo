@@ -17,7 +17,7 @@
 package github.nisrulz.easydeviceinfo;
 
 /**
- * Easy device info class
+ * Easy device info class.
  */
 public class EasyDeviceInfo {
   /**
@@ -25,7 +25,7 @@ public class EasyDeviceInfo {
    *
    * @return the library version
    */
-  public String getLibraryVersion() {
+  public final String getLibraryVersion() {
     String name = "EasyDeviceInfo";
     String version = "v2.0.2";
     int versionCode = 16;

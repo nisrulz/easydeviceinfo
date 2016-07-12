@@ -45,7 +45,7 @@ public class EasyConfigMod {
    *
    * @param context the context
    */
-  public EasyConfigMod(Context context) {
+  public EasyConfigMod(final Context context) {
     this.context = context;
   }
 
@@ -54,7 +54,7 @@ public class EasyConfigMod {
    *
    * @return the boolean
    */
-  public boolean isRunningOnEmulator() {
+  public final boolean isRunningOnEmulator() {
     return Build.BRAND.contains("generic")
         || Build.DEVICE.contains("generic")
         || Build.PRODUCT.contains("sdk")
@@ -66,11 +66,11 @@ public class EasyConfigMod {
   }
 
   /**
-   * Gets Device Ringer Mode
+   * Gets Device Ringer Mode.
    *
    * @return Device Ringer Mode
    */
-  public int getDeviceRingerMode() {
+  public final int getDeviceRingerMode() {
     int ringerMode = RINGER_MODE_NORMAL;
     AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     switch (audioManager.getRingerMode()) {
@@ -95,7 +95,7 @@ public class EasyConfigMod {
    *
    * @return the time
    */
-  public long getTime() {
+  public final long getTime() {
     return System.currentTimeMillis();
   }
 
@@ -104,7 +104,7 @@ public class EasyConfigMod {
    *
    * @return the formatted time
    */
-  public String getFormattedTime() {
+  public final String getFormattedTime() {
 
     long millis = System.currentTimeMillis();
     int sec = (int) (millis / 1000) % 60;
@@ -119,7 +119,7 @@ public class EasyConfigMod {
    *
    * @return the up time
    */
-  public long getUpTime() {
+  public final long getUpTime() {
     return SystemClock.uptimeMillis();
   }
 
@@ -128,7 +128,7 @@ public class EasyConfigMod {
    *
    * @return the formatted up time
    */
-  public String getFormattedUpTime() {
+  public final String getFormattedUpTime() {
 
     long millis = SystemClock.uptimeMillis();
     int sec = (int) (millis / 1000) % 60;

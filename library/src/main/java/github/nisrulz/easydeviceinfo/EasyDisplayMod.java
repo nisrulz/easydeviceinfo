@@ -33,7 +33,7 @@ public class EasyDisplayMod {
    *
    * @param context the context
    */
-  public EasyDisplayMod(Context context) {
+  public EasyDisplayMod(final Context context) {
     this.context = context;
   }
 
@@ -42,7 +42,7 @@ public class EasyDisplayMod {
    *
    * @return the density
    */
-  public String getDensity() {
+  public final String getDensity() {
     String densityStr = null;
     final int density = context.getResources().getDisplayMetrics().densityDpi;
     switch (density) {
@@ -83,7 +83,7 @@ public class EasyDisplayMod {
    * @param event the event
    * @return the int [ ]
    */
-  public int[] getDisplayXYCoordinates(MotionEvent event) {
+  public final int[] getDisplayXYCoordinates(final MotionEvent event) {
     int[] coordinates = new int[2];
     coordinates[0] = 0;
     coordinates[1] = 0;
@@ -99,7 +99,7 @@ public class EasyDisplayMod {
    *
    * @return the resolution
    */
-  public String getResolution() {
+  public final String getResolution() {
     WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     Display display = wm.getDefaultDisplay();
     DisplayMetrics metrics = new DisplayMetrics();

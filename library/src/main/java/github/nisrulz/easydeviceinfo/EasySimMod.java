@@ -34,7 +34,7 @@ public class EasySimMod {
    *
    * @param context the context
    */
-  public EasySimMod(Context context) {
+  public EasySimMod(final Context context) {
     this.context = context;
     tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
   }
@@ -44,7 +44,7 @@ public class EasySimMod {
    *
    * @return the country
    */
-  public String getCountry() {
+  public final String getCountry() {
     String result;
     if (tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
       result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
@@ -61,7 +61,7 @@ public class EasySimMod {
    *
    * @return the carrier
    */
-  public String getCarrier() {
+  public final String getCarrier() {
     String result = null;
     if (tm != null && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) {
       result = tm.getNetworkOperatorName().toLowerCase(Locale.getDefault());
@@ -75,12 +75,14 @@ public class EasySimMod {
    *
    * @return the imsi
    */
-  @SuppressWarnings("MissingPermission") public String getIMSI() {
+  @SuppressWarnings("MissingPermission") public final String getIMSI() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
             == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission) result = tm.getSubscriberId();
+    if (hasReadPhoneStatePermission) {
+      result = tm.getSubscriberId();
+    }
 
     return CheckValidityUtil.checkValidData(result);
   }
@@ -90,12 +92,14 @@ public class EasySimMod {
    *
    * @return the sim serial
    */
-  @SuppressWarnings("MissingPermission") public String getSIMSerial() {
+  @SuppressWarnings("MissingPermission") public final String getSIMSerial() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
             == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission) result = tm.getSimSerialNumber();
+    if (hasReadPhoneStatePermission) {
+      result = tm.getSimSerialNumber();
+    }
     return CheckValidityUtil.checkValidData(result);
   }
 }

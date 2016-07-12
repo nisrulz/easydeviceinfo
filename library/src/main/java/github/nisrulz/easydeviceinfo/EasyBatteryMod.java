@@ -57,16 +57,16 @@ public class EasyBatteryMod {
    *
    * @param context the context
    */
-  public EasyBatteryMod(Context context) {
+  public EasyBatteryMod(final Context context) {
     this.context = context;
   }
 
   /**
-   * Gets battery percentage
+   * Gets battery percentage.
    *
    * @return the battery percentage
    */
-  public int getBatteryPercentage() {
+  public final int getBatteryPercentage() {
     int percentage = 0;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
@@ -83,7 +83,7 @@ public class EasyBatteryMod {
    *
    * @return is battery charging boolean
    */
-  public boolean isDeviceCharging() {
+  public final boolean isDeviceCharging() {
     Intent batteryStatus = getBatteryStatusIntent();
     int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
     return (status == BatteryManager.BATTERY_STATUS_CHARGING
@@ -100,7 +100,7 @@ public class EasyBatteryMod {
    *
    * @return the battery health
    */
-  public int getBatteryHealth() {
+  public final int getBatteryHealth() {
     int health = HEALTH_HAVING_ISSUES;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
@@ -119,7 +119,7 @@ public class EasyBatteryMod {
    *
    * @return the battery technology
    */
-  public String getBatteryTechnology() {
+  public final String getBatteryTechnology() {
     return CheckValidityUtil.checkValidData(
         getBatteryStatusIntent().getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY));
   }
@@ -129,7 +129,7 @@ public class EasyBatteryMod {
    *
    * @return the battery temprature
    */
-  public float getBatteryTemperature() {
+  public final float getBatteryTemperature() {
     float temp = 0.0f;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
@@ -143,7 +143,7 @@ public class EasyBatteryMod {
    *
    * @return the battery voltage
    */
-  public int getBatteryVoltage() {
+  public final int getBatteryVoltage() {
     int volt = 0;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
@@ -157,7 +157,7 @@ public class EasyBatteryMod {
    *
    * @return the charging source
    */
-  public int getChargingSource() {
+  public final int getChargingSource() {
     Intent batteryStatus = getBatteryStatusIntent();
     int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
 
@@ -178,7 +178,7 @@ public class EasyBatteryMod {
    *
    * @return the boolean
    */
-  public boolean isBatteryPresent() {
+  public final boolean isBatteryPresent() {
     return getBatteryStatusIntent().getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
   }
 }

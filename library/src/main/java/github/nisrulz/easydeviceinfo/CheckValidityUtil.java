@@ -19,7 +19,11 @@ package github.nisrulz.easydeviceinfo;
 /**
  * The type Check validity util.
  */
-class CheckValidityUtil {
+final class CheckValidityUtil {
+
+  private CheckValidityUtil() {
+    // private constructor for utility class
+  }
 
   /**
    * Handle illegal character in result string.
@@ -27,7 +31,7 @@ class CheckValidityUtil {
    * @param result the result
    * @return the string
    */
-  static String handleIllegalCharacterInResult(String result) {
+  static String handleIllegalCharacterInResult(final String result) {
     String tempResult = result;
     if (tempResult != null && tempResult.indexOf(" ") > 0) {
       tempResult = tempResult.replaceAll(" ", "_");
@@ -41,7 +45,7 @@ class CheckValidityUtil {
    * @param data the data
    * @return the string
    */
-  static String checkValidData(String data) {
+  static String checkValidData(final String data) {
     String tempData = data;
     if (tempData == null || tempData.length() == 0) {
       tempData = "NA";
@@ -55,7 +59,7 @@ class CheckValidityUtil {
    * @param data the data
    * @return the string [ ]
    */
-  static String[] checkValidData(String[] data) {
+  static String[] checkValidData(final String[] data) {
     String[] tempData = data;
     if (tempData == null || tempData.length == 0) {
       tempData = new String[] { "-" };

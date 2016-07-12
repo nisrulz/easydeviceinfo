@@ -33,7 +33,7 @@ public class EasyBluetoothMod {
    *
    * @param context the context
    */
-  public EasyBluetoothMod(Context context) {
+  public EasyBluetoothMod(final Context context) {
     this.context = context;
   }
 
@@ -42,7 +42,7 @@ public class EasyBluetoothMod {
    *
    * @return the bluetooth mac
    */
-  @SuppressWarnings("MissingPermission") public String getBluetoothMAC() {
+  @SuppressWarnings("MissingPermission") public final String getBluetoothMAC() {
     String result = "02:00:00:00:00:00";
     if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
         == PackageManager.PERMISSION_GRANTED) {

@@ -87,7 +87,7 @@ public class EasyDeviceMod {
    *
    * @param context the context
    */
-  public EasyDeviceMod(Context context) {
+  public EasyDeviceMod(final Context context) {
     this.context = context;
     tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
   }
@@ -97,7 +97,7 @@ public class EasyDeviceMod {
    *
    * @return the phone type
    */
-  public int getPhoneType() {
+  public final int getPhoneType() {
     switch (tm.getPhoneType()) {
       case TelephonyManager.PHONE_TYPE_NONE:
         return PHONE_TYPE_NONE;
@@ -117,7 +117,7 @@ public class EasyDeviceMod {
    *
    * @return the phone no
    */
-  @SuppressWarnings("MissingPermission") public String getPhoneNo() {
+  @SuppressWarnings("MissingPermission") public final String getPhoneNo() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
@@ -134,7 +134,7 @@ public class EasyDeviceMod {
    *
    * @return the product
    */
-  public String getProduct() {
+  public final String getProduct() {
     return CheckValidityUtil.checkValidData(Build.PRODUCT);
   }
 
@@ -143,7 +143,7 @@ public class EasyDeviceMod {
    *
    * @return the fingerprint
    */
-  public String getFingerprint() {
+  public final String getFingerprint() {
     return CheckValidityUtil.checkValidData(Build.FINGERPRINT);
   }
 
@@ -152,7 +152,7 @@ public class EasyDeviceMod {
    *
    * @return the hardware
    */
-  public String getHardware() {
+  public final String getHardware() {
     return CheckValidityUtil.checkValidData(Build.HARDWARE);
   }
 
@@ -161,7 +161,7 @@ public class EasyDeviceMod {
    *
    * @return the radio ver
    */
-  public String getRadioVer() {
+  public final String getRadioVer() {
     String result = null;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
       result = Build.getRadioVersion();
@@ -174,7 +174,7 @@ public class EasyDeviceMod {
    *
    * @return the device
    */
-  public String getDevice() {
+  public final String getDevice() {
     return CheckValidityUtil.checkValidData(Build.DEVICE);
   }
 
@@ -183,7 +183,7 @@ public class EasyDeviceMod {
    *
    * @return the bootloader
    */
-  public String getBootloader() {
+  public final String getBootloader() {
     return CheckValidityUtil.checkValidData(Build.BOOTLOADER);
   }
 
@@ -192,7 +192,7 @@ public class EasyDeviceMod {
    *
    * @return the board
    */
-  public String getBoard() {
+  public final String getBoard() {
     return CheckValidityUtil.checkValidData(Build.BOARD);
   }
 
@@ -201,7 +201,7 @@ public class EasyDeviceMod {
    *
    * @return the display version
    */
-  public String getDisplayVersion() {
+  public final String getDisplayVersion() {
     return CheckValidityUtil.checkValidData(Build.DISPLAY);
   }
 
@@ -210,7 +210,7 @@ public class EasyDeviceMod {
    *
    * @return the language
    */
-  public String getLanguage() {
+  public final String getLanguage() {
     return CheckValidityUtil.checkValidData(Locale.getDefault().getLanguage());
   }
 
@@ -221,7 +221,7 @@ public class EasyDeviceMod {
    * @param activity the activity
    * @return the int
    */
-  public int getDeviceType(Activity activity) {
+  public final int getDeviceType(Activity activity) {
     DisplayMetrics metrics = new DisplayMetrics();
     activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -246,7 +246,7 @@ public class EasyDeviceMod {
    *
    * @return the manufacturer
    */
-  public String getManufacturer() {
+  public final String getManufacturer() {
     return CheckValidityUtil.checkValidData(
         CheckValidityUtil.handleIllegalCharacterInResult(Build.MANUFACTURER));
   }
@@ -256,7 +256,7 @@ public class EasyDeviceMod {
    *
    * @return the model
    */
-  public String getModel() {
+  public final String getModel() {
     return CheckValidityUtil.checkValidData(
         CheckValidityUtil.handleIllegalCharacterInResult(Build.MODEL));
   }
@@ -266,7 +266,7 @@ public class EasyDeviceMod {
    *
    * @return the build brand
    */
-  public String getBuildBrand() {
+  public final String getBuildBrand() {
     return CheckValidityUtil.checkValidData(
         CheckValidityUtil.handleIllegalCharacterInResult(Build.BRAND));
   }
@@ -276,7 +276,7 @@ public class EasyDeviceMod {
    *
    * @return the build host
    */
-  public String getBuildHost() {
+  public final String getBuildHost() {
     return CheckValidityUtil.checkValidData(Build.HOST);
   }
 
@@ -285,7 +285,7 @@ public class EasyDeviceMod {
    *
    * @return the build tags
    */
-  public String getBuildTags() {
+  public final String getBuildTags() {
     return CheckValidityUtil.checkValidData(Build.TAGS);
   }
 
@@ -294,7 +294,7 @@ public class EasyDeviceMod {
    *
    * @return the build time
    */
-  public long getBuildTime() {
+  public final long getBuildTime() {
     return Build.TIME;
   }
 
@@ -303,7 +303,7 @@ public class EasyDeviceMod {
    *
    * @return the build user
    */
-  public String getBuildUser() {
+  public final String getBuildUser() {
     return CheckValidityUtil.checkValidData(Build.USER);
   }
 
@@ -312,7 +312,7 @@ public class EasyDeviceMod {
    *
    * @return the build version release
    */
-  public String getBuildVersionRelease() {
+  public final String getBuildVersionRelease() {
     return CheckValidityUtil.checkValidData(Build.VERSION.RELEASE);
   }
 
@@ -321,7 +321,7 @@ public class EasyDeviceMod {
    *
    * @return the screen display id
    */
-  public String getScreenDisplayID() {
+  public final String getScreenDisplayID() {
     WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     Display display = wm.getDefaultDisplay();
     return CheckValidityUtil.checkValidData(String.valueOf(display.getDisplayId()));
@@ -332,7 +332,7 @@ public class EasyDeviceMod {
    *
    * @return the build version codename
    */
-  public String getBuildVersionCodename() {
+  public final String getBuildVersionCodename() {
     return CheckValidityUtil.checkValidData(Build.VERSION.CODENAME);
   }
 
@@ -341,7 +341,7 @@ public class EasyDeviceMod {
    *
    * @return the build version incremental
    */
-  public String getBuildVersionIncremental() {
+  public final String getBuildVersionIncremental() {
     return CheckValidityUtil.checkValidData(Build.VERSION.INCREMENTAL);
   }
 
@@ -350,7 +350,7 @@ public class EasyDeviceMod {
    *
    * @return the build version sdk
    */
-  public int getBuildVersionSDK() {
+  public final int getBuildVersionSDK() {
     return Build.VERSION.SDK_INT;
   }
 
@@ -359,16 +359,16 @@ public class EasyDeviceMod {
    *
    * @return the build id
    */
-  public String getBuildID() {
+  public final String getBuildID() {
     return CheckValidityUtil.checkValidData(Build.ID);
   }
 
   /**
-   * Is Device rooted boolean
+   * Is Device rooted boolean.
    *
    * @return the boolean
    */
-  public boolean isDeviceRooted() {
+  public final boolean isDeviceRooted() {
     String su = "su";
     String[] locations = {
         "/sbin/", "/system/bin/", "/system/xbin/", "/system/sd/xbin/", "/system/bin/failsafe/",
@@ -387,12 +387,14 @@ public class EasyDeviceMod {
    *
    * @return the imei
    */
-  @SuppressWarnings("MissingPermission") public String getIMEI() {
+  @SuppressWarnings("MissingPermission") public final String getIMEI() {
     String result = null;
     boolean hasReadPhoneStatePermission =
         context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
             == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission) result = tm.getDeviceId();
+    if (hasReadPhoneStatePermission) {
+      result = tm.getDeviceId();
+    }
 
     return CheckValidityUtil.checkValidData(result);
   }
@@ -402,7 +404,7 @@ public class EasyDeviceMod {
    *
    * @return the serial
    */
-  public String getSerial() {
+  public final String getSerial() {
     return CheckValidityUtil.checkValidData(Build.SERIAL);
   }
 
@@ -411,7 +413,7 @@ public class EasyDeviceMod {
    *
    * @return the os codename
    */
-  public String getOSCodename() {
+  public final String getOSCodename() {
     String codename;
     switch (Build.VERSION.SDK_INT) {
       case Build.VERSION_CODES.BASE:
@@ -481,7 +483,7 @@ public class EasyDeviceMod {
    *
    * @return the os version
    */
-  public String getOSVersion() {
+  public final String getOSVersion() {
     return CheckValidityUtil.checkValidData(Build.VERSION.RELEASE);
   }
 
@@ -491,7 +493,7 @@ public class EasyDeviceMod {
    * @param activity the activity
    * @return the orientation
    */
-  public int getOrientation(Activity activity) {
+  public final int getOrientation(final Activity activity) {
     switch (activity.getResources().getConfiguration().orientation) {
       case Configuration.ORIENTATION_PORTRAIT:
         return ORIENTATION_PORTRAIT;

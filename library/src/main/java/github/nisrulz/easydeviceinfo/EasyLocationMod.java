@@ -57,7 +57,7 @@ import android.support.annotation.NonNull;
    *
    * @return the double [ ]
    */
-  public double[] getLatLong() {
+  public final double[] getLatLong() {
     double[] gps = new double[2];
     gps[0] = 0;
     gps[1] = 0;
@@ -99,7 +99,8 @@ import android.support.annotation.NonNull;
     return gps;
   }
 
-  private Location getBetterLocation(@NonNull Location location1, @NonNull Location location2) {
+  private Location getBetterLocation(@NonNull final Location location1,
+      @NonNull final Location location2) {
     if (location1.getAccuracy() >= location2.getAccuracy()) {
       return location1;
     } else {
