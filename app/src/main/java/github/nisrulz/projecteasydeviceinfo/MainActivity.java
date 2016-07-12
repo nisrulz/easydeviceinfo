@@ -32,6 +32,7 @@ import github.nisrulz.easydeviceinfo.EasyIdMod;
 import github.nisrulz.easydeviceinfo.EasyLocationMod;
 import github.nisrulz.easydeviceinfo.EasyMemoryMod;
 import github.nisrulz.easydeviceinfo.EasyNetworkMod;
+import github.nisrulz.easydeviceinfo.EasyNfcMod;
 import github.nisrulz.easydeviceinfo.EasySimMod;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -304,6 +305,10 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Supported ABIS", easyCpuMod.getStringSupportedABIS());
     deviceDataMap.put("Supported 32 bit ABIS", easyCpuMod.getStringSupported32bitABIS());
     deviceDataMap.put("Supported 64 bit ABIS", easyCpuMod.getStringSupported64bitABIS());
+
+    // NFC Mod
+    EasyNfcMod easyNfcMod = new EasyNfcMod(this);
+    deviceDataMap.put("is NFC present", String.valueOf(easyNfcMod.isNfcPresent()));
 
     for (String key : deviceDataMap.keySet()) {
       data.add(key + " : " + deviceDataMap.get(key));
