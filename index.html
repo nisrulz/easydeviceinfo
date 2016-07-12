@@ -35,7 +35,7 @@
 <h3>
 <a id="featured-in" class="anchor" href="#featured-in" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Featured in</h3>
 
-<p><a href="https://android-arsenal.com/details/1/3562"><img src="https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true" alt="Android Arsenal"></a> <a href="http://androidweekly.net/issues/issue-209"><img src="https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg" alt="Android Weekly"></a> <a href="http://us2.campaign-archive1.com/?u=869610fc59cf83e08b6e0635a&amp;id=b123cc7fb0&amp;e=abe3a482d3"><img src="https://img.shields.io/badge/AndroidDev%20Digest-Issue%20%3A%2023%20July%2C%2016-blue.svg" alt="AndroidDev Digest"></a> <a href="https://snowdream.github.io/awesome-android/Other.html#Utility"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="awesome-android"></a></p>
+<p><a href="https://android-arsenal.com/details/1/3562"><img src="https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true" alt="Android Arsenal"></a> <a href="http://androidweekly.net/issues/issue-209"><img src="https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg" alt="Android Weekly"></a> <a href="https://www.androiddevdigest.com/digest-99/"><img src="https://img.shields.io/badge/AndroidDev%20Digest-%2399-blue.svg" alt="AndroidDev Digest"></a> <a href="https://snowdream.github.io/awesome-android/Other.html#Utility"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="awesome-android"></a></p>
 
 <h3>
 <a id="show-some-heart" class="anchor" href="#show-some-heart" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Show some <g-emoji alias="heart" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png">❤️</g-emoji>
@@ -64,7 +64,7 @@
 <li>EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
 </ul>
 
-<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:2.0.2<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:2.1.0<span class="pl-pds">'</span></span></pre></div>
 
 <h1>
 <a id="usage-docswiki" class="anchor" href="#usage-docswiki" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage Docs/Wiki</h1>
@@ -477,8 +477,8 @@
 <td>String</td>
 </tr>
 <tr>
-<td>Temprature (Deg Celsius)</td>
-<td><code>getBatteryTemprature()</code></td>
+<td>Temperature (Deg Celsius)</td>
+<td><code>getBatteryTemperature()</code></td>
 <td>float</td>
 </tr>
 <tr>
@@ -988,6 +988,34 @@
 <div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">uses-permission</span> <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>android.permission.ACCESS_FINE_LOCATION<span class="pl-pds">"</span></span>/&gt;</pre></div>
 </li>
 </ul>
+
+<h4>
+<a id="easynfcmod" class="anchor" href="#easynfcmod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyNfcMod</strong>
+</h4>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyNfcMod</span> easyNfcMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyNfcMod</span>(context);</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
+<th>returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Is NFC present</td>
+<td><code>isNfcPresent()</code></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td>Is NFC enabled</td>
+<td><code>isNfcEnabled()</code></td>
+<td>boolean</td>
+</tr>
+</tbody>
+</table>
 
 <h4>
 <a id="easydeviceinfo" class="anchor" href="#easydeviceinfo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyDeviceInfo</strong>
