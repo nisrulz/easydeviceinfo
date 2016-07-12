@@ -22,12 +22,14 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.telephony.TelephonyManager;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.List;
 
 /**
@@ -231,42 +233,45 @@ public class EasyNetworkMod {
    */
   @SuppressWarnings("MissingPermission") public String getWifiMAC() {
     String result = null;
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+    if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
+        == PackageManager.PERMISSION_GRANTED) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        // Hardware ID are restricted in Android 6+
+        // https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id
         Enumeration<NetworkInterface> interfaces = null;
         try {
-            interfaces = NetworkInterface.getNetworkInterfaces();
+          interfaces = NetworkInterface.getNetworkInterfaces();
         } catch (SocketException e) {
-            e.printStackTrace();
+          e.printStackTrace();
         }
         while (interfaces != null && interfaces.hasMoreElements()) {
-            NetworkInterface iF = interfaces.nextElement();
+          NetworkInterface networkInterface = interfaces.nextElement();
 
-            byte[] addr = new byte[0];
-            try {
-                addr = iF.getHardwareAddress();
-            } catch (SocketException e) {
-                e.printStackTrace();
-            }
-            if (addr == null || addr.length == 0) {
-                continue;
-            }
+          byte[] addr = new byte[0];
+          try {
+            addr = networkInterface.getHardwareAddress();
+          } catch (SocketException e) {
+            e.printStackTrace();
+          }
+          if (addr == null || addr.length == 0) {
+            continue;
+          }
 
-            StringBuilder buf = new StringBuilder();
-            for (byte b : addr) {
-                buf.append(String.format("%02X:", b));
-            }
-            if (buf.length() > 0) {
-                buf.deleteCharAt(buf.length() - 1);
-            }
-            String mac = buf.toString();
-            result = iF.getName().equals("wlan0") ? mac : result;
+          StringBuilder buf = new StringBuilder();
+          for (byte b : addr) {
+            buf.append(String.format("%02X:", b));
+          }
+          if (buf.length() > 0) {
+            buf.deleteCharAt(buf.length() - 1);
+          }
+          String mac = buf.toString();
+          String wifiInterfaceName = "wlan0";
+          result = wifiInterfaceName.equals(networkInterface.getName()) ? mac : result;
         }
-    } else {
-        if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
-                == PackageManager.PERMISSION_GRANTED) {
-            WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-            result = wm.getConnectionInfo().getMacAddress();
-        }
+      } else {
+        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        result = wm.getConnectionInfo().getMacAddress();
+      }
     }
     return CheckValidityUtil.checkValidData(result);
   }

@@ -20,6 +20,7 @@ import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 
 /**
  * The type Easy bluetooth mod.
@@ -45,8 +46,16 @@ public class EasyBluetoothMod {
     String result = null;
     if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
         == PackageManager.PERMISSION_GRANTED) {
-      BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
-      result = bta.getAddress();
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        // Hardware ID are restricted in Android 6+
+        // https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id
+        // Getting bluetooth mac via reflection for devices with Android 6+
+        result = android.provider.Settings.Secure.getString(context.getContentResolver(),
+            "bluetooth_address");
+      } else {
+        BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
+        result = bta != null ? bta.getAddress() : null;
+      }
     }
     return CheckValidityUtil.checkValidData(result);
   }
