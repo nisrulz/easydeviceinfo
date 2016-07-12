@@ -25,6 +25,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
@@ -70,9 +71,10 @@ public class EasyIdMod {
         } catch (IOException | GooglePlayServicesNotAvailableException e) {
           // Unrecoverable error connecting to Google Play services (e.g.,
           // the old version of the service doesn't support getting AdvertisingId).
+          Log.d(EasyDeviceInfo.name,"Google Play Services Not Available Exception", e);
 
         } catch (GooglePlayServicesRepairableException e) {
-          e.printStackTrace();
+          Log.d(EasyDeviceInfo.name,"Google Play Services Repairable Exception", e);
         }
       }
     }).start();
@@ -112,12 +114,12 @@ public class EasyIdMod {
    * @return the ua
    */
   public final String getUA() {
-    final String system_ua = System.getProperty("http.agent");
+    final String systemUa = System.getProperty("http.agent");
     String result;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      result = WebSettings.getDefaultUserAgent(context) + "__" + system_ua;
+      result = WebSettings.getDefaultUserAgent(context) + "__" + systemUa;
     } else {
-      result = new WebView(context).getSettings().getUserAgentString() + "__" + system_ua;
+      result = new WebView(context).getSettings().getUserAgentString() + "__" + systemUa;
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -171,11 +173,11 @@ public class EasyIdMod {
    * @return the gsfid
    */
   @SuppressWarnings("MissingPermission") public final String getGSFID() {
-    final Uri URI = Uri.parse("content://com.google.android.gsf.gservices");
-    final String ID_KEY = "android_id";
+    final Uri uri = Uri.parse("content://com.google.android.gsf.gservices");
+    final String idKey = "android_id";
 
-    String[] params = { ID_KEY };
-    Cursor c = context.getContentResolver().query(URI, null, null, params, null);
+    String[] params = { idKey };
+    Cursor c = context.getContentResolver().query(uri, null, null, params, null);
 
     if (c == null) {
       return "NA";

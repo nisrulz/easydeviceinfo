@@ -24,6 +24,7 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -64,6 +65,7 @@ public class EasyNetworkMod {
    * The constant CELLULAR_UNIDENTIFIED_GEN.
    */
   public static final int CELLULAR_UNIDENTIFIED_GEN = 6;
+  public static final String SOCKET_EXCEPTION = "Socket Exception";
   private final Context context;
 
   /**
@@ -130,7 +132,7 @@ public class EasyNetworkMod {
         }
       }
     } catch (SocketException e) {
-      e.printStackTrace();
+      Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -158,7 +160,7 @@ public class EasyNetworkMod {
         }
       }
     } catch (SocketException e) {
-      e.printStackTrace();
+      Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -244,7 +246,7 @@ public class EasyNetworkMod {
         try {
           interfaces = NetworkInterface.getNetworkInterfaces();
         } catch (SocketException e) {
-          e.printStackTrace();
+          Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
         }
         while (interfaces != null && interfaces.hasMoreElements()) {
           NetworkInterface networkInterface = interfaces.nextElement();
@@ -253,7 +255,7 @@ public class EasyNetworkMod {
           try {
             addr = networkInterface.getHardwareAddress();
           } catch (SocketException e) {
-            e.printStackTrace();
+            Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
           }
           if (addr == null || addr.length == 0) {
             continue;

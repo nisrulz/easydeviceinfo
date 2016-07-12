@@ -99,14 +99,12 @@ public class EasyDeviceMod {
    */
   public final int getPhoneType() {
     switch (tm.getPhoneType()) {
-      case TelephonyManager.PHONE_TYPE_NONE:
-        return PHONE_TYPE_NONE;
-
       case TelephonyManager.PHONE_TYPE_GSM:
         return PHONE_TYPE_GSM;
 
       case TelephonyManager.PHONE_TYPE_CDMA:
         return PHONE_TYPE_CDMA;
+      case TelephonyManager.PHONE_TYPE_NONE:
       default:
         return PHONE_TYPE_NONE;
     }

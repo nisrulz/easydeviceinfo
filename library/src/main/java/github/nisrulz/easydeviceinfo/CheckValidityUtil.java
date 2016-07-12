@@ -33,7 +33,7 @@ final class CheckValidityUtil {
    */
   static String handleIllegalCharacterInResult(final String result) {
     String tempResult = result;
-    if (tempResult != null && tempResult.indexOf(" ") > 0) {
+    if (tempResult != null && tempResult.contains(" ")) {
       tempResult = tempResult.replaceAll(" ", "_");
     }
     return tempResult;

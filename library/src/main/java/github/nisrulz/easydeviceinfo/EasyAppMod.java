@@ -20,12 +20,14 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.util.Log;
 
 /**
  * The type Easy  app mod.
  */
 public class EasyAppMod {
 
+  private static final String NAME_NOT_FOUND_EXCEPTION = "Name Not Found Exception";
   private final Context context;
 
   /**
@@ -80,9 +82,9 @@ public class EasyAppMod {
     try {
       ai = pm.getApplicationInfo(context.getPackageName(), 0);
     } catch (PackageManager.NameNotFoundException e) {
-      e.printStackTrace();
+      Log.d(EasyDeviceInfo.name, NAME_NOT_FOUND_EXCEPTION, e);
     }
-    result = (ai != null ? (String) pm.getApplicationLabel(ai) : null);
+    result = ai != null ? (String) pm.getApplicationLabel(ai) : null;
     return CheckValidityUtil.checkValidData(result);
   }
 
@@ -96,7 +98,7 @@ public class EasyAppMod {
     try {
       result = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
     } catch (PackageManager.NameNotFoundException e) {
-      e.printStackTrace();
+      Log.d(EasyDeviceInfo.name, NAME_NOT_FOUND_EXCEPTION, e);
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -112,7 +114,7 @@ public class EasyAppMod {
       result = String.valueOf(
           context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode);
     } catch (PackageManager.NameNotFoundException e) {
-      e.printStackTrace();
+      Log.d(EasyDeviceInfo.name, NAME_NOT_FOUND_EXCEPTION, e);
     }
     return CheckValidityUtil.checkValidData(result);
   }

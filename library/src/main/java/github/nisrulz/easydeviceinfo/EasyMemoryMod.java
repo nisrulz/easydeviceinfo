@@ -22,6 +22,7 @@ import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
+import android.util.Log;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -52,26 +53,26 @@ import static android.os.Build.VERSION_CODES;
    * @return the total ram
    */
   public final long getTotalRAM() {
-    long total_memory_in_Mbs = 0;
+    long totalMemoryInMbs = 0;
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
       MemoryInfo mi = new MemoryInfo();
       ActivityManager activityManager =
           (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
       activityManager.getMemoryInfo(mi);
-      total_memory_in_Mbs = mi.totalMem / 1048576L;
+      totalMemoryInMbs = mi.totalMem / 1048576L;
     } else {
       RandomAccessFile reader;
       String load;
       try {
         reader = new RandomAccessFile("/proc/meminfo", "r");
         load = reader.readLine().replaceAll("\\D+", "");
-        total_memory_in_Mbs = Integer.parseInt(load) / 1024;
+        totalMemoryInMbs = (long)Integer.parseInt(load) / 1024;
         reader.close();
-      } catch (IOException ex) {
-        ex.printStackTrace();
+      } catch (IOException e) {
+        Log.d(EasyDeviceInfo.name,"IO Exception", e);
       }
     }
-    return total_memory_in_Mbs;
+    return totalMemoryInMbs;
   }
 
   private boolean externalMemoryAvailable() {

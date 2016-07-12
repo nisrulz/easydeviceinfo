@@ -55,14 +55,16 @@ public class EasyConfigMod {
    * @return the boolean
    */
   public final boolean isRunningOnEmulator() {
-    return Build.BRAND.contains("generic")
-        || Build.DEVICE.contains("generic")
-        || Build.PRODUCT.contains("sdk")
-        || Build.HARDWARE.contains("goldfish")
-        || Build.MANUFACTURER.contains("Genymotion")
+    boolean isGenyMotion = Build.MANUFACTURER.contains("Genymotion")
         || Build.PRODUCT.contains("vbox86p")
         || Build.DEVICE.contains("vbox86p")
         || Build.HARDWARE.contains("vbox86");
+    boolean isGenericEmulator = Build.BRAND.contains("generic")
+        || Build.DEVICE.contains("generic")
+        || Build.PRODUCT.contains("sdk")
+        || Build.HARDWARE.contains("goldfish");
+
+    return isGenericEmulator || isGenyMotion;
   }
 
   /**

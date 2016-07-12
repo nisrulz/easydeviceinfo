@@ -52,6 +52,6 @@ public class EasyNfcMod {
    * @return the boolean
    */
   public final boolean isNfcEnabled() {
-    return (nfcAdapter != null && nfcAdapter.isEnabled());
+    return nfcAdapter != null && nfcAdapter.isEnabled();
   }
 }
