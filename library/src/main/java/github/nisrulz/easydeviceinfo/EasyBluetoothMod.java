@@ -43,7 +43,7 @@ public class EasyBluetoothMod {
    * @return the bluetooth mac
    */
   @SuppressWarnings("MissingPermission") public String getBluetoothMAC() {
-    String result = null;
+    String result = "02:00:00:00:00:00";
     if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
         == PackageManager.PERMISSION_GRANTED) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -54,7 +54,7 @@ public class EasyBluetoothMod {
             "bluetooth_address");
       } else {
         BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
-        result = bta != null ? bta.getAddress() : null;
+        result = bta != null ? bta.getAddress() : result;
       }
     }
     return CheckValidityUtil.checkValidData(result);

@@ -232,7 +232,7 @@ public class EasyNetworkMod {
    * @return the wifi mac
    */
   @SuppressWarnings("MissingPermission") public String getWifiMAC() {
-    String result = null;
+    String result = "02:00:00:00:00:00";
     if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
         == PackageManager.PERMISSION_GRANTED) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
