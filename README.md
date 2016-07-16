@@ -32,13 +32,50 @@ compile 'com.github.nisrulz:easydeviceinfo:2.1.0'
 
 # Usage Docs/Wiki
 
-Introducing **Mods** in **EasyDeviceInfo**!
+Introducing **Mods** in **EasyDeviceInfo v2**!
 
- ***Mods*** or *Modules* are the new way to retrieve information. They let you get information in a very segmented manner and the best part is you only initialize the Mods you need in your project. Pretty rad , eh ?  I know. 
+ ***Mods*** or ***Modules*** are the new way to retrieve information. They let you get information in a very segmented manner and the best part is you only initialize the Mods you need in your project. Pretty rad , eh ?  I know.
 
-The whole api has been reworked however the functions remain the same, hence now you need to migrate to v2.x.x from 1.x.x. 
+> The whole api has been reworked in v2.x.x , however the functions remain the same, hence now you need to migrate to v2.x.x from 1.x.x.
 
-Checkout the new way to use the API in [Wiki](https://github.com/nisrulz/easydeviceinfo/wiki)
+
+### Supported Mods 
++ EasyAppMod
++ EasyBatteryMod
++ EasyBluetoothMod
++ EasyConfigMod
++ EasyCpuMod
++ EasyDeviceMod
++ EasyDisplayMod
++ EasyIdMod
++ EasyLocationMod
++ EasyMemoryMod
++ EasyNetworkMod
++ EasyNfcMod
++ EasySimMod
+
+### Simple example
+
+Now to use them, create an instance of one of the Mods ( **Easy\*Mod** class ), i.e `EasyConfigMod`
+```java
+EasyConfigMod easyConfigMod = new EasyConfigMod(context);
+```
+Next call an available function on the ***easyConfigMod*** instance such as
+```java
+String time_in_ms= String.valueOf(easyConfigMod.getTime());
+```
+
+Now each **Mods** has a certain set of functions you can call on them to retrieve device information. i.e for  **EasyConfigMod**
+
+|Value|functionName|returns
+|---|---|---|
+|Is running on emulator|`isRunningOnEmulator()`|boolean
+|Time (ms)|`getTime()`|long
+|Formatted Time (24Hr)|`getFormattedTime()`|String
+|Up Time (ms)|`getUpTime()`|long
+|Formatted Up Time (24Hr)|`getFormattedUpTime()`|String
+
+### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki)** </center>
 
 # Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
