@@ -75,7 +75,7 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
 |Up Time (ms)|`getUpTime()`|long
 |Formatted Up Time (24Hr)|`getFormattedUpTime()`|String
 
-### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki)** </center>
+### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)** </center>
 
 # Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
