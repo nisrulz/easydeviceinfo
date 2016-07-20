@@ -133,7 +133,7 @@ public class EasyBatteryMod {
     float temp = 0.0f;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
-      temp = (float) (batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10);
+      temp = (float) (batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10.0);
     }
     return temp;
   }

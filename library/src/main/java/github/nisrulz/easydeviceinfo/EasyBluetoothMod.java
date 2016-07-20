@@ -19,7 +19,6 @@ package github.nisrulz.easydeviceinfo;
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Build;
 
 /**
@@ -44,8 +43,7 @@ public class EasyBluetoothMod {
    */
   @SuppressWarnings("MissingPermission") public final String getBluetoothMAC() {
     String result = "02:00:00:00:00:00";
-    if (context.checkCallingOrSelfPermission(Manifest.permission.BLUETOOTH)
-        == PackageManager.PERMISSION_GRANTED) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.BLUETOOTH)) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         // Hardware ID are restricted in Android 6+
         // https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id

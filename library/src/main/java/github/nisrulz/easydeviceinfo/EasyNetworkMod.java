@@ -18,7 +18,6 @@ package github.nisrulz.easydeviceinfo;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
@@ -98,10 +97,8 @@ public class EasyNetworkMod {
    * @return the boolean
    */
   @SuppressWarnings("MissingPermission") public final boolean isNetworkAvailable() {
-    if (context.checkCallingOrSelfPermission(Manifest.permission.INTERNET)
-        == PackageManager.PERMISSION_GRANTED
-        && context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE)
-        == PackageManager.PERMISSION_GRANTED) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.INTERNET)
+        && PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
       ConnectivityManager cm = (ConnectivityManager) context.getApplicationContext()
           .getSystemService(Context.CONNECTIVITY_SERVICE);
       NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -171,12 +168,8 @@ public class EasyNetworkMod {
    * @return the network type
    */
   @SuppressWarnings("MissingPermission") public final int getNetworkType() {
-    int networkStatePermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_NETWORK_STATE);
-
     int result = UNKNOWN;
-
-    if (networkStatePermission == PackageManager.PERMISSION_GRANTED) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
       ConnectivityManager cm =
           (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -237,8 +230,7 @@ public class EasyNetworkMod {
    */
   @SuppressWarnings("MissingPermission") public final String getWifiMAC() {
     String result = "02:00:00:00:00:00";
-    if (context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_WIFI_STATE)
-        == PackageManager.PERMISSION_GRANTED) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         // Hardware ID are restricted in Android 6+
         // https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id

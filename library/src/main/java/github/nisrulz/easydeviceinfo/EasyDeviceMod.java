@@ -19,7 +19,6 @@ package github.nisrulz.easydeviceinfo;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.telephony.TelephonyManager;
@@ -117,10 +116,8 @@ public class EasyDeviceMod {
    */
   @SuppressWarnings("MissingPermission") public final String getPhoneNo() {
     String result = null;
-    boolean hasReadPhoneStatePermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
-            == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission && tm.getLine1Number() != null) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)
+        && tm.getLine1Number() != null) {
       result = tm.getLine1Number();
     }
 
@@ -387,10 +384,7 @@ public class EasyDeviceMod {
    */
   @SuppressWarnings("MissingPermission") public final String getIMEI() {
     String result = null;
-    boolean hasReadPhoneStatePermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
-            == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getDeviceId();
     }
 

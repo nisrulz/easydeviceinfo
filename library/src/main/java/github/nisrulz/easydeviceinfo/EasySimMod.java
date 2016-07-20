@@ -18,7 +18,6 @@ package github.nisrulz.easydeviceinfo;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.telephony.TelephonyManager;
 import java.util.Locale;
 
@@ -57,6 +56,15 @@ public class EasySimMod {
   }
 
   /**
+   * Is sim network locked.
+   *
+   * @return the boolean
+   */
+  public final boolean isSimNetworkLocked() {
+    return tm.getSimState() == TelephonyManager.SIM_STATE_NETWORK_LOCKED;
+  }
+
+  /**
    * Gets carrier.
    *
    * @return the carrier
@@ -77,10 +85,7 @@ public class EasySimMod {
    */
   @SuppressWarnings("MissingPermission") public final String getIMSI() {
     String result = null;
-    boolean hasReadPhoneStatePermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
-            == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getSubscriberId();
     }
 
@@ -94,10 +99,7 @@ public class EasySimMod {
    */
   @SuppressWarnings("MissingPermission") public final String getSIMSerial() {
     String result = null;
-    boolean hasReadPhoneStatePermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_STATE)
-            == PackageManager.PERMISSION_GRANTED;
-    if (hasReadPhoneStatePermission) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getSimSerialNumber();
     }
     return CheckValidityUtil.checkValidData(result);

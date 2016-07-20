@@ -18,7 +18,6 @@ package github.nisrulz.easydeviceinfo;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
@@ -40,12 +39,9 @@ import android.support.annotation.NonNull;
    */
   public EasyLocationMod(Context context) {
     hasFineLocationPermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED;
-
+        PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
     hasCoarseLocationPermission =
-        context.checkCallingOrSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-            == PackageManager.PERMISSION_GRANTED;
+        PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION);
 
     if (hasCoarseLocationPermission || hasFineLocationPermission) {
       lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);

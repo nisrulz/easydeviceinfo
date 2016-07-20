@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("SIM Serial Number", easySimMod.getSIMSerial());
     deviceDataMap.put("Country", easySimMod.getCountry());
     deviceDataMap.put("Carrier", easySimMod.getCarrier());
+    deviceDataMap.put("SIM Network Locked", String.valueOf(easySimMod.isSimNetworkLocked()));
 
     // Device Mod
     EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this);

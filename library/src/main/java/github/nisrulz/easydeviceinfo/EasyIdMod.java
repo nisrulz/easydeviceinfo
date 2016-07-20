@@ -20,7 +20,6 @@ import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -71,10 +70,9 @@ public class EasyIdMod {
         } catch (IOException | GooglePlayServicesNotAvailableException e) {
           // Unrecoverable error connecting to Google Play services (e.g.,
           // the old version of the service doesn't support getting AdvertisingId).
-          Log.d(EasyDeviceInfo.name,"Google Play Services Not Available Exception", e);
-
+          Log.d(EasyDeviceInfo.name, "Google Play Services Not Available Exception", e);
         } catch (GooglePlayServicesRepairableException e) {
-          Log.d(EasyDeviceInfo.name,"Google Play Services Repairable Exception", e);
+          Log.d(EasyDeviceInfo.name, "Google Play Services Repairable Exception", e);
         }
       }
     }).start();
@@ -97,8 +95,7 @@ public class EasyIdMod {
    */
   @SuppressWarnings("MissingPermission") public final String[] getAccounts() {
     String[] result = null;
-    if (context.checkCallingOrSelfPermission(Manifest.permission.GET_ACCOUNTS)
-        == PackageManager.PERMISSION_GRANTED) {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.GET_ACCOUNTS)) {
       Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
       result = new String[accounts.length];
       for (int i = 0; i < accounts.length; i++) {
