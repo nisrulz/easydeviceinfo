@@ -21,7 +21,7 @@ apply plugin: 'com.android.library'
 
 android {
   compileSdkVersion 24
-  buildToolsVersion "24.0.0"
+  buildToolsVersion "24.0.1"
 
   defaultConfig {
     minSdkVersion 9
@@ -49,7 +49,7 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
-  compile 'com.google.android.gms:play-services-base:9.2.0'
+  compile 'com.google.android.gms:play-services-base:9.2.1'
 }
 
 
