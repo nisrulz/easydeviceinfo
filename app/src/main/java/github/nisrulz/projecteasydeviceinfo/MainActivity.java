@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     HashMap<String, String> deviceDataMap = new HashMap<>();
 
     // Library Info
-    EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo();
+    EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo("na");
     data.add(easyDeviceInfo.getLibraryVersion());
 
     // ID Mod
@@ -248,10 +248,10 @@ public class MainActivity extends AppCompatActivity {
         deviceDataMap.put("Battery health", "Good");
         break;
       case EasyBatteryMod.HEALTH_HAVING_ISSUES:
-        deviceDataMap.put("Battery health", "Having isues");
+        deviceDataMap.put("Battery health", "Having issues");
         break;
       default:
-        deviceDataMap.put("Battery health", "Having isues");
+        deviceDataMap.put("Battery health", "Having issues");
         break;
     }
 
@@ -294,15 +294,20 @@ public class MainActivity extends AppCompatActivity {
 
     // Memory Mod
     EasyMemoryMod easyMemoryMod = new EasyMemoryMod(this);
-    deviceDataMap.put("Total RAM", String.valueOf(easyMemoryMod.getTotalRAM()) + " Mb");
+    deviceDataMap.put("Total RAM",
+        String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getTotalRAM())) + " Gb");
     deviceDataMap.put("Available Internal Memory",
-        String.valueOf(easyMemoryMod.getAvailableInternalMemorySize()) + " Mb");
+        String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getAvailableInternalMemorySize()))
+            + " Gb");
     deviceDataMap.put("Available External Memory",
-        String.valueOf(easyMemoryMod.getAvailableExternalMemorySize()) + " Mb");
+        String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getAvailableExternalMemorySize()))
+            + " Gb");
     deviceDataMap.put("Total Internal Memory",
-        String.valueOf(easyMemoryMod.getTotalInternalMemorySize()) + " Mb");
+        String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getTotalInternalMemorySize()))
+            + " Gb");
     deviceDataMap.put("Total External memory",
-        String.valueOf(easyMemoryMod.getTotalExternalMemorySize()) + " Mb");
+        String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getTotalExternalMemorySize()))
+            + " Gb");
 
     // CPU Mod
     EasyCpuMod easyCpuMod = new EasyCpuMod();

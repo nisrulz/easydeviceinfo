@@ -464,7 +464,7 @@ public class EasyDeviceMod {
         codename = "Nougat";
         break;
       default:
-        codename = "NA";
+        codename = EasyDeviceInfo.NOT_FOUND_VAL;
         break;
     }
     return codename;

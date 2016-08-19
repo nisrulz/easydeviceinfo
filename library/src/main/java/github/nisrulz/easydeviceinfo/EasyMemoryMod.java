@@ -53,26 +53,26 @@ import static android.os.Build.VERSION_CODES;
    * @return the total ram
    */
   public final long getTotalRAM() {
-    long totalMemoryInMbs = 0;
+    long totalMemory = 0;
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
       MemoryInfo mi = new MemoryInfo();
       ActivityManager activityManager =
           (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
       activityManager.getMemoryInfo(mi);
-      totalMemoryInMbs = mi.totalMem / 1048576L;
+      totalMemory = mi.totalMem;
     } else {
       RandomAccessFile reader;
       String load;
       try {
         reader = new RandomAccessFile("/proc/meminfo", "r");
         load = reader.readLine().replaceAll("\\D+", "");
-        totalMemoryInMbs = (long)Integer.parseInt(load) / 1024;
+        totalMemory = (long) Integer.parseInt(load);
         reader.close();
       } catch (IOException e) {
-        Log.d(EasyDeviceInfo.name,"IO Exception", e);
+        Log.d(EasyDeviceInfo.name, "IO Exception", e);
       }
     }
-    return totalMemoryInMbs;
+    return totalMemory;
   }
 
   private boolean externalMemoryAvailable() {
@@ -97,7 +97,7 @@ import static android.os.Build.VERSION_CODES;
       blockSize = stat.getBlockSize();
       availableBlocks = stat.getAvailableBlocks();
     }
-    return (availableBlocks * blockSize) / (1024 * 1024);
+    return availableBlocks * blockSize;
   }
 
   /**
@@ -117,7 +117,7 @@ import static android.os.Build.VERSION_CODES;
       blockSize = stat.getBlockSize();
       totalBlocks = stat.getBlockCount();
     }
-    return (totalBlocks * blockSize) / (1024 * 1024);
+    return totalBlocks * blockSize;
   }
 
   /**
@@ -138,7 +138,7 @@ import static android.os.Build.VERSION_CODES;
         blockSize = stat.getBlockSize();
         availableBlocks = stat.getAvailableBlocks();
       }
-      return (availableBlocks * blockSize) / (1024 * 1024);
+      return availableBlocks * blockSize;
     } else {
       return 0;
     }
@@ -162,9 +162,49 @@ import static android.os.Build.VERSION_CODES;
         blockSize = stat.getBlockSize();
         totalBlocks = stat.getBlockCount();
       }
-      return (totalBlocks * blockSize) / (1024 * 1024);
+      return totalBlocks * blockSize;
     } else {
       return 0;
     }
+  }
+
+  /**
+   * Convert to kb float.
+   *
+   * @param valInBytes the val in bytes
+   * @return the float
+   */
+  public float convertToKb(long valInBytes) {
+    return (float) valInBytes / 1024;
+  }
+
+  /**
+   * Convert to mb float.
+   *
+   * @param valInBytes the val in bytes
+   * @return the float
+   */
+  public float convertToMb(long valInBytes) {
+    return (float) valInBytes / (1024 * 1024);
+  }
+
+  /**
+   * Convert to gb float.
+   *
+   * @param valInBytes the val in bytes
+   * @return the float
+   */
+  public float convertToGb(long valInBytes) {
+    return (float) valInBytes / (1024 * 1024 * 1024);
+  }
+
+  /**
+   * Convert to tb float.
+   *
+   * @param valInBytes the val in bytes
+   * @return the float
+   */
+  public float convertToTb(long valInBytes) {
+    return (float) valInBytes / (1024 * 1024 * 1024 * 1024);
   }
 }

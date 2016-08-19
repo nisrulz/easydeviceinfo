@@ -20,7 +20,15 @@ package github.nisrulz.easydeviceinfo;
  * Easy device info class.
  */
 public class EasyDeviceInfo {
-  static String name = "EasyDeviceInfo";
+  /**
+   * The Name.
+   */
+  static final String name = "EasyDeviceInfo";
+
+  /**
+   * The Not found val.
+   */
+  static String NOT_FOUND_VAL = "unknown";
 
   /**
    * Gets library version.
@@ -31,5 +39,20 @@ public class EasyDeviceInfo {
     int versionCode = 18;
     String version = "v2.1.1";
     return name + " : " + version + " [build-" + versionCode + "]";
+  }
+
+  /**
+   * Instantiates a new Easy device info.
+   */
+  public EasyDeviceInfo() {
+  }
+
+  /**
+   * Instantiates a new Easy device info.
+   *
+   * @param notFoundVal the not found val
+   */
+  public EasyDeviceInfo(String notFoundVal) {
+    NOT_FOUND_VAL = notFoundVal;
   }
 }

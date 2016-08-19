@@ -62,7 +62,7 @@ public class EasyIdMod {
           String androidAdId = adInfo.getId();
           boolean adDoNotTrack = adInfo.isLimitAdTrackingEnabled();
           if (androidAdId == null) {
-            androidAdId = "NA";
+            androidAdId = EasyDeviceInfo.NOT_FOUND_VAL;
           }
 
           //Send Data to callback
@@ -177,10 +177,10 @@ public class EasyIdMod {
     Cursor c = context.getContentResolver().query(uri, null, null, params, null);
 
     if (c == null) {
-      return "NA";
+      return EasyDeviceInfo.NOT_FOUND_VAL;
     } else if (!c.moveToFirst() || c.getColumnCount() < 2) {
       c.close();
-      return "NA";
+      return EasyDeviceInfo.NOT_FOUND_VAL;
     }
 
     try {
@@ -189,7 +189,7 @@ public class EasyIdMod {
       return gsfID;
     } catch (NumberFormatException e) {
       c.close();
-      return "NA";
+      return EasyDeviceInfo.NOT_FOUND_VAL;
     }
   }
 

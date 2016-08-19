@@ -125,7 +125,7 @@ public class EasyAppMod {
    * @param permission the permission
    * @return the boolean
    */
-  public boolean isPermissionGranted(String permission) {
+  public boolean isPermissionGranted(final String permission) {
     return context.checkCallingPermission(permission) == PackageManager.PERMISSION_GRANTED;
   }
 }

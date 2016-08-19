@@ -17,7 +17,7 @@ final class PermissionUtil {
    * @param permission the permission
    * @return the boolean
    */
-  static final boolean hasPermission(Context context, String permission) {
+  static boolean hasPermission(final Context context, final String permission) {
     return context.checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
   }
 }
