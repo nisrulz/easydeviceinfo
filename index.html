@@ -30,7 +30,7 @@
         <h3>
 <a id="specs" class="anchor" href="#specs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Specs</h3>
 
-<p><a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a> <a href="https://android-arsenal.com/api?level=9"><img src="https://img.shields.io/badge/API-9%2B-orange.svg?style=flat" alt="API"></a> <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A2.0.1"><img src="https://img.shields.io/badge/Size-27%20KB-e91e63.svg"></a></p>
+<p><a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a> <a href="https://android-arsenal.com/api?level=9"><img src="https://img.shields.io/badge/API-9%2B-orange.svg?style=flat" alt="API"></a> <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A2.1.1"><img src="https://img.shields.io/badge/Size-30%20KB-e91e63.svg"></a></p>
 
 <h3>
 <a id="featured-in" class="anchor" href="#featured-in" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Featured in</h3>
@@ -60,11 +60,11 @@
 <h1>
 <a id="including-in-your-project" class="anchor" href="#including-in-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Including in your project</h1>
 
-<ul>
-<li>EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency</li>
-</ul>
+<p>EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency</p>
 
-<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:2.1.0<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-source-groovy-gradle"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.nisrulz:easydeviceinfo:{latest version}<span class="pl-pds">'</span></span></pre></div>
+
+<p>where <code>{latest version}</code> corresponds to published version in <a href="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo"><img src="https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg" alt="Maven Central"></a></p>
 
 <h1>
 <a id="usage-docswiki" class="anchor" href="#usage-docswiki" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage Docs/Wiki</h1>
@@ -78,7 +78,7 @@
 <h1>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h1>
 
-<p>Create an instance of  <strong>Easy*Mod</strong> class, i.e <code>EasyConfigMod</code></p>
+<p>Create an instance of one of the Mods ( <strong>Easy*Mod</strong> class ), i.e <code>EasyConfigMod</code></p>
 
 <div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyConfigMod</span> easyConfigMod <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyConfigMod</span>(context);</pre></div>
 
@@ -86,7 +86,7 @@
 
 <div class="highlight highlight-source-java"><pre><span class="pl-smi">String</span> time_in_ms<span class="pl-k">=</span> <span class="pl-smi">String</span><span class="pl-k">.</span>valueOf(easyConfigMod<span class="pl-k">.</span>getTime());</pre></div>
 
-<p>Now each <strong>Mods</strong> houses a certain set of functions you can use to retrieve device information. </p>
+<p>Now each <strong>Mods</strong> has a certain set of functions you can call on them to retrieve device information.</p>
 
 <p>The list is as follows</p>
 
@@ -366,34 +366,68 @@
 <tr>
 <th>Value</th>
 <th>functionName</th>
+<th>returns(bytes)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total RAM</td>
+<td><code>getTotalRAM()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Available Internal Memory</td>
+<td><code>getAvailableInternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Available External Memory</td>
+<td><code>getAvailableExternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Total Internal Memory</td>
+<td><code>getTotalInternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+<tr>
+<td>Total External Memory</td>
+<td><code>getTotalExternalMemorySize()</code></td>
+<td>long</td>
+</tr>
+</tbody>
+</table>
+
+<p>Util functions for conversions</p>
+
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>functionName</th>
 <th>returns</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Total RAM(Mb)</td>
-<td><code>getTotalRAM()</code></td>
-<td>long</td>
+<td>Convert to Kb</td>
+<td><code>convertToKb(long valInBytes)</code></td>
+<td>float</td>
 </tr>
 <tr>
-<td>Available Internal Memory(Mb)</td>
-<td><code>getAvailableInternalMemorySize()</code></td>
-<td>long</td>
+<td>Convert to Mb</td>
+<td><code>convertToMb(long valInBytes)</code></td>
+<td>float</td>
 </tr>
 <tr>
-<td>Available External Memory(Mb)</td>
-<td><code>getAvailableExternalMemorySize()</code></td>
-<td>long</td>
+<td>Convert to Gb</td>
+<td><code>convertToGb(long valInBytes)</code></td>
+<td>float</td>
 </tr>
 <tr>
-<td>Total Internal Memory(Mb)</td>
-<td><code>getTotalInternalMemorySize()</code></td>
-<td>long</td>
-</tr>
-<tr>
-<td>Total External Memory(Mb)</td>
-<td><code>getTotalExternalMemorySize()</code></td>
-<td>long</td>
+<td>Convert to Tb</td>
+<td><code>convertToTb(long valInBytes)</code></td>
+<td>float</td>
 </tr>
 </tbody>
 </table>
@@ -442,6 +476,11 @@
 <td>App Version Code</td>
 <td><code>getAppVersionCode()</code></td>
 <td>String</td>
+</tr>
+<tr>
+<td>Is Permission Granted</td>
+<td><code>isPermissionGranted(String permission)</code></td>
+<td>boolean</td>
 </tr>
 </tbody>
 </table>
@@ -959,6 +998,11 @@
 <td><code>getCarrier()</code></td>
 <td>String</td>
 </tr>
+<tr>
+<td>SIM Locked</td>
+<td><code>isSimNetworkLocked()</code></td>
+<td>boolean</td>
+</tr>
 </tbody>
 </table>
 
@@ -1021,7 +1065,7 @@
 <a id="easydeviceinfo" class="anchor" href="#easydeviceinfo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>EasyDeviceInfo</strong>
 </h4>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyDeviceInfo</span> easyDeviceInfo <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>(context);</pre></div>
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyDeviceInfo</span> easyDeviceInfo <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>();</pre></div>
 
 <table>
 <thead>
@@ -1039,6 +1083,14 @@
 </tr>
 </tbody>
 </table>
+
+<p>To modify the value that is returned when a function cannot get the value from device, simply init <code>EasyDeviceInfo</code> with the new value before using any <strong>Easy*Mod</strong></p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">EasyDeviceInfo</span> easyDeviceInfo <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">EasyDeviceInfo</span>(<span class="pl-s"><span class="pl-pds">"</span>na<span class="pl-pds">"</span></span>);</pre></div>
+
+<p>this will make the functions return <code>na</code> when the value is not found or an error is encountered.</p>
+
+<p>By default if you don't use this, the value returned is <code>unknown</code>.</p>
 
 <h1>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
