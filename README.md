@@ -25,10 +25,11 @@ Demo App
 Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/nisrulz/easydeviceinfo/releases).
 
 # Including in your project
-- EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
+EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
 ```gradle
-compile 'com.github.nisrulz:easydeviceinfo:2.1.0'
+compile 'com.github.nisrulz:easydeviceinfo:{latest version}'
 ```
+where `{latest version}` corresponds to published version in [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo)
 
 # Usage Docs/Wiki
 
