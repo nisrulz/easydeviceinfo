@@ -16,6 +16,7 @@
 
 package github.nisrulz.projecteasydeviceinfo;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -200,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Activity Name", easyAppMod.getActivityName());
     deviceDataMap.put("App version", easyAppMod.getAppVersion());
     deviceDataMap.put("App versioncode", easyAppMod.getAppVersionCode());
+    deviceDataMap.put("Does app have Camera permission?",
+        String.valueOf(easyAppMod.isPermissionGranted(Manifest.permission.CAMERA)));
 
     //Network Mod
     EasyNetworkMod easyNetworkMod = new EasyNetworkMod(this);

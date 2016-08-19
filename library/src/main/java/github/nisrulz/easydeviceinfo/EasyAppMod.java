@@ -118,4 +118,14 @@ public class EasyAppMod {
     }
     return CheckValidityUtil.checkValidData(result);
   }
+
+  /**
+   * Is permission granted boolean.
+   *
+   * @param permission the permission
+   * @return the boolean
+   */
+  public boolean isPermissionGranted(String permission) {
+    return context.checkCallingPermission(permission) == PackageManager.PERMISSION_GRANTED;
+  }
 }
