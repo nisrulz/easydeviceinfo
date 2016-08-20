@@ -33,7 +33,8 @@ public class EasyAppMod {
   /**
    * Instantiates a new Easy app mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyAppMod(final Context context) {
     this.context = context;
@@ -122,10 +123,22 @@ public class EasyAppMod {
   /**
    * Is permission granted boolean.
    *
-   * @param permission the permission
+   * @param permission
+   *     the permission
    * @return the boolean
    */
   public boolean isPermissionGranted(final String permission) {
     return context.checkCallingPermission(permission) == PackageManager.PERMISSION_GRANTED;
+  }
+
+  /**
+   * Check if the app with the specified packagename is installed or not
+   *
+   * @param packageName
+   *     the package name
+   * @return the boolean
+   */
+  public boolean isAppInstalled(String packageName) {
+    return context.getPackageManager().getLaunchIntentForPackage(packageName) != null;
   }
 }
