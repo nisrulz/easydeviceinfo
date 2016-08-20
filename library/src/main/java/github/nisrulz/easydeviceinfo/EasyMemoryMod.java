@@ -35,13 +35,15 @@ import static android.os.Build.VERSION_CODES;
  *
  * Deprecation warning suppressed since it is handled in the code
  */
-@SuppressWarnings("deprecation") public class EasyMemoryMod {
+@SuppressWarnings("deprecation")
+public class EasyMemoryMod {
   private final Context context;
 
   /**
    * Instantiates a new Easy memory mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyMemoryMod(final Context context) {
     this.context = context;
@@ -60,7 +62,8 @@ import static android.os.Build.VERSION_CODES;
           (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
       activityManager.getMemoryInfo(mi);
       totalMemory = mi.totalMem;
-    } else {
+    }
+    else {
       RandomAccessFile reader;
       String load;
       try {
@@ -73,11 +76,6 @@ import static android.os.Build.VERSION_CODES;
       }
     }
     return totalMemory;
-  }
-
-  private boolean externalMemoryAvailable() {
-    return android.os.Environment.getExternalStorageState()
-        .equals(android.os.Environment.MEDIA_MOUNTED);
   }
 
   /**
@@ -93,7 +91,8 @@ import static android.os.Build.VERSION_CODES;
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
       blockSize = stat.getBlockSizeLong();
       availableBlocks = stat.getAvailableBlocksLong();
-    } else {
+    }
+    else {
       blockSize = stat.getBlockSize();
       availableBlocks = stat.getAvailableBlocks();
     }
@@ -113,7 +112,8 @@ import static android.os.Build.VERSION_CODES;
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
       blockSize = stat.getBlockSizeLong();
       totalBlocks = stat.getBlockCountLong();
-    } else {
+    }
+    else {
       blockSize = stat.getBlockSize();
       totalBlocks = stat.getBlockCount();
     }
@@ -134,14 +134,21 @@ import static android.os.Build.VERSION_CODES;
       if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
         blockSize = stat.getBlockSizeLong();
         availableBlocks = stat.getAvailableBlocksLong();
-      } else {
+      }
+      else {
         blockSize = stat.getBlockSize();
         availableBlocks = stat.getAvailableBlocks();
       }
       return availableBlocks * blockSize;
-    } else {
+    }
+    else {
       return 0;
     }
+  }
+
+  private boolean externalMemoryAvailable() {
+    return android.os.Environment.getExternalStorageState()
+        .equals(android.os.Environment.MEDIA_MOUNTED);
   }
 
   /**
@@ -158,12 +165,14 @@ import static android.os.Build.VERSION_CODES;
       if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
         blockSize = stat.getBlockSizeLong();
         totalBlocks = stat.getBlockCountLong();
-      } else {
+      }
+      else {
         blockSize = stat.getBlockSize();
         totalBlocks = stat.getBlockCount();
       }
       return totalBlocks * blockSize;
-    } else {
+    }
+    else {
       return 0;
     }
   }
@@ -171,7 +180,8 @@ import static android.os.Build.VERSION_CODES;
   /**
    * Convert to kb float.
    *
-   * @param valInBytes the val in bytes
+   * @param valInBytes
+   *     the val in bytes
    * @return the float
    */
   public float convertToKb(long valInBytes) {
@@ -181,7 +191,8 @@ import static android.os.Build.VERSION_CODES;
   /**
    * Convert to mb float.
    *
-   * @param valInBytes the val in bytes
+   * @param valInBytes
+   *     the val in bytes
    * @return the float
    */
   public float convertToMb(long valInBytes) {
@@ -191,7 +202,8 @@ import static android.os.Build.VERSION_CODES;
   /**
    * Convert to gb float.
    *
-   * @param valInBytes the val in bytes
+   * @param valInBytes
+   *     the val in bytes
    * @return the float
    */
   public float convertToGb(long valInBytes) {
@@ -201,7 +213,8 @@ import static android.os.Build.VERSION_CODES;
   /**
    * Convert to tb float.
    *
-   * @param valInBytes the val in bytes
+   * @param valInBytes
+   *     the val in bytes
    * @return the float
    */
   public float convertToTb(long valInBytes) {

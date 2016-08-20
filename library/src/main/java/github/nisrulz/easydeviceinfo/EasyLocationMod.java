@@ -27,7 +27,8 @@ import android.support.annotation.NonNull;
  *
  * Permission warning suppressed since it will be provided by the client
  */
-@SuppressWarnings("MissingPermission") public class EasyLocationMod {
+@SuppressWarnings("MissingPermission")
+public class EasyLocationMod {
   private final boolean hasFineLocationPermission;
   private final boolean hasCoarseLocationPermission;
   private LocationManager lm;
@@ -35,7 +36,8 @@ import android.support.annotation.NonNull;
   /**
    * Instantiates a new Easy location mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyLocationMod(Context context) {
     hasFineLocationPermission =
@@ -64,7 +66,8 @@ import android.support.annotation.NonNull;
         gps[0] = lastKnownLocation.getLatitude();
         gps[1] = lastKnownLocation.getLongitude();
       }
-    } else if (hasFineLocationPermission) {
+    }
+    else if (hasFineLocationPermission) {
       boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
       boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
@@ -99,7 +102,8 @@ import android.support.annotation.NonNull;
       @NonNull final Location location2) {
     if (location1.getAccuracy() >= location2.getAccuracy()) {
       return location1;
-    } else {
+    }
+    else {
       return location2;
     }
   }

@@ -31,17 +31,6 @@ public class EasyDeviceInfo {
   static String NOT_FOUND_VAL = "unknown";
 
   /**
-   * Gets library version.
-   *
-   * @return the library version
-   */
-  public final String getLibraryVersion() {
-    int versionCode = 18;
-    String version = "v2.1.1";
-    return name + " : " + version + " [build-" + versionCode + "]";
-  }
-
-  /**
    * Instantiates a new Easy device info.
    */
   public EasyDeviceInfo() {
@@ -50,9 +39,21 @@ public class EasyDeviceInfo {
   /**
    * Instantiates a new Easy device info.
    *
-   * @param notFoundVal the not found val
+   * @param notFoundVal
+   *     the not found val
    */
   public EasyDeviceInfo(String notFoundVal) {
     NOT_FOUND_VAL = notFoundVal;
+  }
+
+  /**
+   * Gets library version.
+   *
+   * @return the library version
+   */
+  public final String getLibraryVersion() {
+    int versionCode = 18;
+    String version = "v2.1.1";
+    return name + " : " + version + " [build-" + versionCode + "]";
   }
 }

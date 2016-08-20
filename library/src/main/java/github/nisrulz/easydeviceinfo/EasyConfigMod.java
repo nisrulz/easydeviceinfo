@@ -52,6 +52,15 @@ public class EasyConfigMod {
   }
 
   /**
+   * Checks if the device has sd card
+   *
+   * @return the boolean
+   */
+  public static boolean hasSdCard() {
+    return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
+  }
+
+  /**
    * Is running on emulator boolean.
    *
    * @return the boolean
@@ -118,6 +127,8 @@ public class EasyConfigMod {
     return String.format(Locale.US, "%02d:%02d:%02d", hr, min, sec);
   }
 
+  
+
   /**
    * Gets up time.
    *
@@ -140,15 +151,6 @@ public class EasyConfigMod {
     int hr = (int) ((millis / (1000 * 60 * 60)) % 24);
 
     return String.format(Locale.US, "%02d:%02d:%02d", hr, min, sec);
-  }
-
-  /**
-   * Checks if the device has sd card
-   *
-   * @return the boolean
-   */
-  public static boolean hasSdCard() {
-    return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
   }
 }
 

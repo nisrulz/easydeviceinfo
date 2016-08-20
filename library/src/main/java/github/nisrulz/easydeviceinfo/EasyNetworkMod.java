@@ -64,13 +64,17 @@ public class EasyNetworkMod {
    * The constant CELLULAR_UNIDENTIFIED_GEN.
    */
   public static final int CELLULAR_UNIDENTIFIED_GEN = 6;
+  /**
+   * The constant SOCKET_EXCEPTION.
+   */
   public static final String SOCKET_EXCEPTION = "Socket Exception";
   private final Context context;
 
   /**
    * Instantiates a new Easy  network mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyNetworkMod(final Context context) {
     this.context = context;
@@ -96,7 +100,8 @@ public class EasyNetworkMod {
    *
    * @return the boolean
    */
-  @SuppressWarnings("MissingPermission") public final boolean isNetworkAvailable() {
+  @SuppressWarnings("MissingPermission")
+  public final boolean isNetworkAvailable() {
     if (PermissionUtil.hasPermission(context, Manifest.permission.INTERNET)
         && PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
       ConnectivityManager cm = (ConnectivityManager) context.getApplicationContext()
@@ -167,7 +172,8 @@ public class EasyNetworkMod {
    *
    * @return the network type
    */
-  @SuppressWarnings("MissingPermission") public final int getNetworkType() {
+  @SuppressWarnings("MissingPermission")
+  public final int getNetworkType() {
     int result = UNKNOWN;
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
       ConnectivityManager cm =
@@ -176,10 +182,12 @@ public class EasyNetworkMod {
       NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
       if (activeNetwork == null) {
         result = UNKNOWN;
-      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
+      }
+      else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
           || activeNetwork.getType() == ConnectivityManager.TYPE_WIMAX) {
         result = WIFI_WIFIMAX;
-      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+      }
+      else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
         TelephonyManager manager =
             (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (manager.getSimState() == TelephonyManager.SIM_STATE_READY) {
@@ -228,7 +236,8 @@ public class EasyNetworkMod {
    *
    * @return the wifi mac
    */
-  @SuppressWarnings("MissingPermission") public final String getWifiMAC() {
+  @SuppressWarnings("MissingPermission")
+  public final String getWifiMAC() {
     String result = "02:00:00:00:00:00";
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -264,7 +273,8 @@ public class EasyNetworkMod {
           String wifiInterfaceName = "wlan0";
           result = wifiInterfaceName.equals(networkInterface.getName()) ? mac : result;
         }
-      } else {
+      }
+      else {
         WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         result = wm.getConnectionInfo().getMacAddress();
       }

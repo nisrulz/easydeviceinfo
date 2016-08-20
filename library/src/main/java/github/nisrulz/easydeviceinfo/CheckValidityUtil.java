@@ -28,7 +28,8 @@ final class CheckValidityUtil {
   /**
    * Handle illegal character in result string.
    *
-   * @param result the result
+   * @param result
+   *     the result
    * @return the string
    */
   static String handleIllegalCharacterInResult(final String result) {
@@ -42,7 +43,8 @@ final class CheckValidityUtil {
   /**
    * Check valid data string.
    *
-   * @param data the data
+   * @param data
+   *     the data
    * @return the string
    */
   static String checkValidData(final String data) {
@@ -56,13 +58,14 @@ final class CheckValidityUtil {
   /**
    * Check valid data string [ ].
    *
-   * @param data the data
+   * @param data
+   *     the data
    * @return the string [ ]
    */
   static String[] checkValidData(final String[] data) {
     String[] tempData = data;
     if (tempData == null || tempData.length == 0) {
-      tempData = new String[] {EasyDeviceInfo.NOT_FOUND_VAL};
+      tempData = new String[] { EasyDeviceInfo.NOT_FOUND_VAL };
     }
     return tempData;
   }

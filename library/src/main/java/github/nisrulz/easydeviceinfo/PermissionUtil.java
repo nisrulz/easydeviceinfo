@@ -13,8 +13,10 @@ final class PermissionUtil {
   /**
    * Has permission method.
    *
-   * @param context the context
-   * @param permission the permission
+   * @param context
+   *     the context
+   * @param permission
+   *     the permission
    * @return the boolean
    */
   static boolean hasPermission(final Context context, final String permission) {

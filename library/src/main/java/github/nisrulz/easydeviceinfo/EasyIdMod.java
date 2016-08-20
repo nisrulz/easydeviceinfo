@@ -42,7 +42,8 @@ public class EasyIdMod {
   /**
    * Instantiates a new Easy id mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyIdMod(final Context context) {
     this.context = context;
@@ -51,11 +52,13 @@ public class EasyIdMod {
   /**
    * Gets android ad id.
    *
-   * @param callback the callback
+   * @param callback
+   *     the callback
    */
   public final void getAndroidAdId(final AdIdentifierCallback callback) {
     new Thread(new Runnable() {
-      @Override public void run() {
+      @Override
+      public void run() {
         AdvertisingIdClient.Info adInfo;
         try {
           adInfo = AdvertisingIdClient.getAdvertisingIdInfo(context);
@@ -93,7 +96,8 @@ public class EasyIdMod {
    *
    * @return the string [ ]
    */
-  @SuppressWarnings("MissingPermission") public final String[] getAccounts() {
+  @SuppressWarnings("MissingPermission")
+  public final String[] getAccounts() {
     String[] result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.GET_ACCOUNTS)) {
       Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
@@ -115,7 +119,8 @@ public class EasyIdMod {
     String result;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
       result = WebSettings.getDefaultUserAgent(context) + "__" + systemUa;
-    } else {
+    }
+    else {
       result = new WebView(context).getSettings().getUserAgentString() + "__" + systemUa;
     }
     return CheckValidityUtil.checkValidData(result);
@@ -126,7 +131,8 @@ public class EasyIdMod {
    *
    * @return the psuedo unique id
    */
-  @SuppressWarnings("deprecation") public final String getPseudoUniqueID() {
+  @SuppressWarnings("deprecation")
+  public final String getPseudoUniqueID() {
     // If all else fails, if the user does have lower than API 9 (lower
     // than Gingerbread), has reset their phone or 'Secure.ANDROID_ID'
     // returns 'null', then simply the ID returned will be solely based
@@ -138,7 +144,8 @@ public class EasyIdMod {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       devIDShort += (Build.SUPPORTED_ABIS[0].length() % 10);
-    } else {
+    }
+    else {
       devIDShort += (Build.CPU_ABI.length() % 10);
     }
 
@@ -169,7 +176,8 @@ public class EasyIdMod {
    *
    * @return the gsfid
    */
-  @SuppressWarnings("MissingPermission") public final String getGSFID() {
+  @SuppressWarnings("MissingPermission")
+  public final String getGSFID() {
     final Uri uri = Uri.parse("content://com.google.android.gsf.gservices");
     final String idKey = "android_id";
 
@@ -178,7 +186,8 @@ public class EasyIdMod {
 
     if (c == null) {
       return EasyDeviceInfo.NOT_FOUND_VAL;
-    } else if (!c.moveToFirst() || c.getColumnCount() < 2) {
+    }
+    else if (!c.moveToFirst() || c.getColumnCount() < 2) {
       c.close();
       return EasyDeviceInfo.NOT_FOUND_VAL;
     }
@@ -200,8 +209,10 @@ public class EasyIdMod {
     /**
      * On success.
      *
-     * @param adIdentifier the ad identifier
-     * @param adDonotTrack the ad donot track
+     * @param adIdentifier
+     *     the ad identifier
+     * @param adDonotTrack
+     *     the ad donot track
      */
     void onSuccess(String adIdentifier, boolean adDonotTrack);
   }

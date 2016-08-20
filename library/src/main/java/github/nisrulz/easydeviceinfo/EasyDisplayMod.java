@@ -31,7 +31,8 @@ public class EasyDisplayMod {
   /**
    * Instantiates a new Easy display mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyDisplayMod(final Context context) {
     this.context = context;
@@ -80,7 +81,8 @@ public class EasyDisplayMod {
   /**
    * Get display xy coordinates int [ ].
    *
-   * @param event the event
+   * @param event
+   *     the event
    * @return the int [ ]
    */
   public final int[] getDisplayXYCoordinates(final MotionEvent event) {

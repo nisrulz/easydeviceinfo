@@ -31,7 +31,8 @@ public class EasySimMod {
   /**
    * Instantiates a new Easy  sim mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasySimMod(final Context context) {
     this.context = context;
@@ -47,7 +48,8 @@ public class EasySimMod {
     String result;
     if (tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
       result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
-    } else {
+    }
+    else {
       Locale locale = Locale.getDefault();
       result = locale.getCountry().toLowerCase(locale);
     }
@@ -83,7 +85,8 @@ public class EasySimMod {
    *
    * @return the imsi
    */
-  @SuppressWarnings("MissingPermission") public final String getIMSI() {
+  @SuppressWarnings("MissingPermission")
+  public final String getIMSI() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getSubscriberId();
@@ -97,7 +100,8 @@ public class EasySimMod {
    *
    * @return the sim serial
    */
-  @SuppressWarnings("MissingPermission") public final String getSIMSerial() {
+  @SuppressWarnings("MissingPermission")
+  public final String getSIMSerial() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getSimSerialNumber();

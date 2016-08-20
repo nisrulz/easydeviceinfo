@@ -29,7 +29,8 @@ public class EasyNfcMod {
   /**
    * Instantiates a new Easy nfc mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyNfcMod(final Context context) {
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD_MR1) {

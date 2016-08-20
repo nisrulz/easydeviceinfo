@@ -84,7 +84,8 @@ public class EasyDeviceMod {
   /**
    * Instantiates a new Easy  device mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyDeviceMod(final Context context) {
     this.context = context;
@@ -114,7 +115,8 @@ public class EasyDeviceMod {
    *
    * @return the phone no
    */
-  @SuppressWarnings("MissingPermission") public final String getPhoneNo() {
+  @SuppressWarnings("MissingPermission")
+  public final String getPhoneNo() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)
         && tm.getLine1Number() != null) {
@@ -213,7 +215,8 @@ public class EasyDeviceMod {
    * Device type int.
    * Based on metric : https://design.google.com/devices/
    *
-   * @param activity the activity
+   * @param activity
+   *     the activity
    * @return the int
    */
   public final int getDeviceType(Activity activity) {
@@ -225,13 +228,17 @@ public class EasyDeviceMod {
     double diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
     if (diagonalInches > 10.1) {
       return DEVICE_TYPE_TV;
-    } else if (diagonalInches <= 10.1 && diagonalInches > 7) {
+    }
+    else if (diagonalInches <= 10.1 && diagonalInches > 7) {
       return DEVICE_TYPE_TABLET;
-    } else if (diagonalInches <= 7 && diagonalInches > 6.5) {
+    }
+    else if (diagonalInches <= 7 && diagonalInches > 6.5) {
       return DEVICE_TYPE_PHABLET;
-    } else if (diagonalInches <= 6.5 && diagonalInches >= 2) {
+    }
+    else if (diagonalInches <= 6.5 && diagonalInches >= 2) {
       return DEVICE_TYPE_PHONE;
-    } else {
+    }
+    else {
       return DEVICE_TYPE_WATCH;
     }
   }
@@ -382,7 +389,8 @@ public class EasyDeviceMod {
    *
    * @return the imei
    */
-  @SuppressWarnings("MissingPermission") public final String getIMEI() {
+  @SuppressWarnings("MissingPermission")
+  public final String getIMEI() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getDeviceId();
@@ -482,7 +490,8 @@ public class EasyDeviceMod {
   /**
    * Gets orientation.
    *
-   * @param activity the activity
+   * @param activity
+   *     the activity
    * @return the orientation
    */
   public final int getOrientation(final Activity activity) {

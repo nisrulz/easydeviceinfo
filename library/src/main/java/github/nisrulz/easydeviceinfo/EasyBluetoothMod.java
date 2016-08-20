@@ -30,7 +30,8 @@ public class EasyBluetoothMod {
   /**
    * Instantiates a new Easy bluetooth mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyBluetoothMod(final Context context) {
     this.context = context;
@@ -41,7 +42,8 @@ public class EasyBluetoothMod {
    *
    * @return the bluetooth mac
    */
-  @SuppressWarnings("MissingPermission") public final String getBluetoothMAC() {
+  @SuppressWarnings("MissingPermission")
+  public final String getBluetoothMAC() {
     String result = "02:00:00:00:00:00";
     if (PermissionUtil.hasPermission(context, Manifest.permission.BLUETOOTH)) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -50,7 +52,8 @@ public class EasyBluetoothMod {
         // Getting bluetooth mac via reflection for devices with Android 6+
         result = android.provider.Settings.Secure.getString(context.getContentResolver(),
             "bluetooth_address");
-      } else {
+      }
+      else {
         BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
         result = bta != null ? bta.getAddress() : result;
       }

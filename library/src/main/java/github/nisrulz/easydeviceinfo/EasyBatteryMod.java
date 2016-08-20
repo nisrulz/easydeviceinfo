@@ -55,7 +55,8 @@ public class EasyBatteryMod {
   /**
    * Instantiates a new Easy battery mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyBatteryMod(final Context context) {
     this.context = context;
@@ -78,6 +79,11 @@ public class EasyBatteryMod {
     return percentage;
   }
 
+  private Intent getBatteryStatusIntent() {
+    IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+    return context.registerReceiver(null, batFilter);
+  }
+
   /**
    * Is device charging boolean.
    *
@@ -88,11 +94,6 @@ public class EasyBatteryMod {
     int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
     return status == BatteryManager.BATTERY_STATUS_CHARGING
         || status == BatteryManager.BATTERY_STATUS_FULL;
-  }
-
-  private Intent getBatteryStatusIntent() {
-    IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-    return context.registerReceiver(null, batFilter);
   }
 
   /**
@@ -107,7 +108,8 @@ public class EasyBatteryMod {
       health = batteryStatus.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
       if (health == BatteryManager.BATTERY_HEALTH_GOOD) {
         health = HEALTH_GOOD;
-      } else {
+      }
+      else {
         health = HEALTH_HAVING_ISSUES;
       }
     }
