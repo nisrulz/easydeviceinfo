@@ -19,6 +19,7 @@ package github.nisrulz.easydeviceinfo;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Build;
+import android.os.Environment;
 import android.os.SystemClock;
 import java.util.Locale;
 
@@ -43,7 +44,8 @@ public class EasyConfigMod {
   /**
    * Instantiates a new Easy config mod.
    *
-   * @param context the context
+   * @param context
+   *     the context
    */
   public EasyConfigMod(final Context context) {
     this.context = context;
@@ -139,4 +141,14 @@ public class EasyConfigMod {
 
     return String.format(Locale.US, "%02d:%02d:%02d", hr, min, sec);
   }
+
+  /**
+   * Checks if the device has sd card
+   *
+   * @return the boolean
+   */
+  public static boolean hasSdCard() {
+    return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
+  }
 }
+
