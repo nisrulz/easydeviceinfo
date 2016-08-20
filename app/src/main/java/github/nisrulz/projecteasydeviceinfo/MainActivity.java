@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
   private ArrayAdapter<String> adapter;
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
@@ -65,12 +66,14 @@ public class MainActivity extends AppCompatActivity {
       for (String e : emailIds) {
         emailString.append(e).append("\n");
       }
-    } else {
+    }
+    else {
       emailString.append("-");
     }
 
     easyIdMod.getAndroidAdId(new EasyIdMod.AdIdentifierCallback() {
-      @Override public void onSuccess(String adIdentifier, boolean adDonotTrack) {
+      @Override
+      public void onSuccess(String adIdentifier, boolean adDonotTrack) {
         // Add Data
         data.add("Android Advertiser ID :" + adIdentifier);
         data.add("Ad Do not Track :" + String.valueOf(adDonotTrack));
@@ -84,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Formatted Time (24Hrs)", easyConfigMod.getFormattedTime());
     deviceDataMap.put("UpTime (ms)", String.valueOf(easyConfigMod.getUpTime()));
     deviceDataMap.put("Formatted Up Time (24Hrs)", easyConfigMod.getFormattedUpTime());
+    deviceDataMap.put("Date", String.valueOf(easyConfigMod.getCurrentDate()));
+    deviceDataMap.put("Formatted Date", easyConfigMod.getFormattedDate());
+    deviceDataMap.put("SD Card available", String.valueOf(easyConfigMod.hasSdCard()));
     deviceDataMap.put("Running on emulator", String.valueOf(easyConfigMod.isRunningOnEmulator()));
     switch (easyConfigMod.getDeviceRingerMode()) {
       case EasyConfigMod.RINGER_MODE_NORMAL:

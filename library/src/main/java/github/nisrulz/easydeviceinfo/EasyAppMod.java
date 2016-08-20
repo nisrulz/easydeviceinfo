@@ -127,7 +127,7 @@ public class EasyAppMod {
    *     the permission
    * @return the boolean
    */
-  public boolean isPermissionGranted(final String permission) {
+  public final boolean isPermissionGranted(final String permission) {
     return context.checkCallingPermission(permission) == PackageManager.PERMISSION_GRANTED;
   }
 
@@ -138,7 +138,7 @@ public class EasyAppMod {
    *     the package name
    * @return the boolean
    */
-  public boolean isAppInstalled(String packageName) {
+  public final boolean isAppInstalled(String packageName) {
     return context.getPackageManager().getLaunchIntentForPackage(packageName) != null;
   }
 }

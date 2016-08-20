@@ -21,7 +21,10 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
-import java.util.Locale;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * The type Easy config mod.
@@ -118,16 +121,9 @@ public class EasyConfigMod {
    * @return the formatted time
    */
   public final String getFormattedTime() {
-
-    long millis = System.currentTimeMillis();
-    int sec = (int) (millis / 1000) % 60;
-    int min = (int) ((millis / (1000 * 60)) % 60);
-    int hr = (int) ((millis / (1000 * 60 * 60)) % 24);
-
-    return String.format(Locale.US, "%02d:%02d:%02d", hr, min, sec);
+    DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
+    return timeInstance.format(Calendar.getInstance().getTime());
   }
-
-  
 
   /**
    * Gets up time.
@@ -144,13 +140,27 @@ public class EasyConfigMod {
    * @return the formatted up time
    */
   public final String getFormattedUpTime() {
+    DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
+    return timeInstance.format(SystemClock.uptimeMillis());
+  }
 
-    long millis = SystemClock.uptimeMillis();
-    int sec = (int) (millis / 1000) % 60;
-    int min = (int) ((millis / (1000 * 60)) % 60);
-    int hr = (int) ((millis / (1000 * 60 * 60)) % 24);
+  /**
+   * Gets date from milliseconds
+   *
+   * @return the date
+   */
+  public final Date getCurrentDate() {
+    return new Date(System.currentTimeMillis());
+  }
 
-    return String.format(Locale.US, "%02d:%02d:%02d", hr, min, sec);
+  /**
+   * Gets formatted date.
+   *
+   * @return the formatted date
+   */
+  public final String getFormattedDate() {
+    DateFormat dateInstance = SimpleDateFormat.getDateInstance();
+    return dateInstance.format(Calendar.getInstance().getTime());
   }
 }
 
