@@ -16,10 +16,6 @@ Android library to get device information in a super easy way.
 
 The library is built for simplicity and approachability. It not only eliminates most boilerplate code for dealing with device information, but also provides an easy and simple API to retrieve them.
 
-Demo App
-
-[![playstore](https://github.com/nisrulz/easydeviceinfo/raw/master/img/google-play-store.png)](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
-
 # Changelog
 
 Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/nisrulz/easydeviceinfo/releases).
@@ -86,6 +82,12 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
   4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the maintainers) will get rejected.
   5. Check for existing [issues](https://github.com/nisrulz/easydeviceinfo/issues) first, before filing an issue.  
   6. Have fun!
+
+## Apps using EasyDeviceInfo
+If you are using EasyDeviceInfo in your app and would like to be listed here, please let me know by opening a [new issue](https://github.com/nisrulz/easydeviceinfo/issues/new)!
+
+ * [EasyDeviceInfo](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+
 
 ### Created & Maintained By
 [Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
