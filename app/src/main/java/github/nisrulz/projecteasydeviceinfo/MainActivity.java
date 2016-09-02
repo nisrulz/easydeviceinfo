@@ -21,20 +21,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import github.nisrulz.easydeviceinfo.EasyAppMod;
-import github.nisrulz.easydeviceinfo.EasyBatteryMod;
-import github.nisrulz.easydeviceinfo.EasyBluetoothMod;
-import github.nisrulz.easydeviceinfo.EasyConfigMod;
-import github.nisrulz.easydeviceinfo.EasyCpuMod;
-import github.nisrulz.easydeviceinfo.EasyDeviceInfo;
-import github.nisrulz.easydeviceinfo.EasyDeviceMod;
-import github.nisrulz.easydeviceinfo.EasyDisplayMod;
-import github.nisrulz.easydeviceinfo.EasyIdMod;
-import github.nisrulz.easydeviceinfo.EasyLocationMod;
-import github.nisrulz.easydeviceinfo.EasyMemoryMod;
-import github.nisrulz.easydeviceinfo.EasyNetworkMod;
-import github.nisrulz.easydeviceinfo.EasyNfcMod;
-import github.nisrulz.easydeviceinfo.EasySimMod;
+import github.nisrulz.easydeviceinfo.ads.EasyAdsMod;
+import github.nisrulz.easydeviceinfo.base.EasyAppMod;
+import github.nisrulz.easydeviceinfo.base.EasyBatteryMod;
+import github.nisrulz.easydeviceinfo.base.EasyBluetoothMod;
+import github.nisrulz.easydeviceinfo.base.EasyConfigMod;
+import github.nisrulz.easydeviceinfo.base.EasyCpuMod;
+import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
+import github.nisrulz.easydeviceinfo.base.EasyDisplayMod;
+import github.nisrulz.easydeviceinfo.base.EasyIdMod;
+import github.nisrulz.easydeviceinfo.base.EasyLocationMod;
+import github.nisrulz.easydeviceinfo.base.EasyMemoryMod;
+import github.nisrulz.easydeviceinfo.base.EasyNetworkMod;
+import github.nisrulz.easydeviceinfo.base.EasyNfcMod;
+import github.nisrulz.easydeviceinfo.base.EasySimMod;
+import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -71,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
       emailString.append("-");
     }
 
-    easyIdMod.getAndroidAdId(new EasyIdMod.AdIdentifierCallback() {
+    EasyAdsMod easyAdsMod = new EasyAdsMod(this);
+    easyAdsMod.getAndroidAdId(new EasyAdsMod.AdIdentifierCallback() {
       @Override
       public void onSuccess(String adIdentifier, boolean adDonotTrack) {
         // Add Data
