@@ -41,3 +41,7 @@ allprojects {
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
+
+ext{
+  libraryVersion = VERSION_NAME
+}

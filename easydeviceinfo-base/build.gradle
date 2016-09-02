@@ -21,5 +21,40 @@ android {
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   testCompile 'junit:junit:4.12'
-  compile project(':easydeviceinfo-common')
+  compile "com.github.nisrulz:easydeviceinfo-common:$libraryVersion"
 }
+
+// Bintray info
+def LIB_MODULE_NAME = 'easydeviceinfo-base'
+def LIB_MODULE_DESC = 'Base module for EasyDeviceInfo'
+
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = LIB_MODULE_NAME // Has to be same as your library module name
+
+  publishedGroupId = GROUP
+  libraryName = LIB_MODULE_NAME
+  artifact = LIB_MODULE_NAME // Has to be same as your library module name
+
+  libraryDescription = LIB_MODULE_DESC
+
+  // Your github repo link
+  siteUrl = POM_URL
+  gitUrl = POM_GIT_URL
+  githubRepository = LIB_GITHUB_REPO
+
+  libraryVersion = VERSION_NAME
+
+  developerId = POM_DEVELOPER_ID
+  developerName = POM_DEVELOPER_NAME
+  developerEmail = POM_DEVELOPER_EMAILID
+
+  licenseName = POM_LICENCE_NAME
+  licenseUrl = POM_LICENCE_URL
+  allLicenses = [POM_ALL_LICENCES]
+}
+
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/bintrayv1.gradle'
+
