@@ -20,7 +20,6 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
-import android.os.Environment;
 import android.os.StatFs;
 import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
@@ -30,6 +29,10 @@ import java.io.RandomAccessFile;
 
 import static android.os.Build.VERSION;
 import static android.os.Build.VERSION_CODES;
+import static android.os.Environment.MEDIA_MOUNTED;
+import static android.os.Environment.getDataDirectory;
+import static android.os.Environment.getExternalStorageDirectory;
+import static android.os.Environment.getExternalStorageState;
 
 /**
  * The type Easy memory mod.
@@ -85,7 +88,7 @@ public class EasyMemoryMod {
    * @return the available internal memory size
    */
   public final long getAvailableInternalMemorySize() {
-    File path = Environment.getDataDirectory();
+    File path = getDataDirectory();
     StatFs stat = new StatFs(path.getPath());
     long blockSize;
     long availableBlocks;
@@ -106,7 +109,7 @@ public class EasyMemoryMod {
    * @return the total internal memory size
    */
   public final long getTotalInternalMemorySize() {
-    File path = Environment.getDataDirectory();
+    File path = getDataDirectory();
     StatFs stat = new StatFs(path.getPath());
     long blockSize;
     long totalBlocks;
@@ -128,7 +131,7 @@ public class EasyMemoryMod {
    */
   public final long getAvailableExternalMemorySize() {
     if (externalMemoryAvailable()) {
-      File path = Environment.getExternalStorageDirectory();
+      File path = getExternalStorageDirectory();
       StatFs stat = new StatFs(path.getPath());
       long blockSize;
       long availableBlocks;
@@ -148,8 +151,7 @@ public class EasyMemoryMod {
   }
 
   private boolean externalMemoryAvailable() {
-    return android.os.Environment.getExternalStorageState()
-        .equals(android.os.Environment.MEDIA_MOUNTED);
+    return getExternalStorageState().equals(MEDIA_MOUNTED);
   }
 
   /**
@@ -159,7 +161,7 @@ public class EasyMemoryMod {
    */
   public final long getTotalExternalMemorySize() {
     if (externalMemoryAvailable()) {
-      File path = Environment.getExternalStorageDirectory();
+      File path = getExternalStorageDirectory();
       StatFs stat = new StatFs(path.getPath());
       long blockSize;
       long totalBlocks;
