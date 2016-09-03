@@ -51,6 +51,8 @@ dependencies {
   testCompile 'junit:junit:4.12'
   compile "com.github.nisrulz:easydeviceinfo-base:$libraryVersion"
   compile "com.github.nisrulz:easydeviceinfo-ads:$libraryVersion"
+//  compile project(':easydeviceinfo-ads')
+//  compile project(':easydeviceinfo-base')
 }
 
 // Bintray info

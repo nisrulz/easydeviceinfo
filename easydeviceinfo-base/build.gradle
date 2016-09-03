@@ -22,6 +22,7 @@ dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   testCompile 'junit:junit:4.12'
   compile "com.github.nisrulz:easydeviceinfo-common:$libraryVersion"
+//compile project(':easydeviceinfo-common')
 }
 
 // Bintray info
