@@ -1,8 +1,36 @@
 ![Image](https://github.com/nisrulz/easydeviceinfo/blob/master/img/github_banner.png)
 
 
+#### **Note**
+EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the appropriate one as per your requirement.
+
 ### Specs
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo) [![Javadocs](https://javadoc.io/badge/com.github.nisrulz/easydeviceinfo.svg?color=orange)](https://javadoc.io/doc/com.github.nisrulz/easydeviceinfo) [![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A2.1.1"><img src="https://img.shields.io/badge/Size-30 KB-e91e63.svg"/></a>
+
+[![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
+
++  `easydeviceinfo`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo/_latestVersion) [![Javadocs](https://javadoc.io/badge/com.github.nisrulz/easydeviceinfo.svg?color=orange)](https://javadoc.io/doc/com.github.nisrulz/easydeviceinfo)  <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A2.1.1"><img src="https://img.shields.io/badge/Size-30 KB-e91e63.svg"/></a>
+    - Main library which transitively includes both `easydeviceinfo-ads` and `easydeviceinfo-base`.
+
++ `easydeviceinfo-ads`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion)
+    -  EasyDeviceInfo Ads, which facilitates information regarding ads. Has a dependency on `google-play-services-ads`.
+    -  **Supported Mods**
+       + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
++ `easydeviceinfo-base`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion)
+    -  EasyDeviceInfo Base, which facilitates information regarding the device.
+    -  **Supported Mods**
+      + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
+      + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
+      + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
+      + [EasyConfigMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyconfigmod)
+      + [EasyCpuMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easycpumod)
+      + [EasyDeviceMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydevicemod)
+      + [EasyDisplayMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydisplaymod)
+      + [EasyIdMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyidmod)
+      + [EasyLocationMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easylocationmod)
+      + [EasyMemoryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easymemorymod)
+      + [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
+      + [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
+      + [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
 
 ### Featured in
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true)](https://android-arsenal.com/details/1/3562) [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg)](http://androidweekly.net/issues/issue-209) [![AndroidDev Digest](https://img.shields.io/badge/AndroidDev%20Digest-%2399-blue.svg)](https://www.androiddevdigest.com/digest-99/) [![awesome-android](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://snowdream.github.io/awesome-android/Other.html#Utility)
@@ -21,11 +49,22 @@ The library is built for simplicity and approachability. It not only eliminates 
 Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/nisrulz/easydeviceinfo/releases).
 
 # Including in your project
-EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency
+EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency, where `{latest version}` corresponds to published version in Jcenter
+
++ EasyDeviceInfo [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo/_latestVersion)
 ```gradle
 compile 'com.github.nisrulz:easydeviceinfo:{latest version}'
 ```
-where `{latest version}` corresponds to published version in [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.nisrulz/easydeviceinfo)
+
++	EasyDeviceInfo-Ads   [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion)
+```gradle
+compile 'com.github.nisrulz:easydeviceinfo-ads:{latest version}'
+```
+
++	EasyDeviceInfo-Base   [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion)
+```gradle
+compile 'com.github.nisrulz:easydeviceinfo-base:{latest version}'
+```
 
 # Usage Docs/Wiki
 
@@ -34,22 +73,6 @@ Introducing **Mods** in **EasyDeviceInfo v2**!
  ***Mods*** or ***Modules*** are the new way to retrieve information. They let you get information in a very segmented manner and the best part is you only initialize the Mods you need in your project. Pretty rad , eh ?  I know.
 
 > The whole api has been reworked in v2.x.x , however the functions remain the same, hence now you need to migrate to v2.x.x from 1.x.x.
-
-
-### Supported Mods 
-+ [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
-+ [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
-+ [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
-+ [EasyConfigMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyconfigmod)
-+ [EasyCpuMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easycpumod)
-+ [EasyDeviceMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydevicemod)
-+ [EasyDisplayMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydisplaymod)
-+ [EasyIdMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyidmod)
-+ [EasyLocationMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easylocationmod)
-+ [EasyMemoryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easymemorymod)
-+ [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
-+ [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
-+ [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
 
 ### Simple example
 
