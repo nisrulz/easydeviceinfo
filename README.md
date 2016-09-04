@@ -8,7 +8,7 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
 
 [![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
 
-+  `easydeviceinfo`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo/_latestVersion) [![Javadocs](https://javadoc.io/badge/com.github.nisrulz/easydeviceinfo.svg?color=orange)](https://javadoc.io/doc/com.github.nisrulz/easydeviceinfo)  <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A2.1.1"><img src="https://img.shields.io/badge/Size-30 KB-e91e63.svg"/></a>
++  `easydeviceinfo`  [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion)
     - Main library which transitively includes both `easydeviceinfo-ads` and `easydeviceinfo-base`.
 
 + `easydeviceinfo-ads`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion)
@@ -49,9 +49,9 @@ The library is built for simplicity and approachability. It not only eliminates 
 Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/nisrulz/easydeviceinfo/releases).
 
 # Including in your project
-EasyDeviceInfo is available in the MavenCentral, so getting it as simple as adding it as a dependency, where `{latest version}` corresponds to published version in Jcenter
+EasyDeviceInfo is available in the Jcenter, so getting it as simple as adding it as a dependency, where `{latest version}` corresponds to published version in Jcenter
 
-+ EasyDeviceInfo [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo/_latestVersion)
++ EasyDeviceInfo [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion)
 ```gradle
 compile 'com.github.nisrulz:easydeviceinfo:{latest version}'
 ```

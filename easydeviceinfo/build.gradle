@@ -61,7 +61,7 @@ def LIB_MODULE_DESC = 'Android library to get device information in a super easy
 
 ext {
   bintrayRepo = 'maven'
-  bintrayName = LIB_MODULE_NAME // Has to be same as your library module name
+  bintrayName = 'com.github.nisrulz:easydeviceinfo'
 
   publishedGroupId = GROUP
   libraryName = LIB_MODULE_NAME
