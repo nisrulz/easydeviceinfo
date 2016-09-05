@@ -8,14 +8,14 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
 
 [![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
 
-+  `easydeviceinfo`  [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion)
++  `easydeviceinfo`  [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A2.2.0"><img src="https://img.shields.io/badge/Methods count-core: 2 | deps: 15592-e91e63.svg"/></a>
     - Main library which transitively includes both `easydeviceinfo-ads` and `easydeviceinfo-base`.
 
-+ `easydeviceinfo-ads`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion)
++ `easydeviceinfo-ads`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo-ads%3A2.2.0"><img src="https://img.shields.io/badge/Methods count-core: 14 | deps: 15316-e91e63.svg"/></a>
     -  EasyDeviceInfo Ads, which facilitates information regarding ads. Has a dependency on `google-play-services-ads`.
     -  **Supported Mods**
        + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
-+ `easydeviceinfo-base`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion)
++ `easydeviceinfo-base`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo-base%3A2.2.0"><img src="https://img.shields.io/badge/Methods count-core: 262 | deps: 10-e91e63.svg"/></a>
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
     -  **Supported Mods**
       + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
