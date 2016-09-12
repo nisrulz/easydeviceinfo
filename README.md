@@ -49,22 +49,28 @@ The library is built for simplicity and approachability. It not only eliminates 
 Starting with `1.1.8`, Changes exist in the [releases tab](https://github.com/nisrulz/easydeviceinfo/releases).
 
 # Including in your project
-EasyDeviceInfo is available in the Jcenter, so getting it as simple as adding it as a dependency, where `{latest version}` corresponds to published version in Jcenter
+EasyDeviceInfo is available in the Jcenter, so getting it as simple as adding it as a dependency.
 
+```gradle
+dependencies {
+    def easyDeviceInfoVersion = {latest version}
+
+    // Base + Ads Bundled Library
+    compile "com.github.nisrulz:easydeviceinfo:$easyDeviceInfoVersion"
+
+    // Base Composite
+    compile "com.github.nisrulz:easydeviceinfo-base:$easyDeviceInfoVersion"
+
+    // Ads Composite
+    compile "com.github.nisrulz:easydeviceinfo-ads:$easyDeviceInfoVersion"
+}
+
+```
+
+where `{latest version}` corresponds to published version in Jcenter
 + EasyDeviceInfo [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion)
-```gradle
-compile 'com.github.nisrulz:easydeviceinfo:{latest version}'
-```
-
 +	EasyDeviceInfo-Ads   [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion)
-```gradle
-compile 'com.github.nisrulz:easydeviceinfo-ads:{latest version}'
-```
-
 +	EasyDeviceInfo-Base   [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion)
-```gradle
-compile 'com.github.nisrulz:easydeviceinfo-base:{latest version}'
-```
 
 # Usage Docs/Wiki
 
