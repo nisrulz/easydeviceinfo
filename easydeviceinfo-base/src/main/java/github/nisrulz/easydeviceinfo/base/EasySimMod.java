@@ -18,7 +18,12 @@ package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
 import android.content.Context;
+import android.os.Build;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -107,5 +112,25 @@ public class EasySimMod {
       result = tm.getSimSerialNumber();
     }
     return CheckValidityUtil.checkValidData(result);
+  }
+
+  @SuppressWarnings("MissingPermission")
+  public final List<SubscriptionInfo> getActiveMultiSimInfo() {
+    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        return SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+      }
+    }
+    return new ArrayList<>(0);
+  }
+
+  @SuppressWarnings("MissingPermission")
+  public final boolean isMultiSim() {
+    return getActiveMultiSimInfo().size() > 1 ? true : false;
+  }
+
+  @SuppressWarnings("MissingPermission")
+  public final int getNumberOfActiveSim() {
+    return getActiveMultiSimInfo().size();
   }
 }

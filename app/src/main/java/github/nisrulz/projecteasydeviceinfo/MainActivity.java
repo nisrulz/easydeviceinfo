@@ -17,8 +17,12 @@
 package github.nisrulz.projecteasydeviceinfo;
 
 import android.Manifest;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import github.nisrulz.easydeviceinfo.ads.EasyAdsMod;
@@ -38,11 +42,13 @@ import github.nisrulz.easydeviceinfo.base.EasySimMod;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
   private ArrayAdapter<String> adapter;
 
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -115,6 +121,36 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Country", easySimMod.getCountry());
     deviceDataMap.put("Carrier", easySimMod.getCarrier());
     deviceDataMap.put("SIM Network Locked", String.valueOf(easySimMod.isSimNetworkLocked()));
+    deviceDataMap.put("Is Multi SIM", String.valueOf(easySimMod.isMultiSim()));
+    deviceDataMap.put("Number of active SIM", String.valueOf(easySimMod.getNumberOfActiveSim()));
+
+    List<SubscriptionInfo> activeMultiSimInfo = easySimMod.getActiveMultiSimInfo();
+    if (activeMultiSimInfo != null) {
+      StringBuilder stringBuilder = new StringBuilder();
+      for (int i = 0; i < activeMultiSimInfo.size(); i++) {
+        stringBuilder.append("\nSIM " + i + " Info")
+            .append("\nPhone Number :")
+            .append(activeMultiSimInfo.get(i).getNumber())
+            .append("\n")
+            .append("Carrier Name :")
+            .append(activeMultiSimInfo.get(i).getCarrierName())
+            .append("\n")
+            .append("Country :")
+            .append(activeMultiSimInfo.get(i).getCountryIso())
+            .append("\n")
+            .append("Roaming :")
+            .append(activeMultiSimInfo.get(i).getDataRoaming()
+                == SubscriptionManager.DATA_ROAMING_ENABLE ? true : false)
+            .append("\n")
+            .append("Display Name :")
+            .append(activeMultiSimInfo.get(i).getDisplayName())
+            .append("\n")
+            .append("Sim Slot  :")
+            .append(activeMultiSimInfo.get(i).getSimSlotIndex())
+            .append("\n");
+      }
+      deviceDataMap.put("Multi SIM Info", stringBuilder.toString());
+    }
 
     // Device Mod
     EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this);
