@@ -46,7 +46,7 @@ public class EasySimMod {
    */
   public final String getCountry() {
     String result;
-    if (tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
+    if (tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
       result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
     }
     else {
@@ -63,7 +63,7 @@ public class EasySimMod {
    * @return the boolean
    */
   public final boolean isSimNetworkLocked() {
-    return tm.getSimState() == TelephonyManager.SIM_STATE_NETWORK_LOCKED;
+    return tm != null ? tm.getSimState() == TelephonyManager.SIM_STATE_NETWORK_LOCKED : false;
   }
 
   /**
@@ -88,7 +88,7 @@ public class EasySimMod {
   @SuppressWarnings("MissingPermission")
   public final String getIMSI() {
     String result = null;
-    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+    if (tm != null && PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getSubscriberId();
     }
 
@@ -103,7 +103,7 @@ public class EasySimMod {
   @SuppressWarnings("MissingPermission")
   public final String getSIMSerial() {
     String result = null;
-    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+    if (tm != null && PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
       result = tm.getSimSerialNumber();
     }
     return CheckValidityUtil.checkValidData(result);
