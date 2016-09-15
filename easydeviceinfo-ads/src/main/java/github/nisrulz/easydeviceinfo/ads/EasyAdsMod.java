@@ -8,10 +8,19 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.io.IOException;
 
+/**
+ * The type Easy ads mod.
+ */
 public class EasyAdsMod {
 
   private final Context context;
 
+  /**
+   * Instantiates a new Easy ads mod.
+   *
+   * @param context
+   *     the context
+   */
   public EasyAdsMod(Context context) {
     this.context = context;
   }
@@ -26,26 +35,30 @@ public class EasyAdsMod {
     new Thread(new Runnable() {
       @Override
       public void run() {
-        AdvertisingIdClient.Info adInfo;
-        try {
-          adInfo = AdvertisingIdClient.getAdvertisingIdInfo(context);
-          String androidAdId = adInfo.getId();
-          boolean adDoNotTrack = adInfo.isLimitAdTrackingEnabled();
-          if (androidAdId == null) {
-            androidAdId = EasyDeviceInfo.NOT_FOUND_VAL;
-          }
-
-          //Send Data to callback
-          callback.onSuccess(androidAdId, adDoNotTrack);
-        } catch (IOException | GooglePlayServicesNotAvailableException e) {
-          // Unrecoverable error connecting to Google Play services (e.g.,
-          // the old version of the service doesn't support getting AdvertisingId).
-          Log.d(EasyDeviceInfo.name, "Google Play Services Not Available Exception", e);
-        } catch (GooglePlayServicesRepairableException e) {
-          Log.d(EasyDeviceInfo.name, "Google Play Services Repairable Exception", e);
-        }
+        retrieveAdId(callback);
       }
     }).start();
+  }
+
+  private final void retrieveAdId(final AdIdentifierCallback callback) {
+    AdvertisingIdClient.Info adInfo;
+    try {
+      adInfo = AdvertisingIdClient.getAdvertisingIdInfo(context);
+      String androidAdId = adInfo.getId();
+      boolean adDoNotTrack = adInfo.isLimitAdTrackingEnabled();
+      if (androidAdId == null) {
+        androidAdId = EasyDeviceInfo.NOT_FOUND_VAL;
+      }
+
+      //Send Data to callback
+      callback.onSuccess(androidAdId, adDoNotTrack);
+    } catch (IOException | GooglePlayServicesNotAvailableException e) {
+      // Unrecoverable error connecting to Google Play services (e.g.,
+      // the old version of the service doesn't support getting AdvertisingId).
+      Log.d(EasyDeviceInfo.name, "Google Play Services Not Available Exception", e);
+    } catch (GooglePlayServicesRepairableException e) {
+      Log.d(EasyDeviceInfo.name, "Google Play Services Repairable Exception", e);
+    }
   }
 
   /**

@@ -53,8 +53,7 @@ public class EasySimMod {
     String result;
     if (tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
       result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
-    }
-    else {
+    } else {
       Locale locale = Locale.getDefault();
       result = locale.getCountry().toLowerCase(locale);
     }
@@ -114,6 +113,11 @@ public class EasySimMod {
     return CheckValidityUtil.checkValidData(result);
   }
 
+  /**
+   * Gets active multi sim info.
+   *
+   * @return the active multi sim info
+   */
   @SuppressWarnings("MissingPermission")
   public final List<SubscriptionInfo> getActiveMultiSimInfo() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1 && PermissionUtil.hasPermission(
@@ -123,11 +127,21 @@ public class EasySimMod {
     return new ArrayList<>(0);
   }
 
+  /**
+   * Is multi sim boolean.
+   *
+   * @return the boolean
+   */
   @SuppressWarnings("MissingPermission")
   public final boolean isMultiSim() {
     return getActiveMultiSimInfo().size() > 1;
   }
 
+  /**
+   * Gets number of active sim.
+   *
+   * @return the number of active sim
+   */
   @SuppressWarnings("MissingPermission")
   public final int getNumberOfActiveSim() {
     return getActiveMultiSimInfo().size();

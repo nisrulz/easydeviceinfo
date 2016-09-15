@@ -41,6 +41,7 @@ import static android.os.Environment.getExternalStorageState;
  */
 @SuppressWarnings("deprecation")
 public class EasyMemoryMod {
+  private static final int BYTEFACTOR = 1024;
   private final Context context;
 
   /**
@@ -68,15 +69,22 @@ public class EasyMemoryMod {
       totalMemory = mi.totalMem;
     }
     else {
-      RandomAccessFile reader;
+      RandomAccessFile reader = null;
       String load;
       try {
         reader = new RandomAccessFile("/proc/meminfo", "r");
         load = reader.readLine().replaceAll("\\D+", "");
         totalMemory = (long) Integer.parseInt(load);
-        reader.close();
       } catch (IOException e) {
         Log.d(EasyDeviceInfo.name, "IO Exception", e);
+      } finally {
+        if (reader != null) {
+          try {
+            reader.close();
+          } catch (IOException e) {
+            Log.d(EasyDeviceInfo.name, "IO Exception", e);
+          }
+        }
       }
     }
     return totalMemory;
@@ -188,7 +196,7 @@ public class EasyMemoryMod {
    * @return the float
    */
   public float convertToKb(long valInBytes) {
-    return (float) valInBytes / 1024;
+    return (float) valInBytes / BYTEFACTOR;
   }
 
   /**
@@ -199,7 +207,7 @@ public class EasyMemoryMod {
    * @return the float
    */
   public float convertToMb(long valInBytes) {
-    return (float) valInBytes / (1024 * 1024);
+    return (float) valInBytes / (BYTEFACTOR * BYTEFACTOR);
   }
 
   /**
@@ -210,7 +218,7 @@ public class EasyMemoryMod {
    * @return the float
    */
   public float convertToGb(long valInBytes) {
-    return (float) valInBytes / (1024 * 1024 * 1024);
+    return (float) valInBytes / (BYTEFACTOR * BYTEFACTOR * BYTEFACTOR);
   }
 
   /**
@@ -221,6 +229,6 @@ public class EasyMemoryMod {
    * @return the float
    */
   public float convertToTb(long valInBytes) {
-    return (float) valInBytes / (1024L * 1024 * 1024 * 1024);
+    return (float) valInBytes / (BYTEFACTOR * BYTEFACTOR * BYTEFACTOR * BYTEFACTOR);
   }
 }
