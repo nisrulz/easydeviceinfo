@@ -59,7 +59,7 @@ public class EasyConfigMod {
    *
    * @return the boolean
    */
-  public static boolean hasSdCard() {
+  public final boolean hasSdCard() {
     return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
   }
 

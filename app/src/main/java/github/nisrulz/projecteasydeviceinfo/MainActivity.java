@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     if (activeMultiSimInfo != null) {
       StringBuilder stringBuilder = new StringBuilder();
       for (int i = 0; i < activeMultiSimInfo.size(); i++) {
-        stringBuilder.append("\nSIM " + i + " Info")
+        stringBuilder.append("\nSIM ").append(i).append(" Info")
             .append("\nPhone Number :")
             .append(activeMultiSimInfo.get(i).getNumber())
             .append("\n")
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
             .append("\n")
             .append("Roaming :")
             .append(activeMultiSimInfo.get(i).getDataRoaming()
-                == SubscriptionManager.DATA_ROAMING_ENABLE ? true : false)
+                == SubscriptionManager.DATA_ROAMING_ENABLE)
             .append("\n")
             .append("Display Name :")
             .append(activeMultiSimInfo.get(i).getDisplayName())

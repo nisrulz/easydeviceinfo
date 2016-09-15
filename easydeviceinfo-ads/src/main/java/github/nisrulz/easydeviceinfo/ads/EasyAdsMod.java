@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class EasyAdsMod {
 
-  private Context context;
+  private final Context context;
 
   public EasyAdsMod(Context context) {
     this.context = context;

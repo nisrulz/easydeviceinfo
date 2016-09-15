@@ -221,6 +221,6 @@ public class EasyMemoryMod {
    * @return the float
    */
   public float convertToTb(long valInBytes) {
-    return (float) valInBytes / (1024 * 1024 * 1024 * 1024);
+    return (float) valInBytes / (1024L * 1024 * 1024 * 1024);
   }
 }

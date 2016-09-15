@@ -68,7 +68,7 @@ public class EasySimMod {
    * @return the boolean
    */
   public final boolean isSimNetworkLocked() {
-    return tm != null ? tm.getSimState() == TelephonyManager.SIM_STATE_NETWORK_LOCKED : false;
+    return tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_NETWORK_LOCKED;
   }
 
   /**
@@ -125,7 +125,7 @@ public class EasySimMod {
 
   @SuppressWarnings("MissingPermission")
   public final boolean isMultiSim() {
-    return getActiveMultiSimInfo().size() > 1 ? true : false;
+    return getActiveMultiSimInfo().size() > 1;
   }
 
   @SuppressWarnings("MissingPermission")
