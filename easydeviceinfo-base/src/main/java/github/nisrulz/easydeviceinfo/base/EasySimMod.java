@@ -116,10 +116,9 @@ public class EasySimMod {
 
   @SuppressWarnings("MissingPermission")
   public final List<SubscriptionInfo> getActiveMultiSimInfo() {
-    if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        return SubscriptionManager.from(context).getActiveSubscriptionInfoList();
-      }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1 && PermissionUtil.hasPermission(
+        context, Manifest.permission.READ_PHONE_STATE)) {
+      return SubscriptionManager.from(context).getActiveSubscriptionInfoList();
     }
     return new ArrayList<>(0);
   }
