@@ -17,9 +17,11 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
+import android.view.Surface;
 import android.view.WindowManager;
 
 /**
@@ -27,6 +29,9 @@ import android.view.WindowManager;
  */
 public class EasyDisplayMod {
   private final Context context;
+
+  private final WindowManager wm;
+  private final Display display;
 
   /**
    * Instantiates a new Easy display mod.
@@ -36,6 +41,9 @@ public class EasyDisplayMod {
    */
   public EasyDisplayMod(final Context context) {
     this.context = context;
+
+    wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    display = wm.getDefaultDisplay();
   }
 
   /**
@@ -102,10 +110,28 @@ public class EasyDisplayMod {
    * @return the resolution
    */
   public final String getResolution() {
-    WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-    Display display = wm.getDefaultDisplay();
     DisplayMetrics metrics = new DisplayMetrics();
     display.getMetrics(metrics);
     return CheckValidityUtil.checkValidData(metrics.heightPixels + "x" + metrics.widthPixels);
+  }
+
+  public final float getRefreshRate() {
+    return display.getRefreshRate();
+  }
+
+  public final float getDefaultOrientation() {
+
+    Configuration config = context.getResources().getConfiguration();
+    int rotation = display.getRotation();
+
+    if (((rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180)
+        && config.orientation == Configuration.ORIENTATION_LANDSCAPE) || ((rotation
+        == Surface.ROTATION_90 || rotation == Surface.ROTATION_270)
+        && config.orientation == Configuration.ORIENTATION_PORTRAIT)) {
+      return Configuration.ORIENTATION_LANDSCAPE;
+    }
+    else {
+      return Configuration.ORIENTATION_PORTRAIT;
+    }
   }
 }

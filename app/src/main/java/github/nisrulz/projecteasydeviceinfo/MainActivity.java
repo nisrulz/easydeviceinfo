@@ -18,6 +18,7 @@ package github.nisrulz.projecteasydeviceinfo;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -325,6 +326,13 @@ public class MainActivity extends AppCompatActivity {
     EasyDisplayMod easyDisplayMod = new EasyDisplayMod(this);
     deviceDataMap.put("Display Resolution", easyDisplayMod.getResolution());
     deviceDataMap.put("Screen Density", easyDisplayMod.getDensity());
+    deviceDataMap.put("Screen Refresh rate", String.valueOf(easyDisplayMod.getRefreshRate()) +" Hz");
+
+    if(easyDisplayMod.getDefaultOrientation()== Configuration.ORIENTATION_LANDSCAPE) {
+      deviceDataMap.put("Screen Orientation", "Landscape");
+    }else{
+      deviceDataMap.put("Screen Orientation", "Portrait");
+    }
 
     deviceDataMap.put("Email ID", emailString.toString());
 
