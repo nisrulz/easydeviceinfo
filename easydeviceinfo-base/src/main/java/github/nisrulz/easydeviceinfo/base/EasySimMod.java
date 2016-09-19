@@ -53,7 +53,8 @@ public class EasySimMod {
     String result;
     if (tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
       result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
-    } else {
+    }
+    else {
       Locale locale = Locale.getDefault();
       result = locale.getCountry().toLowerCase(locale);
     }
@@ -122,7 +123,14 @@ public class EasySimMod {
   public final List<SubscriptionInfo> getActiveMultiSimInfo() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1 && PermissionUtil.hasPermission(
         context, Manifest.permission.READ_PHONE_STATE)) {
-      return SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+      List<SubscriptionInfo> tempActiveSub =
+          SubscriptionManager.from(context).getActiveSubscriptionInfoList();
+      if (tempActiveSub == null || tempActiveSub.size() == 0) {
+        return new ArrayList<>(0);
+      }
+      else {
+        return tempActiveSub;
+      }
     }
     return new ArrayList<>(0);
   }
