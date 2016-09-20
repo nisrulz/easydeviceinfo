@@ -17,11 +17,9 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
-import android.view.Surface;
 import android.view.WindowManager;
 
 /**
@@ -119,19 +117,11 @@ public class EasyDisplayMod {
     return display.getRefreshRate();
   }
 
-  public final float getDefaultOrientation() {
-
-    Configuration config = context.getResources().getConfiguration();
-    int rotation = display.getRotation();
-
-    if (((rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180)
-        && config.orientation == Configuration.ORIENTATION_LANDSCAPE) || ((rotation
-        == Surface.ROTATION_90 || rotation == Surface.ROTATION_270)
-        && config.orientation == Configuration.ORIENTATION_PORTRAIT)) {
-      return Configuration.ORIENTATION_LANDSCAPE;
-    }
-    else {
-      return Configuration.ORIENTATION_PORTRAIT;
-    }
+  public final float getPhysicalSize() {
+    DisplayMetrics metrics = new DisplayMetrics();
+    display.getMetrics(metrics);
+    float x = (float) Math.pow(metrics.widthPixels / metrics.xdpi, 2);
+    float y = (float) Math.pow(metrics.heightPixels / metrics.ydpi, 2);
+    return (float) Math.sqrt(x + y);
   }
 }

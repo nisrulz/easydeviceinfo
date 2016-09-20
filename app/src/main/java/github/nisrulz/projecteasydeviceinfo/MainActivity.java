@@ -129,7 +129,9 @@ public class MainActivity extends AppCompatActivity {
     if (activeMultiSimInfo != null) {
       StringBuilder stringBuilder = new StringBuilder();
       for (int i = 0; i < activeMultiSimInfo.size(); i++) {
-        stringBuilder.append("\nSIM ").append(i).append(" Info")
+        stringBuilder.append("\nSIM ")
+            .append(i)
+            .append(" Info")
             .append("\nPhone Number :")
             .append(activeMultiSimInfo.get(i).getNumber())
             .append("\n")
@@ -326,13 +328,10 @@ public class MainActivity extends AppCompatActivity {
     EasyDisplayMod easyDisplayMod = new EasyDisplayMod(this);
     deviceDataMap.put("Display Resolution", easyDisplayMod.getResolution());
     deviceDataMap.put("Screen Density", easyDisplayMod.getDensity());
-    deviceDataMap.put("Screen Refresh rate", String.valueOf(easyDisplayMod.getRefreshRate()) +" Hz");
+    deviceDataMap.put("Screen Size", String.valueOf(easyDisplayMod.getPhysicalSize()));
+    deviceDataMap.put("Screen Refresh rate",
+        String.valueOf(easyDisplayMod.getRefreshRate()) + " Hz");
 
-    if(easyDisplayMod.getDefaultOrientation()== Configuration.ORIENTATION_LANDSCAPE) {
-      deviceDataMap.put("Screen Orientation", "Landscape");
-    }else{
-      deviceDataMap.put("Screen Orientation", "Portrait");
-    }
 
     deviceDataMap.put("Email ID", emailString.toString());
 
@@ -347,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
     // Memory Mod
     EasyMemoryMod easyMemoryMod = new EasyMemoryMod(this);
     deviceDataMap.put("Total RAM",
-        String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getTotalRAM())) + " Gb");
+        String.valueOf(easyMemoryMod.convertToGrienb(easyMemoryMod.getTotalRAM())) + " Gb");
     deviceDataMap.put("Available Internal Memory",
         String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getAvailableInternalMemorySize()))
             + " Gb");
