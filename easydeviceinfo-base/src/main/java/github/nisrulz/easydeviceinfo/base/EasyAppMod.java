@@ -84,7 +84,9 @@ public class EasyAppMod {
     try {
       ai = pm.getApplicationInfo(context.getPackageName(), 0);
     } catch (PackageManager.NameNotFoundException e) {
-      Log.d(EasyDeviceInfo.name, NAME_NOT_FOUND_EXCEPTION, e);
+      if (EasyDeviceInfo.debuggable) {
+        Log.d(EasyDeviceInfo.nameOfLib, NAME_NOT_FOUND_EXCEPTION, e);
+      }
     }
     result = ai != null ? (String) pm.getApplicationLabel(ai) : null;
     return CheckValidityUtil.checkValidData(result);
@@ -100,7 +102,9 @@ public class EasyAppMod {
     try {
       result = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
     } catch (PackageManager.NameNotFoundException e) {
-      Log.d(EasyDeviceInfo.name, NAME_NOT_FOUND_EXCEPTION, e);
+      if (EasyDeviceInfo.debuggable) {
+        Log.e(EasyDeviceInfo.nameOfLib, NAME_NOT_FOUND_EXCEPTION, e);
+      }
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -116,7 +120,9 @@ public class EasyAppMod {
       result = String.valueOf(
           context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode);
     } catch (PackageManager.NameNotFoundException e) {
-      Log.d(EasyDeviceInfo.name, NAME_NOT_FOUND_EXCEPTION, e);
+      if (EasyDeviceInfo.debuggable) {
+        Log.e(EasyDeviceInfo.nameOfLib, NAME_NOT_FOUND_EXCEPTION, e);
+      }
     }
     return CheckValidityUtil.checkValidData(result);
   }

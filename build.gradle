@@ -42,6 +42,16 @@ task clean(type: Delete) {
   delete rootProject.buildDir
 }
 
-ext{
-  libraryVersion = VERSION_NAME
+ext {
+  compileSdkVersion = 24
+  buildToolsVersion = "24.0.2"
+  minSdkVersion = 9
+  targetSdkVersion = 24
+
+  // EasyDeviceInfo
+  easyDeviceInfoVersionCode = 20
+  easyDeviceInfoVersionName = "2.3.0"
+  easyDeviceInfoPomUrl = "https://github.com/nisrulz/easydeviceinfo"
+  easyDeviceInfoPomGitUrl = "https://github.com/nisrulz/easydeviceinfo.git"
+  easyDeviceInfoGithubRepo = "nisrulz/easydeviceinfo"
 }

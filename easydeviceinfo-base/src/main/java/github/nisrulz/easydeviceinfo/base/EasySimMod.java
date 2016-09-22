@@ -115,6 +115,16 @@ public class EasySimMod {
   }
 
   /**
+   * Is multi sim boolean.
+   *
+   * @return the boolean
+   */
+  @SuppressWarnings("MissingPermission")
+  public final boolean isMultiSim() {
+    return getActiveMultiSimInfo().size() > 1;
+  }
+
+  /**
    * Gets active multi sim info.
    *
    * @return the active multi sim info
@@ -133,16 +143,6 @@ public class EasySimMod {
       }
     }
     return new ArrayList<>(0);
-  }
-
-  /**
-   * Is multi sim boolean.
-   *
-   * @return the boolean
-   */
-  @SuppressWarnings("MissingPermission")
-  public final boolean isMultiSim() {
-    return getActiveMultiSimInfo().size() > 1;
   }
 
   /**

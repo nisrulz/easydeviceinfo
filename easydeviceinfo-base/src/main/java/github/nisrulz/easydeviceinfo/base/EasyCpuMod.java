@@ -29,7 +29,7 @@ public class EasyCpuMod {
    * @return the string [ ]
    */
   public final String[] getSupportedABIS() {
-    String[] result = new String[] { EasyDeviceInfo.NOT_FOUND_VAL };
+    String[] result = new String[] { EasyDeviceInfo.notFoundVal };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_ABIS;
     }
@@ -122,7 +122,7 @@ public class EasyCpuMod {
    * @return the string [ ]
    */
   public final String[] getSupported32bitABIS() {
-    String[] result = new String[] { EasyDeviceInfo.NOT_FOUND_VAL };
+    String[] result = new String[] { EasyDeviceInfo.notFoundVal };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_32_BIT_ABIS;
     }
@@ -135,7 +135,7 @@ public class EasyCpuMod {
    * @return the string [ ]
    */
   public final String[] getSupported64bitABIS() {
-    String[] result = new String[] { EasyDeviceInfo.NOT_FOUND_VAL };
+    String[] result = new String[] { EasyDeviceInfo.notFoundVal };
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       result = Build.SUPPORTED_64_BIT_ABIS;
     }

@@ -17,13 +17,13 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion 24
-  buildToolsVersion "24.0.2"
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
     applicationId "github.nisrulz.projecteasydeviceinfo"
-    minSdkVersion 9
-    targetSdkVersion 24
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 2
     versionName "1.1"
     jackOptions {
@@ -43,5 +43,6 @@ dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
   compile 'com.android.support:appcompat-v7:24.2.1'
+
   compile project(':easydeviceinfo')
 }

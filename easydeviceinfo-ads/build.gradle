@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion 24
-  buildToolsVersion "24.0.2"
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
-    minSdkVersion 9
-    targetSdkVersion 24
-    versionCode 19
-    versionName "2.2.0"
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode rootProject.ext.easyDeviceInfoVersionCode
+    versionName rootProject.ext.easyDeviceInfoVersionName
   }
   buildTypes {
     release {
@@ -21,9 +21,11 @@ android {
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   testCompile 'junit:junit:4.12'
-  compile 'com.google.android.gms:play-services-base:9.4.0'
-  compile "com.github.nisrulz:easydeviceinfo-common:$libraryVersion"
-//compile project(':easydeviceinfo-common')
+  compile 'com.google.android.gms:play-services-base:9.6.0'
+
+  // compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
+
+  compile project(':easydeviceinfo-common')
 }
 
 // Bintray info
@@ -32,20 +34,20 @@ def LIB_MODULE_DESC = 'Ads module for EasyDeviceInfo'
 
 ext {
   bintrayRepo = 'maven'
-  bintrayName = LIB_MODULE_NAME // Has to be same as your library module name
+  bintrayName = LIB_MODULE_NAME // Has to be same as your library module nameOfLib
 
   publishedGroupId = GROUP
   libraryName = LIB_MODULE_NAME
-  artifact = LIB_MODULE_NAME // Has to be same as your library module name
+  artifact = LIB_MODULE_NAME // Has to be same as your library module nameOfLib
 
   libraryDescription = LIB_MODULE_DESC
 
   // Your github repo link
-  siteUrl = POM_URL
-  gitUrl = POM_GIT_URL
-  githubRepository = LIB_GITHUB_REPO
+  siteUrl = rootProject.ext.easyDeviceInfoPomUrl
+  gitUrl = rootProject.ext.easyDeviceInfoPomGitUrl
+  githubRepository = rootProject.ext.easyDeviceInfoGithubRepo
 
-  libraryVersion = VERSION_NAME
+  libraryVersion = rootProject.ext.easyDeviceInfoVersionName
 
   developerId = POM_DEVELOPER_ID
   developerName = POM_DEVELOPER_NAME

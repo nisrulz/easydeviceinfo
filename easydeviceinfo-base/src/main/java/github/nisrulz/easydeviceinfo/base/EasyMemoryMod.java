@@ -41,6 +41,7 @@ import static android.os.Environment.getExternalStorageState;
  */
 @SuppressWarnings("deprecation")
 public class EasyMemoryMod {
+  public static final String IO_EXCEPTION = "IO Exception";
   private static final int BYTEFACTOR = 1024;
   private final Context context;
 
@@ -76,13 +77,17 @@ public class EasyMemoryMod {
         load = reader.readLine().replaceAll("\\D+", "");
         totalMemory = (long) Integer.parseInt(load);
       } catch (IOException e) {
-        Log.d(EasyDeviceInfo.name, "IO Exception", e);
+        if (EasyDeviceInfo.debuggable) {
+          Log.e(EasyDeviceInfo.nameOfLib, IO_EXCEPTION, e);
+        }
       } finally {
         if (reader != null) {
           try {
             reader.close();
           } catch (IOException e) {
-            Log.d(EasyDeviceInfo.name, "IO Exception", e);
+            if (EasyDeviceInfo.debuggable) {
+              Log.e(EasyDeviceInfo.nameOfLib, IO_EXCEPTION, e);
+            }
           }
         }
       }

@@ -23,18 +23,17 @@ public class EasyDeviceInfo {
   /**
    * The Name.
    */
-  public static final String name = "EasyDeviceInfo";
+  public static final String nameOfLib = "EasyDeviceInfo";
+
+  /**
+   * The constant debuggable.
+   */
+  public static boolean debuggable = false;
 
   /**
    * The Not found val.
    */
-  public static String NOT_FOUND_VAL = "unknown";
-
-  /**
-   * Instantiates a new Easy device info.
-   */
-  public EasyDeviceInfo() {
-  }
+  public static String notFoundVal = "unknown";
 
   /**
    * Instantiates a new Easy device info.
@@ -43,7 +42,20 @@ public class EasyDeviceInfo {
    *     the not found val
    */
   public EasyDeviceInfo(String notFoundVal) {
-    NOT_FOUND_VAL = notFoundVal;
+    EasyDeviceInfo.notFoundVal = notFoundVal;
+  }
+
+  /**
+   * Instantiates a new Easy device info.
+   *
+   * @param notFoundVal
+   *     the not found val
+   * @param debugFlag
+   *     the debug flag
+   */
+  public EasyDeviceInfo(String notFoundVal, boolean debugFlag) {
+    EasyDeviceInfo.notFoundVal = notFoundVal;
+    EasyDeviceInfo.debuggable = debugFlag;
   }
 
   /**
@@ -52,8 +64,15 @@ public class EasyDeviceInfo {
    * @return the library version
    */
   public final String getLibraryVersion() {
-    int versionCode = 19;
-    String version = "v2.2.0";
-    return name + " : " + version + " [build-" + versionCode + "]";
+    int versionCode = 20;
+    String version = "v2.3.0";
+    return nameOfLib + " : " + version + " [build-" + versionCode + "]";
+  }
+
+  /**
+   * Debug.
+   */
+  public final void debug() {
+    EasyDeviceInfo.debuggable = true;
   }
 }

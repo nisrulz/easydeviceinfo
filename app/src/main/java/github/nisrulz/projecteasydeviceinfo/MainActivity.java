@@ -18,7 +18,6 @@ package github.nisrulz.projecteasydeviceinfo;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -61,8 +60,14 @@ public class MainActivity extends AppCompatActivity {
     //Add Data
     HashMap<String, String> deviceDataMap = new HashMap<>();
 
-    // Library Info
+    // Setup the value to be returned when result is either not found or invalid/null
     EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo("na");
+    // Enable Debugging when in Debug build
+    if (BuildConfig.DEBUG) {
+      easyDeviceInfo.debug();
+    }
+
+    // Library Info
     data.add(easyDeviceInfo.getLibraryVersion());
 
     // ID Mod
@@ -332,7 +337,6 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Screen Refresh rate",
         String.valueOf(easyDisplayMod.getRefreshRate()) + " Hz");
 
-
     deviceDataMap.put("Email ID", emailString.toString());
 
     // Location Mod
@@ -346,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
     // Memory Mod
     EasyMemoryMod easyMemoryMod = new EasyMemoryMod(this);
     deviceDataMap.put("Total RAM",
-        String.valueOf(easyMemoryMod.convertToGrienb(easyMemoryMod.getTotalRAM())) + " Gb");
+        String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getTotalRAM())) + " Gb");
     deviceDataMap.put("Available Internal Memory",
         String.valueOf(easyMemoryMod.convertToGb(easyMemoryMod.getAvailableInternalMemorySize()))
             + " Gb");

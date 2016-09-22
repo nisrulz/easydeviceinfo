@@ -149,11 +149,11 @@ public class EasyIdMod {
     Cursor c = context.getContentResolver().query(uri, null, null, params, null);
 
     if (c == null) {
-      return EasyDeviceInfo.NOT_FOUND_VAL;
+      return EasyDeviceInfo.notFoundVal;
     }
     else if (!c.moveToFirst() || c.getColumnCount() < 2) {
       c.close();
-      return EasyDeviceInfo.NOT_FOUND_VAL;
+      return EasyDeviceInfo.notFoundVal;
     }
 
     try {
@@ -162,7 +162,7 @@ public class EasyIdMod {
       return gsfID;
     } catch (NumberFormatException e) {
       c.close();
-      return EasyDeviceInfo.NOT_FOUND_VAL;
+      return EasyDeviceInfo.notFoundVal;
     }
   }
 }

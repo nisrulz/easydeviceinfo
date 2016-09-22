@@ -135,7 +135,9 @@ public class EasyNetworkMod {
         }
       }
     } catch (SocketException e) {
-      Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
+      if (EasyDeviceInfo.debuggable) {
+        Log.e(EasyDeviceInfo.nameOfLib, SOCKET_EXCEPTION, e);
+      }
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -163,7 +165,9 @@ public class EasyNetworkMod {
         }
       }
     } catch (SocketException e) {
-      Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
+      if (EasyDeviceInfo.debuggable) {
+        Log.e(EasyDeviceInfo.nameOfLib, SOCKET_EXCEPTION, e);
+      }
     }
     return CheckValidityUtil.checkValidData(result);
   }
@@ -248,7 +252,9 @@ public class EasyNetworkMod {
         try {
           interfaces = NetworkInterface.getNetworkInterfaces();
         } catch (SocketException e) {
-          Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
+          if (EasyDeviceInfo.debuggable) {
+            Log.e(EasyDeviceInfo.nameOfLib, SOCKET_EXCEPTION, e);
+          }
         }
         while (interfaces != null && interfaces.hasMoreElements()) {
           NetworkInterface networkInterface = interfaces.nextElement();
@@ -257,7 +263,9 @@ public class EasyNetworkMod {
           try {
             addr = networkInterface.getHardwareAddress();
           } catch (SocketException e) {
-            Log.d(EasyDeviceInfo.name, SOCKET_EXCEPTION, e);
+            if (EasyDeviceInfo.debuggable) {
+              Log.e(EasyDeviceInfo.nameOfLib, SOCKET_EXCEPTION, e);
+            }
           }
           if (addr == null || addr.length == 0) {
             continue;

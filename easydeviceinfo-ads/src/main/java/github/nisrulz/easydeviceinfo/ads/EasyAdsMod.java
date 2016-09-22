@@ -47,7 +47,7 @@ public class EasyAdsMod {
       String androidAdId = adInfo.getId();
       boolean adDoNotTrack = adInfo.isLimitAdTrackingEnabled();
       if (androidAdId == null) {
-        androidAdId = EasyDeviceInfo.NOT_FOUND_VAL;
+        androidAdId = EasyDeviceInfo.notFoundVal;
       }
 
       //Send Data to callback
@@ -55,9 +55,9 @@ public class EasyAdsMod {
     } catch (IOException | GooglePlayServicesNotAvailableException e) {
       // Unrecoverable error connecting to Google Play services (e.g.,
       // the old version of the service doesn't support getting AdvertisingId).
-      Log.d(EasyDeviceInfo.name, "Google Play Services Not Available Exception", e);
+      Log.d(EasyDeviceInfo.nameOfLib, "Google Play Services Not Available Exception", e);
     } catch (GooglePlayServicesRepairableException e) {
-      Log.d(EasyDeviceInfo.name, "Google Play Services Repairable Exception", e);
+      Log.d(EasyDeviceInfo.nameOfLib, "Google Play Services Repairable Exception", e);
     }
   }
 

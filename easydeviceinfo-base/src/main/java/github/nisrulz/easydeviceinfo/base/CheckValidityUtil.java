@@ -52,7 +52,7 @@ final class CheckValidityUtil {
   static String checkValidData(final String data) {
     String tempData = data;
     if (tempData == null || tempData.length() == 0) {
-      tempData = EasyDeviceInfo.NOT_FOUND_VAL;
+      tempData = EasyDeviceInfo.notFoundVal;
     }
     return tempData;
   }
@@ -67,7 +67,7 @@ final class CheckValidityUtil {
   static String[] checkValidData(final String[] data) {
     String[] tempData = data;
     if (tempData == null || tempData.length == 0) {
-      tempData = new String[] { EasyDeviceInfo.NOT_FOUND_VAL };
+      tempData = new String[] { EasyDeviceInfo.notFoundVal };
     }
     return tempData;
   }
