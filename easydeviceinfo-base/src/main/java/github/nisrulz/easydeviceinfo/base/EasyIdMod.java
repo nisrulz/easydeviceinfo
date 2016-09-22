@@ -56,7 +56,11 @@ public class EasyIdMod {
   }
 
   /**
-   * Get accounts string [ ].
+   * Get email accounts
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
    *
    * @return the string [ ]
    */
@@ -136,7 +140,11 @@ public class EasyIdMod {
   }
 
   /**
-   * Gets gsfid.
+   * Returns the GSFID.
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
    *
    * @return the gsfid
    */

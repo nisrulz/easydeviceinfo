@@ -88,6 +88,10 @@ public class EasySimMod {
   /**
    * Gets imsi.
    *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+   *
    * @return the imsi
    */
   @SuppressWarnings("MissingPermission")
@@ -101,7 +105,11 @@ public class EasySimMod {
   }
 
   /**
-   * Gets sim serial.
+   * Gets SIM serial number.
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
    *
    * @return the sim serial
    */
@@ -115,7 +123,11 @@ public class EasySimMod {
   }
 
   /**
-   * Is multi sim boolean.
+   * Is multi sim.
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
    *
    * @return the boolean
    */
@@ -126,6 +138,10 @@ public class EasySimMod {
 
   /**
    * Gets active multi sim info.
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
    *
    * @return the active multi sim info
    */
@@ -147,6 +163,10 @@ public class EasySimMod {
 
   /**
    * Gets number of active sim.
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
    *
    * @return the number of active sim
    */

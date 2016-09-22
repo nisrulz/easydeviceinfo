@@ -38,7 +38,11 @@ public class EasyBluetoothMod {
   }
 
   /**
-   * Gets bluetooth mac.
+   * Gets Bluetooth MAC Address
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.BLUETOOTH"/>
    *
    * @return the bluetooth mac
    */

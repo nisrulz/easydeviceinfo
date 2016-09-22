@@ -24,8 +24,17 @@ import android.location.LocationManager;
 /**
  * The type Easy location mod.
  *
- * Permission warning suppressed since it will be provided by the client
+ * You need to declare the below permission in the manifest file to use this properly
+ *
+ * For Network based location
+ * <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+ *
+ * For more accurate location updates via GPS and network both
+ * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+ *
  */
+
+// Permission warning suppressed since it will be provided by the client
 @SuppressWarnings("MissingPermission")
 public class EasyLocationMod {
   private final boolean hasFineLocationPermission;

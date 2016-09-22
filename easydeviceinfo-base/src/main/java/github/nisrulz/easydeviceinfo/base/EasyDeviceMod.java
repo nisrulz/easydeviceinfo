@@ -114,6 +114,10 @@ public class EasyDeviceMod {
   /**
    * Gets phone no.
    *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+   *
    * @return the phone no
    */
   @SuppressWarnings("MissingPermission")
@@ -386,7 +390,11 @@ public class EasyDeviceMod {
   }
 
   /**
-   * Gets imei.
+   * Gets IMEI number
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
    *
    * @return the imei
    */

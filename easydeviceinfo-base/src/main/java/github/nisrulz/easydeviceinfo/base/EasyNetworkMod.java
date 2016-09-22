@@ -99,6 +99,11 @@ public class EasyNetworkMod {
   /**
    * Is network available boolean.
    *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+   * <uses-permission android:name="android.permission.INTERNET"/>
+   *
    * @return the boolean
    */
   @SuppressWarnings("MissingPermission")
@@ -175,6 +180,11 @@ public class EasyNetworkMod {
   /**
    * Gets network type.
    *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+   * <uses-permission android:name="android.permission.INTERNET"/>
+   *
    * @return the network type
    */
   @SuppressWarnings("MissingPermission")
@@ -237,7 +247,11 @@ public class EasyNetworkMod {
   }
 
   /**
-   * Gets wifi mac.
+   * Gets WiFi MAC Address
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    *
    * @return the wifi mac
    */
