@@ -17,6 +17,7 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -34,7 +35,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
- * The type Easy network mod.
+ * EasyNetwork Mod Class
  */
 public class EasyNetworkMod {
   /**
@@ -65,10 +66,8 @@ public class EasyNetworkMod {
    * The constant CELLULAR_UNIDENTIFIED_GEN.
    */
   public static final int CELLULAR_UNIDENTIFIED_GEN = 6;
-  /**
-   * The constant SOCKET_EXCEPTION.
-   */
-  public static final String SOCKET_EXCEPTION = "Socket Exception";
+
+  private static final String SOCKET_EXCEPTION = "Socket Exception";
   private final Context context;
 
   /**
@@ -255,6 +254,7 @@ public class EasyNetworkMod {
    *
    * @return the wifi mac
    */
+  @SuppressLint("HardwareIds")
   @SuppressWarnings("MissingPermission")
   public final String getWifiMAC() {
     String result = "02:00:00:00:00:00";

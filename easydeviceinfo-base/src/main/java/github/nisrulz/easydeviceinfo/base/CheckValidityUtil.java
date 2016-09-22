@@ -19,7 +19,7 @@ package github.nisrulz.easydeviceinfo.base;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**
- * The type Check validity util.
+ * Check Validity Util Class
  */
 final class CheckValidityUtil {
 

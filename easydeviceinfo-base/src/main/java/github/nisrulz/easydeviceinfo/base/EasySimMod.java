@@ -17,6 +17,7 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.telephony.SubscriptionInfo;
@@ -27,7 +28,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * The type Easy  sim mod.
+ * EasySim Mod Class
  */
 public class EasySimMod {
   private final TelephonyManager tm;
@@ -94,6 +95,7 @@ public class EasySimMod {
    *
    * @return the imsi
    */
+  @SuppressLint("HardwareIds")
   @SuppressWarnings("MissingPermission")
   public final String getIMSI() {
     String result = null;
@@ -113,6 +115,7 @@ public class EasySimMod {
    *
    * @return the sim serial
    */
+  @SuppressLint("HardwareIds")
   @SuppressWarnings("MissingPermission")
   public final String getSIMSerial() {
     String result = null;
@@ -151,7 +154,7 @@ public class EasySimMod {
         context, Manifest.permission.READ_PHONE_STATE)) {
       List<SubscriptionInfo> tempActiveSub =
           SubscriptionManager.from(context).getActiveSubscriptionInfoList();
-      if (tempActiveSub == null || tempActiveSub.size() == 0) {
+      if (tempActiveSub == null || tempActiveSub.isEmpty()) {
         return new ArrayList<>(0);
       }
       else {

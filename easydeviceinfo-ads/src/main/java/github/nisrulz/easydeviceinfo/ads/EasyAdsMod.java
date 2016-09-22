@@ -40,7 +40,7 @@ public class EasyAdsMod {
     }).start();
   }
 
-  private final void retrieveAdId(final AdIdentifierCallback callback) {
+  private void retrieveAdId(final AdIdentifierCallback callback) {
     AdvertisingIdClient.Info adInfo;
     try {
       adInfo = AdvertisingIdClient.getAdvertisingIdInfo(context);

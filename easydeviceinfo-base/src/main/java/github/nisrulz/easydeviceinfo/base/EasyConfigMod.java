@@ -27,7 +27,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * The type Easy config mod.
+ * EasyConfig Mod Class
  */
 public class EasyConfigMod {
   /**

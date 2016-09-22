@@ -17,12 +17,13 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.os.Build;
 
 /**
- * The type Easy bluetooth mod.
+ * EasyBluetooth Mod Class
  */
 public class EasyBluetoothMod {
   private final Context context;
@@ -46,6 +47,7 @@ public class EasyBluetoothMod {
    *
    * @return the bluetooth mac
    */
+  @SuppressLint("HardwareIds")
   @SuppressWarnings("MissingPermission")
   public final String getBluetoothMAC() {
     String result = "02:00:00:00:00:00";

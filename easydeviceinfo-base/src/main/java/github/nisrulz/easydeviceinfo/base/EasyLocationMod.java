@@ -22,7 +22,7 @@ import android.location.Location;
 import android.location.LocationManager;
 
 /**
- * The type Easy location mod.
+ * EasyLocation Mod Class
  *
  * You need to declare the below permission in the manifest file to use this properly
  *

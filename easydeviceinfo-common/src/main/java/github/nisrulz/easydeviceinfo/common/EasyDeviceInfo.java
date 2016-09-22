@@ -20,6 +20,10 @@ package github.nisrulz.easydeviceinfo.common;
  * Easy device info class.
  */
 public class EasyDeviceInfo {
+
+  private EasyDeviceInfo(){
+
+  }
   /**
    * The Name.
    */
@@ -41,7 +45,7 @@ public class EasyDeviceInfo {
    * @param notFoundVal
    *     the not found val
    */
-  public EasyDeviceInfo(String notFoundVal) {
+  public  static final void setNotFoundVal(String notFoundVal) {
     EasyDeviceInfo.notFoundVal = notFoundVal;
   }
 
@@ -53,7 +57,7 @@ public class EasyDeviceInfo {
    * @param debugFlag
    *     the debug flag
    */
-  public EasyDeviceInfo(String notFoundVal, boolean debugFlag) {
+  public   static final void setConfigs(String notFoundVal, boolean debugFlag) {
     EasyDeviceInfo.notFoundVal = notFoundVal;
     EasyDeviceInfo.debuggable = debugFlag;
   }
@@ -63,7 +67,7 @@ public class EasyDeviceInfo {
    *
    * @return the library version
    */
-  public final String getLibraryVersion() {
+  public static final String getLibraryVersion() {
     int versionCode = 20;
     String version = "v2.3.0";
     return nameOfLib + " : " + version + " [build-" + versionCode + "]";
@@ -72,7 +76,7 @@ public class EasyDeviceInfo {
   /**
    * Debug.
    */
-  public final void debug() {
+  public static final void debug() {
     EasyDeviceInfo.debuggable = true;
   }
 }

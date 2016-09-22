@@ -19,18 +19,20 @@ package github.nisrulz.easydeviceinfo.base;
 import android.Manifest;
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.util.UUID;
 
 /**
- * The type Easy  id mod.
+ * EasyId Mod Class
  */
 public class EasyIdMod {
   private final Context context;
@@ -50,6 +52,7 @@ public class EasyIdMod {
    *
    * @return the android id
    */
+  @SuppressLint("HardwareIds")
   public final String getAndroidID() {
     return CheckValidityUtil.checkValidData(
         Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID));
@@ -132,6 +135,9 @@ public class EasyIdMod {
       return new UUID(devIDShort.hashCode(), serial.hashCode()).toString();
     } catch (Exception e) {
       // String needs to be initialized
+      if(EasyDeviceInfo.debuggable){
+        Log.e(EasyDeviceInfo.nameOfLib, "getPseudoUniqueID: ",e );
+      }
       serial = "ESYDV000"; // some value
     }
 

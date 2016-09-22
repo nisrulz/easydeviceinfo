@@ -61,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
     HashMap<String, String> deviceDataMap = new HashMap<>();
 
     // Setup the value to be returned when result is either not found or invalid/null
-    EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo("na");
+    EasyDeviceInfo.setNotFoundVal("na");
     // Enable Debugging when in Debug build
     if (BuildConfig.DEBUG) {
-      easyDeviceInfo.debug();
+      EasyDeviceInfo.debug();
     }
 
     // Library Info
-    data.add(easyDeviceInfo.getLibraryVersion());
+    data.add(EasyDeviceInfo.getLibraryVersion());
 
     // ID Mod
     EasyIdMod easyIdMod = new EasyIdMod(this);
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
       public void onSuccess(String adIdentifier, boolean adDonotTrack) {
         // Add Data
         data.add("Android Advertiser ID :" + adIdentifier);
-        data.add("Ad Do not Track :" + String.valueOf(adDonotTrack));
+        data.add("Ad Do not Track :" + adDonotTrack);
         adapter.notifyDataSetChanged();
       }
     });
@@ -107,16 +107,14 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Running on emulator", String.valueOf(easyConfigMod.isRunningOnEmulator()));
     switch (easyConfigMod.getDeviceRingerMode()) {
       case EasyConfigMod.RINGER_MODE_NORMAL:
-        deviceDataMap.put("Ringer mode", "normal");
+        deviceDataMap.put(getString(R.string.ringer_mode), "normal");
         break;
       case EasyConfigMod.RINGER_MODE_VIBRATE:
-        deviceDataMap.put("Ringer mode", "vibrate");
+        deviceDataMap.put(getString(R.string.ringer_mode), "vibrate");
         break;
       case EasyConfigMod.RINGER_MODE_SILENT:
-        deviceDataMap.put("Ringer mode", "silent");
-        break;
       default:
-        //do nothing
+        deviceDataMap.put(getString(R.string.ringer_mode), "silent");
         break;
     }
 
@@ -198,19 +196,19 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Build ID", easyDeviceMod.getBuildID());
     switch (easyDeviceMod.getDeviceType(this)) {
       case EasyDeviceMod.DEVICE_TYPE_WATCH:
-        deviceDataMap.put("Device type", "watch");
+        deviceDataMap.put(getString(R.string.device_type), "watch");
         break;
       case EasyDeviceMod.DEVICE_TYPE_PHONE:
-        deviceDataMap.put("Device type", "phone");
+        deviceDataMap.put(getString(R.string.device_type), "phone");
         break;
       case EasyDeviceMod.DEVICE_TYPE_PHABLET:
-        deviceDataMap.put("Device type", "phablet");
+        deviceDataMap.put(getString(R.string.device_type), "phablet");
         break;
       case EasyDeviceMod.DEVICE_TYPE_TABLET:
-        deviceDataMap.put("Device type", "tablet");
+        deviceDataMap.put(getString(R.string.device_type), "tablet");
         break;
       case EasyDeviceMod.DEVICE_TYPE_TV:
-        deviceDataMap.put("Device type", "tv");
+        deviceDataMap.put(getString(R.string.device_type), "tv");
         break;
       default:
         //do nothing
@@ -219,31 +217,29 @@ public class MainActivity extends AppCompatActivity {
 
     switch (easyDeviceMod.getPhoneType()) {
       case EasyDeviceMod.PHONE_TYPE_CDMA:
-        deviceDataMap.put("Phone Type", "CDMA");
+        deviceDataMap.put(getString(R.string.phone_type), "CDMA");
         break;
       case EasyDeviceMod.PHONE_TYPE_GSM:
-        deviceDataMap.put("Phone Type", "GSM");
+        deviceDataMap.put(getString(R.string.phone_type), "GSM");
         break;
       case EasyDeviceMod.PHONE_TYPE_NONE:
-        deviceDataMap.put("Phone Type", "None");
+        deviceDataMap.put(getString(R.string.phone_type), "None");
         break;
       default:
-        deviceDataMap.put("Phone Type", "Unknown");
+        deviceDataMap.put(getString(R.string.phone_type), "Unknown");
         break;
     }
 
     switch (easyDeviceMod.getOrientation(this)) {
       case EasyDeviceMod.ORIENTATION_LANDSCAPE:
-        deviceDataMap.put("Orientation", "Landscape");
+        deviceDataMap.put(getString(R.string.orientation), "Landscape");
         break;
       case EasyDeviceMod.ORIENTATION_PORTRAIT:
-        deviceDataMap.put("Orientation", "Portrait");
+        deviceDataMap.put(getString(R.string.orientation), "Portrait");
         break;
       case EasyDeviceMod.ORIENTATION_UNKNOWN:
-        deviceDataMap.put("Orientation", "Unknown");
-        break;
       default:
-        deviceDataMap.put("Orientation", "Unknown");
+        deviceDataMap.put(getString(R.string.orientation), "Unknown");
         break;
     }
 
@@ -267,22 +263,27 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Wi-Fi enabled", String.valueOf(easyNetworkMod.isWifiEnabled()));
     switch (easyNetworkMod.getNetworkType()) {
       case EasyNetworkMod.CELLULAR_UNKNOWN:
-        deviceDataMap.put("Network Type", "Unknown");
+        deviceDataMap.put(getString(R.string.network_type), "Cellular Unknown");
         break;
       case EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN:
-        deviceDataMap.put("Network Type", "Cellular Unidentified Generation");
+        deviceDataMap.put(getString(R.string.network_type), "Cellular Unidentified Generation");
         break;
       case EasyNetworkMod.CELLULAR_2G:
-        deviceDataMap.put("Network Type", "Cellular 2G");
+        deviceDataMap.put(getString(R.string.network_type), "Cellular 2G");
         break;
       case EasyNetworkMod.CELLULAR_3G:
-        deviceDataMap.put("Network Type", "Cellular 3G");
+        deviceDataMap.put(getString(R.string.network_type), "Cellular 3G");
         break;
       case EasyNetworkMod.CELLULAR_4G:
-        deviceDataMap.put("Network Type", "Cellular 4G");
+        deviceDataMap.put(getString(R.string.network_type), "Cellular 4G");
         break;
+
+      case EasyNetworkMod.WIFI_WIFIMAX:
+        deviceDataMap.put(getString(R.string.network_type), "Wifi/WifiMax");
+        break;
+      case EasyNetworkMod.UNKNOWN:
       default:
-        // Do nothing
+        deviceDataMap.put(getString(R.string.network_type), "Unknown");
         break;
     }
 
@@ -302,8 +303,6 @@ public class MainActivity extends AppCompatActivity {
         deviceDataMap.put("Battery health", "Good");
         break;
       case EasyBatteryMod.HEALTH_HAVING_ISSUES:
-        deviceDataMap.put("Battery health", "Having issues");
-        break;
       default:
         deviceDataMap.put("Battery health", "Having issues");
         break;
@@ -311,19 +310,17 @@ public class MainActivity extends AppCompatActivity {
 
     switch (easyBatteryMod.getChargingSource()) {
       case EasyBatteryMod.CHARGING_VIA_AC:
-        deviceDataMap.put("Device charging via ", "AC");
+        deviceDataMap.put(getString(R.string.device_charging_via), "AC");
         break;
       case EasyBatteryMod.CHARGING_VIA_USB:
-        deviceDataMap.put("Device charging via ", "USB");
+        deviceDataMap.put(getString(R.string.device_charging_via), "USB");
         break;
       case EasyBatteryMod.CHARGING_VIA_WIRELESS:
-        deviceDataMap.put("Device charging via ", "Wireless");
+        deviceDataMap.put(getString(R.string.device_charging_via), "Wireless");
         break;
       case EasyBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE:
-        deviceDataMap.put("Device charging via ", "Unknown Source");
-        break;
       default:
-        deviceDataMap.put("Device charging via ", "Unknown Source");
+        deviceDataMap.put(getString(R.string.device_charging_via), "Unknown Source");
         break;
     }
 

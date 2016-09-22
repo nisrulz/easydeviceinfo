@@ -22,7 +22,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 
 /**
- * The type Easy battery mod.
+ * EasyBattery Mod Class
  */
 public class EasyBatteryMod {
 

@@ -6,10 +6,11 @@ import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**
- * The type Permission util.
+ * Permission Util Class
  */
 final class PermissionUtil {
   private PermissionUtil() {
+    // private constructor for utility class
   }
 
   /**
@@ -25,10 +26,7 @@ final class PermissionUtil {
     boolean permGranted =
         context.checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
     if (EasyDeviceInfo.debuggable && !permGranted) {
-      StringBuilder stringBuilder = new StringBuilder();
-      stringBuilder.append(">\t").append(permission);
-
-      Log.e(EasyDeviceInfo.nameOfLib, stringBuilder.toString());
+      Log.e(EasyDeviceInfo.nameOfLib, ">\t" + permission);
       Log.w(EasyDeviceInfo.nameOfLib,
           "\nPermission not granted/missing!\nMake sure you have declared the permission in your manifest file.\n");
     }

@@ -24,7 +24,7 @@ import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**
- * The type Easy  app mod.
+ * EasyApp Mod Class
  */
 public class EasyAppMod {
 

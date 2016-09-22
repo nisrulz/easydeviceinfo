@@ -23,12 +23,11 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 
 /**
- * The type Easy  display mod.
+ * EasyDisplay Mod Class
  */
 public class EasyDisplayMod {
   private final Context context;
 
-  private final WindowManager wm;
   private final Display display;
 
   /**
@@ -40,7 +39,7 @@ public class EasyDisplayMod {
   public EasyDisplayMod(final Context context) {
     this.context = context;
 
-    wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
     display = wm.getDefaultDisplay();
   }
 

@@ -20,7 +20,7 @@ import android.content.Context;
 import android.nfc.NfcAdapter;
 
 /**
- * The type Easy nfc mod.
+ * EasyNfc Mod Class
  */
 public class EasyNfcMod {
 

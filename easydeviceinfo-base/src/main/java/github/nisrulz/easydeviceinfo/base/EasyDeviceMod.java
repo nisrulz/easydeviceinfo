@@ -17,6 +17,7 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -30,7 +31,7 @@ import java.io.File;
 import java.util.Locale;
 
 /**
- * The type Easy device mod.
+ * EasyDevice Mod Class
  */
 public class EasyDeviceMod {
   /**
@@ -120,6 +121,7 @@ public class EasyDeviceMod {
    *
    * @return the phone no
    */
+  @SuppressLint("HardwareIds")
   @SuppressWarnings("MissingPermission")
   public final String getPhoneNo() {
     String result = null;
@@ -398,6 +400,7 @@ public class EasyDeviceMod {
    *
    * @return the imei
    */
+  @SuppressLint("HardwareIds")
   @SuppressWarnings("MissingPermission")
   public final String getIMEI() {
     String result = null;

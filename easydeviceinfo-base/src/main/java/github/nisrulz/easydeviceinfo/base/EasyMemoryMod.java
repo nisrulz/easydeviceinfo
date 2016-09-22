@@ -35,13 +35,13 @@ import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStorageState;
 
 /**
- * The type Easy memory mod.
+ * EasyMemory Mod Class
  *
  * Deprecation warning suppressed since it is handled in the code
  */
 @SuppressWarnings("deprecation")
 public class EasyMemoryMod {
-  public static final String IO_EXCEPTION = "IO Exception";
+  private static final String IO_EXCEPTION = "IO Exception";
   private static final int BYTEFACTOR = 1024;
   private final Context context;
 

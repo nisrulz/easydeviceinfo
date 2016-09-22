@@ -16,4 +16,10 @@
 
 <resources>
   <string name="app_name">EasyDeviceInfo</string>
+  <string name="device_charging_via">"Device charging via "</string>
+  <string name="network_type">Network Type</string>
+  <string name="ringer_mode">Ringer mode</string>
+  <string name="device_type">Device type</string>
+  <string name="phone_type">Phone Type</string>
+  <string name="orientation">Orientation</string>
 </resources>
