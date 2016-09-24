@@ -23,6 +23,8 @@ import android.os.Build;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -159,6 +161,10 @@ public class EasySimMod {
       }
       else {
         return tempActiveSub;
+      }
+    }else{
+      if(EasyDeviceInfo.debuggable){
+        Log.w(EasyDeviceInfo.nameOfLib, "Device is running on android version that does not support multi sim functionality!");
       }
     }
     return new ArrayList<>(0);
