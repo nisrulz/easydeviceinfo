@@ -20,6 +20,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.RequiresPermission;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -98,7 +99,7 @@ public class EasySimMod {
    * @return the imsi
    */
   @SuppressLint("HardwareIds")
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   public final String getIMSI() {
     String result = null;
     if (tm != null && PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
@@ -118,7 +119,7 @@ public class EasySimMod {
    * @return the sim serial
    */
   @SuppressLint("HardwareIds")
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   public final String getSIMSerial() {
     String result = null;
     if (tm != null && PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
@@ -136,7 +137,7 @@ public class EasySimMod {
    *
    * @return the boolean
    */
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   public final boolean isMultiSim() {
     return getActiveMultiSimInfo().size() > 1;
   }
@@ -150,7 +151,7 @@ public class EasySimMod {
    *
    * @return the active multi sim info
    */
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   public final List<SubscriptionInfo> getActiveMultiSimInfo() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1 && PermissionUtil.hasPermission(
         context, Manifest.permission.READ_PHONE_STATE)) {
@@ -179,7 +180,7 @@ public class EasySimMod {
    *
    * @return the number of active sim
    */
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   public final int getNumberOfActiveSim() {
     return getActiveMultiSimInfo().size();
   }

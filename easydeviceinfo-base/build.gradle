@@ -25,6 +25,7 @@ dependencies {
   // compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
   
   compile project(':easydeviceinfo-common')
+  compile "com.android.support:support-annotations:$rootProject.ext.supportLibVersion"
 }
 
 // Bintray info

@@ -22,6 +22,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
+import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -122,7 +123,7 @@ public class EasyDeviceMod {
    * @return the phone no
    */
   @SuppressLint("HardwareIds")
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   public final String getPhoneNo() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)
@@ -401,7 +402,7 @@ public class EasyDeviceMod {
    * @return the imei
    */
   @SuppressLint("HardwareIds")
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
   public final String getIMEI() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {

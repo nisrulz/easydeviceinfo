@@ -44,9 +44,12 @@ task clean(type: Delete) {
 
 ext {
   compileSdkVersion = 24
-  buildToolsVersion = "24.0.2"
+  buildToolsVersion = "24.0.3"
   minSdkVersion = 9
   targetSdkVersion = 24
+
+  supportLibVersion = '24.2.1'
+  googlePlayServicesVersion = '9.6.0'
 
   // EasyDeviceInfo
   easyDeviceInfoVersionCode = 20

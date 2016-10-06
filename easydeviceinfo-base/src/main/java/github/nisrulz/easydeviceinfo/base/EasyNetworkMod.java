@@ -23,6 +23,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
@@ -105,7 +106,9 @@ public class EasyNetworkMod {
    *
    * @return the boolean
    */
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(allOf = {
+      Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.INTERNET
+  })
   public final boolean isNetworkAvailable() {
     if (PermissionUtil.hasPermission(context, Manifest.permission.INTERNET)
         && PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
@@ -186,7 +189,9 @@ public class EasyNetworkMod {
    *
    * @return the network type
    */
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(allOf = {
+      Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.INTERNET
+  })
   public final int getNetworkType() {
     int result = UNKNOWN;
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
@@ -255,7 +260,7 @@ public class EasyNetworkMod {
    * @return the wifi mac
    */
   @SuppressLint("HardwareIds")
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.ACCESS_WIFI_STATE)
   public final String getWifiMAC() {
     String result = "02:00:00:00:00:00";
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {

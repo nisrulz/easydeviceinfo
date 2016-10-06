@@ -25,6 +25,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.RequiresPermission;
 import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -67,7 +68,7 @@ public class EasyIdMod {
    *
    * @return the string [ ]
    */
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.GET_ACCOUNTS)
   public final String[] getAccounts() {
     String[] result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.GET_ACCOUNTS)) {
@@ -154,7 +155,8 @@ public class EasyIdMod {
    *
    * @return the gsfid
    */
-  @SuppressWarnings("MissingPermission")
+
+  @RequiresPermission("com.google.android.providers.gsf.permission.READ_GSERVICES")
   public final String getGSFID() {
     final Uri uri = Uri.parse("content://com.google.android.gsf.gservices");
     final String idKey = "android_id";

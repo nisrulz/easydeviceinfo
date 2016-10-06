@@ -20,6 +20,7 @@ import android.Manifest;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.annotation.RequiresPermission;
 
 /**
  * EasyLocation Mod Class
@@ -31,11 +32,8 @@ import android.location.LocationManager;
  *
  * For more accurate location updates via GPS and network both
  * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
- *
  */
 
-// Permission warning suppressed since it will be provided by the client
-@SuppressWarnings("MissingPermission")
 public class EasyLocationMod {
   private final boolean hasFineLocationPermission;
   private final boolean hasCoarseLocationPermission;
@@ -63,6 +61,9 @@ public class EasyLocationMod {
    *
    * @return the double [ ]
    */
+  @RequiresPermission(anyOf = {
+      Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION
+  })
   public final double[] getLatLong() {
     double[] gps = new double[2];
     gps[0] = 0;
@@ -105,7 +106,7 @@ public class EasyLocationMod {
     }
     return gps;
   }
-
+  
   private Location getBetterLocation(final Location location1, final Location location2) {
     if (location1.getAccuracy() >= location2.getAccuracy()) {
       return location1;

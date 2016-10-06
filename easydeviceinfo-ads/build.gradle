@@ -21,7 +21,7 @@ android {
 dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   testCompile 'junit:junit:4.12'
-  compile 'com.google.android.gms:play-services-base:9.6.0'
+  compile "com.google.android.gms:play-services-base:$rootProject.ext.googlePlayServicesVersion"
 
   // compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
 

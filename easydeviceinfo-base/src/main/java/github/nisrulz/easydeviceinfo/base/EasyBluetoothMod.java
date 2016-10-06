@@ -21,6 +21,7 @@ import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.RequiresPermission;
 
 /**
  * EasyBluetooth Mod Class
@@ -48,7 +49,7 @@ public class EasyBluetoothMod {
    * @return the bluetooth mac
    */
   @SuppressLint("HardwareIds")
-  @SuppressWarnings("MissingPermission")
+  @RequiresPermission(Manifest.permission.BLUETOOTH)
   public final String getBluetoothMAC() {
     String result = "02:00:00:00:00:00";
     if (PermissionUtil.hasPermission(context, Manifest.permission.BLUETOOTH)) {
