@@ -5,10 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    EasyDeviceMod.DEVICE_TYPE_WATCH, EasyDeviceMod.DEVICE_TYPE_PHONE,
-    EasyDeviceMod.DEVICE_TYPE_PHABLET, EasyDeviceMod.DEVICE_TYPE_TABLET,
-    EasyDeviceMod.DEVICE_TYPE_TV
+    DeviceType.WATCH, DeviceType.PHONE, DeviceType.PHABLET, DeviceType.TABLET, DeviceType.TV
 })
 @Retention(RetentionPolicy.CLASS)
 public @interface DeviceType {
+  int WATCH = 0;
+  int PHONE = 1;
+  int PHABLET = 2;
+  int TABLET = 3;
+  int TV = 4;
 }

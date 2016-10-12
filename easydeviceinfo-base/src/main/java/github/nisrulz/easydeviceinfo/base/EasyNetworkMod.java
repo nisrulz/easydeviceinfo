@@ -39,35 +39,6 @@ import java.util.List;
  * EasyNetwork Mod Class
  */
 public class EasyNetworkMod {
-  /**
-   * The constant UNKNOWN.
-   */
-  public static final int UNKNOWN = 0;
-  /**
-   * The constant WIFI_WIFIMAX.
-   */
-  public static final int WIFI_WIFIMAX = 1;
-  /**
-   * The constant CELLULAR_UNKNOWN.
-   */
-  public static final int CELLULAR_UNKNOWN = 2;
-  /**
-   * The constant CELLULAR_2G.
-   */
-  public static final int CELLULAR_2G = 3;
-  /**
-   * The constant CELLULAR_3G.
-   */
-  public static final int CELLULAR_3G = 4;
-  /**
-   * The constant CELLULAR_4G.
-   */
-  public static final int CELLULAR_4G = 5;
-  /**
-   * The constant CELLULAR_UNIDENTIFIED_GEN.
-   */
-  public static final int CELLULAR_UNIDENTIFIED_GEN = 6;
-
   private static final String SOCKET_EXCEPTION = "Socket Exception";
   private final Context context;
 
@@ -192,19 +163,20 @@ public class EasyNetworkMod {
   @RequiresPermission(allOf = {
       Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.INTERNET
   })
+  @NetworkType
   public final int getNetworkType() {
-    int result = UNKNOWN;
+    int result = NetworkType.UNKNOWN;
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
       ConnectivityManager cm =
           (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
       NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
       if (activeNetwork == null) {
-        result = UNKNOWN;
+        result = NetworkType.UNKNOWN;
       }
       else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
           || activeNetwork.getType() == ConnectivityManager.TYPE_WIMAX) {
-        result = WIFI_WIFIMAX;
+        result = NetworkType.WIFI_WIFIMAX;
       }
       else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
         TelephonyManager manager =
@@ -214,7 +186,7 @@ public class EasyNetworkMod {
 
             // Unknown
             case TelephonyManager.NETWORK_TYPE_UNKNOWN:
-              result = CELLULAR_UNKNOWN;
+              result = NetworkType.CELLULAR_UNKNOWN;
               break;
             // Cellular Data–2G
             case TelephonyManager.NETWORK_TYPE_EDGE:
@@ -222,7 +194,7 @@ public class EasyNetworkMod {
             case TelephonyManager.NETWORK_TYPE_CDMA:
             case TelephonyManager.NETWORK_TYPE_IDEN:
             case TelephonyManager.NETWORK_TYPE_1xRTT:
-              result = CELLULAR_2G;
+              result = NetworkType.CELLULAR_2G;
               break;
             // Cellular Data–3G
             case TelephonyManager.NETWORK_TYPE_UMTS:
@@ -233,15 +205,15 @@ public class EasyNetworkMod {
             case TelephonyManager.NETWORK_TYPE_EVDO_0:
             case TelephonyManager.NETWORK_TYPE_EVDO_A:
             case TelephonyManager.NETWORK_TYPE_EVDO_B:
-              result = CELLULAR_3G;
+              result = NetworkType.CELLULAR_3G;
               break;
             // Cellular Data–4G
             case TelephonyManager.NETWORK_TYPE_LTE:
-              result = CELLULAR_4G;
+              result = NetworkType.CELLULAR_4G;
               break;
             // Cellular Data–Unknown Generation
             default:
-              result = CELLULAR_UNIDENTIFIED_GEN;
+              result = NetworkType.CELLULAR_UNIDENTIFIED_GEN;
               break;
           }
         }

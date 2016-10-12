@@ -5,8 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    EasyDeviceMod.PHONE_TYPE_GSM, EasyDeviceMod.PHONE_TYPE_CDMA, EasyDeviceMod.PHONE_TYPE_NONE
+    PhoneType.GSM, PhoneType.CDMA, PhoneType.NONE
 })
 @Retention(RetentionPolicy.CLASS)
 public @interface PhoneType {
+  int GSM = 0;
+  int CDMA = 1;
+  int NONE = 2;
 }

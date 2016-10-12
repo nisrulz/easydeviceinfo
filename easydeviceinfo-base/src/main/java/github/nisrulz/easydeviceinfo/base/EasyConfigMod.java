@@ -26,22 +26,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static android.media.AudioManager.RINGER_MODE_NORMAL;
+import static android.media.AudioManager.RINGER_MODE_SILENT;
+import static android.media.AudioManager.RINGER_MODE_VIBRATE;
+
 /**
  * EasyConfig Mod Class
  */
 public class EasyConfigMod {
-  /**
-   * The constant RINGER_MODE_SILENT.
-   */
-  public static final int RINGER_MODE_SILENT = 0;
-  /**
-   * The constant RINGER_MODE_NORMAL.
-   */
-  public static final int RINGER_MODE_NORMAL = 1;
-  /**
-   * The constant RINGER_MODE_VIBRATE.
-   */
-  public static final int RINGER_MODE_VIBRATE = 2;
   private final Context context;
 
   /**
@@ -86,18 +78,19 @@ public class EasyConfigMod {
    *
    * @return Device Ringer Mode
    */
+  @RingerMode
   public final int getDeviceRingerMode() {
-    int ringerMode = RINGER_MODE_NORMAL;
+    int ringerMode = RingerMode.NORMAL;
     AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     switch (audioManager.getRingerMode()) {
-      case AudioManager.RINGER_MODE_NORMAL:
-        ringerMode = RINGER_MODE_NORMAL;
+      case RINGER_MODE_NORMAL:
+        ringerMode = RingerMode.NORMAL;
         break;
-      case AudioManager.RINGER_MODE_SILENT:
-        ringerMode = RINGER_MODE_SILENT;
+      case RINGER_MODE_SILENT:
+        ringerMode = RingerMode.SILENT;
         break;
-      case AudioManager.RINGER_MODE_VIBRATE:
-        ringerMode = RINGER_MODE_VIBRATE;
+      case RINGER_MODE_VIBRATE:
+        ringerMode = RingerMode.VIBRATE;
         break;
       default:
         //do nothing

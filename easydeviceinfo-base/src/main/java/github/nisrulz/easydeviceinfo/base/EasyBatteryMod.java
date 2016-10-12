@@ -24,32 +24,8 @@ import android.os.BatteryManager;
 /**
  * EasyBattery Mod Class
  */
+@BatteryHealth
 public class EasyBatteryMod {
-
-  /**
-   * The constant CHARGING_VIA_USB.
-   */
-  public static final int CHARGING_VIA_USB = 0;
-  /**
-   * The constant CHARGING_VIA_AC.
-   */
-  public static final int CHARGING_VIA_AC = 1;
-  /**
-   * The constant CHARGING_VIA_WIRELESS.
-   */
-  public static final int CHARGING_VIA_WIRELESS = 2;
-  /**
-   * The constant CHARGING_VIA_UNKNOWN_SOURCE.
-   */
-  public static final int CHARGING_VIA_UNKNOWN_SOURCE = 3;
-  /**
-   * The constant HEALTH_HAVING_ISSUES.
-   */
-  public static final int HEALTH_HAVING_ISSUES = 0;
-  /**
-   * The constant HEALTH_GOOD.
-   */
-  public static final int HEALTH_GOOD = 1;
   private final Context context;
 
   /**
@@ -101,16 +77,17 @@ public class EasyBatteryMod {
    *
    * @return the battery health
    */
+  @BatteryHealth
   public final int getBatteryHealth() {
-    int health = HEALTH_HAVING_ISSUES;
+    int health = BatteryHealth.HAVING_ISSUES;
     Intent batteryStatus = getBatteryStatusIntent();
     if (batteryStatus != null) {
       health = batteryStatus.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
       if (health == BatteryManager.BATTERY_HEALTH_GOOD) {
-        health = HEALTH_GOOD;
+        health = BatteryHealth.GOOD;
       }
       else {
-        health = HEALTH_HAVING_ISSUES;
+        health = BatteryHealth.HAVING_ISSUES;
       }
     }
     return health;
@@ -159,19 +136,20 @@ public class EasyBatteryMod {
    *
    * @return the charging source
    */
+  @ChargingVia
   public final int getChargingSource() {
     Intent batteryStatus = getBatteryStatusIntent();
     int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
 
     switch (chargePlug) {
       case BatteryManager.BATTERY_PLUGGED_AC:
-        return CHARGING_VIA_AC;
+        return ChargingVia.AC;
       case BatteryManager.BATTERY_PLUGGED_USB:
-        return CHARGING_VIA_USB;
+        return ChargingVia.USB;
       case BatteryManager.BATTERY_PLUGGED_WIRELESS:
-        return CHARGING_VIA_WIRELESS;
+        return ChargingVia.WIRELESS;
       default:
-        return CHARGING_VIA_UNKNOWN_SOURCE;
+        return ChargingVia.UNKNOWN_SOURCE;
     }
   }
 

@@ -20,7 +20,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Build;
 import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
@@ -31,56 +30,16 @@ import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.io.File;
 import java.util.Locale;
 
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
+import static android.telephony.TelephonyManager.PHONE_TYPE_CDMA;
+import static android.telephony.TelephonyManager.PHONE_TYPE_GSM;
+import static android.telephony.TelephonyManager.PHONE_TYPE_NONE;
+
 /**
  * EasyDevice Mod Class
  */
 public class EasyDeviceMod {
-  /**
-   * The constant DEVICE_TYPE_WATCH.
-   */
-  public static final int DEVICE_TYPE_WATCH = 0;
-  /**
-   * The constant DEVICE_TYPE_PHONE.
-   */
-  public static final int DEVICE_TYPE_PHONE = 1;
-  /**
-   * The constant DEVICE_TYPE_PHABLET.
-   */
-  public static final int DEVICE_TYPE_PHABLET = 2;
-  /**
-   * The constant DEVICE_TYPE_TABLET.
-   */
-  public static final int DEVICE_TYPE_TABLET = 3;
-  /**
-   * The constant DEVICE_TYPE_TV.
-   */
-  public static final int DEVICE_TYPE_TV = 4;
-
-  /**
-   * The constant PHONE_TYPE_GSM.
-   */
-  public static final int PHONE_TYPE_GSM = 0;
-  /**
-   * The constant PHONE_TYPE_CDMA.
-   */
-  public static final int PHONE_TYPE_CDMA = 1;
-  /**
-   * The constant PHONE_TYPE_NONE.
-   */
-  public static final int PHONE_TYPE_NONE = 2;
-
-  /**
-   * The constant ORIENTATION_PORTRAIT.
-   */
-  public static final int ORIENTATION_PORTRAIT = 0;
-  /**
-   * The constant ORIENTATION_LANDSCAPE.
-   */
-  public static final int ORIENTATION_LANDSCAPE = 1;
-  /**
-   * The constant ORIENTATION_UNKNOWN.
-   */
-  public static final int ORIENTATION_UNKNOWN = 2;
   private final TelephonyManager tm;
   private final Context context;
 
@@ -100,16 +59,17 @@ public class EasyDeviceMod {
    *
    * @return the phone type
    */
+  @PhoneType
   public final int getPhoneType() {
     switch (tm.getPhoneType()) {
-      case TelephonyManager.PHONE_TYPE_GSM:
-        return PHONE_TYPE_GSM;
+      case PHONE_TYPE_GSM:
+        return PhoneType.GSM;
 
-      case TelephonyManager.PHONE_TYPE_CDMA:
-        return PHONE_TYPE_CDMA;
-      case TelephonyManager.PHONE_TYPE_NONE:
+      case PHONE_TYPE_CDMA:
+        return PhoneType.CDMA;
+      case PHONE_TYPE_NONE:
       default:
-        return PHONE_TYPE_NONE;
+        return PhoneType.NONE;
     }
   }
 
@@ -227,6 +187,8 @@ public class EasyDeviceMod {
    *     the activity
    * @return the int
    */
+
+  @DeviceType
   public final int getDeviceType(Activity activity) {
     DisplayMetrics metrics = new DisplayMetrics();
     activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
@@ -235,19 +197,19 @@ public class EasyDeviceMod {
     float xInches = metrics.widthPixels / metrics.xdpi;
     double diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
     if (diagonalInches > 10.1) {
-      return DEVICE_TYPE_TV;
+      return DeviceType.TV;
     }
     else if (diagonalInches <= 10.1 && diagonalInches > 7) {
-      return DEVICE_TYPE_TABLET;
+      return DeviceType.TABLET;
     }
     else if (diagonalInches <= 7 && diagonalInches > 6.5) {
-      return DEVICE_TYPE_PHABLET;
+      return DeviceType.PHABLET;
     }
     else if (diagonalInches <= 6.5 && diagonalInches >= 2) {
-      return DEVICE_TYPE_PHONE;
+      return DeviceType.PHONE;
     }
     else {
-      return DEVICE_TYPE_WATCH;
+      return DeviceType.WATCH;
     }
   }
 
@@ -507,14 +469,15 @@ public class EasyDeviceMod {
    *     the activity
    * @return the orientation
    */
+  @OrientationType
   public final int getOrientation(final Activity activity) {
     switch (activity.getResources().getConfiguration().orientation) {
-      case Configuration.ORIENTATION_PORTRAIT:
-        return ORIENTATION_PORTRAIT;
-      case Configuration.ORIENTATION_LANDSCAPE:
-        return ORIENTATION_LANDSCAPE;
+      case ORIENTATION_PORTRAIT:
+        return OrientationType.PORTRAIT;
+      case ORIENTATION_LANDSCAPE:
+        return OrientationType.LANDSCAPE;
       default:
-        return ORIENTATION_UNKNOWN;
+        return OrientationType.UNKNOWN;
     }
   }
 }

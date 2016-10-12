@@ -5,9 +5,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    EasyDeviceMod.ORIENTATION_LANDSCAPE, EasyDeviceMod.ORIENTATION_PORTRAIT,
-    EasyDeviceMod.ORIENTATION_UNKNOWN
+    OrientationType.PORTRAIT, OrientationType.LANDSCAPE, OrientationType.UNKNOWN
 })
 @Retention(RetentionPolicy.CLASS)
 public @interface OrientationType {
+  int PORTRAIT = 0;
+  int LANDSCAPE = 1;
+  int UNKNOWN = 2;
 }

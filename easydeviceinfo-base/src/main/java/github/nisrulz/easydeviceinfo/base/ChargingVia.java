@@ -5,9 +5,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    EasyBatteryMod.CHARGING_VIA_AC, EasyBatteryMod.CHARGING_VIA_USB,
-    EasyBatteryMod.CHARGING_VIA_WIRELESS, EasyBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE
+    ChargingVia.USB, ChargingVia.AC, ChargingVia.WIRELESS, ChargingVia.UNKNOWN_SOURCE
 })
 @Retention(RetentionPolicy.CLASS)
 public @interface ChargingVia {
+  int USB = 0;
+  int AC = 1;
+  int WIRELESS = 2;
+  int UNKNOWN_SOURCE = 3;
 }

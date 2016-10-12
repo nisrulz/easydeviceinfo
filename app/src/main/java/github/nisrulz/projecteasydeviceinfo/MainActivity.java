@@ -115,13 +115,13 @@ public class MainActivity extends AppCompatActivity {
 
     @RingerMode int ringermode = easyConfigMod.getDeviceRingerMode();
     switch (ringermode) {
-      case EasyConfigMod.RINGER_MODE_NORMAL:
+      case RingerMode.NORMAL:
         deviceDataMap.put(getString(R.string.ringer_mode), "normal");
         break;
-      case EasyConfigMod.RINGER_MODE_VIBRATE:
+      case RingerMode.VIBRATE:
         deviceDataMap.put(getString(R.string.ringer_mode), "vibrate");
         break;
-      case EasyConfigMod.RINGER_MODE_SILENT:
+      case RingerMode.SILENT:
       default:
         deviceDataMap.put(getString(R.string.ringer_mode), "silent");
         break;
@@ -206,19 +206,19 @@ public class MainActivity extends AppCompatActivity {
 
     @DeviceType int deviceType = easyDeviceMod.getDeviceType(this);
     switch (deviceType) {
-      case EasyDeviceMod.DEVICE_TYPE_WATCH:
+      case DeviceType.WATCH:
         deviceDataMap.put(getString(R.string.device_type), "watch");
         break;
-      case EasyDeviceMod.DEVICE_TYPE_PHONE:
+      case DeviceType.PHONE:
         deviceDataMap.put(getString(R.string.device_type), "phone");
         break;
-      case EasyDeviceMod.DEVICE_TYPE_PHABLET:
+      case DeviceType.PHABLET:
         deviceDataMap.put(getString(R.string.device_type), "phablet");
         break;
-      case EasyDeviceMod.DEVICE_TYPE_TABLET:
+      case DeviceType.TABLET:
         deviceDataMap.put(getString(R.string.device_type), "tablet");
         break;
-      case EasyDeviceMod.DEVICE_TYPE_TV:
+      case DeviceType.TV:
         deviceDataMap.put(getString(R.string.device_type), "tv");
         break;
       default:
@@ -229,13 +229,13 @@ public class MainActivity extends AppCompatActivity {
     @PhoneType int phoneType = easyDeviceMod.getPhoneType();
     switch (phoneType) {
 
-      case EasyDeviceMod.PHONE_TYPE_CDMA:
+      case PhoneType.CDMA:
         deviceDataMap.put(getString(R.string.phone_type), "CDMA");
         break;
-      case EasyDeviceMod.PHONE_TYPE_GSM:
+      case PhoneType.GSM:
         deviceDataMap.put(getString(R.string.phone_type), "GSM");
         break;
-      case EasyDeviceMod.PHONE_TYPE_NONE:
+      case PhoneType.NONE:
         deviceDataMap.put(getString(R.string.phone_type), "None");
         break;
       default:
@@ -245,13 +245,13 @@ public class MainActivity extends AppCompatActivity {
 
     @OrientationType int orientationType = easyDeviceMod.getOrientation(this);
     switch (orientationType) {
-      case EasyDeviceMod.ORIENTATION_LANDSCAPE:
+      case OrientationType.LANDSCAPE:
         deviceDataMap.put(getString(R.string.orientation), "Landscape");
         break;
-      case EasyDeviceMod.ORIENTATION_PORTRAIT:
+      case OrientationType.PORTRAIT:
         deviceDataMap.put(getString(R.string.orientation), "Portrait");
         break;
-      case EasyDeviceMod.ORIENTATION_UNKNOWN:
+      case OrientationType.UNKNOWN:
       default:
         deviceDataMap.put(getString(R.string.orientation), "Unknown");
         break;
@@ -279,26 +279,26 @@ public class MainActivity extends AppCompatActivity {
     @NetworkType int networkType = easyNetworkMod.getNetworkType();
 
     switch (networkType) {
-      case EasyNetworkMod.CELLULAR_UNKNOWN:
+      case NetworkType.CELLULAR_UNKNOWN:
         deviceDataMap.put(getString(R.string.network_type), "Cellular Unknown");
         break;
-      case EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN:
+      case NetworkType.CELLULAR_UNIDENTIFIED_GEN:
         deviceDataMap.put(getString(R.string.network_type), "Cellular Unidentified Generation");
         break;
-      case EasyNetworkMod.CELLULAR_2G:
+      case NetworkType.CELLULAR_2G:
         deviceDataMap.put(getString(R.string.network_type), "Cellular 2G");
         break;
-      case EasyNetworkMod.CELLULAR_3G:
+      case NetworkType.CELLULAR_3G:
         deviceDataMap.put(getString(R.string.network_type), "Cellular 3G");
         break;
-      case EasyNetworkMod.CELLULAR_4G:
+      case NetworkType.CELLULAR_4G:
         deviceDataMap.put(getString(R.string.network_type), "Cellular 4G");
         break;
 
-      case EasyNetworkMod.WIFI_WIFIMAX:
+      case NetworkType.WIFI_WIFIMAX:
         deviceDataMap.put(getString(R.string.network_type), "Wifi/WifiMax");
         break;
-      case EasyNetworkMod.UNKNOWN:
+      case NetworkType.UNKNOWN:
       default:
         deviceDataMap.put(getString(R.string.network_type), "Unknown");
         break;
@@ -316,30 +316,30 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Battery voltage",
         String.valueOf(easyBatteryMod.getBatteryVoltage()) + " mV");
 
-    @BatteryHealth int batteryHealth = easyBatteryMod.getBatteryHealth();
+    @BatteryHealth
+    int batteryHealth = easyBatteryMod.getBatteryHealth();
     switch (batteryHealth) {
-      case EasyBatteryMod.HEALTH_GOOD:
+      case BatteryHealth.GOOD:
         deviceDataMap.put("Battery health", "Good");
         break;
-      case EasyBatteryMod.HEALTH_HAVING_ISSUES:
+      case BatteryHealth.HAVING_ISSUES:
       default:
         deviceDataMap.put("Battery health", "Having issues");
         break;
     }
 
     @ChargingVia int isChargingVia = easyBatteryMod.getChargingSource();
-
     switch (isChargingVia) {
-      case EasyBatteryMod.CHARGING_VIA_AC:
+      case ChargingVia.AC:
         deviceDataMap.put(getString(R.string.device_charging_via), "AC");
         break;
-      case EasyBatteryMod.CHARGING_VIA_USB:
+      case ChargingVia.USB:
         deviceDataMap.put(getString(R.string.device_charging_via), "USB");
         break;
-      case EasyBatteryMod.CHARGING_VIA_WIRELESS:
+      case ChargingVia.WIRELESS:
         deviceDataMap.put(getString(R.string.device_charging_via), "Wireless");
         break;
-      case EasyBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE:
+      case ChargingVia.UNKNOWN_SOURCE:
       default:
         deviceDataMap.put(getString(R.string.device_charging_via), "Unknown Source");
         break;
