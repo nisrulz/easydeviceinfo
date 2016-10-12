@@ -26,6 +26,7 @@ import android.telephony.SubscriptionManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import github.nisrulz.easydeviceinfo.ads.EasyAdsMod;
+import github.nisrulz.easydeviceinfo.base.ChargingVia;
 import github.nisrulz.easydeviceinfo.base.EasyAppMod;
 import github.nisrulz.easydeviceinfo.base.EasyBatteryMod;
 import github.nisrulz.easydeviceinfo.base.EasyBluetoothMod;
@@ -308,7 +309,9 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
-    switch (easyBatteryMod.getChargingSource()) {
+    @ChargingVia int isChargingVia = easyBatteryMod.getChargingSource();
+
+    switch (isChargingVia) {
       case EasyBatteryMod.CHARGING_VIA_AC:
         deviceDataMap.put(getString(R.string.device_charging_via), "AC");
         break;
