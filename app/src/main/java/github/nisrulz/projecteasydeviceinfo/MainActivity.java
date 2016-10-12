@@ -26,7 +26,9 @@ import android.telephony.SubscriptionManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import github.nisrulz.easydeviceinfo.ads.EasyAdsMod;
+import github.nisrulz.easydeviceinfo.base.BatteryHealth;
 import github.nisrulz.easydeviceinfo.base.ChargingVia;
+import github.nisrulz.easydeviceinfo.base.DeviceType;
 import github.nisrulz.easydeviceinfo.base.EasyAppMod;
 import github.nisrulz.easydeviceinfo.base.EasyBatteryMod;
 import github.nisrulz.easydeviceinfo.base.EasyBluetoothMod;
@@ -40,6 +42,10 @@ import github.nisrulz.easydeviceinfo.base.EasyMemoryMod;
 import github.nisrulz.easydeviceinfo.base.EasyNetworkMod;
 import github.nisrulz.easydeviceinfo.base.EasyNfcMod;
 import github.nisrulz.easydeviceinfo.base.EasySimMod;
+import github.nisrulz.easydeviceinfo.base.NetworkType;
+import github.nisrulz.easydeviceinfo.base.OrientationType;
+import github.nisrulz.easydeviceinfo.base.PhoneType;
+import github.nisrulz.easydeviceinfo.base.RingerMode;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -106,7 +112,9 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Formatted Date", easyConfigMod.getFormattedDate());
     deviceDataMap.put("SD Card available", String.valueOf(easyConfigMod.hasSdCard()));
     deviceDataMap.put("Running on emulator", String.valueOf(easyConfigMod.isRunningOnEmulator()));
-    switch (easyConfigMod.getDeviceRingerMode()) {
+
+    @RingerMode int ringermode = easyConfigMod.getDeviceRingerMode();
+    switch (ringermode) {
       case EasyConfigMod.RINGER_MODE_NORMAL:
         deviceDataMap.put(getString(R.string.ringer_mode), "normal");
         break;
@@ -195,7 +203,9 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Build Version Increment", easyDeviceMod.getBuildVersionIncremental());
     deviceDataMap.put("Build Version SDK", String.valueOf(easyDeviceMod.getBuildVersionSDK()));
     deviceDataMap.put("Build ID", easyDeviceMod.getBuildID());
-    switch (easyDeviceMod.getDeviceType(this)) {
+
+    @DeviceType int deviceType = easyDeviceMod.getDeviceType(this);
+    switch (deviceType) {
       case EasyDeviceMod.DEVICE_TYPE_WATCH:
         deviceDataMap.put(getString(R.string.device_type), "watch");
         break;
@@ -216,7 +226,9 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
-    switch (easyDeviceMod.getPhoneType()) {
+    @PhoneType int phoneType = easyDeviceMod.getPhoneType();
+    switch (phoneType) {
+
       case EasyDeviceMod.PHONE_TYPE_CDMA:
         deviceDataMap.put(getString(R.string.phone_type), "CDMA");
         break;
@@ -231,7 +243,8 @@ public class MainActivity extends AppCompatActivity {
         break;
     }
 
-    switch (easyDeviceMod.getOrientation(this)) {
+    @OrientationType int orientationType = easyDeviceMod.getOrientation(this);
+    switch (orientationType) {
       case EasyDeviceMod.ORIENTATION_LANDSCAPE:
         deviceDataMap.put(getString(R.string.orientation), "Landscape");
         break;
@@ -262,7 +275,10 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("IPv6 Address", easyNetworkMod.getIPv6Address());
     deviceDataMap.put("Network Available", String.valueOf(easyNetworkMod.isNetworkAvailable()));
     deviceDataMap.put("Wi-Fi enabled", String.valueOf(easyNetworkMod.isWifiEnabled()));
-    switch (easyNetworkMod.getNetworkType()) {
+
+    @NetworkType int networkType = easyNetworkMod.getNetworkType();
+
+    switch (networkType) {
       case EasyNetworkMod.CELLULAR_UNKNOWN:
         deviceDataMap.put(getString(R.string.network_type), "Cellular Unknown");
         break;
@@ -299,7 +315,9 @@ public class MainActivity extends AppCompatActivity {
         String.valueOf(easyBatteryMod.getBatteryTemperature()) + " deg C");
     deviceDataMap.put("Battery voltage",
         String.valueOf(easyBatteryMod.getBatteryVoltage()) + " mV");
-    switch (easyBatteryMod.getBatteryHealth()) {
+
+    @BatteryHealth int batteryHealth = easyBatteryMod.getBatteryHealth();
+    switch (batteryHealth) {
       case EasyBatteryMod.HEALTH_GOOD:
         deviceDataMap.put("Battery health", "Good");
         break;

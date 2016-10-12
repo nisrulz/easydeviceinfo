@@ -28,7 +28,7 @@ final class PermissionUtil {
     if (EasyDeviceInfo.debuggable && !permGranted) {
       Log.e(EasyDeviceInfo.nameOfLib, ">\t" + permission);
       Log.w(EasyDeviceInfo.nameOfLib,
-          "\nPermission not granted/missing!\nMake sure you have declared the permission in your manifest file.\n");
+          "\nPermission not granted/missing!\nMake sure you have declared the permission in your manifest file (and granted it on API 23+).\n");
     }
     return permGranted;
   }
