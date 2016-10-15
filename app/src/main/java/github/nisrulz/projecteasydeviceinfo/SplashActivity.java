@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
       Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
       Manifest.permission.GET_ACCOUNTS
   };
-  boolean launched = false;
+  private boolean launched = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,7 @@ public class SplashActivity extends AppCompatActivity {
     }
   }
 
-  public static void setFullScreen(Activity activity) {
+  private static void setFullScreen(Activity activity) {
     // Call before calling setContentView();
     activity.getWindow()
         .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

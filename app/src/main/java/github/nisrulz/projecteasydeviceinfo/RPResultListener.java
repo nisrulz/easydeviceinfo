@@ -9,7 +9,7 @@
 
 package github.nisrulz.projecteasydeviceinfo;
 
-public interface RPResultListener {
+interface RPResultListener {
   void onPermissionGranted();
 
   void onPermissionDenied();
