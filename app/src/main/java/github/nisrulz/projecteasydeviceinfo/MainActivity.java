@@ -316,8 +316,7 @@ public class MainActivity extends AppCompatActivity {
     deviceDataMap.put("Battery voltage",
         String.valueOf(easyBatteryMod.getBatteryVoltage()) + " mV");
 
-    @BatteryHealth
-    int batteryHealth = easyBatteryMod.getBatteryHealth();
+    @BatteryHealth int batteryHealth = easyBatteryMod.getBatteryHealth();
     switch (batteryHealth) {
       case BatteryHealth.GOOD:
         deviceDataMap.put("Battery health", "Good");
@@ -402,5 +401,11 @@ public class MainActivity extends AppCompatActivity {
     ListView lv = (ListView) findViewById(R.id.listview);
     adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
     lv.setAdapter(adapter);
+  }
+
+  @Override
+  public void onBackPressed() {
+    super.onBackPressed();
+    finish();
   }
 }

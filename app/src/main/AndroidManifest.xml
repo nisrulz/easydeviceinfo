@@ -13,20 +13,16 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="github.nisrulz.projecteasydeviceinfo">
 
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-
   <uses-permission android:name="android.permission.BLUETOOTH"/>
   <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
   <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
   <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
 
@@ -36,11 +32,15 @@
       android:label="@string/app_name"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".MainActivity">
+    <activity
+        android:name=".SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
+
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+    </activity>
+    <activity android:name=".MainActivity">
     </activity>
   </application>
 

@@ -28,7 +28,7 @@ buildscript {
 
     // Required plugins added to classpath to facilitate pushing to Jcenter/Bintray
     classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
-    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
   }
 }
 
