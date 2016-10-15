@@ -46,7 +46,7 @@ public class EasyDeviceInfo {
    * @param notFoundVal
    *     the not found val
    */
-  public static final void setNotFoundVal(String notFoundVal) {
+  public static void setNotFoundVal(String notFoundVal) {
     EasyDeviceInfo.notFoundVal = notFoundVal;
   }
 
@@ -58,7 +58,7 @@ public class EasyDeviceInfo {
    * @param debugFlag
    *     the debug flag
    */
-  public static final void setConfigs(String notFoundVal, boolean debugFlag) {
+  public static void setConfigs(String notFoundVal, boolean debugFlag) {
     EasyDeviceInfo.notFoundVal = notFoundVal;
     EasyDeviceInfo.debuggable = debugFlag;
   }
@@ -68,7 +68,7 @@ public class EasyDeviceInfo {
    *
    * @return the library version
    */
-  public static final String getLibraryVersion() {
+  public static String getLibraryVersion() {
     int versionCode = 20;
     String version = "v2.3.0";
     return nameOfLib + " : " + version + " [build-" + versionCode + "]";
@@ -77,7 +77,7 @@ public class EasyDeviceInfo {
   /**
    * Debug.
    */
-  public static final void debug() {
+  public static void debug() {
     EasyDeviceInfo.debuggable = true;
   }
 }
