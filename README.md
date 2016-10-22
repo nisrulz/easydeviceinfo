@@ -100,6 +100,15 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
 |Up Time (ms)|`getUpTime()`|long
 |Formatted Up Time (24Hr)|`getFormattedUpTime()`|String
 
+#### Android Studio support
++ Include a required permission check
+  
+  ![PermissionCheck](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/permissioncheck.gif)
+
++ Setup all constants returned in a switch statement
+  
+  ![SetupSwitch](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/usingintedefs.gif)
+
 ### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)** </center>
 
 # Pull Requests
