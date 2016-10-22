@@ -108,6 +108,15 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
 + Setup all constants returned in a switch statement
   
   ![SetupSwitch](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/usingintedefs.gif)
+  
+  This applies to all annotations bundled with easydeviceinfo. Checkout the wiki to see where these annotations can be applied.
+  + `@RingerMode`
+  + `@DeviceType`
+  + `@PhoneType`
+  + `@OrientationType`
+  + `@NetworkType`
+  + `@BatteryHealth`
+  + `@ChargingVia`
 
 ### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)** </center>
 
