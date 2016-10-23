@@ -67,4 +67,25 @@ public class EasyBluetoothMod {
     }
     return CheckValidityUtil.checkValidData(result);
   }
+
+  /**
+   * @return true if the device has a Bluetooth LE compatible chipset
+   */
+  public final boolean hasBluetoothLe() {
+
+    return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
+
+  }
+
+  /**
+   * @return true if the device has Bluetooth LE advertising features
+   */
+  @RequiresPermission(Manifest.permission.BLUETOOTH)
+  public final boolean hasBluetoothLeAdvertising() {
+    return hasBluetoothLe() &&
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
+            BluetoothAdapter.getDefaultAdapter().isMultipleAdvertisementSupported();
+  }
+
+
 }
