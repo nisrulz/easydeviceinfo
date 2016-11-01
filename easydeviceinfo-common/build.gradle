@@ -17,6 +17,7 @@ android {
     }
   }
 
+  // Ignore Java 8 Doclint errors
   if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
       tasks.withType(Javadoc) {
