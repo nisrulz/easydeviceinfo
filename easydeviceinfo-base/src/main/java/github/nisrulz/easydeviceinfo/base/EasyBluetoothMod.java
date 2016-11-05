@@ -20,6 +20,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.RequiresPermission;
 
@@ -69,23 +70,26 @@ public class EasyBluetoothMod {
   }
 
   /**
+   * Has Bluetooth LE
+   *
    * @return true if the device has a Bluetooth LE compatible chipset
    */
   public final boolean hasBluetoothLe() {
 
     return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
-
   }
 
   /**
+   * Has Bluetooth LE advertising
+   *
    * @return true if the device has Bluetooth LE advertising features
    */
   @RequiresPermission(Manifest.permission.BLUETOOTH)
   public final boolean hasBluetoothLeAdvertising() {
-    return hasBluetoothLe() &&
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
-            BluetoothAdapter.getDefaultAdapter().isMultipleAdvertisementSupported();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      return hasBluetoothLe() && BluetoothAdapter.getDefaultAdapter()
+          .isMultipleAdvertisementSupported();
+    }
+    return false;
   }
-
-
 }
