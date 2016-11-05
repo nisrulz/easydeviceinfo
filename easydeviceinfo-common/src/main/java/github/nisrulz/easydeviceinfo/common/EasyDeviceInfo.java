@@ -69,8 +69,8 @@ public class EasyDeviceInfo {
    * @return the library version
    */
   public static String getLibraryVersion() {
-    int versionCode = 20;
-    String version = "v2.3.0";
+    int versionCode = 21;
+    String version = "v2.3.1";
     return nameOfLib + " : " + version + " [build-" + versionCode + "]";
   }
 
