@@ -52,8 +52,8 @@ ext {
   googlePlayServicesVersion = '9.8.0'
 
   // EasyDeviceInfo
-  easyDeviceInfoVersionCode = 20
-  easyDeviceInfoVersionName = "2.3.0"
+  easyDeviceInfoVersionCode = 21
+  easyDeviceInfoVersionName = "2.3.1"
   easyDeviceInfoPomUrl = "https://github.com/nisrulz/easydeviceinfo"
   easyDeviceInfoPomGitUrl = "https://github.com/nisrulz/easydeviceinfo.git"
   easyDeviceInfoGithubRepo = "nisrulz/easydeviceinfo"
