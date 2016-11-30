@@ -33,7 +33,7 @@ dependencies {
   
   compile "com.google.android.gms:play-services-basement:$rootProject.ext.googlePlayServicesVersion"
 
-  // compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
+//   compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
 
   compile project(':easydeviceinfo-common')
 }
