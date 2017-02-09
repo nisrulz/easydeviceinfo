@@ -18,8 +18,10 @@ package github.nisrulz.projecteasydeviceinfo;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.hardware.Sensor;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -41,6 +43,7 @@ import github.nisrulz.easydeviceinfo.base.EasyLocationMod;
 import github.nisrulz.easydeviceinfo.base.EasyMemoryMod;
 import github.nisrulz.easydeviceinfo.base.EasyNetworkMod;
 import github.nisrulz.easydeviceinfo.base.EasyNfcMod;
+import github.nisrulz.easydeviceinfo.base.EasySensorMod;
 import github.nisrulz.easydeviceinfo.base.EasySimMod;
 import github.nisrulz.easydeviceinfo.base.NetworkType;
 import github.nisrulz.easydeviceinfo.base.OrientationType;
@@ -48,7 +51,6 @@ import github.nisrulz.easydeviceinfo.base.PhoneType;
 import github.nisrulz.easydeviceinfo.base.RingerMode;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     final ArrayList<String> data = new ArrayList<>();
 
     //Add Data
-    HashMap<String, String> deviceDataMap = new HashMap<>();
+    ArrayMap<String, String> deviceDataMap = new ArrayMap<>();
 
     // Setup the value to be returned when result is either not found or invalid/null
     EasyDeviceInfo.setNotFoundVal("na");
@@ -125,6 +127,32 @@ public class MainActivity extends AppCompatActivity {
       default:
         deviceDataMap.put(getString(R.string.ringer_mode), "silent");
         break;
+    }
+
+    // Sensor Mod
+    EasySensorMod easySensorMod = new EasySensorMod(this);
+    List<Sensor> list = easySensorMod.getAllSensors();
+    for (Sensor s : list) {
+      if (s != null) {
+        StringBuilder stringBuilder = new StringBuilder().append("\nVendor : ")
+            .append(s.getVendor())
+            .append("\n")
+            .append("Version : ")
+            .append(s.getVersion())
+            .append("\n")
+            .append("Power : ")
+            .append(s.getPower())
+            .append("\n")
+            .append("Resolution : ")
+            .append(s.getResolution())
+            .append("\n")
+            .append("Max Range : ")
+            .append(s.getMaximumRange());
+        deviceDataMap.put("Sensor Name - " + s.getName(), stringBuilder.toString());
+      }
+      else {
+        deviceDataMap.put("Sensor", "N/A");
+      }
     }
 
     // SIM Mod

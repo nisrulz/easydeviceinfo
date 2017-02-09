@@ -444,6 +444,7 @@ public class EasyDeviceMod {
         codename = "Marshmallow";
         break;
       case Build.VERSION_CODES.N:
+      case Build.VERSION_CODES.N_MR1:
         codename = "Nougat";
         break;
       default:
