@@ -271,6 +271,9 @@ public class MainActivity extends AppCompatActivity {
     //Network Mod
     EasyNetworkMod easyNetworkMod = new EasyNetworkMod(this);
     deviceDataMap.put("WIFI MAC Address", easyNetworkMod.getWifiMAC());
+    deviceDataMap.put("WIFI LinkSpeed", easyNetworkMod.getWifiLinkSpeed());
+    deviceDataMap.put("WIFI SSID", easyNetworkMod.getWifiSSID());
+    deviceDataMap.put("WIFI BSSID", easyNetworkMod.getWifiBSSID());
     deviceDataMap.put("IPv4 Address", easyNetworkMod.getIPv4Address());
     deviceDataMap.put("IPv6 Address", easyNetworkMod.getIPv6Address());
     deviceDataMap.put("Network Available", String.valueOf(easyNetworkMod.isNetworkAvailable()));

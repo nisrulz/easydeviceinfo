@@ -21,10 +21,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.net.Inet4Address;
@@ -277,6 +279,113 @@ public class EasyNetworkMod {
       else {
         WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         result = wm.getConnectionInfo().getMacAddress();
+      }
+    }
+    return CheckValidityUtil.checkValidData(result);
+  }
+
+  /**
+   * Gets SSID of Connected WiFi
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+   * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+   *
+   * @return Returns the service set identifier (SSID) of the current 802.11 network
+   */
+  @RequiresPermission(allOf = {
+      Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.ACCESS_NETWORK_STATE
+  })
+  public final String getWifiSSID() {
+    String result = null;
+    if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
+      ConnectivityManager cm =
+          (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+      NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+      if (networkInfo == null) {
+        result = null;
+      }
+
+      if (networkInfo.isConnected()) {
+        final WifiManager wifiManager =
+            (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+        if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
+          result = connectionInfo.getSSID();
+        }
+      }
+    }
+    return CheckValidityUtil.checkValidData(result);
+  }
+
+
+  /**
+   * Gets BSSID of Connected WiFi
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+   * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+   *
+   * @return Return the basic service set identifier (BSSID) of the current access point.
+   */
+  @RequiresPermission(allOf = {
+      Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.ACCESS_NETWORK_STATE
+  })
+  public final String getWifiBSSID() {
+    String result = null;
+    if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
+      ConnectivityManager cm =
+          (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+      NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+      if (networkInfo == null) {
+        result = null;
+      }
+
+      if (networkInfo.isConnected()) {
+        final WifiManager wifiManager =
+            (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+        if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
+          result = connectionInfo.getBSSID();
+        }
+      }
+    }
+    return CheckValidityUtil.checkValidData(result);
+  }
+
+
+  /**
+   * Gets Link Speed of Connected WiFi
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+   * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+   *
+   * @return link speed
+   */
+  @RequiresPermission(allOf = {
+      Manifest.permission.ACCESS_WIFI_STATE, Manifest.permission.ACCESS_NETWORK_STATE
+  })
+  public final String getWifiLinkSpeed() {
+    String result = null;
+    if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
+      ConnectivityManager cm =
+          (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+      NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+      if (networkInfo == null) {
+        result = null;
+      }
+
+      if (networkInfo.isConnected()) {
+        final WifiManager wifiManager =
+            (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+        if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
+          result = connectionInfo.getLinkSpeed()+" Mbps";
+        }
       }
     }
     return CheckValidityUtil.checkValidData(result);
