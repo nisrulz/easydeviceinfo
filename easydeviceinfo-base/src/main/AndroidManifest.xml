@@ -1,4 +1,8 @@
-<manifest package="github.nisrulz.easydeviceinfo.base">
+<manifest package="github.nisrulz.easydeviceinfo.base"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+  <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
   <application>
   </application>
