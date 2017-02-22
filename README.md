@@ -9,6 +9,7 @@
 
 **Also included in**
 + [Awesome Android Newsletter #Issue 9](https://android.libhunt.com/newsletter/9)
++ [Changelog Weekly Issue #114](http://email.changelog.com/t/t-C0123E3CCEDED6A6)
 
 ### Show some :heart:
 [![GitHub stars](https://img.shields.io/github/stars/nisrulz/easydeviceinfo.svg?style=social&label=Star)](https://github.com/nisrulz/easydeviceinfo) [![GitHub forks](https://img.shields.io/github/forks/nisrulz/easydeviceinfo.svg?style=social&label=Fork)](https://github.com/nisrulz/easydeviceinfo/fork) [![GitHub watchers](https://img.shields.io/github/watchers/nisrulz/easydeviceinfo.svg?style=social&label=Watch)](https://github.com/nisrulz/easydeviceinfo) [![GitHub followers](https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow)](https://github.com/nisrulz/easydeviceinfo)  
