@@ -8,7 +8,6 @@ import java.util.List;
 public class EasySensorMod {
 
   private final SensorManager sensorManager;
-  private Sensor sensor;
 
   public EasySensorMod(final Context context) {
     sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
