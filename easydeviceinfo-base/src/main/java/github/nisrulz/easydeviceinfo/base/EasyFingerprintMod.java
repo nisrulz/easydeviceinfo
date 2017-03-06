@@ -33,6 +33,10 @@ public class EasyFingerprintMod {
   /**
    * Instantiates a new Easy fingerprint mod.
    *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+   *
    * @param context
    *     the context
    */
@@ -48,32 +52,30 @@ public class EasyFingerprintMod {
   /**
    * Is fingerprint sensor present boolean.
    *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+   *
    * @return the boolean
    */
   @SuppressLint("NewApi")
   @RequiresPermission(Manifest.permission.USE_FINGERPRINT)
   public final boolean isFingerprintSensorPresent() {
-    if (fingerprintManager != null) {
-      return fingerprintManager.isHardwareDetected();
-    }
-    else {
-      return false;
-    }
+    return fingerprintManager != null && fingerprintManager.isHardwareDetected();
   }
 
   /**
    * Are fingerprints enrolled boolean.
+   *
+   * You need to declare the below permission in the manifest file to use this properly
+   *
+   * <uses-permission android:name="android.permission.USE_FINGERPRINT" />
    *
    * @return the boolean
    */
   @SuppressLint("NewApi")
   @RequiresPermission(Manifest.permission.USE_FINGERPRINT)
   public final boolean areFingerprintsEnrolled() {
-    if (fingerprintManager != null) {
-      return fingerprintManager.hasEnrolledFingerprints();
-    }
-    else {
-      return false;
-    }
+    return fingerprintManager != null && fingerprintManager.hasEnrolledFingerprints();
   }
 }

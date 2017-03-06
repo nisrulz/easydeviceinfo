@@ -308,7 +308,7 @@ public class EasyNetworkMod {
         result = null;
       }
 
-      if (networkInfo.isConnected()) {
+      if (networkInfo != null ? networkInfo.isConnected() : false) {
         final WifiManager wifiManager =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
@@ -319,7 +319,6 @@ public class EasyNetworkMod {
     }
     return CheckValidityUtil.checkValidData(result);
   }
-
 
   /**
    * Gets BSSID of Connected WiFi
@@ -344,7 +343,7 @@ public class EasyNetworkMod {
         result = null;
       }
 
-      if (networkInfo.isConnected()) {
+      if (networkInfo != null ? networkInfo.isConnected() : false) {
         final WifiManager wifiManager =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
@@ -355,7 +354,6 @@ public class EasyNetworkMod {
     }
     return CheckValidityUtil.checkValidData(result);
   }
-
 
   /**
    * Gets Link Speed of Connected WiFi
@@ -380,7 +378,7 @@ public class EasyNetworkMod {
         result = null;
       }
 
-      if (networkInfo.isConnected()) {
+      if (networkInfo != null ? networkInfo.isConnected() : false) {
         final WifiManager wifiManager =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();

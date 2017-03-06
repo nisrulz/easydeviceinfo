@@ -14,6 +14,7 @@
       android:layout_height="match_parent"
       android:layout_above="@+id/btn_req"
       android:scaleType="center"
+      android:contentDescription="Logo"
       android:src="@mipmap/ic_launcher"
       />
 
