@@ -379,6 +379,7 @@ public class EasyDeviceMod {
    *
    * @return the serial
    */
+  @SuppressLint("HardwareIds")
   public final String getSerial() {
     return CheckValidityUtil.checkValidData(Build.SERIAL);
   }

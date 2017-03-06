@@ -19,7 +19,6 @@ package github.nisrulz.easydeviceinfo.base;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
@@ -65,10 +64,7 @@ public class EasyAppMod {
    * @return the store
    */
   public final String getStore() {
-    String result = null;
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CUPCAKE) {
-      result = context.getPackageManager().getInstallerPackageName(context.getPackageName());
-    }
+    String result = context.getPackageManager().getInstallerPackageName(context.getPackageName());
     return CheckValidityUtil.checkValidData(result);
   }
 

@@ -75,8 +75,11 @@ public class EasyBluetoothMod {
    * @return true if the device has a Bluetooth LE compatible chipset
    */
   public final boolean hasBluetoothLe() {
-
-    return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+      return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
+    }else{
+      return false;
+    }
   }
 
   /**

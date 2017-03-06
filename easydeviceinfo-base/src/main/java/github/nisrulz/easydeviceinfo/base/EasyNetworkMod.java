@@ -36,6 +36,7 @@ import java.net.SocketException;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * EasyNetwork Mod Class
@@ -62,7 +63,7 @@ public class EasyNetworkMod {
   public final boolean isWifiEnabled() {
     boolean wifiState = false;
 
-    WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+    WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
     if (wifiManager != null) {
       wifiState = wifiManager.isWifiEnabled();
     }
@@ -106,7 +107,7 @@ public class EasyNetworkMod {
         List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
         for (InetAddress addr : addrs) {
           if (!addr.isLoopbackAddress()) {
-            String sAddr = addr.getHostAddress().toUpperCase();
+            String sAddr = addr.getHostAddress().toUpperCase(Locale.getDefault());
             boolean isIPv4 = addr instanceof Inet4Address;
             if (isIPv4) {
               result = sAddr;
@@ -135,7 +136,7 @@ public class EasyNetworkMod {
         List<InetAddress> addrs = Collections.list(intf.getInetAddresses());
         for (InetAddress addr : addrs) {
           if (!addr.isLoopbackAddress()) {
-            String sAddr = addr.getHostAddress().toUpperCase();
+            String sAddr = addr.getHostAddress().toUpperCase(Locale.getDefault());
             boolean isIPv4 = addr instanceof Inet4Address;
             if (!isIPv4) {
               int delim = sAddr.indexOf('%'); // drop ip6 port suffix
@@ -277,7 +278,7 @@ public class EasyNetworkMod {
         }
       }
       else {
-        WifiManager wm = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         result = wm.getConnectionInfo().getMacAddress();
       }
     }
@@ -309,7 +310,7 @@ public class EasyNetworkMod {
 
       if (networkInfo.isConnected()) {
         final WifiManager wifiManager =
-            (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
         if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
           result = connectionInfo.getSSID();
@@ -345,7 +346,7 @@ public class EasyNetworkMod {
 
       if (networkInfo.isConnected()) {
         final WifiManager wifiManager =
-            (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
         if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
           result = connectionInfo.getBSSID();
@@ -381,7 +382,7 @@ public class EasyNetworkMod {
 
       if (networkInfo.isConnected()) {
         final WifiManager wifiManager =
-            (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+            (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
         if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
           result = connectionInfo.getLinkSpeed()+" Mbps";
