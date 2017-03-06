@@ -1,0 +1,8 @@
+title: Easydeviceinfo
+description: Android library to get device information in a super easy way.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-modernist
+
+gems:
+  - jekyll-mentions
