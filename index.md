@@ -47,7 +47,6 @@ The Mods are available through different library as below
 + `easydeviceinfo-base`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion)
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
     -  **Supported Mods**
- 
       + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
       + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
       + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
@@ -426,7 +425,6 @@ Functions which return multiple results
   ```
   
   where constants available are 
-  
     + `ChargingVia.AC`
     + `ChargingVia.USB`
     + `ChargingVia.WIRELESS`
