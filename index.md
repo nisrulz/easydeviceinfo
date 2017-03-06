@@ -37,14 +37,14 @@ compile 'com.github.nisrulz:easydeviceinfo-base:{latest version}'
 ```
 
 The Mods are available through different library as below
-+  `easydeviceinfo`  [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo%3A2.2.0"><img src="https://img.shields.io/badge/Methods count-core: 2 | deps: 15592-e91e63.svg"/></a>
++  `easydeviceinfo`  [ ![Download](https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg) ](https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion)
     - Main library which transitively includes both `easydeviceinfo-ads` and `easydeviceinfo-base`.
 
-+ `easydeviceinfo-ads`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo-ads%3A2.2.0"><img src="https://img.shields.io/badge/Methods count-core: 14 | deps: 15316-e91e63.svg"/></a>
++ `easydeviceinfo-ads`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-ads/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-ads/_latestVersion)
     -  EasyDeviceInfo Ads, which facilitates information regarding ads. Has a dependency on `play-services-base`.
     -  **Supported Mods**
        + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
-+ `easydeviceinfo-base`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion) <a href="http://www.methodscount.com/?lib=com.github.nisrulz%3Aeasydeviceinfo-base%3A2.2.0"><img src="https://img.shields.io/badge/Methods count-core: 262 | deps: 10-e91e63.svg"/></a>
++ `easydeviceinfo-base`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion)
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
     -  **Supported Mods**
       + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
@@ -60,6 +60,8 @@ The Mods are available through different library as below
       + [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
       + [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
       + [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
+      + [EasySensorMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysensormod)
+      + [EasyFingerprintMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyfingerprintmod)
 
 Now, Create an instance of one of the Mods ( **Easy\*Mod** class ), i.e `EasyConfigMod`
 ```java
@@ -69,6 +71,24 @@ Next call an available function on the ***easyConfigMod*** instance such as
 ```java
 String time_in_ms= String.valueOf(easyConfigMod.getTime());
 ```
+
+#### There is some Android Studio support available for you to code faster when using easydeviceinfo.
++ Include a required permission check
+  
+  ![PermissionCheck](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/permissioncheck.gif)
+
++ Setup all constants returned in a switch statement.
+  
+  ![SetupSwitch](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/usingintedefs.gif)
+  
+  This applies to all annotations bundled with easydeviceinfo. Checkout the wiki to see where these annotations can be applied.
+  + `@RingerMode`
+  + `@DeviceType`
+  + `@PhoneType`
+  + `@OrientationType`
+  + `@NetworkType`
+  + `@BatteryHealth`
+  + `@ChargingVia`
 
 Now each **Mods** has a certain set of functions you can call on them to retrieve device information.
 
@@ -136,6 +156,35 @@ More Functions
   <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
   ```
 
+#### **EasySensorMod**
+```java
+EasySensorMod easySensorMod = new EasySensorMod(context);
+
+// Get list of sensors installed in the device
+List<Sensor> list = easySensorMod.getAllSensors();
+```
+
+Each Sensor element in the list has the following functions
+
+|Value|functionName|returns
+|---|---|---|
+|Vendor|`getVendor()`|String
+|Version|`getVersion()`|String
+|Power|`getPower()`|String
+|Resolution|`getResolution()`|String
+|Max Range|`getMaximumRange()`|String
+|Name|`getName()`|String
+
+#### **EasyFingerprintMod**
+```java
+EasyFingerprintMod easyFingerprintMod = new EasyFingerprintMod(context);
+```
+
+|Value|functionName|returns
+|---|---|---|
+|Is Fingerprint Sensor present|`isFingerprintSensorPresent()`|boolean
+|Are fingerprints enrolled|`areFingerprintsEnrolled()`|boolean
+
 #### **EasyConfigMod**
 ```java
 EasyConfigMod easyConfigMod = new EasyConfigMod(context);
@@ -155,20 +204,21 @@ Functions which return multiple results
 
 + Device Ringer Mode
   ```java
-  int ringer_mode =easyConfigMod.getDeviceRingerMode();
+   @RingerMode 
+   int ringermode = easyConfigMod.getDeviceRingerMode();
   ```
   
  Then match it against the constants provided
   
   ```java
- switch (ringer_mode) {
-      case EasyConfigMod.RINGER_MODE_NORMAL:
+ switch (ringermode) {
+      case RingerMode.NORMAL:
         System.out.println("Ringer mode : Normal");
         break;
-      case EasyConfigMod.RINGER_MODE_VIBRATE:
+      case RingerMode.VIBRATE:
         System.out.println("Ringer mode : Vibrate");
         break;
-      case EasyConfigMod.RINGER_MODE_SILENT:
+      case RingerMode.SILENT:
         System.out.println("Ringer mode : Silent");
         break;
       default:
@@ -178,9 +228,9 @@ Functions which return multiple results
   ```
   
   where constants available are 
-    + `EasyConfigMod.RINGER_MODE_NORMAL`
-    + `EasyConfigMod.RINGER_MODE_VIBRATE`
-    + `EasyConfigMod.RINGER_MODE_SILENT`
+    + `RingerMode.NORMAL`
+    + `RingerMode.VIBRATE`
+    + `RingerMode.SILENT`
 
 #### **EasyNetworkMod** 
 
@@ -193,6 +243,9 @@ EasyNetworkMod easyNetworkMod = new EasyNetworkMod(context);
 |WiFi State|`isWifiEnabled()`|boolean
 |IPv4 Address|`getIPv4Address()`|String
 |IPv6 Address|`getIPv6Address()`|String
+|WiFi SSID|`getWifiSSID()`|String
+|Wifi Link Speed|`getWifiLinkSpeed()`|String
+|WiFi BSSID|`getWifiBSSID()`|String
 
 
 + To get WiFi MAC Address
@@ -210,44 +263,47 @@ Functions which return multiple results
 
 + To get network type
   ```java
-  int network_type =easyNetworkMod.getNetworkType();
+   @NetworkType
+   int networkType = easyNetworkMod.getNetworkType();
   ```
   
   Then match it against the constants provided
   
   ```java
-switch () {
-      case EasyNetworkMod.CELLULAR_UNKNOWN:
+  switch (networkType) {
+      case NetworkType.CELLULAR_UNKNOWN:
         System.out.println("Network Type : Unknown");
         break;
-      case EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN:
+      case NetworkType.CELLULAR_UNIDENTIFIED_GEN:
         System.out.println("Network Type : Cellular Unidentified Generation");
         break;
-      case EasyNetworkMod.CELLULAR_2G:
+      case NetworkType.CELLULAR_2G:
         System.out.println("Network Type : Cellular 2G");
         break;
-      case EasyNetworkMod.CELLULAR_3G:
+      case NetworkType.CELLULAR_3G:
         System.out.println("Network Type : Cellular 3G");
         break;
-      case EasyNetworkMod.CELLULAR_4G:
+      case NetworkType.CELLULAR_4G:
         System.out.println("Network Type : Cellular 4G");
         break;
-      case EasyNetworkMod.WIFI_WIFIMAX:
-        System.out.println("Network Type : WIFI");
+      case NetworkType.WIFI_WIFIMAX:
+        System.out.println("Network Type : WIFI/WIFIMAX");
         break;
+      case NetworkType.UNKNOWN:
       default:
-        // Do nothing
+        System.out.println("Network Type : Unknown");
         break;
     }
   ```
   
   where constants available are 
-    + `EasyNetworkMod.CELLULAR_UNKNOWN`
-    + `EasyNetworkMod.CELLULAR_UNIDENTIFIED_GEN`
-    + `EasyNetworkMod.CELLULAR_2G`
-    + `EasyNetworkMod.CELLULAR_3G`
-    + `EasyNetworkMod.CELLULAR_4G`
-    + `EasyNetworkMod.WIFI_WIFIMAX`
+    + `NetworkType.CELLULAR_UNKNOWN`
+    + `NetworkType.CELLULAR_UNIDENTIFIED_GEN`
+    + `NetworkType.CELLULAR_2G`
+    + `NetworkType.CELLULAR_3G`
+    + `NetworkType.CELLULAR_4G`
+    + `NetworkType.WIFI_WIFIMAX`
+    + `NetworkType.UNKNOWN`
 
 + Include the required permission in your AndroidManifest.xml
    ```xml
@@ -310,17 +366,18 @@ Functions which return multiple results
 
 + Battery Health
   ```java
-  int battery_health =easyBatteryMod.getBatteryHealth();
+  @BatteryHealth
+  int batteryHealth = easyBatteryMod.getBatteryHealth();
   ```
   
  Then match it against the constants provided
   
   ```java
- switch (battery_health) {
-      case EasyBatteryMod.HEALTH_GOOD:
+ switch (batteryHealth) {
+      case BatteryHealth.GOOD:
         System.out.println("Battery health : Good");
         break;
-      case EasyBatteryMod.HEALTH_HAVING_ISSUES:
+      case BatteryHealth.HAVING_ISSUES:
         System.out.println("Battery health : Having issues");
         break;
       default:
@@ -330,28 +387,29 @@ Functions which return multiple results
   ```
   
   where constants available are 
-    + `EasyBatteryMod.HEALTH_GOOD`
-    + `EasyBatteryMod.HEALTH_HAVING_ISSUES`
+    + `BatteryHealth.GOOD`
+    + `BatteryHealth.HAVING_ISSUES`
  
 + Charging Source
   ```java
-  int charging_source =easyBatteryMod.getChargingSource();
+  @ChargingVia
+  int isChargingVia = easyBatteryMod.getChargingSource();
   ```
   
  Then match it against the constants provided
   
   ```java
-  switch (charging_source) {
-      case EasyBatteryMod.CHARGING_VIA_AC:
+  switch (isChargingVia) {
+      case ChargingVia.AC:
         System.out.println("Device charging via AC");
         break;
-      case EasyBatteryMod.CHARGING_VIA_USB:
+      case ChargingVia.USB:
         System.out.println("Device charging via USB");
         break;
-      case EasyBatteryMod.CHARGING_VIA_WIRELESS:
+      case ChargingVia.WIRELESS:
         System.out.println("Device charging via Wireless");
         break;
-      case EasyBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE:
+      case ChargingVia.UNKNOWN_SOURCE:
         System.out.println("Device charging via Unknown Source");
         break;
       default:
@@ -361,10 +419,10 @@ Functions which return multiple results
   ```
   
   where constants available are 
-    + `EasyBatteryMod.CHARGING_VIA_AC:`
-    + `EasyBatteryMod.CHARGING_VIA_USB`
-    + `EasyBatteryMod.CHARGING_VIA_WIRELESS`
-    + `EasyBatteryMod.CHARGING_VIA_UNKNOWN_SOURCE`
+    + `ChargingVia.AC`
+    + `ChargingVia.USB`
+    + `ChargingVia.WIRELESS`
+    + `ChargingVia.UNKNOWN_SOURCE`
 
 
 
@@ -463,54 +521,56 @@ Functions which return multiple results
 
 + To get device type
   ```java
-  int device_type = easyDeviceMod.getDeviceType(activity);
+  @DeviceType 
+  int deviceType = easyDeviceMod.getDeviceType(activity);
   ```
   
   Then match it against the constants provided
   
   ```java
-  switch (device_type) {
-     case EasyDeviceMod.DEVICE_TYPE_WATCH:
+  switch (deviceType) {
+     case DeviceType.WATCH:
        System.out.println("watch");
        break;
-     case EasyDeviceMod.DEVICE_TYPE_PHONE:
+     case DeviceType.PHONE:
        System.out.println("phone");
        break;
-     case EasyDeviceMod.DEVICE_TYPE_PHABLET:
+     case DeviceType.PHABLET:
        System.out.println("phablet");
        break;
-     case EasyDeviceMod.DEVICE_TYPE_TABLET:
+     case DeviceType.TABLET:
        System.out.println("tablet");
        break;
-     case EasyDeviceMod.DEVICE_TYPE_TV:
+     case DeviceType.TV:
        System.out.println("tv");
        break;
    }
   ```
   
   where constants available are 
-    + `EasyDeviceMod.DEVICE_TYPE_WATCH`
-    + `EasyDeviceMod.DEVICE_TYPE_PHONE`
-    + `EasyDeviceMod.DEVICE_TYPE_PHABLET`
-    + `EasyDeviceMod.DEVICE_TYPE_TABLET`
-    + `EasyDeviceMod.DEVICE_TYPE_TV`
+    + `DeviceType.WATCH`
+    + `DeviceType.PHONE`
+    + `DeviceType.PHABLET`
+    + `DeviceType.TABLET`
+    + `DeviceType.TV`
 
 + To get phone type
   ```java
-  int phone_type = easyDeviceMod.getPhoneType();
+   @PhoneType 
+   int phoneType = easyDeviceMod.getPhoneType();
   ```
   
   Then match it against the constants provided
   
   ```java
-  switch (phone_type) {
-      case EasyDeviceMod.PHONE_TYPE_CDMA:
+  switch (phoneType) {
+      case PhoneType.CDMA:
         System.out.println("Phone Type : CDMA");
         break;
-      case EasyDeviceMod.PHONE_TYPE_GSM:
+      case PhoneType.GSM:
         System.out.println("Phone Type : GSM");
         break;
-      case EasyDeviceMod.PHONE_TYPE_NONE:
+      case PhoneType.NONE:
         System.out.println("Phone Type : None");
         break;
       default:
@@ -520,26 +580,27 @@ Functions which return multiple results
   ```
   
   where constants available are 
-    + `EasyDeviceMod.PHONE_TYPE_CDMA`
-    + `EasyDeviceMod.PHONE_TYPE_GSM`
-    + `EasyDeviceMod.PHONE_TYPE_NONE`
+    + `PhoneType.CDMA`
+    + `PhoneType.GSM`
+    + `PhoneType.NONE`
 
 + To get device orientation
   ```java
-  int device_orientation = easyDeviceMod.getOrientation(activity)
+  @OrientationType 
+  int orientationType = easyDeviceMod.getOrientation(this);
   ```
   
   Then match it against the constants provided
   
   ```java
- switch (device_orientation) {
-      case EasyDeviceMod.ORIENTATION_LANDSCAPE:
+ switch (orientationType) {
+      case OrientationType.LANDSCAPE:
         System.out.println("Orientation : Landscape");
         break;
-      case EasyDeviceMod.ORIENTATION_PORTRAIT:
+      case OrientationType.PORTRAIT:
        System.out.println("Orientation : Portrait");
         break;
-      case EasyDeviceMod.ORIENTATION_UNKNOWN:
+      case OrientationType.UNKNOWN:
        System.out.println("Orientation : Unknown");
         break;
       default:
@@ -549,9 +610,9 @@ Functions which return multiple results
   ```
   
   where constants available are 
-    + `EasyDeviceMod.ORIENTATION_LANDSCAPE`
-    + `EasyDeviceMod.ORIENTATION_PORTRAIT`
-    + `EasyDeviceMod.ORIENTATION_UNKNOWN`
+    + `OrientationType.LANDSCAPE`
+    + `OrientationType.PORTRAIT`
+    + `OrientationType.UNKNOWN`
     
 #### **EasyDisplayMod** 
 ```java
@@ -562,6 +623,9 @@ Functions which return multiple results
 |Display Resolution|`getResolution()`|String
 |Screen Density|`getDensity()`|String
 |Display XY Coordinate|`getDisplayXYCoordinates(motionevent)`|int[]
+|Refresh Rate|`getRefreshRate()`|float
+|Screen Orientation|`getDefaultOrientation()`|float
+|Screen Physical Size|`getPhysicalSize()`|float
 
 #### **EasySimMod** 
 ```java
@@ -575,9 +639,13 @@ EasySimMod easySimMod = new EasySimMod(context);
 |Country|`getCountry()`|String
 |Carrier|`getCarrier()`|String
 |SIM Locked|`isSimNetworkLocked()`|boolean
+|Get Active SimInfo|`getActiveMultiSimInfo()`|List<SubscriptionInfo>
+|Is MultiSim|`isMultiSim()`|boolean
+|Get number of active SIM|`getNumberOfActiveSim()`|int
 
+> NOTE : Multi SIM info works for devices running API 21 and above i.e Lollipop +
 
-
+[Check the sample app for working example](https://github.com/nisrulz/easydeviceinfo/blob/master/app/src/main/java/github/nisrulz/projecteasydeviceinfo/MainActivity.java#L137-L168)
 
 #### **EasyLocationMod** 
 ```java
@@ -612,20 +680,39 @@ EasyNfcMod easyNfcMod = new EasyNfcMod(context);
 
 
 #### **EasyDeviceInfo** 
-```java
-EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo();
-```
 |Value|functionName|returns
 |---|---|---|
-|Library version|`getLibraryVersion()`|String
+|Library version|`EasyDeviceInfo.getLibraryVersion()`|String
+|Enable Debugging|`EasyDeviceInfo.debug()`|void
 
 To modify the value that is returned when a function cannot get the value from device, simply init `EasyDeviceInfo` with the new value before using any **Easy\*Mod**
 ```java
-EasyDeviceInfo easyDeviceInfo = new EasyDeviceInfo("na");
+EasyDeviceInfo.setNotFoundVal("na");
 ```
 this will make the functions return `na` when the value is not found or an error is encountered.
 
 By default if you don't use this, the value returned is `unknown`.
+
+# Pull Requests
+I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
+  1. Match coding style (braces, spacing, etc.) This is best achieved using `CMD`+`Option`+`L` (Reformat code) on Mac (not sure for Windows) with Android Studio defaults.
+  2. If its a feature, bugfix, or anything please only change code to what you specify.
+  3. Please keep PR titles easy to read and descriptive of changes, this will make them easier to merge :)
+  4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the maintainers) will get rejected.
+  5. Check for existing [issues](https://github.com/nisrulz/easydeviceinfo/issues) first, before filing an issue.  
+  6. Have fun!
+
+## Apps using EasyDeviceInfo
+If you are using EasyDeviceInfo in your app and would like to be listed here, please let me know by opening a [new issue](https://github.com/nisrulz/easydeviceinfo/issues/new)!
+
+ * [EasyDeviceInfo](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+
+
+### Created & Maintained By
+[Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
+
+
+> If you found this library helpful or you learned something from the source code and want to thank me, consider [buying me a cup of](https://www.paypal.me/nisrulz) :coffee:
 
 License
 =======
