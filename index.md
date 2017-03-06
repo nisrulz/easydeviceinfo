@@ -47,20 +47,35 @@ The Mods are available through different library as below
 + `easydeviceinfo-base`  [ ![Jcenter](https://api.bintray.com/packages/nisrulz/maven/easydeviceinfo-base/images/download.svg) ](https://bintray.com/nisrulz/maven/easydeviceinfo-base/_latestVersion)
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
     -  **Supported Mods**
+    
       + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
+      
       + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
+      
       + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
+      
       + [EasyConfigMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyconfigmod)
+      
       + [EasyCpuMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easycpumod)
+      
       + [EasyDeviceMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydevicemod)
+      
       + [EasyDisplayMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydisplaymod)
+      
       + [EasyIdMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyidmod)
+      
       + [EasyLocationMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easylocationmod)
+      
       + [EasyMemoryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easymemorymod)
+      
       + [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
+      
       + [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
+      
       + [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
+      
       + [EasySensorMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysensormod)
+      
       + [EasyFingerprintMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyfingerprintmod)
 
 Now, Create an instance of one of the Mods ( **Easy\*Mod** class ), i.e `EasyConfigMod`
@@ -111,6 +126,7 @@ easyIdMod.getAndroidAdId(MainActivity.this, new EasyIdMod.AdIdentifierCallback()
 ```java
 EasyIdMod easyIdMod = new EasyIdMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |PseudoID|`getPseudoUniqueID()`|String
@@ -189,6 +205,7 @@ EasyFingerprintMod easyFingerprintMod = new EasyFingerprintMod(context);
 ```java
 EasyConfigMod easyConfigMod = new EasyConfigMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |Is running on emulator|`isRunningOnEmulator()`|boolean
@@ -237,6 +254,7 @@ Functions which return multiple results
 ```java
 EasyNetworkMod easyNetworkMod = new EasyNetworkMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |WiFi State|`isNetworkAvailable()`|boolean
@@ -315,6 +333,7 @@ Functions which return multiple results
 ```java
 EasyMemoryMod easyMemoryMod = new EasyMemoryMod(context);
 ```
+
 |Value|functionName|returns(bytes)
 |---|---|---|
 |Total RAM|`getTotalRAM()`|long
@@ -336,6 +355,7 @@ Util functions for conversions
 ```java
 EasyAppMod easyAppMod = new EasyAppMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |Activity Name|`getActivityName()`|String
@@ -353,6 +373,7 @@ EasyAppMod easyAppMod = new EasyAppMod(context);
 ```java
 EasyBatteryMod easyBatteryMod = new EasyBatteryMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |Battery Percentage (%)|`getBatteryPercentage()`|int
@@ -419,9 +440,13 @@ Functions which return multiple results
   ```
   
   where constants available are 
+  
     + `ChargingVia.AC`
+    
     + `ChargingVia.USB`
+    
     + `ChargingVia.WIRELESS`
+    
     + `ChargingVia.UNKNOWN_SOURCE`
 
 
@@ -430,13 +455,14 @@ Functions which return multiple results
 ```java
 EasyBluetoothMod easyBluetoothMod = new EasyBluetoothMod(context);
 ```
+
 + To get Bluetooth MAC Address
   ```java
  
   String bluetooth_mac = easyBluetoothMod.getBluetoothMAC();
   ```
 
-  + Include the required permission in your AndroidManifest.xml
++ Include the required permission in your AndroidManifest.xml
 
   ```xml
   <uses-permission android:name="android.permission.BLUETOOTH"/>
@@ -446,6 +472,7 @@ EasyBluetoothMod easyBluetoothMod = new EasyBluetoothMod(context);
 ```java
  EasyCpuMod easyCpuMod = new EasyCpuMod();
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |Supported ABIS|`getStringSupportedABIS()`|String
@@ -455,6 +482,7 @@ EasyBluetoothMod easyBluetoothMod = new EasyBluetoothMod(context);
 Functions which return multiple results
 
 + To get Supported ABIS
+
 ```java
 StringBuilder supportABI = new StringBuilder();
    for (String abis : easyCpuMod.getSupportedABIS()) {
@@ -465,6 +493,7 @@ String supportedABI=supportABI.toString();
 ```
 
 + To get Supported 32 Bit ABIS
+
 ```java
 StringBuilder support32ABI = new StringBuilder();
    for (String abis : easyCpuMod.getSupported32bitABIS()) {
@@ -475,6 +504,7 @@ String supported32ABI=support32ABI.toString();
 ```
 
 + To get Supported 64 Bit ABIS
+
 ```java
 StringBuilder support64ABI = new StringBuilder();
    for (String abis : easyCpuMod.getSupported64bitABIS()) {
@@ -489,6 +519,7 @@ String supported64ABI=support64ABI.toString();
 ```java
  EasyDeviceMod easyDeviceMod = new EasyDeviceMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |IMEI|`getIMEI()`|String
@@ -618,6 +649,7 @@ Functions which return multiple results
 ```java
  EasyDisplayMod easyDisplayMod = new EasyDisplayMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |Display Resolution|`getResolution()`|String
@@ -651,6 +683,7 @@ EasySimMod easySimMod = new EasySimMod(context);
 ```java
  EasyLocationMod easyLocationMod = new EasyLocationMod(context);
 ```
+
 + To get Latitude-Longitude (Geo)
   ```java
   //Get Lat-Long
@@ -673,6 +706,7 @@ EasySimMod easySimMod = new EasySimMod(context);
 ```java
 EasyNfcMod easyNfcMod = new EasyNfcMod(context);
 ```
+
 |Value|functionName|returns
 |---|---|---|
 |Is NFC present|`isNfcPresent()`|boolean
@@ -680,15 +714,18 @@ EasyNfcMod easyNfcMod = new EasyNfcMod(context);
 
 
 #### **EasyDeviceInfo** 
+
 |Value|functionName|returns
 |---|---|---|
 |Library version|`EasyDeviceInfo.getLibraryVersion()`|String
 |Enable Debugging|`EasyDeviceInfo.debug()`|void
 
 To modify the value that is returned when a function cannot get the value from device, simply init `EasyDeviceInfo` with the new value before using any **Easy\*Mod**
+
 ```java
 EasyDeviceInfo.setNotFoundVal("na");
 ```
+
 this will make the functions return `na` when the value is not found or an error is encountered.
 
 By default if you don't use this, the value returned is `unknown`.
