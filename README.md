@@ -46,6 +46,8 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
       + [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
       + [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
       + [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
+      + [EasySensorMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysensormod)
+      + [EasyFingerprintMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyfingerprintmod)
 
 # Changelog
 
