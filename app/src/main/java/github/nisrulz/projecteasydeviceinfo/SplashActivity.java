@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
 
   private final static String[] requestBasicPermissions = {
       Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
-      Manifest.permission.GET_ACCOUNTS
+      Manifest.permission.GET_ACCOUNTS, Manifest.permission.USE_FINGERPRINT
   };
   private boolean launched = false;
 
@@ -33,8 +33,10 @@ public class SplashActivity extends AppCompatActivity {
         RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.READ_PHONE_STATE);
     boolean hasGetAcc =
         RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.GET_ACCOUNTS);
+    boolean hasFingerprint =
+        RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.USE_FINGERPRINT);
 
-    if (hasFineLocation && hasGetAcc && hasReadPhoneState) {
+    if (hasFineLocation && hasGetAcc && hasReadPhoneState && hasFingerprint) {
       loadMainActivity();
     }
     else {
@@ -71,6 +73,7 @@ public class SplashActivity extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED
                 && grantResults[1] == PackageManager.PERMISSION_GRANTED
                 && grantResults[2] == PackageManager.PERMISSION_GRANTED
+                && grantResults[3] == PackageManager.PERMISSION_GRANTED
                 && !launched) {
               loadMainActivity();
             }

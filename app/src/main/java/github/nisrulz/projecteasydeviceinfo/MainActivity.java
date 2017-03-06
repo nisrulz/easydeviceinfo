@@ -38,6 +38,7 @@ import github.nisrulz.easydeviceinfo.base.EasyConfigMod;
 import github.nisrulz.easydeviceinfo.base.EasyCpuMod;
 import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
 import github.nisrulz.easydeviceinfo.base.EasyDisplayMod;
+import github.nisrulz.easydeviceinfo.base.EasyFingerprintMod;
 import github.nisrulz.easydeviceinfo.base.EasyIdMod;
 import github.nisrulz.easydeviceinfo.base.EasyLocationMod;
 import github.nisrulz.easydeviceinfo.base.EasyMemoryMod;
@@ -128,6 +129,13 @@ public class MainActivity extends AppCompatActivity {
         deviceDataMap.put(getString(R.string.ringer_mode), "silent");
         break;
     }
+
+    // Fingerprint Mod
+    EasyFingerprintMod easyFingerprintMod = new EasyFingerprintMod(this);
+    deviceDataMap.put("Is Fingerprint Sensor present?",
+        String.valueOf(easyFingerprintMod.isFingerprintSensorPresent()));
+    deviceDataMap.put("Are fingerprints enrolled",
+        String.valueOf(easyFingerprintMod.areFingerprintsEnrolled()));
 
     // Sensor Mod
     EasySensorMod easySensorMod = new EasySensorMod(this);

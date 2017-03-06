@@ -16,10 +16,11 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.support.annotation.RequiresPermission;
 
 /**
  * The type Easy fingerprint mod.
@@ -34,6 +35,7 @@ public class EasyFingerprintMod {
    * @param context
    *     the context
    */
+  @RequiresPermission(Manifest.permission.USE_FINGERPRINT)
   public EasyFingerprintMod(final Context context) {
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
       fingerprintManager =
@@ -46,7 +48,7 @@ public class EasyFingerprintMod {
    *
    * @return the boolean
    */
-  @RequiresApi(api = Build.VERSION_CODES.M)
+  @SuppressLint("NewApi")
   public final boolean isFingerprintSensorPresent() {
     if (fingerprintManager != null) {
       return fingerprintManager.isHardwareDetected();
@@ -61,7 +63,7 @@ public class EasyFingerprintMod {
    *
    * @return the boolean
    */
-  @RequiresApi(api = Build.VERSION_CODES.M)
+  @SuppressLint("NewApi")
   public final boolean areFingerprintsEnrolled() {
     if (fingerprintManager != null) {
       return fingerprintManager.hasEnrolledFingerprints();
