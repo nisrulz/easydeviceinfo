@@ -40,19 +40,33 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
     -  **Supported Mods**
     
       + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
+      
       + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
+      
       + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
+      
       + [EasyConfigMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyconfigmod)
+      
       + [EasyCpuMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easycpumod)
+      
       + [EasyDeviceMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydevicemod)
+      
       + [EasyDisplayMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydisplaymod)
+      
       + [EasyIdMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyidmod)
+      
       + [EasyLocationMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easylocationmod)
+      
       + [EasyMemoryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easymemorymod)
+      
       + [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
+      
       + [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
+      
       + [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
+      
       + [EasySensorMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysensormod)
+      
       + [EasyFingerprintMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyfingerprintmod)
 
 # Changelog
@@ -116,26 +130,7 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
 |Up Time (ms)|`getUpTime()`|long
 |Formatted Up Time (24Hr)|`getFormattedUpTime()`|String
 
-#### Android Studio support
-+ Include a required permission check
-  
-  ![PermissionCheck](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/permissioncheck.gif)
-
-+ Setup all constants returned in a switch statement
-  
-  ![SetupSwitch](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/usingintedefs.gif)
-  
-  This applies to all annotations bundled with easydeviceinfo. Checkout the wiki to see where these annotations can be applied.
-  
-  + `@RingerMode`
-  + `@DeviceType`
-  + `@PhoneType`
-  + `@OrientationType`
-  + `@NetworkType`
-  + `@BatteryHealth`
-  + `@ChargingVia`
-
-> ###For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)**
+> ### For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)**
 
 # Pull Requests
 
