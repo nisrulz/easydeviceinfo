@@ -38,6 +38,7 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
 
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
     -  **Supported Mods**
+    
       + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
       + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
       + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
@@ -134,7 +135,7 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
   + `@BatteryHealth`
   + `@ChargingVia`
 
-### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)** </center>
+> ###For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)**
 
 # Pull Requests
 
