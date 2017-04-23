@@ -138,7 +138,8 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
 ## Apps using EasyDeviceInfo
 If you are using EasyDeviceInfo in your app and would like to be listed here, please let me know by opening a [new issue](https://github.com/nisrulz/easydeviceinfo/issues/new)!
 
- * [EasyDeviceInfo](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+ * EasyDeviceInfo - [Playstore](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+ * System Tweaker - [Playstore](https://play.google.com/store/apps/details?id=com.nowenui.systemtweaker), [Github](https://github.com/AlexanderKirillov/System-Tweaker-FREE)
 
 
 ### Created & Maintained By
