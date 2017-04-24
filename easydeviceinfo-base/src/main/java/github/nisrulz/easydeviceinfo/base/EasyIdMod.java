@@ -136,8 +136,8 @@ public class EasyIdMod {
       return new UUID(devIDShort.hashCode(), serial.hashCode()).toString();
     } catch (Exception e) {
       // String needs to be initialized
-      if(EasyDeviceInfo.debuggable){
-        Log.e(EasyDeviceInfo.nameOfLib, "getPseudoUniqueID: ",e );
+      if (EasyDeviceInfo.debuggable) {
+        Log.e(EasyDeviceInfo.nameOfLib, "getPseudoUniqueID: ", e);
       }
       serial = "ESYDV000"; // some value
     }

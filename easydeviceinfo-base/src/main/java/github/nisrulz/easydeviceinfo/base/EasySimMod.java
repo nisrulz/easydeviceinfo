@@ -163,9 +163,11 @@ public class EasySimMod {
       else {
         return tempActiveSub;
       }
-    }else{
-      if(EasyDeviceInfo.debuggable){
-        Log.w(EasyDeviceInfo.nameOfLib, "Device is running on android version that does not support multi sim functionality!");
+    }
+    else {
+      if (EasyDeviceInfo.debuggable) {
+        Log.w(EasyDeviceInfo.nameOfLib,
+            "Device is running on android version that does not support multi sim functionality!");
       }
     }
     return new ArrayList<>(0);

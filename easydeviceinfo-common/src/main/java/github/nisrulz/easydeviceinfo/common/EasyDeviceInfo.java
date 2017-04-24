@@ -21,24 +21,22 @@ package github.nisrulz.easydeviceinfo.common;
  */
 public class EasyDeviceInfo {
 
-  private EasyDeviceInfo() {
-
-  }
-
   /**
    * The Name.
    */
   public static final String nameOfLib = "EasyDeviceInfo";
-
   /**
    * The constant debuggable.
    */
   public static boolean debuggable = false;
-
   /**
    * The Not found val.
    */
   public static String notFoundVal = "unknown";
+
+  private EasyDeviceInfo() {
+
+  }
 
   /**
    * Instantiates a new Easy device info.

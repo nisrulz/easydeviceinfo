@@ -63,7 +63,8 @@ public class EasyNetworkMod {
   public final boolean isWifiEnabled() {
     boolean wifiState = false;
 
-    WifiManager wifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+    WifiManager wifiManager =
+        (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
     if (wifiManager != null) {
       wifiState = wifiManager.isWifiEnabled();
     }
@@ -278,7 +279,8 @@ public class EasyNetworkMod {
         }
       }
       else {
-        WifiManager wm = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WifiManager wm =
+            (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         result = wm.getConnectionInfo().getMacAddress();
       }
     }
@@ -383,7 +385,7 @@ public class EasyNetworkMod {
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
         if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
-          result = connectionInfo.getLinkSpeed()+" Mbps";
+          result = connectionInfo.getLinkSpeed() + " Mbps";
         }
       }
     }

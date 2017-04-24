@@ -70,16 +70,6 @@ public class EasyBluetoothMod {
   }
 
   /**
-   * Has Bluetooth LE
-   *
-   * @return true if the device has a Bluetooth LE compatible chipset
-   */
-  public final boolean hasBluetoothLe() {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2
-        && context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
-  }
-
-  /**
    * Has Bluetooth LE advertising
    *
    * @return true if the device has Bluetooth LE advertising features
@@ -89,5 +79,15 @@ public class EasyBluetoothMod {
     return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
         && hasBluetoothLe()
         && BluetoothAdapter.getDefaultAdapter().isMultipleAdvertisementSupported();
+  }
+
+  /**
+   * Has Bluetooth LE
+   *
+   * @return true if the device has a Bluetooth LE compatible chipset
+   */
+  public final boolean hasBluetoothLe() {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2
+        && context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
   }
 }

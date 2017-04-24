@@ -40,9 +40,9 @@ dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   testCompile 'junit:junit:4.12'
 
-//   compile "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
-//   compile "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
-  
+  //   compile "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
+  //   compile "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
+
   compile project(':easydeviceinfo-ads')
   compile project(':easydeviceinfo-base')
 }

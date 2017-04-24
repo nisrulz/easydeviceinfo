@@ -68,6 +68,13 @@ public class SplashActivity extends AppCompatActivity {
     });
   }
 
+  private static void setFullScreen(Activity activity) {
+    // Call before calling setContentView();
+    activity.getWindow()
+        .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+  }
+
   private void loadMainActivity() {
 
     // Reload Activity
@@ -103,12 +110,5 @@ public class SplashActivity extends AppCompatActivity {
         break;
       }
     }
-  }
-
-  private static void setFullScreen(Activity activity) {
-    // Call before calling setContentView();
-    activity.getWindow()
-        .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
   }
 }

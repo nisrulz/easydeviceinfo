@@ -33,7 +33,8 @@ class RuntimePermissionUtil {
       for (int i = 0; i < grantResults.length; i++) {
         if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
           RPResultListener.onPermissionGranted();
-        } else {
+        }
+        else {
           RPResultListener.onPermissionDenied();
         }
       }
