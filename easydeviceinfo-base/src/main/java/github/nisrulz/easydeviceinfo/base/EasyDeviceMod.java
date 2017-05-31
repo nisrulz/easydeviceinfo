@@ -378,7 +378,15 @@ public class EasyDeviceMod {
    */
   @SuppressLint("HardwareIds")
   public final String getSerial() {
-    return CheckValidityUtil.checkValidData(Build.SERIAL);
+    String result = null;
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+      result = Build.SERIAL;
+    } else {
+      if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+        result = Build.getSerial();
+      }
+    }
+    return CheckValidityUtil.checkValidData(result);
   }
 
   /**
