@@ -26,9 +26,6 @@ android {
     targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode 2
     versionName "1.1"
-    jackOptions {
-      enabled false
-    }
   }
 
   buildTypes {
@@ -36,6 +33,11 @@ android {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
   }
 }
 
@@ -45,4 +47,14 @@ dependencies {
   compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
 
   compile project(':easydeviceinfo')
+}
+
+
+// REQUIRED: Google's new Maven repo is required for the latest
+// support library that is compatible with Android O
+repositories {
+  maven {
+    url 'https://maven.google.com'
+    // Alternative URL is 'https://dl.google.com/dl/android/maven2/'
+  }
 }

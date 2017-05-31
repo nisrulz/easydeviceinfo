@@ -21,7 +21,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.3.2'
+    classpath 'com.android.tools.build:gradle:3.0.0-alpha2'
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
@@ -43,17 +43,17 @@ task clean(type: Delete) {
 }
 
 ext {
-  compileSdkVersion = 25
-  buildToolsVersion = "25.0.2"
-  minSdkVersion = 9
-  targetSdkVersion = 25
+  compileSdkVersion = 'android-O'
+  buildToolsVersion = '26.0.0-rc2'
+  minSdkVersion = 14
+  targetSdkVersion = 'O'
 
-  supportLibVersion = '25.3.1'
-  googlePlayServicesVersion = '10.0.1'
+  supportLibVersion = '26.0.0-beta1'
+  googlePlayServicesVersion = '10.2.6'
 
   // EasyDeviceInfo
-  easyDeviceInfoVersionCode = 23
-  easyDeviceInfoVersionName = "2.3.3"
+  easyDeviceInfoVersionCode = 24
+  easyDeviceInfoVersionName = "2.4.0"
   easyDeviceInfoPomUrl = "https://github.com/nisrulz/easydeviceinfo"
   easyDeviceInfoPomGitUrl = "https://github.com/nisrulz/easydeviceinfo.git"
   easyDeviceInfoGithubRepo = "nisrulz/easydeviceinfo"
