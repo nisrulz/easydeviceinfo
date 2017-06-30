@@ -21,9 +21,9 @@ android {
   buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
-    applicationId "github.nisrulz.projecteasydeviceinfo"
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.targetSdkVersion
+    applicationId "github.nisrulz.projecteasydeviceinfo"
     versionCode 2
     versionName "1.1"
   }
@@ -34,11 +34,6 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
   }
-
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
 }
 
 dependencies {
@@ -47,14 +42,4 @@ dependencies {
   compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
 
   compile project(':easydeviceinfo')
-}
-
-
-// REQUIRED: Google's new Maven repo is required for the latest
-// support library that is compatible with Android O
-repositories {
-  maven {
-    url 'https://maven.google.com'
-    // Alternative URL is 'https://dl.google.com/dl/android/maven2/'
-  }
 }

@@ -41,11 +41,6 @@ android {
       }
     }
   }
-
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
 }
 
 dependencies {
@@ -54,18 +49,9 @@ dependencies {
 
   compile "com.google.android.gms:play-services-basement:$rootProject.ext.googlePlayServicesVersion"
 
-  //   compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
+  //compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
 
   compile project(':easydeviceinfo-common')
-}
-
-// REQUIRED: Google's new Maven repo is required for the latest
-// support library that is compatible with Android O
-repositories {
-  maven {
-    url 'https://maven.google.com'
-    // Alternative URL is 'https://dl.google.com/dl/android/maven2/'
-  }
 }
 
 // Bintray info

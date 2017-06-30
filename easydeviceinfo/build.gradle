@@ -51,11 +51,6 @@ android {
       }
     }
   }
-
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
 }
 
 dependencies {
@@ -69,14 +64,6 @@ dependencies {
   compile project(':easydeviceinfo-base')
 }
 
-// REQUIRED: Google's new Maven repo is required for the latest
-// support library that is compatible with Android O
-repositories {
-  maven {
-    url 'https://maven.google.com'
-    // Alternative URL is 'https://dl.google.com/dl/android/maven2/'
-  }
-}
 // Bintray info
 def LIB_MODULE_NAME = 'easydeviceinfo'
 def LIB_MODULE_DESC = 'Android library to get device information in a super easy way'
