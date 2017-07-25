@@ -49,8 +49,11 @@ public class SplashActivity extends AppCompatActivity {
         RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.READ_PHONE_STATE);
     boolean hasGetAcc =
         RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.GET_ACCOUNTS);
-    boolean hasFingerprint =
-        RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.USE_FINGERPRINT);
+    boolean hasFingerprint = false;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+      hasFingerprint =
+          RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.USE_FINGERPRINT);
+    }
 
     if (hasFineLocation && hasGetAcc && hasReadPhoneState && hasFingerprint) {
       loadMainActivity();
@@ -59,7 +62,7 @@ public class SplashActivity extends AppCompatActivity {
       RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
     }
 
-    final Button btn_req = (Button) findViewById(R.id.btn_req);
+    final Button btn_req = findViewById(R.id.btn_req);
     btn_req.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

@@ -60,10 +60,14 @@ public class EasyAdsMod {
     AdvertisingIdClient.Info adInfo;
     try {
       adInfo = AdvertisingIdClient.getAdvertisingIdInfo(context);
-      String androidAdId = adInfo.getId();
-      boolean adDoNotTrack = adInfo.isLimitAdTrackingEnabled();
-      if (androidAdId == null) {
-        androidAdId = EasyDeviceInfo.notFoundVal;
+      String androidAdId = EasyDeviceInfo.notFoundVal;
+      boolean adDoNotTrack = false;
+      if (adInfo != null) {
+        androidAdId = adInfo.getId();
+        adDoNotTrack = adInfo.isLimitAdTrackingEnabled();
+        if (androidAdId == null) {
+          androidAdId = EasyDeviceInfo.notFoundVal;
+        }
       }
 
       //Send Data to callback

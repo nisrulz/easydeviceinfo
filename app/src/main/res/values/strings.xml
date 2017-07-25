@@ -22,4 +22,6 @@
   <string name="device_type">Device type</string>
   <string name="phone_type">Phone Type</string>
   <string name="orientation">Orientation</string>
+  <string name="logo">Logo</string>
+  <string name="request_permission">Request Permission</string>
 </resources>

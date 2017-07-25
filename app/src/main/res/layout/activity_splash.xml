@@ -29,7 +29,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_above="@+id/btn_req"
-      android:contentDescription="Logo"
+      android:contentDescription="@string/logo"
       android:scaleType="center"
       android:src="@mipmap/ic_launcher"
       />
@@ -40,7 +40,7 @@
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:background="@color/colorAccent"
-      android:text="Request Permission"
+      android:text="@string/request_permission"
       android:textColor="@android:color/white"
       />
 

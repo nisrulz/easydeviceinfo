@@ -33,9 +33,7 @@ public class EasyNfcMod {
    *     the context
    */
   public EasyNfcMod(final Context context) {
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD_MR1) {
-      nfcAdapter = NfcAdapter.getDefaultAdapter(context);
-    }
+    nfcAdapter = NfcAdapter.getDefaultAdapter(context);
   }
 
   /**

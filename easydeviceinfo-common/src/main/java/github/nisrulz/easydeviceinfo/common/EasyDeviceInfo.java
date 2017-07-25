@@ -67,15 +67,8 @@ public class EasyDeviceInfo {
    * @return the library version
    */
   public static String getLibraryVersion() {
-    StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append(nameOfLib)
-        .append(" : v")
-        .append(BuildConfig.VERSION_NAME)
-        .append(" [build-v")
-        .append(String.valueOf(BuildConfig.VERSION_CODE))
-        .append("]");
-
-    return stringBuilder.toString();
+    return nameOfLib + " : v" + BuildConfig.VERSION_NAME + " [build-v" + String.valueOf(
+        BuildConfig.VERSION_CODE) + "]";
   }
 
   /**

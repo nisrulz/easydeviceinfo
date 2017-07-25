@@ -30,11 +30,10 @@ class RuntimePermissionUtil {
   public static void onRequestPermissionsResult(int[] grantResults,
       RPResultListener RPResultListener) {
     if (grantResults.length > 0) {
-      for (int i = 0; i < grantResults.length; i++) {
-        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+      for (int grantResult : grantResults) {
+        if (grantResult == PackageManager.PERMISSION_GRANTED) {
           RPResultListener.onPermissionGranted();
-        }
-        else {
+        } else {
           RPResultListener.onPermissionDenied();
         }
       }

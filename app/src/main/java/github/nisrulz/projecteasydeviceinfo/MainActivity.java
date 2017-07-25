@@ -437,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
       data.add(key + " : " + deviceDataMap.get(key));
     }
 
-    ListView lv = (ListView) findViewById(R.id.listview);
+    ListView lv = findViewById(R.id.listview);
     adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, data);
     lv.setAdapter(adapter);
   }

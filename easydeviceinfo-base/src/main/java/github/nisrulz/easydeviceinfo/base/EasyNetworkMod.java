@@ -310,7 +310,7 @@ public class EasyNetworkMod {
         result = null;
       }
 
-      if (networkInfo != null ? networkInfo.isConnected() : false) {
+      if (networkInfo != null && networkInfo.isConnected()) {
         final WifiManager wifiManager =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
@@ -345,7 +345,7 @@ public class EasyNetworkMod {
         result = null;
       }
 
-      if (networkInfo != null ? networkInfo.isConnected() : false) {
+      if (networkInfo != null && networkInfo.isConnected()) {
         final WifiManager wifiManager =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
@@ -380,7 +380,7 @@ public class EasyNetworkMod {
         result = null;
       }
 
-      if (networkInfo != null ? networkInfo.isConnected() : false) {
+      if (networkInfo != null && networkInfo.isConnected()) {
         final WifiManager wifiManager =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
