@@ -51,10 +51,11 @@ public class EasyBluetoothMod {
    */
   @SuppressLint("HardwareIds")
   @RequiresPermission(Manifest.permission.BLUETOOTH)
+  @Deprecated
   public final String getBluetoothMAC() {
-    String result = "02:00:00:00:00:00";
+    String result = "00:00:00:00:00:00";
     if (PermissionUtil.hasPermission(context, Manifest.permission.BLUETOOTH)) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
         // Hardware ID are restricted in Android 6+
         // https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id
         // Getting bluetooth mac via reflection for devices with Android 6+

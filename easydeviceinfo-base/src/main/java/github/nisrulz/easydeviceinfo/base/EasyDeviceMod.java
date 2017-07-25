@@ -362,6 +362,7 @@ public class EasyDeviceMod {
    */
   @SuppressLint("HardwareIds")
   @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+  @Deprecated
   public final String getIMEI() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
