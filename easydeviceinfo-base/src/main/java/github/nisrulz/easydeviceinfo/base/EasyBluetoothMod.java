@@ -48,6 +48,7 @@ public class EasyBluetoothMod {
    * <uses-permission android:name="android.permission.BLUETOOTH"/>
    *
    * @return the bluetooth mac
+   * @deprecated 
    */
   @SuppressLint("HardwareIds")
   @RequiresPermission(Manifest.permission.BLUETOOTH)

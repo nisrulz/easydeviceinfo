@@ -28,13 +28,13 @@ class RuntimePermissionUtil {
   }
 
   public static void onRequestPermissionsResult(int[] grantResults,
-      RPResultListener RPResultListener) {
+      RPResultListener rpResultListener) {
     if (grantResults.length > 0) {
       for (int grantResult : grantResults) {
         if (grantResult == PackageManager.PERMISSION_GRANTED) {
-          RPResultListener.onPermissionGranted();
+          rpResultListener.onPermissionGranted();
         } else {
-          RPResultListener.onPermissionDenied();
+          rpResultListener.onPermissionDenied();
         }
       }
     }

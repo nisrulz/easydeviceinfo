@@ -29,7 +29,7 @@ import android.widget.Button;
 
 public class SplashActivity extends AppCompatActivity {
 
-  private final static String[] requestBasicPermissions = {
+  private static final  String[] requestBasicPermissions = {
       Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
       Manifest.permission.GET_ACCOUNTS, Manifest.permission.USE_FINGERPRINT
   };
@@ -57,13 +57,12 @@ public class SplashActivity extends AppCompatActivity {
 
     if (hasFineLocation && hasGetAcc && hasReadPhoneState && hasFingerprint) {
       loadMainActivity();
-    }
-    else {
+    } else {
       RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
     }
 
-    final Button btn_req = findViewById(R.id.btn_req);
-    btn_req.setOnClickListener(new View.OnClickListener() {
+    final Button btnReqPermission = findViewById(R.id.btn_req);
+    btnReqPermission.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
@@ -90,28 +89,24 @@ public class SplashActivity extends AppCompatActivity {
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull final String[] permissions,
       @NonNull final int[] grantResults) {
-    switch (requestCode) {
-      case 100: {
-
-        RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
-          @Override
-          public void onPermissionGranted() {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED
-                && grantResults[1] == PackageManager.PERMISSION_GRANTED
-                && grantResults[2] == PackageManager.PERMISSION_GRANTED
-                && grantResults[3] == PackageManager.PERMISSION_GRANTED
-                && !launched) {
-              loadMainActivity();
-            }
+    if (requestCode == 100) {
+      RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
+        @Override
+        public void onPermissionGranted() {
+          if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+              && grantResults[1] == PackageManager.PERMISSION_GRANTED
+              && grantResults[2] == PackageManager.PERMISSION_GRANTED
+              && grantResults[3] == PackageManager.PERMISSION_GRANTED
+              && !launched) {
+            loadMainActivity();
           }
+        }
 
-          @Override
-          public void onPermissionDenied() {
-            // do nothing
-          }
-        });
-        break;
-      }
+        @Override
+        public void onPermissionDenied() {
+          // do nothing
+        }
+      });
     }
   }
 }

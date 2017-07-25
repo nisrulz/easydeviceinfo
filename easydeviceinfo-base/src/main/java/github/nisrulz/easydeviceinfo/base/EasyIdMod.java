@@ -52,6 +52,8 @@ public class EasyIdMod {
    * Gets android id.
    *
    * @return the android id
+   *
+   * @deprecated
    */
   @SuppressLint("HardwareIds")
   @Deprecated
@@ -68,18 +70,19 @@ public class EasyIdMod {
    * <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
    *
    * @return the string [ ]
+   *
+   * @deprecated
    */
   @RequiresPermission(Manifest.permission.GET_ACCOUNTS)
   @Deprecated
   public final String[] getAccounts() {
     String[] result = null;
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-      if (PermissionUtil.hasPermission(context, Manifest.permission.GET_ACCOUNTS)) {
-        Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
-        result = new String[accounts.length];
-        for (int i = 0; i < accounts.length; i++) {
-          result[i] = accounts[i].name;
-        }
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O && PermissionUtil.hasPermission(context,
+        Manifest.permission.GET_ACCOUNTS)) {
+      Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
+      result = new String[accounts.length];
+      for (int i = 0; i < accounts.length; i++) {
+        result[i] = accounts[i].name;
       }
     }
     return CheckValidityUtil.checkValidData(result);
