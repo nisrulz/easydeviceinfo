@@ -2,7 +2,7 @@
 
 ### Specs
 
-[![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
+[![API](https://img.shields.io/badge/API-14%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 ### Badges/Featured In
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true)](https://android-arsenal.com/details/1/3562) [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg)](http://androidweekly.net/issues/issue-209) [![AndroidDev Digest](https://img.shields.io/badge/AndroidDev%20Digest-%2399-blue.svg)](https://www.androiddevdigest.com/digest-99/) [![awesome-android](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://snowdream.github.io/awesome-android/Other.html#Utility)
@@ -109,11 +109,11 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
 #### Android Studio support
 + Include a required permission check
   
-  ![PermissionCheck](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/permissioncheck.gif)
+  ![PermissionCheck](img/permissioncheck.gif)
 
 + Setup all constants returned in a switch statement
   
-  ![SetupSwitch](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/usingintedefs.gif)
+  ![SetupSwitch](img/usingintedefs.gif)
   
   This applies to all annotations bundled with easydeviceinfo. Checkout the wiki to see where these annotations can be applied.
   + `@RingerMode`
@@ -124,7 +124,7 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
   + `@BatteryHealth`
   + `@ChargingVia`
 
-### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)** </center>
+### :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)**
 
 # Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
@@ -143,10 +143,11 @@ If you are using EasyDeviceInfo in your app and would like to be listed here, pl
 
 
 ### Created & Maintained By
-[Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
+[Nishant Srivastava](https://github.com/nisrulz/nisrulz.github.io) ([@nisrulz](https://www.twitter.com/nisrulz))
 
-
-> If you found this library helpful or you learned something from the source code and want to thank me, consider [buying me a cup of](https://www.paypal.me/nisrulz/5) :coffee:
+> If you found this library helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>  + [PayPal](https://www.paypal.me/nisrulz/5)
+>  + Bitcoin Address: 13PjuJcfVW2Ad81fawqwLtku4bZLv1AxCL
 
 License
 =======
