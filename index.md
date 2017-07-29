@@ -1,6 +1,6 @@
 ### Specs
 
-[![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
+[![API](https://img.shields.io/badge/API-14%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
 ### Badges/Featured In
 
@@ -33,7 +33,7 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
 
     -  EasyDeviceInfo Ads, which facilitates information regarding ads. Has a dependency on `play-services-base`.
     -  **Supported Mods**
-       + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
+        + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
 + `easydeviceinfo-base`
 
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
@@ -132,15 +132,17 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
 
 If you are using EasyDeviceInfo in your app and would like to be listed here, please let me know by opening a [new issue](https://github.com/nisrulz/easydeviceinfo/issues/new)!
 
- * [EasyDeviceInfo](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+ * EasyDeviceInfo - [Playstore](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+ * System Tweaker - [Playstore](https://play.google.com/store/apps/details?id=com.nowenui.systemtweaker), [Github](https://github.com/AlexanderKirillov/System-Tweaker-FREE)
 
 
 ### Created & Maintained By
 
-[Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
+[Nishant Srivastava](https://github.com/nisrulz/nisrulz.github.io) ([@nisrulz](https://www.twitter.com/nisrulz))
 
-
-> If you found this library helpful or you learned something from the source code and want to thank me, consider [buying me a cup of](https://www.paypal.me/nisrulz) :coffee:
+> If you found this library helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>  + [PayPal](https://www.paypal.me/nisrulz/5)
+>  + Bitcoin Address: 13PjuJcfVW2Ad81fawqwLtku4bZLv1AxCL
 
 License
 =======
