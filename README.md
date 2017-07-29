@@ -29,10 +29,12 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
 + `easydeviceinfo-ads`
     -  EasyDeviceInfo Ads, which facilitates information regarding ads. Has a dependency on `play-services-base`.
     -  **Supported Mods**
+
        + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
 + `easydeviceinfo-base`
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
     -  **Supported Mods**
+
       + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
       + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
       + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
