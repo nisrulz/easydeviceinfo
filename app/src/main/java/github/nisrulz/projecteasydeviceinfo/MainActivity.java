@@ -89,8 +89,7 @@ public class MainActivity extends AppCompatActivity {
       for (String e : emailIds) {
         emailString.append(e).append("\n");
       }
-    }
-    else {
+    } else {
       emailString.append("-");
     }
 
@@ -157,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
             .append("Max Range : ")
             .append(s.getMaximumRange());
         deviceDataMap.put("Sensor Name - " + s.getName(), stringBuilder.toString());
-      }
-      else {
+      } else {
         deviceDataMap.put("Sensor", "N/A");
       }
     }

@@ -192,7 +192,7 @@ public class EasyNetworkMod {
             case TelephonyManager.NETWORK_TYPE_UNKNOWN:
               result = NetworkType.CELLULAR_UNKNOWN;
               break;
-            // Cellular Data–2G
+            // Cellular Data 2G
             case TelephonyManager.NETWORK_TYPE_EDGE:
             case TelephonyManager.NETWORK_TYPE_GPRS:
             case TelephonyManager.NETWORK_TYPE_CDMA:
@@ -200,7 +200,7 @@ public class EasyNetworkMod {
             case TelephonyManager.NETWORK_TYPE_1xRTT:
               result = NetworkType.CELLULAR_2G;
               break;
-            // Cellular Data–3G
+            // Cellular Data 3G
             case TelephonyManager.NETWORK_TYPE_UMTS:
             case TelephonyManager.NETWORK_TYPE_HSDPA:
             case TelephonyManager.NETWORK_TYPE_HSPA:
@@ -211,11 +211,11 @@ public class EasyNetworkMod {
             case TelephonyManager.NETWORK_TYPE_EVDO_B:
               result = NetworkType.CELLULAR_3G;
               break;
-            // Cellular Data–4G
+            // Cellular Data 4G
             case TelephonyManager.NETWORK_TYPE_LTE:
               result = NetworkType.CELLULAR_4G;
               break;
-            // Cellular Data–Unknown Generation
+            // Cellular Data Unknown Generation
             default:
               result = NetworkType.CELLULAR_UNIDENTIFIED_GEN;
               break;
