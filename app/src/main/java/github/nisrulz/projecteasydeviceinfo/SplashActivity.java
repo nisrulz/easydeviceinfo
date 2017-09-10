@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2016 Nishant Srivastava
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package github.nisrulz.projecteasydeviceinfo;
 
 import android.Manifest;
@@ -13,9 +29,9 @@ import android.widget.Button;
 
 public class SplashActivity extends AppCompatActivity {
 
-  private final static String[] requestBasicPermissions = {
+  private static final  String[] requestBasicPermissions = {
       Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
-      Manifest.permission.GET_ACCOUNTS
+      Manifest.permission.GET_ACCOUNTS, Manifest.permission.USE_FINGERPRINT
   };
   private boolean launched = false;
 
@@ -33,21 +49,32 @@ public class SplashActivity extends AppCompatActivity {
         RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.READ_PHONE_STATE);
     boolean hasGetAcc =
         RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.GET_ACCOUNTS);
-
-    if (hasFineLocation && hasGetAcc && hasReadPhoneState) {
-      loadMainActivity();
+    boolean hasFingerprint = false;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+      hasFingerprint =
+          RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.USE_FINGERPRINT);
     }
-    else {
+
+    if (hasFineLocation && hasGetAcc && hasReadPhoneState && hasFingerprint) {
+      loadMainActivity();
+    } else {
       RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
     }
 
-    final Button btn_req = (Button) findViewById(R.id.btn_req);
-    btn_req.setOnClickListener(new View.OnClickListener() {
+    final Button btnReqPermission = findViewById(R.id.btn_req);
+    btnReqPermission.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
         RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
       }
     });
+  }
+
+  private static void setFullScreen(Activity activity) {
+    // Call before calling setContentView();
+    activity.getWindow()
+        .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
   }
 
   private void loadMainActivity() {
@@ -62,34 +89,24 @@ public class SplashActivity extends AppCompatActivity {
   @Override
   public void onRequestPermissionsResult(int requestCode, @NonNull final String[] permissions,
       @NonNull final int[] grantResults) {
-    switch (requestCode) {
-      case 100: {
-
-        RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
-          @Override
-          public void onPermissionGranted() {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED
-                && grantResults[1] == PackageManager.PERMISSION_GRANTED
-                && grantResults[2] == PackageManager.PERMISSION_GRANTED
-                && !launched) {
-              loadMainActivity();
-            }
+    if (requestCode == 100) {
+      RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
+        @Override
+        public void onPermissionGranted() {
+          if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+              && grantResults[1] == PackageManager.PERMISSION_GRANTED
+              && grantResults[2] == PackageManager.PERMISSION_GRANTED
+              && grantResults[3] == PackageManager.PERMISSION_GRANTED
+              && !launched) {
+            loadMainActivity();
           }
+        }
 
-          @Override
-          public void onPermissionDenied() {
-            // do nothing
-          }
-        });
-        break;
-      }
+        @Override
+        public void onPermissionDenied() {
+          // do nothing
+        }
+      });
     }
-  }
-
-  private static void setFullScreen(Activity activity) {
-    // Call before calling setContentView();
-    activity.getWindow()
-        .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
   }
 }

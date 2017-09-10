@@ -52,26 +52,33 @@ public class EasyIdMod {
    * Gets android id.
    *
    * @return the android id
+   *
+   * @deprecated
    */
   @SuppressLint("HardwareIds")
+  @Deprecated
   public final String getAndroidID() {
     return CheckValidityUtil.checkValidData(
         Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID));
   }
 
   /**
-   * Get email accounts
+   * Get google email accounts
    *
    * You need to declare the below permission in the manifest file to use this properly
    *
    * <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
    *
    * @return the string [ ]
+   *
+   * @deprecated
    */
   @RequiresPermission(Manifest.permission.GET_ACCOUNTS)
+  @Deprecated
   public final String[] getAccounts() {
     String[] result = null;
-    if (PermissionUtil.hasPermission(context, Manifest.permission.GET_ACCOUNTS)) {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O && PermissionUtil.hasPermission(context,
+        Manifest.permission.GET_ACCOUNTS)) {
       Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
       result = new String[accounts.length];
       for (int i = 0; i < accounts.length; i++) {
@@ -91,8 +98,7 @@ public class EasyIdMod {
     String result;
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
       result = WebSettings.getDefaultUserAgent(context) + "__" + systemUa;
-    }
-    else {
+    } else {
       result = new WebView(context).getSettings().getUserAgentString() + "__" + systemUa;
     }
     return CheckValidityUtil.checkValidData(result);
@@ -116,8 +122,7 @@ public class EasyIdMod {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
       devIDShort += (Build.SUPPORTED_ABIS[0].length() % 10);
-    }
-    else {
+    } else {
       devIDShort += (Build.CPU_ABI.length() % 10);
     }
 
@@ -136,8 +141,8 @@ public class EasyIdMod {
       return new UUID(devIDShort.hashCode(), serial.hashCode()).toString();
     } catch (Exception e) {
       // String needs to be initialized
-      if(EasyDeviceInfo.debuggable){
-        Log.e(EasyDeviceInfo.nameOfLib, "getPseudoUniqueID: ",e );
+      if (EasyDeviceInfo.debuggable) {
+        Log.e(EasyDeviceInfo.nameOfLib, "getPseudoUniqueID: ", e);
       }
       serial = "ESYDV000"; // some value
     }
@@ -155,7 +160,6 @@ public class EasyIdMod {
    *
    * @return the gsfid
    */
-
   @RequiresPermission("com.google.android.providers.gsf.permission.READ_GSERVICES")
   public final String getGSFID() {
     final Uri uri = Uri.parse("content://com.google.android.gsf.gservices");
@@ -166,8 +170,7 @@ public class EasyIdMod {
 
     if (c == null) {
       return EasyDeviceInfo.notFoundVal;
-    }
-    else if (!c.moveToFirst() || c.getColumnCount() < 2) {
+    } else if (!c.moveToFirst() || c.getColumnCount() < 2) {
       c.close();
       return EasyDeviceInfo.notFoundVal;
     }

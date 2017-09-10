@@ -21,14 +21,11 @@ android {
   buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
-    applicationId "github.nisrulz.projecteasydeviceinfo"
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.targetSdkVersion
+    applicationId "github.nisrulz.projecteasydeviceinfo"
     versionCode 2
     versionName "1.1"
-    jackOptions {
-      enabled false
-    }
   }
 
   buildTypes {
@@ -42,6 +39,7 @@ android {
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
   testCompile 'junit:junit:4.12'
+
   compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
 
   compile project(':easydeviceinfo')

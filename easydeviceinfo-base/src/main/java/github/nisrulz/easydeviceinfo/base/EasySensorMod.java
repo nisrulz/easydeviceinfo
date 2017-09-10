@@ -16,16 +16,34 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
-import android.support.annotation.IntDef;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import java.util.List;
 
-@IntDef({
-    PhoneType.GSM, PhoneType.CDMA, PhoneType.NONE
-})
-@Retention(RetentionPolicy.CLASS)
-public @interface PhoneType {
-  int GSM = 0;
-  int CDMA = 1;
-  int NONE = 2;
+/**
+ * The type Easy sensor mod.
+ */
+public class EasySensorMod {
+
+  private final SensorManager sensorManager;
+
+  /**
+   * Instantiates a new Easy sensor mod.
+   *
+   * @param context
+   *     the context
+   */
+  public EasySensorMod(final Context context) {
+    sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+  }
+
+  /**
+   * Gets all sensors.
+   *
+   * @return the all sensors
+   */
+  public List<Sensor> getAllSensors() {
+    return sensorManager.getSensorList(Sensor.TYPE_ALL);
+  }
 }

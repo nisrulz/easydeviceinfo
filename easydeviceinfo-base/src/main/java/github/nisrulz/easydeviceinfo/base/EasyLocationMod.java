@@ -106,7 +106,7 @@ public class EasyLocationMod {
     }
     return gps;
   }
-  
+
   private Location getBetterLocation(final Location location1, final Location location2) {
     if (location1.getAccuracy() >= location2.getAccuracy()) {
       return location1;

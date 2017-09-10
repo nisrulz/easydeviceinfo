@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+
 apply plugin: 'com.android.library'
 
 android {
@@ -42,6 +43,7 @@ android {
     }
   }
 
+  // Ignore Java 8 Doclint errors
   if (JavaVersion.current().isJava8Compatible()) {
     allprojects {
       tasks.withType(Javadoc) {
@@ -55,9 +57,9 @@ dependencies {
   compile fileTree(include: ['*.jar'], dir: 'libs')
   testCompile 'junit:junit:4.12'
 
-  // compile "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
-  // compile "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
-  
+  //  compile "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
+  //  compile "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
+
   compile project(':easydeviceinfo-ads')
   compile project(':easydeviceinfo-base')
 }

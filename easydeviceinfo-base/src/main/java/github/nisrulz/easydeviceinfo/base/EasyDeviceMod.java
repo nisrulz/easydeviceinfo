@@ -185,6 +185,7 @@ public class EasyDeviceMod {
    *
    * @param activity
    *     the activity
+   *
    * @return the int
    */
 
@@ -198,17 +199,13 @@ public class EasyDeviceMod {
     double diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
     if (diagonalInches > 10.1) {
       return DeviceType.TV;
-    }
-    else if (diagonalInches <= 10.1 && diagonalInches > 7) {
+    } else if (diagonalInches <= 10.1 && diagonalInches > 7) {
       return DeviceType.TABLET;
-    }
-    else if (diagonalInches <= 7 && diagonalInches > 6.5) {
+    } else if (diagonalInches <= 7 && diagonalInches > 6.5) {
       return DeviceType.PHABLET;
-    }
-    else if (diagonalInches <= 6.5 && diagonalInches >= 2) {
+    } else if (diagonalInches <= 6.5 && diagonalInches >= 2) {
       return DeviceType.PHONE;
-    }
-    else {
+    } else {
       return DeviceType.WATCH;
     }
   }
@@ -362,9 +359,11 @@ public class EasyDeviceMod {
    * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
    *
    * @return the imei
+   * @deprecated
    */
   @SuppressLint("HardwareIds")
   @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+  @Deprecated
   public final String getIMEI() {
     String result = null;
     if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
@@ -379,8 +378,17 @@ public class EasyDeviceMod {
    *
    * @return the serial
    */
+  @SuppressLint("HardwareIds")
   public final String getSerial() {
-    return CheckValidityUtil.checkValidData(Build.SERIAL);
+    String result = null;
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+      result = Build.SERIAL;
+    } else {
+      if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
+        result = Build.getSerial();
+      }
+    }
+    return CheckValidityUtil.checkValidData(result);
   }
 
   /**
@@ -444,7 +452,11 @@ public class EasyDeviceMod {
         codename = "Marshmallow";
         break;
       case Build.VERSION_CODES.N:
+      case Build.VERSION_CODES.N_MR1:
         codename = "Nougat";
+        break;
+      case Build.VERSION_CODES.O:
+        codename = "O";
         break;
       default:
         codename = EasyDeviceInfo.notFoundVal;
@@ -467,6 +479,7 @@ public class EasyDeviceMod {
    *
    * @param activity
    *     the activity
+   *
    * @return the orientation
    */
   @OrientationType

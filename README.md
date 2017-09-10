@@ -1,11 +1,15 @@
-![Image](https://github.com/nisrulz/easydeviceinfo/blob/master/img/github_banner.png)
+![Image](/img/github_banner.png)
 
 ### Specs
 
-[![API](https://img.shields.io/badge/API-9%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=9)
+[![API](https://img.shields.io/badge/API-14%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=14)
 
-### Featured in
+### Badges/Featured In
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true)](https://android-arsenal.com/details/1/3562) [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg)](http://androidweekly.net/issues/issue-209) [![AndroidDev Digest](https://img.shields.io/badge/AndroidDev%20Digest-%2399-blue.svg)](https://www.androiddevdigest.com/digest-99/) [![awesome-android](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://snowdream.github.io/awesome-android/Other.html#Utility)
+
+**Also included in**
++ [Awesome Android Newsletter #Issue 9](https://android.libhunt.com/newsletter/9)
++ [Changelog Weekly Issue #114](http://email.changelog.com/t/t-C0123E3CCEDED6A6)
 
 ### Show some :heart:
 [![GitHub stars](https://img.shields.io/github/stars/nisrulz/easydeviceinfo.svg?style=social&label=Star)](https://github.com/nisrulz/easydeviceinfo) [![GitHub forks](https://img.shields.io/github/forks/nisrulz/easydeviceinfo.svg?style=social&label=Fork)](https://github.com/nisrulz/easydeviceinfo/fork) [![GitHub watchers](https://img.shields.io/github/watchers/nisrulz/easydeviceinfo.svg?style=social&label=Watch)](https://github.com/nisrulz/easydeviceinfo) [![GitHub followers](https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow)](https://github.com/nisrulz/easydeviceinfo)  
@@ -25,23 +29,25 @@ EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the
 + `easydeviceinfo-ads`
     -  EasyDeviceInfo Ads, which facilitates information regarding ads. Has a dependency on `play-services-base`.
     -  **Supported Mods**
-       + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
+        + [EasyAdsMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyadsmod)
 + `easydeviceinfo-base`
     -  EasyDeviceInfo Base, which facilitates information regarding the device.
     -  **Supported Mods**
-      + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
-      + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
-      + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
-      + [EasyConfigMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyconfigmod)
-      + [EasyCpuMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easycpumod)
-      + [EasyDeviceMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydevicemod)
-      + [EasyDisplayMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydisplaymod)
-      + [EasyIdMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyidmod)
-      + [EasyLocationMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easylocationmod)
-      + [EasyMemoryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easymemorymod)
-      + [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
-      + [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
-      + [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
+        + [EasyAppMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyappmod)
+        + [EasyBatteryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybatterymod)
+        + [EasyBluetoothMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easybluetoothmod)
+        + [EasyConfigMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyconfigmod)
+        + [EasyCpuMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easycpumod)
+        + [EasyDeviceMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydevicemod)
+        + [EasyDisplayMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easydisplaymod)
+        + [EasyIdMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyidmod)
+        + [EasyLocationMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easylocationmod)
+        + [EasyMemoryMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easymemorymod)
+        + [EasyNetworkMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynetworkmod)
+        + [EasyNfcMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easynfcmod)
+        + [EasySimMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysimmod)
+        + [EasySensorMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easysensormod)
+        + [EasyFingerprintMod](https://github.com/nisrulz/easydeviceinfo/wiki/Usage#easyfingerprintmod)
 
 # Changelog
 
@@ -103,11 +109,11 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
 #### Android Studio support
 + Include a required permission check
   
-  ![PermissionCheck](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/permissioncheck.gif)
+  ![PermissionCheck](img/permissioncheck.gif)
 
 + Setup all constants returned in a switch statement
   
-  ![SetupSwitch](https://github.com/nisrulz/easydeviceinfo/blob/develop/img/usingintedefs.gif)
+  ![SetupSwitch](img/usingintedefs.gif)
   
   This applies to all annotations bundled with easydeviceinfo. Checkout the wiki to see where these annotations can be applied.
   + `@RingerMode`
@@ -118,7 +124,7 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
   + `@BatteryHealth`
   + `@ChargingVia`
 
-### <center> :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)** </center>
+### :page_with_curl: For more info , check the **[Wiki Docs](https://github.com/nisrulz/easydeviceinfo/wiki/Usage)**
 
 # Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
@@ -132,8 +138,31 @@ I welcome and encourage all pull requests. It usually will take me within 24-48 
 ## Apps using EasyDeviceInfo
 If you are using EasyDeviceInfo in your app and would like to be listed here, please let me know by opening a [new issue](https://github.com/nisrulz/easydeviceinfo/issues/new)!
 
- * [EasyDeviceInfo](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+ * EasyDeviceInfo - [Playstore](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
+ * System Tweaker - [Playstore](https://play.google.com/store/apps/details?id=com.nowenui.systemtweaker), [Github](https://github.com/AlexanderKirillov/System-Tweaker-FREE)
 
 
 ### Created & Maintained By
-[Nishant Srivastava](https://github.com/nisrulz) ([@nisrulz](https://www.twitter.com/nisrulz))
+[Nishant Srivastava](https://github.com/nisrulz/nisrulz.github.io) ([@nisrulz](https://www.twitter.com/nisrulz))
+
+> If you found this library helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>  + [PayPal](https://www.paypal.me/nisrulz/5)
+>  + Bitcoin Address: 13PjuJcfVW2Ad81fawqwLtku4bZLv1AxCL
+
+License
+=======
+
+    Copyright 2016 Nishant Srivastava
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
