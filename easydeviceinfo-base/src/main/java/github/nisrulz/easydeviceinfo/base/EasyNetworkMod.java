@@ -19,11 +19,13 @@ package github.nisrulz.easydeviceinfo.base;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -390,5 +392,17 @@ public class EasyNetworkMod {
       }
     }
     return CheckValidityUtil.checkValidData(result);
+  }
+
+
+  /**
+   *
+   * @return true if a Wi-Fi Aware compatible chipset is present in the device.
+   * @see <a href="https://developer.android.com/guide/topics/connectivity/wifi-aware.html">https://developer.android.com/guide/topics/connectivity/wifi-aware.html</a>
+   */
+  public final boolean isWifiAwareAvailable()
+  {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
+    context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI_AWARE);
   }
 }
