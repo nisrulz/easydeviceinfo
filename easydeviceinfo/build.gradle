@@ -54,14 +54,14 @@ android {
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  testCompile 'junit:junit:4.12'
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  testImplementation 'junit:junit:4.12'
 
-  //  compile "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
-  //  compile "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
+  //  implementation "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
+  //  implementation "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
 
-  compile project(':easydeviceinfo-ads')
-  compile project(':easydeviceinfo-base')
+  implementation project(':easydeviceinfo-ads')
+  implementation project(':easydeviceinfo-base')
 }
 
 // Bintray info

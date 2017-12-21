@@ -18,11 +18,11 @@
 
 buildscript {
   repositories {
-    jcenter()
     google()
+    jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.0-rc2'
+    classpath 'com.android.tools.build:gradle:3.0.1'
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
@@ -35,8 +35,8 @@ buildscript {
 
 allprojects {
   repositories {
+     google()
     jcenter()
-    google()
   }
 }
 
@@ -45,12 +45,12 @@ task clean(type: Delete) {
 }
 
 ext {
-  targetSdkVersion = 26
+  targetSdkVersion = 27
   minSdkVersion = 14
   compileSdkVersion = targetSdkVersion
-  buildToolsVersion = '26.0.2'
-  supportLibVersion = '26.1.0'
-  googlePlayServicesVersion = '11.4.2'
+  buildToolsVersion = '27.0.1'
+  supportLibVersion = '27.0.2'
+  googlePlayServicesVersion = '11.2.0'
 
   // EasyDeviceInfo
   easyDeviceInfoVersionCode = 25

@@ -61,13 +61,13 @@ dependencies {
     def easyDeviceInfoVersion = {latest version}
 
     // Base + Ads Bundled Library
-    compile "com.github.nisrulz:easydeviceinfo:$easyDeviceInfoVersion"
+    implementation "com.github.nisrulz:easydeviceinfo:$easyDeviceInfoVersion"
 
     // Base Composite
-    compile "com.github.nisrulz:easydeviceinfo-base:$easyDeviceInfoVersion"
+    implementation "com.github.nisrulz:easydeviceinfo-base:$easyDeviceInfoVersion"
 
     // Ads Composite
-    compile "com.github.nisrulz:easydeviceinfo-ads:$easyDeviceInfoVersion"
+    implementation "com.github.nisrulz:easydeviceinfo-ads:$easyDeviceInfoVersion"
 }
 
 ```
@@ -140,6 +140,8 @@ If you are using EasyDeviceInfo in your app and would like to be listed here, pl
 
  * EasyDeviceInfo - [Playstore](https://play.google.com/store/apps/details?id=in.excogitation.deviceinfo)
  * System Tweaker - [Playstore](https://play.google.com/store/apps/details?id=com.nowenui.systemtweaker), [Github](https://github.com/AlexanderKirillov/System-Tweaker-FREE)
+
+ [Other apps using EasyDeviceInfo, via AppBrain Stats](https://www.appbrain.com/stats/libraries/details/easydeviceinfo/easydeviceinfo)
 
 
 ### Created & Maintained By

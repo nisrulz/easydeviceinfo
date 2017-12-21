@@ -49,13 +49,13 @@ android {
 }
 
 dependencies {
-  compile fileTree(include: ['*.jar'], dir: 'libs')
-  testCompile 'junit:junit:4.12'
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  testImplementation 'junit:junit:4.12'
 
-  compile "com.android.support:support-annotations:$rootProject.ext.supportLibVersion"
+  implementation "com.android.support:support-annotations:$rootProject.ext.supportLibVersion"
 
-  //  compile "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
-  compile project(':easydeviceinfo-common')
+  //  implementation "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
+  implementation project(':easydeviceinfo-common')
 }
 
 // Bintray info
