@@ -391,13 +391,12 @@ public class EasyNetworkMod {
   }
 
   /**
-   *
    * @return true if a Wi-Fi Aware compatible chipset is present in the device.
+   *
    * @see <a href="https://developer.android.com/guide/topics/connectivity/wifi-aware.html">https://developer.android.com/guide/topics/connectivity/wifi-aware.html</a>
    */
-  public final boolean isWifiAwareAvailable()
-  {
-    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O &&
-            context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI_AWARE);
+  public final boolean isWifiAwareAvailable() {
+    return Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && context.getPackageManager()
+        .hasSystemFeature(PackageManager.FEATURE_WIFI_AWARE);
   }
 }
