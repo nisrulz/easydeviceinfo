@@ -1,5 +1,6 @@
 <div align="center">
-  <img src="img/github_banner.png" />
+  <img src="img/logo_color.png" height="128" />
+  <h2>EasyDeviceInfo</h2>
 </div>
 <h1 align="center"><a href="https://twitter.com/intent/tweet?text=EasyDeviceInfo%3A%20Android%20library%20to%20get%20device%20information%20in%20a%20super%20easy%20way%F0%9F%98%8E&url=https://github.com/nisrulz/easydeviceinfo&via=nisrulz&hashtags=AndroidDev">
         <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
