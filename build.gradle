@@ -35,7 +35,7 @@ buildscript {
 
 allprojects {
   repositories {
-     google()
+    google()
     jcenter()
   }
 }
@@ -48,9 +48,9 @@ ext {
   targetSdkVersion = 27
   minSdkVersion = 14
   compileSdkVersion = targetSdkVersion
-  buildToolsVersion = '27.0.1'
+  buildToolsVersion = '27.0.2'
   supportLibVersion = '27.0.2'
-  googlePlayServicesVersion = '11.2.0'
+  googlePlayServicesVersion = '11.8.0'
 
   // EasyDeviceInfo
   easyDeviceInfoVersionCode = 25
