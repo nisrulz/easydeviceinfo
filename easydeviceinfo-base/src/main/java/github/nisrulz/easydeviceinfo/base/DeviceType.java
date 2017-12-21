@@ -21,8 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    DeviceType.WATCH, DeviceType.PHONE, DeviceType.PHABLET, DeviceType.TABLET, DeviceType.TV
-})
+            DeviceType.WATCH, DeviceType.PHONE, DeviceType.PHABLET, DeviceType.TABLET, DeviceType.TV
+        })
 @Retention(RetentionPolicy.CLASS)
 public @interface DeviceType {
   int WATCH = 0;

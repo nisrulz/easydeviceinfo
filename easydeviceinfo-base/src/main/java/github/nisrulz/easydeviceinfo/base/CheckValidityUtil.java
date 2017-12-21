@@ -32,6 +32,7 @@ final class CheckValidityUtil {
    *
    * @param result
    *     the result
+   *
    * @return the string
    */
   static String handleIllegalCharacterInResult(final String result) {
@@ -47,6 +48,7 @@ final class CheckValidityUtil {
    *
    * @param data
    *     the data
+   *
    * @return the string
    */
   static String checkValidData(final String data) {
@@ -62,6 +64,7 @@ final class CheckValidityUtil {
    *
    * @param data
    *     the data
+   *
    * @return the string [ ]
    */
   static String[] checkValidData(final String[] data) {

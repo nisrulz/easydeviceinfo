@@ -29,11 +29,18 @@ import android.widget.Button;
 
 public class SplashActivity extends AppCompatActivity {
 
-  private static final  String[] requestBasicPermissions = {
+  private static final String[] requestBasicPermissions = {
       Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
       Manifest.permission.GET_ACCOUNTS, Manifest.permission.USE_FINGERPRINT
   };
   private boolean launched = false;
+
+  private static void setFullScreen(Activity activity) {
+    // Call before calling setContentView();
+    activity.getWindow()
+        .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +75,6 @@ public class SplashActivity extends AppCompatActivity {
         RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
       }
     });
-  }
-
-  private static void setFullScreen(Activity activity) {
-    // Call before calling setContentView();
-    activity.getWindow()
-        .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
   }
 
   private void loadMainActivity() {

@@ -359,6 +359,7 @@ public class EasyDeviceMod {
    * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
    *
    * @return the imei
+   *
    * @deprecated
    */
   @SuppressLint("HardwareIds")

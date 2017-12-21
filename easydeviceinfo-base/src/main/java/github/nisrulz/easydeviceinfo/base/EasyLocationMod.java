@@ -75,8 +75,7 @@ public class EasyLocationMod {
         gps[0] = lastKnownLocation.getLatitude();
         gps[1] = lastKnownLocation.getLongitude();
       }
-    }
-    else if (hasFineLocationPermission) {
+    } else if (hasFineLocationPermission) {
       boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
       boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
@@ -110,8 +109,7 @@ public class EasyLocationMod {
   private Location getBetterLocation(final Location location1, final Location location2) {
     if (location1.getAccuracy() >= location2.getAccuracy()) {
       return location1;
-    }
-    else {
+    } else {
       return location2;
     }
   }

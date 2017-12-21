@@ -88,6 +88,7 @@ public class EasyDisplayMod {
    *
    * @param event
    *     the event
+   *
    * @return the int [ ]
    */
   public final int[] getDisplayXYCoordinates(final MotionEvent event) {

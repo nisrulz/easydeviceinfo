@@ -21,8 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    RingerMode.SILENT, RingerMode.NORMAL, RingerMode.VIBRATE
-})
+            RingerMode.SILENT, RingerMode.NORMAL, RingerMode.VIBRATE
+        })
 @Retention(RetentionPolicy.CLASS)
 public @interface RingerMode {
   int SILENT = 0;

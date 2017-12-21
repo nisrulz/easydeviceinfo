@@ -21,10 +21,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    NetworkType.WIFI_WIFIMAX, NetworkType.CELLULAR_4G, NetworkType.CELLULAR_3G,
-    NetworkType.CELLULAR_2G, NetworkType.CELLULAR_UNIDENTIFIED_GEN, NetworkType.CELLULAR_UNKNOWN,
-    NetworkType.UNKNOWN
-})
+            NetworkType.WIFI_WIFIMAX, NetworkType.CELLULAR_4G, NetworkType.CELLULAR_3G,
+            NetworkType.CELLULAR_2G, NetworkType.CELLULAR_UNIDENTIFIED_GEN,
+            NetworkType.CELLULAR_UNKNOWN, NetworkType.UNKNOWN
+        })
 @Retention(RetentionPolicy.CLASS)
 public @interface NetworkType {
   int UNKNOWN = 0;

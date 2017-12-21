@@ -128,6 +128,7 @@ public class EasyAppMod {
    *
    * @param permission
    *     the permission
+   *
    * @return the boolean
    */
   public final boolean isPermissionGranted(final String permission) {
@@ -139,6 +140,7 @@ public class EasyAppMod {
    *
    * @param packageName
    *     the package name
+   *
    * @return the boolean
    */
   public final boolean isAppInstalled(String packageName) {

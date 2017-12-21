@@ -21,8 +21,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-    ChargingVia.USB, ChargingVia.AC, ChargingVia.WIRELESS, ChargingVia.UNKNOWN_SOURCE
-})
+            ChargingVia.USB, ChargingVia.AC, ChargingVia.WIRELESS, ChargingVia.UNKNOWN_SOURCE
+        })
 @Retention(RetentionPolicy.CLASS)
 public @interface ChargingVia {
   int USB = 0;

@@ -51,8 +51,7 @@ public class EasyCpuMod {
           supportedABIString.append(abis).append("_");
         }
         supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
-      }
-      else {
+      } else {
         supportedABIString.append("");
       }
       result = supportedABIString.toString();
@@ -78,8 +77,7 @@ public class EasyCpuMod {
           supportedABIString.append(abis).append("_");
         }
         supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
-      }
-      else {
+      } else {
         supportedABIString.append("");
       }
 
@@ -106,8 +104,7 @@ public class EasyCpuMod {
           supportedABIString.append(abis).append("_");
         }
         supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
-      }
-      else {
+      } else {
         supportedABIString.append("");
       }
       result = supportedABIString.toString();

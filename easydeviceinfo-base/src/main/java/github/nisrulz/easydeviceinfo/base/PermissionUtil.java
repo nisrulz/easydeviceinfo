@@ -36,6 +36,7 @@ final class PermissionUtil {
    *     the context
    * @param permission
    *     the permission
+   *
    * @return the boolean
    */
   static boolean hasPermission(final Context context, final String permission) {

@@ -68,8 +68,7 @@ public class EasyMemoryMod {
           (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
       activityManager.getMemoryInfo(mi);
       totalMemory = mi.totalMem;
-    }
-    else {
+    } else {
       RandomAccessFile reader = null;
       String load;
       try {
@@ -108,8 +107,7 @@ public class EasyMemoryMod {
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
       blockSize = stat.getBlockSizeLong();
       availableBlocks = stat.getAvailableBlocksLong();
-    }
-    else {
+    } else {
       blockSize = stat.getBlockSize();
       availableBlocks = stat.getAvailableBlocks();
     }
@@ -129,8 +127,7 @@ public class EasyMemoryMod {
     if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
       blockSize = stat.getBlockSizeLong();
       totalBlocks = stat.getBlockCountLong();
-    }
-    else {
+    } else {
       blockSize = stat.getBlockSize();
       totalBlocks = stat.getBlockCount();
     }
@@ -151,14 +148,12 @@ public class EasyMemoryMod {
       if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
         blockSize = stat.getBlockSizeLong();
         availableBlocks = stat.getAvailableBlocksLong();
-      }
-      else {
+      } else {
         blockSize = stat.getBlockSize();
         availableBlocks = stat.getAvailableBlocks();
       }
       return availableBlocks * blockSize;
-    }
-    else {
+    } else {
       return 0;
     }
   }
@@ -181,14 +176,12 @@ public class EasyMemoryMod {
       if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
         blockSize = stat.getBlockSizeLong();
         totalBlocks = stat.getBlockCountLong();
-      }
-      else {
+      } else {
         blockSize = stat.getBlockSize();
         totalBlocks = stat.getBlockCount();
       }
       return totalBlocks * blockSize;
-    }
-    else {
+    } else {
       return 0;
     }
   }
@@ -198,6 +191,7 @@ public class EasyMemoryMod {
    *
    * @param valInBytes
    *     the val in bytes
+   *
    * @return the float
    */
   public float convertToKb(long valInBytes) {
@@ -209,6 +203,7 @@ public class EasyMemoryMod {
    *
    * @param valInBytes
    *     the val in bytes
+   *
    * @return the float
    */
   public float convertToMb(long valInBytes) {
@@ -220,6 +215,7 @@ public class EasyMemoryMod {
    *
    * @param valInBytes
    *     the val in bytes
+   *
    * @return the float
    */
   public float convertToGb(long valInBytes) {
@@ -231,6 +227,7 @@ public class EasyMemoryMod {
    *
    * @param valInBytes
    *     the val in bytes
+   *
    * @return the float
    */
   public float convertToTb(long valInBytes) {

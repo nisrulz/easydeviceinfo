@@ -85,8 +85,7 @@ public class EasyBatteryMod {
       health = batteryStatus.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
       if (health == BatteryManager.BATTERY_HEALTH_GOOD) {
         health = BatteryHealth.GOOD;
-      }
-      else {
+      } else {
         health = BatteryHealth.HAVING_ISSUES;
       }
     }

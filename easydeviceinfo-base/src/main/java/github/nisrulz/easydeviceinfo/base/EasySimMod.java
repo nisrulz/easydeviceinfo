@@ -57,8 +57,7 @@ public class EasySimMod {
     String result;
     if (tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
       result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
-    }
-    else {
+    } else {
       Locale locale = Locale.getDefault();
       result = locale.getCountry().toLowerCase(locale);
     }
@@ -159,12 +158,10 @@ public class EasySimMod {
           SubscriptionManager.from(context).getActiveSubscriptionInfoList();
       if (tempActiveSub == null || tempActiveSub.isEmpty()) {
         return new ArrayList<>(0);
-      }
-      else {
+      } else {
         return tempActiveSub;
       }
-    }
-    else {
+    } else {
       if (EasyDeviceInfo.debuggable) {
         Log.w(EasyDeviceInfo.nameOfLib,
             "Device is running on android version that does not support multi sim functionality!");

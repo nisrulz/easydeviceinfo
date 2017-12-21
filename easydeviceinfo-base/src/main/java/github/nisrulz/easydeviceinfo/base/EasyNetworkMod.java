@@ -177,12 +177,10 @@ public class EasyNetworkMod {
       NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
       if (activeNetwork == null) {
         result = NetworkType.UNKNOWN;
-      }
-      else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
+      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
           || activeNetwork.getType() == ConnectivityManager.TYPE_WIMAX) {
         result = NetworkType.WIFI_WIFIMAX;
-      }
-      else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
         TelephonyManager manager =
             (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         if (manager.getSimState() == TelephonyManager.SIM_STATE_READY) {
@@ -277,8 +275,7 @@ public class EasyNetworkMod {
           String wifiInterfaceName = "wlan0";
           result = wifiInterfaceName.equals(networkInterface.getName()) ? mac : result;
         }
-      }
-      else {
+      } else {
         WifiManager wm =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         result = wm.getConnectionInfo().getMacAddress();
