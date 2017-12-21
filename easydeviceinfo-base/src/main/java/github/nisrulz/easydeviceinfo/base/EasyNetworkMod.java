@@ -90,8 +90,10 @@ public class EasyNetworkMod {
         && PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_NETWORK_STATE)) {
       ConnectivityManager cm = (ConnectivityManager) context.getApplicationContext()
           .getSystemService(Context.CONNECTIVITY_SERVICE);
-      NetworkInfo netInfo = cm.getActiveNetworkInfo();
-      return netInfo != null && netInfo.isConnected();
+      if (cm != null) {
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnected();
+      }
     }
     return false;
   }
@@ -175,49 +177,52 @@ public class EasyNetworkMod {
       ConnectivityManager cm =
           (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-      NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-      if (activeNetwork == null) {
-        result = NetworkType.UNKNOWN;
-      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
-          || activeNetwork.getType() == ConnectivityManager.TYPE_WIMAX) {
-        result = NetworkType.WIFI_WIFIMAX;
-      } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
-        TelephonyManager manager =
-            (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        if (manager.getSimState() == TelephonyManager.SIM_STATE_READY) {
-          switch (manager.getNetworkType()) {
+      if (cm != null) {
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork == null) {
+          result = NetworkType.UNKNOWN;
+        } else if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI
+            || activeNetwork.getType() == ConnectivityManager.TYPE_WIMAX) {
+          result = NetworkType.WIFI_WIFIMAX;
+        } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
+          TelephonyManager manager =
+              (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-            // Unknown
-            case TelephonyManager.NETWORK_TYPE_UNKNOWN:
-              result = NetworkType.CELLULAR_UNKNOWN;
-              break;
-            // Cellular Data 2G
-            case TelephonyManager.NETWORK_TYPE_EDGE:
-            case TelephonyManager.NETWORK_TYPE_GPRS:
-            case TelephonyManager.NETWORK_TYPE_CDMA:
-            case TelephonyManager.NETWORK_TYPE_IDEN:
-            case TelephonyManager.NETWORK_TYPE_1xRTT:
-              result = NetworkType.CELLULAR_2G;
-              break;
-            // Cellular Data 3G
-            case TelephonyManager.NETWORK_TYPE_UMTS:
-            case TelephonyManager.NETWORK_TYPE_HSDPA:
-            case TelephonyManager.NETWORK_TYPE_HSPA:
-            case TelephonyManager.NETWORK_TYPE_HSPAP:
-            case TelephonyManager.NETWORK_TYPE_HSUPA:
-            case TelephonyManager.NETWORK_TYPE_EVDO_0:
-            case TelephonyManager.NETWORK_TYPE_EVDO_A:
-            case TelephonyManager.NETWORK_TYPE_EVDO_B:
-              result = NetworkType.CELLULAR_3G;
-              break;
-            // Cellular Data 4G
-            case TelephonyManager.NETWORK_TYPE_LTE:
-              result = NetworkType.CELLULAR_4G;
-              break;
-            // Cellular Data Unknown Generation
-            default:
-              result = NetworkType.CELLULAR_UNIDENTIFIED_GEN;
-              break;
+          if (manager != null && manager.getSimState() == TelephonyManager.SIM_STATE_READY) {
+            switch (manager.getNetworkType()) {
+
+              // Unknown
+              case TelephonyManager.NETWORK_TYPE_UNKNOWN:
+                result = NetworkType.CELLULAR_UNKNOWN;
+                break;
+              // Cellular Data 2G
+              case TelephonyManager.NETWORK_TYPE_EDGE:
+              case TelephonyManager.NETWORK_TYPE_GPRS:
+              case TelephonyManager.NETWORK_TYPE_CDMA:
+              case TelephonyManager.NETWORK_TYPE_IDEN:
+              case TelephonyManager.NETWORK_TYPE_1xRTT:
+                result = NetworkType.CELLULAR_2G;
+                break;
+              // Cellular Data 3G
+              case TelephonyManager.NETWORK_TYPE_UMTS:
+              case TelephonyManager.NETWORK_TYPE_HSDPA:
+              case TelephonyManager.NETWORK_TYPE_HSPA:
+              case TelephonyManager.NETWORK_TYPE_HSPAP:
+              case TelephonyManager.NETWORK_TYPE_HSUPA:
+              case TelephonyManager.NETWORK_TYPE_EVDO_0:
+              case TelephonyManager.NETWORK_TYPE_EVDO_A:
+              case TelephonyManager.NETWORK_TYPE_EVDO_B:
+                result = NetworkType.CELLULAR_3G;
+                break;
+              // Cellular Data 4G
+              case TelephonyManager.NETWORK_TYPE_LTE:
+                result = NetworkType.CELLULAR_4G;
+                break;
+              // Cellular Data Unknown Generation
+              default:
+                result = NetworkType.CELLULAR_UNIDENTIFIED_GEN;
+                break;
+            }
           }
         }
       }
@@ -279,7 +284,9 @@ public class EasyNetworkMod {
       } else {
         WifiManager wm =
             (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        result = wm.getConnectionInfo().getMacAddress();
+        if (wm != null) {
+          result = wm.getConnectionInfo().getMacAddress();
+        }
       }
     }
     return CheckValidityUtil.checkValidData(result);
@@ -303,17 +310,21 @@ public class EasyNetworkMod {
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
       ConnectivityManager cm =
           (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-      NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-      if (networkInfo == null) {
-        result = null;
-      }
+      if (cm != null) {
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        if (networkInfo == null) {
+          result = null;
+        }
 
-      if (networkInfo != null && networkInfo.isConnected()) {
-        final WifiManager wifiManager =
-            (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
-        if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
-          result = connectionInfo.getSSID();
+        if (networkInfo != null && networkInfo.isConnected()) {
+          final WifiManager wifiManager =
+              (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+          if (wifiManager != null) {
+            final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+            if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
+              result = connectionInfo.getSSID();
+            }
+          }
         }
       }
     }
@@ -338,17 +349,21 @@ public class EasyNetworkMod {
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
       ConnectivityManager cm =
           (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-      NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-      if (networkInfo == null) {
-        result = null;
-      }
+      if (cm != null) {
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        if (networkInfo == null) {
+          result = null;
+        }
 
-      if (networkInfo != null && networkInfo.isConnected()) {
-        final WifiManager wifiManager =
-            (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
-        if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
-          result = connectionInfo.getBSSID();
+        if (networkInfo != null && networkInfo.isConnected()) {
+          final WifiManager wifiManager =
+              (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+          if (wifiManager != null) {
+            final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+            if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
+              result = connectionInfo.getBSSID();
+            }
+          }
         }
       }
     }
@@ -373,17 +388,21 @@ public class EasyNetworkMod {
     if (PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_WIFI_STATE)) {
       ConnectivityManager cm =
           (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-      NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-      if (networkInfo == null) {
-        result = null;
-      }
+      if (cm != null) {
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        if (networkInfo == null) {
+          result = null;
+        }
 
-      if (networkInfo != null && networkInfo.isConnected()) {
-        final WifiManager wifiManager =
-            (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
-        if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
-          result = connectionInfo.getLinkSpeed() + " Mbps";
+        if (networkInfo != null && networkInfo.isConnected()) {
+          final WifiManager wifiManager =
+              (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+          if (wifiManager != null) {
+            final WifiInfo connectionInfo = wifiManager.getConnectionInfo();
+            if (connectionInfo != null && !TextUtils.isEmpty(connectionInfo.getSSID())) {
+              result = connectionInfo.getLinkSpeed() + " Mbps";
+            }
+          }
         }
       }
     }

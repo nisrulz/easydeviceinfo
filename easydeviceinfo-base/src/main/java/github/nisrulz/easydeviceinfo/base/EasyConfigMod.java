@@ -82,20 +82,23 @@ public class EasyConfigMod {
   public final int getDeviceRingerMode() {
     int ringerMode = RingerMode.NORMAL;
     AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-    switch (audioManager.getRingerMode()) {
-      case RINGER_MODE_NORMAL:
-        ringerMode = RingerMode.NORMAL;
-        break;
-      case RINGER_MODE_SILENT:
-        ringerMode = RingerMode.SILENT;
-        break;
-      case RINGER_MODE_VIBRATE:
-        ringerMode = RingerMode.VIBRATE;
-        break;
-      default:
-        //do nothing
-        break;
+    if (audioManager != null) {
+      switch (audioManager.getRingerMode()) {
+        case RINGER_MODE_NORMAL:
+          ringerMode = RingerMode.NORMAL;
+          break;
+        case RINGER_MODE_SILENT:
+          ringerMode = RingerMode.SILENT;
+          break;
+        case RINGER_MODE_VIBRATE:
+          ringerMode = RingerMode.VIBRATE;
+          break;
+        default:
+          //do nothing
+          break;
+      }
     }
+
     return ringerMode;
   }
 

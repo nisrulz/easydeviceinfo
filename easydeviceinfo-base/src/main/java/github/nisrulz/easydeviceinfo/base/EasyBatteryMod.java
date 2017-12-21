@@ -99,7 +99,7 @@ public class EasyBatteryMod {
    */
   public final String getBatteryTechnology() {
     return CheckValidityUtil.checkValidData(
-        getBatteryStatusIntent().getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY));
+        getBatteryStatusIntent().getStringExtra(BatteryManager.EXTRA_TECHNOLOGY));
   }
 
   /**
@@ -158,6 +158,7 @@ public class EasyBatteryMod {
    * @return the boolean
    */
   public final boolean isBatteryPresent() {
-    return getBatteryStatusIntent().getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
+    return getBatteryStatusIntent().getExtras() != null && getBatteryStatusIntent().getExtras()
+        .getBoolean(BatteryManager.EXTRA_PRESENT);
   }
 }

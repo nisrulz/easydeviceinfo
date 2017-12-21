@@ -292,8 +292,11 @@ public class EasyDeviceMod {
    */
   public final String getScreenDisplayID() {
     WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-    Display display = wm.getDefaultDisplay();
-    return CheckValidityUtil.checkValidData(String.valueOf(display.getDisplayId()));
+    if (wm != null) {
+      Display display = wm.getDefaultDisplay();
+      return CheckValidityUtil.checkValidData(String.valueOf(display.getDisplayId()));
+    }
+    return CheckValidityUtil.checkValidData("");
   }
 
   /**

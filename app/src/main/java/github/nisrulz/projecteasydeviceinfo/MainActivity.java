@@ -17,12 +17,14 @@
 package github.nisrulz.projecteasydeviceinfo;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.hardware.Sensor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.appcompat.BuildConfig;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.widget.ArrayAdapter;
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
   private ArrayAdapter<String> adapter;
 
+  @SuppressLint("MissingPermission")
   @TargetApi(Build.VERSION_CODES.LOLLIPOP_MR1)
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -141,21 +144,21 @@ public class MainActivity extends AppCompatActivity {
     List<Sensor> list = easySensorMod.getAllSensors();
     for (Sensor s : list) {
       if (s != null) {
-        StringBuilder stringBuilder = new StringBuilder().append("\nVendor : ")
-            .append(s.getVendor())
-            .append("\n")
-            .append("Version : ")
-            .append(s.getVersion())
-            .append("\n")
-            .append("Power : ")
-            .append(s.getPower())
-            .append("\n")
-            .append("Resolution : ")
-            .append(s.getResolution())
-            .append("\n")
-            .append("Max Range : ")
-            .append(s.getMaximumRange());
-        deviceDataMap.put("Sensor Name - " + s.getName(), stringBuilder.toString());
+        String stringBuilder = "\nVendor : "
+            + s.getVendor()
+            + "\n"
+            + "Version : "
+            + s.getVersion()
+            + "\n"
+            + "Power : "
+            + s.getPower()
+            + "\n"
+            + "Resolution : "
+            + s.getResolution()
+            + "\n"
+            + "Max Range : "
+            + s.getMaximumRange();
+        deviceDataMap.put("Sensor Name - " + s.getName(), stringBuilder);
       } else {
         deviceDataMap.put("Sensor", "N/A");
       }

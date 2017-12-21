@@ -40,7 +40,11 @@ public class EasyDisplayMod {
     this.context = context;
 
     WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-    display = wm.getDefaultDisplay();
+    if (wm != null) {
+      display = wm.getDefaultDisplay();
+    } else {
+      display = null;
+    }
   }
 
   /**
@@ -109,8 +113,11 @@ public class EasyDisplayMod {
    */
   public final String getResolution() {
     DisplayMetrics metrics = new DisplayMetrics();
-    display.getMetrics(metrics);
-    return CheckValidityUtil.checkValidData(metrics.heightPixels + "x" + metrics.widthPixels);
+    if (display != null) {
+      display.getMetrics(metrics);
+      return CheckValidityUtil.checkValidData(metrics.heightPixels + "x" + metrics.widthPixels);
+    }
+    return CheckValidityUtil.checkValidData("");
   }
 
   public final float getRefreshRate() {
@@ -119,9 +126,13 @@ public class EasyDisplayMod {
 
   public final float getPhysicalSize() {
     DisplayMetrics metrics = new DisplayMetrics();
-    display.getMetrics(metrics);
-    float x = (float) Math.pow(metrics.widthPixels / metrics.xdpi, 2);
-    float y = (float) Math.pow(metrics.heightPixels / metrics.ydpi, 2);
-    return (float) Math.sqrt(x + y);
+
+    if (display != null) {
+      display.getMetrics(metrics);
+      float x = (float) Math.pow(metrics.widthPixels / metrics.xdpi, 2);
+      float y = (float) Math.pow(metrics.heightPixels / metrics.ydpi, 2);
+      return (float) Math.sqrt(x + y);
+    }
+    return 0f;
   }
 }

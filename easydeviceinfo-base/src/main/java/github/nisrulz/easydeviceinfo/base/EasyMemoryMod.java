@@ -66,8 +66,10 @@ public class EasyMemoryMod {
       MemoryInfo mi = new MemoryInfo();
       ActivityManager activityManager =
           (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
-      activityManager.getMemoryInfo(mi);
-      totalMemory = mi.totalMem;
+      if (activityManager != null) {
+        activityManager.getMemoryInfo(mi);
+        totalMemory = mi.totalMem;
+      }
     } else {
       RandomAccessFile reader = null;
       String load;
@@ -230,6 +232,7 @@ public class EasyMemoryMod {
    *
    * @return the float
    */
+  @SuppressWarnings("NumericOverflow")
   public float convertToTb(long valInBytes) {
     return (float) valInBytes / (BYTEFACTOR * BYTEFACTOR * BYTEFACTOR * BYTEFACTOR);
   }
