@@ -57,11 +57,13 @@ dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
   testImplementation 'junit:junit:4.12'
 
-  //  implementation "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
-  //  implementation "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
+  // Including the sub-modules as Jcenter dependency
+  // api "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
+  // api "com.github.nisrulz:easydeviceinfo-base:$rootProject.ext.easyDeviceInfoVersionName"
 
-  implementation project(':easydeviceinfo-ads')
-  implementation project(':easydeviceinfo-base')
+  // Including the sub-modules as module dependency
+  api project(':easydeviceinfo-ads')
+  api project(':easydeviceinfo-base')
 }
 
 // Bintray info

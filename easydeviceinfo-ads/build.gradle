@@ -49,8 +49,11 @@ dependencies {
 
   implementation "com.google.android.gms:play-services-basement:$rootProject.ext.googlePlayServicesVersion"
 
-  //  implementation "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
-  implementation project(':easydeviceinfo-common')
+  // Including the sub-module as Jcenter dependency
+  // api "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
+
+  // Including the sub-module as module dependency
+  api project(':easydeviceinfo-common')
 }
 
 // Bintray info
