@@ -1,24 +1,89 @@
-![Image](/img/github_banner.png)
+<div align="center">
+  <img src="img/github_banner.png" />
+</div>
+<h1 align="center"><a href="https://twitter.com/intent/tweet?text=EasyDeviceInfo%3A%20Android%20library%20to%20get%20device%20information%20in%20a%20super%20easy%20way%F0%9F%98%8E&url=https://github.com/nisrulz/easydeviceinfo&via=nisrulz&hashtags=AndroidDev">
+        <img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/>
+    </a></h1>
 
-### Specs
+<div align="center">
+  <strong>Android library to get device information in a super easy way.</strong>
+  <p>The library is built for simplicity and approachability. It not only eliminates most boilerplate code for dealing with device information, but also provides an easy and simple API to retrieve them</p>
+</div>
+<br/>
+<div align="center">
+    <!-- Bintray -->
+    <a href="https://bintray.com/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/_latestVersion">
+        <img src="https://api.bintray.com/packages/nisrulz/maven/com.github.nisrulz%3Aeasydeviceinfo/images/download.svg"/>
+    </a>
+    <!-- API -->
+    <a href="https://android-arsenal.com/api?level=14">
+        <img src="https://img.shields.io/badge/API-14%2B-orange.svg?style=flat"/>
+    </a>
+    <!-- Android Arsenal -->
+    <a href="https://android-arsenal.com/details/1/3562">
+        <img src="https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true"/>
+    </a>
+     <!-- Android Dev Digest -->
+    <a href="https://www.androiddevdigest.com/digest-99/">
+        <img src="https://img.shields.io/badge/AndroidDev%20Digest-%2399-blue.svg"/>
+    </a>
+    <!-- Android Weekly -->
+    <a href="http://androidweekly.net/issues/issue-209">
+        <img src="https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg"/>
+    </a>
+    <!-- Awesome Android -->
+    <a href="https://snowdream.github.io/awesome-android/Other.html#Utility">
+        <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"/>
+    </a>
+    <!-- GitHub stars -->
+    <a href="https://github.com/nisrulz/easydeviceinfo">
+        <img src="https://img.shields.io/github/stars/nisrulz/easydeviceinfo.svg?style=social&label=Star"/>
+    </a>
+    <!-- GitHub forks -->
+    <a href="https://github.com/nisrulz/easydeviceinfo/fork">
+        <img src="hhttps://img.shields.io/github/forks/nisrulz/easydeviceinfo.svg?style=social&label=Fork"/>
+    </a>
+    <!-- GitHub watchers -->
+    <a href="https://github.com/nisrulz/easydeviceinfo">
+        <img src="https://img.shields.io/github/watchers/nisrulz/easydeviceinfo.svg?style=social&label=Watch"/>
+    </a>
+    <!-- Say Thanks! -->
+    <a href="https://saythanks.io/to/nisrulz">
+        <img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg"/>
+    </a>
+    <a href="https://www.paypal.me/nisrulz/5">
+        <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
+    </a>
+    <br/>
+     <!-- GitHub followers -->
+    <a href="https://github.com/nisrulz/easydeviceinfo">
+        <img src="https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow%20@nisrulz"/>
+    </a>
+    <!-- Twitter Follow -->
+    <a href="https://twitter.com/nisrulz">
+        <img src="https://img.shields.io/twitter/follow/nisrulz.svg?style=social"/>
+    </a>
+</div>
 
-[![API](https://img.shields.io/badge/API-14%2B-orange.svg?style=flat)](https://android-arsenal.com/api?level=14)
+<div align="center">
+    Also featured in
+    <a href="https://android.libhunt.com/newsletter/9">
+        Awesome Android Newsletter #Issue 9
+    </a>, 
+    <a href="http://email.changelog.com/t/t-C0123E3CCEDED6A6">
+        Changelog Weekly Issue #114
+    </a>
+</div>
 
-### Badges/Featured In
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyDeviceInfo-green.svg?style=true)](https://android-arsenal.com/details/1/3562) [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23209-blue.svg)](http://androidweekly.net/issues/issue-209) [![AndroidDev Digest](https://img.shields.io/badge/AndroidDev%20Digest-%2399-blue.svg)](https://www.androiddevdigest.com/digest-99/) [![awesome-android](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://snowdream.github.io/awesome-android/Other.html#Utility)
-
-**Also included in**
-+ [Awesome Android Newsletter #Issue 9](https://android.libhunt.com/newsletter/9)
-+ [Changelog Weekly Issue #114](http://email.changelog.com/t/t-C0123E3CCEDED6A6)
-
-### Show some :heart:
-[![GitHub stars](https://img.shields.io/github/stars/nisrulz/easydeviceinfo.svg?style=social&label=Star)](https://github.com/nisrulz/easydeviceinfo) [![GitHub forks](https://img.shields.io/github/forks/nisrulz/easydeviceinfo.svg?style=social&label=Fork)](https://github.com/nisrulz/easydeviceinfo/fork) [![GitHub watchers](https://img.shields.io/github/watchers/nisrulz/easydeviceinfo.svg?style=social&label=Watch)](https://github.com/nisrulz/easydeviceinfo) [![GitHub followers](https://img.shields.io/github/followers/nisrulz.svg?style=social&label=Follow)](https://github.com/nisrulz/easydeviceinfo)  
-[![Twitter Follow](https://img.shields.io/twitter/follow/nisrulz.svg?style=social)](https://twitter.com/nisrulz) 
-
-
-Android library to get device information in a super easy way.
-
-The library is built for simplicity and approachability. It not only eliminates most boilerplate code for dealing with device information, but also provides an easy and simple API to retrieve them.
+<div align="center">
+  <sub>Built with ❤︎ by
+  <a href="https://twitter.com/nisrulz">Nishant Srivastava</a> and
+  <a href="https://github.com/nisrulz/easydeviceinfo/graphs/contributors">
+    contributors
+  </a>
+</div>
+<br/>
+<br/>
 
 #### **Note**
 EasyDeviceInfo is split into multiple module-libraries , v2.2.0 onwards. Use the appropriate one as per your requirement.
@@ -128,7 +193,7 @@ Now each **Mods** has a certain set of functions you can call on them to retriev
 
 # Pull Requests
 I welcome and encourage all pull requests. It usually will take me within 24-48 hours to respond to any issue or request. Here are some basic rules to follow to ensure timely addition of your request:
-  1. Match coding style (braces, spacing, etc.) This is best achieved using `CMD`+`Option`+`L` (Reformat code) on Mac (not sure for Windows) with Android Studio defaults.
+  1. Match coding style (braces, spacing, etc.) This is best achieved using CMD+Option+L (Reformat code) on Mac (not sure for Windows) with Android Studio defaults. This project uses a [modified version of Grandcentrix's code style](https://github.com/nisrulz/AndroidCodeStyle/tree/nishant-config), so please use the same when editing this project.
   2. If its a feature, bugfix, or anything please only change code to what you specify.
   3. Please keep PR titles easy to read and descriptive of changes, this will make them easier to merge :)
   4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the maintainers) will get rejected.
@@ -143,28 +208,13 @@ If you are using EasyDeviceInfo in your app and would like to be listed here, pl
 
  [Other apps using EasyDeviceInfo, via AppBrain Stats](https://www.appbrain.com/stats/libraries/details/easydeviceinfo/easydeviceinfo)
 
+## Author & support
+This project was created by [Nishant Srivastava](https://github.com/nisrulz/nisrulz.github.io#nishant-srivastava) but hopefully developed and maintained by many others. See the [the list of contributors here](https://github.com/nisrulz/easydeviceinfo/graphs/contributors).
 
-### Created & Maintained By
-[Nishant Srivastava](https://github.com/nisrulz/nisrulz.github.io) ([@nisrulz](https://www.twitter.com/nisrulz))
-
-> If you found this library helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+> If you appreciate my work, consider buying me a cup of :coffee: to keep me recharged :metal:
 >  + [PayPal](https://www.paypal.me/nisrulz/5)
 >  + Bitcoin Address: 13PjuJcfVW2Ad81fawqwLtku4bZLv1AxCL
+>
+> I love using my work and I'm available for contract work. Freelancing helps to maintain and keep [my open source projects](https://github.com/nisrulz/) up to date!
 
-License
-=======
-
-    Copyright 2016 Nishant Srivastava
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
+<img src="http://forthebadge.com/images/badges/built-for-android.svg" />

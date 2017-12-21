@@ -83,3 +83,6 @@ hs_err_pid*
 .DS_Store
 /captures
 **/*.iml
+.project
+org.eclipse.buildship.core.prefs
+.classpath
