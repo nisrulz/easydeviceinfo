@@ -17,12 +17,11 @@
 apply plugin: 'com.android.application'
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
+  compileSdkVersion versions.compile_sdk
 
   defaultConfig {
-    minSdkVersion rootProject.ext.minSdkVersion
-    targetSdkVersion rootProject.ext.targetSdkVersion
+    minSdkVersion versions.min_sdk
+    targetSdkVersion versions.target_sdk
     applicationId "github.nisrulz.projecteasydeviceinfo"
     versionCode 2
     versionName "1.1"
@@ -38,8 +37,8 @@ android {
 
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
-  testImplementation 'junit:junit:4.12'
-  implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
+  testImplementation deps.junit
+  implementation deps.app_compat_v7
 
   implementation project(':easydeviceinfo')
 }

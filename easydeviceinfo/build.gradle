@@ -18,12 +18,11 @@
 apply plugin: 'com.android.library'
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
+  compileSdkVersion versions.compile_sdk
 
   defaultConfig {
-    minSdkVersion rootProject.ext.minSdkVersion
-    targetSdkVersion rootProject.ext.targetSdkVersion
+    minSdkVersion versions.min_sdk
+    targetSdkVersion versions.target_sdk
     versionCode rootProject.ext.easyDeviceInfoVersionCode
     versionName rootProject.ext.easyDeviceInfoVersionName
   }
@@ -55,7 +54,8 @@ android {
 
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-  testImplementation 'junit:junit:4.12'
+
+  testImplementation deps.junit
 
   // Including the sub-modules as Jcenter dependency
   // api "com.github.nisrulz:easydeviceinfo-ads:$rootProject.ext.easyDeviceInfoVersionName"
