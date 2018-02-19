@@ -17,6 +17,7 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -118,6 +119,26 @@ public class EasyDisplayMod {
       return CheckValidityUtil.checkValidData(metrics.heightPixels + "x" + metrics.widthPixels);
     }
     return CheckValidityUtil.checkValidData("");
+  }
+
+  public final int getOrientation() {
+    return context.getResources().getConfiguration().orientation;
+  }
+
+  public final boolean isScreenRound() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      return context.getResources().getConfiguration().isScreenRound();
+    } else {
+      return false;
+    }
+  }
+
+  public final int getLayoutDirection() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+      return context.getResources().getConfiguration().getLayoutDirection();
+    } else {
+      return context.getResources().getConfiguration().SCREENLAYOUT_LAYOUTDIR_LTR;
+    }
   }
 
   public final float getRefreshRate() {
