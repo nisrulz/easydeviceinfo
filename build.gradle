@@ -29,7 +29,7 @@ buildscript {
       "android_maven_gradle_plugin" : "2.0",
 
       // Support
-      "support_lib" : "27.0.2",
+      "support_lib" : "27.1.0",
 
       // Testing
       "junit" : "4.12",
