@@ -25,7 +25,7 @@ buildscript {
       "android_gradle_plugin" : "3.0.1",
 
       // Publish Library
-      "gradle_bintray_plugin" : "1.7.3",
+      "gradle_bintray_plugin" : "1.8.0",
       "android_maven_gradle_plugin" : "2.0",
 
       // Support
