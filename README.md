@@ -52,7 +52,7 @@
     <a href="https://saythanks.io/to/nisrulz">
         <img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg"/>
     </a>
-    <a href="https://www.paypal.me/nisrulz/5">
+    <a href="https://www.paypal.me/nisrulz/5usd">
         <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
     </a>
     <br/>
@@ -213,7 +213,7 @@ If you are using EasyDeviceInfo in your app and would like to be listed here, pl
 This project was created by [Nishant Srivastava](https://github.com/nisrulz/nisrulz.github.io#nishant-srivastava) but hopefully developed and maintained by many others. See the [the list of contributors here](https://github.com/nisrulz/easydeviceinfo/graphs/contributors).
 
 > If you appreciate my work, consider buying me a cup of :coffee: to keep me recharged :metal:
->  + [PayPal](https://www.paypal.me/nisrulz/5)
+>  + [PayPal](https://www.paypal.me/nisrulz/5usd)
 >  + Bitcoin Address: 13PjuJcfVW2Ad81fawqwLtku4bZLv1AxCL
 >
 > I love using my work and I'm available for contract work. Freelancing helps to maintain and keep [my open source projects](https://github.com/nisrulz/) up to date!
