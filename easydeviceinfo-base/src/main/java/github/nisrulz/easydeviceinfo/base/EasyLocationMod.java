@@ -35,82 +35,84 @@ import android.support.annotation.RequiresPermission;
  */
 
 public class EasyLocationMod {
-  private final boolean hasFineLocationPermission;
-  private final boolean hasCoarseLocationPermission;
-  private LocationManager lm;
 
-  /**
-   * Instantiates a new Easy location mod.
-   *
-   * @param context
-   *     the context
-   */
-  public EasyLocationMod(Context context) {
-    hasFineLocationPermission =
-        PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
-    hasCoarseLocationPermission =
-        PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION);
+    private final boolean hasCoarseLocationPermission;
 
-    if (hasCoarseLocationPermission || hasFineLocationPermission) {
-      lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+    private final boolean hasFineLocationPermission;
+
+    private LocationManager lm;
+
+    /**
+     * Instantiates a new Easy location mod.
+     *
+     * @param context the context
+     */
+    public EasyLocationMod(Context context) {
+        hasFineLocationPermission =
+                PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
+        hasCoarseLocationPermission =
+                PermissionUtil.hasPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION);
+
+        if (hasCoarseLocationPermission || hasFineLocationPermission) {
+            lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        }
     }
-  }
 
-  /**
-   * Get lat long double [ ].
-   *
-   * @return the double [ ]
-   */
-  @RequiresPermission(anyOf = {
-      Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION
-  })
-  public final double[] getLatLong() {
-    double[] gps = new double[2];
-    gps[0] = 0;
-    gps[1] = 0;
+    /**
+     * Get lat long double [ ].
+     *
+     * @return the double [ ]
+     */
+    @RequiresPermission(anyOf = {
+            Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION
+    })
+    public final double[] getLatLong() {
+        double[] gps = new double[2];
+        gps[0] = 0;
+        gps[1] = 0;
 
-    if (hasCoarseLocationPermission && lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-      Location lastKnownLocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-      if (lastKnownLocation != null) {
-        gps[0] = lastKnownLocation.getLatitude();
-        gps[1] = lastKnownLocation.getLongitude();
-      }
-    } else if (hasFineLocationPermission) {
-      boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
-      boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        if (hasCoarseLocationPermission && lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            Location lastKnownLocation = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (lastKnownLocation != null) {
+                gps[0] = lastKnownLocation.getLatitude();
+                gps[1] = lastKnownLocation.getLongitude();
+            }
+        } else if (hasFineLocationPermission) {
+            boolean isGPSEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            boolean isNetworkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-      Location lastKnownLocationNetwork = null;
-      Location lastKnownLocationGps = null;
-      Location betterLastKnownLocation = null;
+            Location lastKnownLocationNetwork = null;
+            Location lastKnownLocationGps = null;
+            Location betterLastKnownLocation = null;
 
-      if (isNetworkEnabled) {
-        lastKnownLocationNetwork = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-      }
+            if (isNetworkEnabled) {
+                lastKnownLocationNetwork = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
 
-      if (isGPSEnabled) {
-        lastKnownLocationGps = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-      }
-      if (lastKnownLocationGps != null && lastKnownLocationNetwork != null) {
-        betterLastKnownLocation = getBetterLocation(lastKnownLocationGps, lastKnownLocationNetwork);
-      }
+            if (isGPSEnabled) {
+                lastKnownLocationGps = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
+            if (lastKnownLocationGps != null && lastKnownLocationNetwork != null) {
+                betterLastKnownLocation = getBetterLocation(lastKnownLocationGps, lastKnownLocationNetwork);
+            }
 
-      if (betterLastKnownLocation == null) {
-        betterLastKnownLocation = lm.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-      }
+            if (betterLastKnownLocation == null) {
+                betterLastKnownLocation = lm.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            }
 
-      if (betterLastKnownLocation != null) {
-        gps[0] = betterLastKnownLocation.getLatitude();
-        gps[1] = betterLastKnownLocation.getLongitude();
-      }
+            if (betterLastKnownLocation != null) {
+                gps[0] = betterLastKnownLocation.getLatitude();
+                gps[1] = betterLastKnownLocation.getLongitude();
+            }
+        }
+        return gps;
     }
-    return gps;
-  }
 
-  private Location getBetterLocation(final Location location1, final Location location2) {
-    if (location1.getAccuracy() >= location2.getAccuracy()) {
-      return location1;
-    } else {
-      return location2;
+    private Location getBetterLocation(final Location location1, final Location location2) {
+        if (location1.getAccuracy() >= location2.getAccuracy()) {
+            return location1;
+        } else {
+            return location2;
+        }
     }
-  }
 }

@@ -38,7 +38,7 @@ android {
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   testImplementation deps.junit
-  implementation deps.app_compat_v7
+  implementation deps.app_compat
 
   implementation project(':easydeviceinfo')
 }

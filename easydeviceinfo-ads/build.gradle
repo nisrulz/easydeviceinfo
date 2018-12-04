@@ -47,7 +47,7 @@ dependencies {
 
   testImplementation deps.junit
 
-  implementation deps.gps_basement
+  implementation deps.gps_ads_id
 
   // Including the sub-module as Jcenter dependency
   // api "com.github.nisrulz:easydeviceinfo-common:$rootProject.ext.easyDeviceInfoVersionName"
@@ -57,8 +57,8 @@ dependencies {
 }
 
 // Bintray info
-def LIB_MODULE_NAME = 'easydeviceinfo-ads'
-def LIB_MODULE_DESC = 'Ads module for EasyDeviceInfo'
+final def LIB_MODULE_NAME = 'easydeviceinfo-ads'
+final def LIB_MODULE_DESC = 'Ads module for EasyDeviceInfo'
 
 ext {
   bintrayRepo = 'maven'

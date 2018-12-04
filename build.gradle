@@ -18,78 +18,78 @@
 
 buildscript {
 
-  ext.versions = [
-      "min_sdk"     : 14,
-      "target_sdk"  : 27,
-      "compile_sdk" : 27,
-      "android_gradle_plugin" : "3.0.1",
+    ext.versions = [
+            "min_sdk"                    : 14,
+            "target_sdk"                 : 28,
+            "compile_sdk"                : 28,
+            "android_gradle_plugin"      : "3.2.1",
 
-      // Publish Library
-      "gradle_bintray_plugin" : "1.8.0",
-      "android_maven_gradle_plugin" : "2.0",
+            // Publish Library
+            "gradle_bintray_plugin"      : "1.8.0",
+            "android_maven_gradle_plugin": "2.1",
 
-      // Support
-      "support_lib" : "27.1.0",
+            // Support
+            "support_lib"                : "28.0.0",
 
-      // Testing
-      "junit" : "4.12",
+            // Testing
+            "junit"                      : "4.12",
 
-      // Google Play Services
-      "google_play_services" : "11.8.0",
+            // Google Play Services
+            "google_play_services"       : "16.0.0",
 
-  ]
+    ]
 
-  ext.deps = [
-      // Android Studio
-      "android_gradle_plugin" : "com.android.tools.build:gradle:${versions.android_gradle_plugin}",
+    ext.deps = [
+            // Android Studio
+            "android_gradle_plugin"      : "com.android.tools.build:gradle:${versions.android_gradle_plugin}",
 
-      // Publish library
-      "gradle_bintray_plugin" : "com.jfrog.bintray.gradle:gradle-bintray-plugin:${versions.gradle_bintray_plugin}",
-      "android_maven_gradle_plugin" : "com.github.dcendents:android-maven-gradle-plugin:${versions.android_maven_gradle_plugin}",
+            // Publish library
+            "gradle_bintray_plugin"      : "com.jfrog.bintray.gradle:gradle-bintray-plugin:${versions.gradle_bintray_plugin}",
+            "android_maven_gradle_plugin": "com.github.dcendents:android-maven-gradle-plugin:${versions.android_maven_gradle_plugin}",
 
-      //Support Library
-      "app_compat_v7"       : "com.android.support:appcompat-v7:${versions.support_lib}",
-      "support_annotations"          : "com.android.support:support-annotations:${versions.support_lib}",
+            //Support Library
+            "app_compat"                 : "com.android.support:appcompat-v7:${versions.support_lib}",
+            "support_annotations"        : "com.android.support:support-annotations:${versions.support_lib}",
 
-      // Google Play Services
-      "gps_basement": "com.google.android.gms:play-services-basement:${versions.google_play_services}",
+            // Google Play Services
+            "gps_ads_id"                 : "com.google.android.gms:play-services-ads-identifier:${versions.google_play_services}",
 
-      // Testing
-      "junit" : "junit:junit:${versions.junit}"
-  ]
+            // Testing
+            "junit"                      : "junit:junit:${versions.junit}"
+    ]
 
-  repositories {
-    google()
-    jcenter()
-  }
-  dependencies {
-    classpath deps.android_gradle_plugin
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath deps.android_gradle_plugin
 
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
 
-    // Required plugins added to classpath to facilitate pushing to Jcenter/Bintray
-    classpath deps.gradle_bintray_plugin
-    classpath deps.android_maven_gradle_plugin
-  }
+        // Required plugins added to classpath to facilitate pushing to Jcenter/Bintray
+        classpath deps.gradle_bintray_plugin
+        classpath deps.android_maven_gradle_plugin
+    }
 }
 
 allprojects {
-  repositories {
-    google()
-    jcenter()
-  }
+    repositories {
+        google()
+        jcenter()
+    }
 }
 
 task clean(type: Delete) {
-  delete rootProject.buildDir
+    delete rootProject.buildDir
 }
 
 ext {
-  // EasyDeviceInfo
-  easyDeviceInfoVersionCode = 25
-  easyDeviceInfoVersionName = "2.4.1"
-  easyDeviceInfoPomUrl = "https://github.com/nisrulz/easydeviceinfo"
-  easyDeviceInfoPomGitUrl = "https://github.com/nisrulz/easydeviceinfo.git"
-  easyDeviceInfoGithubRepo = "nisrulz/easydeviceinfo"
+    // EasyDeviceInfo
+    easyDeviceInfoVersionCode = 25
+    easyDeviceInfoVersionName = "2.4.1"
+    easyDeviceInfoPomUrl = "https://github.com/nisrulz/easydeviceinfo"
+    easyDeviceInfoPomGitUrl = "https://github.com/nisrulz/easydeviceinfo.git"
+    easyDeviceInfoGithubRepo = "nisrulz/easydeviceinfo"
 }

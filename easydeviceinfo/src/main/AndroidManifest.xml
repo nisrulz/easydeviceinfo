@@ -16,7 +16,6 @@
 
 <manifest package="github.nisrulz.easydeviceinfo">
 
-  <application>
-  </application>
+    <application />
 
 </manifest>

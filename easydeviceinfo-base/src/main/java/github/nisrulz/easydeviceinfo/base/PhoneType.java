@@ -21,11 +21,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
-            PhoneType.GSM, PhoneType.CDMA, PhoneType.NONE
-        })
+        PhoneType.GSM, PhoneType.CDMA, PhoneType.NONE
+})
 @Retention(RetentionPolicy.CLASS)
 public @interface PhoneType {
-  int GSM = 0;
-  int CDMA = 1;
-  int NONE = 2;
+
+    int GSM = 0;
+    int CDMA = 1;
+    int NONE = 2;
 }

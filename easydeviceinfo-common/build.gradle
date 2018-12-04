@@ -48,8 +48,8 @@ dependencies {
 }
 
 // Bintray info
-def LIB_MODULE_NAME = 'easydeviceinfo-common'
-def LIB_MODULE_DESC = 'Common module for EasyDeviceInfo'
+final def LIB_MODULE_NAME = 'easydeviceinfo-common'
+final def LIB_MODULE_DESC = 'Common module for EasyDeviceInfo'
 
 ext {
   bintrayRepo = 'maven'

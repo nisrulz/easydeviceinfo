@@ -29,84 +29,85 @@ import android.widget.Button;
 
 public class SplashActivity extends AppCompatActivity {
 
-  private static final String[] requestBasicPermissions = {
-      Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
-      Manifest.permission.GET_ACCOUNTS, Manifest.permission.USE_FINGERPRINT
-  };
-  private boolean launched = false;
+    private static final String[] requestBasicPermissions = {
+            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.GET_ACCOUNTS, Manifest.permission.USE_FINGERPRINT
+    };
 
-  private static void setFullScreen(Activity activity) {
-    // Call before calling setContentView();
-    activity.getWindow()
-        .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
-  }
+    private boolean launched = false;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    setFullScreen(this);
+        setFullScreen(this);
 
-    setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_splash);
 
-    boolean hasFineLocation =
-        RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.ACCESS_FINE_LOCATION);
-    boolean hasReadPhoneState =
-        RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.READ_PHONE_STATE);
-    boolean hasGetAcc =
-        RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.GET_ACCOUNTS);
-    boolean hasFingerprint = false;
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-      hasFingerprint =
-          RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.USE_FINGERPRINT);
-    }
+        boolean hasFineLocation =
+                RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        boolean hasReadPhoneState =
+                RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.READ_PHONE_STATE);
+        boolean hasGetAcc =
+                RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.GET_ACCOUNTS);
+        boolean hasFingerprint = false;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            hasFingerprint =
+                    RuntimePermissionUtil.checkPermissonGranted(this, Manifest.permission.USE_FINGERPRINT);
+        }
 
-    if (hasFineLocation && hasGetAcc && hasReadPhoneState && hasFingerprint) {
-      loadMainActivity();
-    } else {
-      RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
-    }
-
-    final Button btnReqPermission = findViewById(R.id.btn_req);
-    btnReqPermission.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
-      }
-    });
-  }
-
-  private void loadMainActivity() {
-
-    // Reload Activity
-    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-    launched = true;
-    finish();
-  }
-
-  @Override
-  public void onRequestPermissionsResult(int requestCode, @NonNull final String[] permissions,
-      @NonNull final int[] grantResults) {
-    if (requestCode == 100) {
-      RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
-        @Override
-        public void onPermissionGranted() {
-          if (grantResults[0] == PackageManager.PERMISSION_GRANTED
-              && grantResults[1] == PackageManager.PERMISSION_GRANTED
-              && grantResults[2] == PackageManager.PERMISSION_GRANTED
-              && grantResults[3] == PackageManager.PERMISSION_GRANTED
-              && !launched) {
+        if (hasFineLocation && hasGetAcc && hasReadPhoneState && hasFingerprint) {
             loadMainActivity();
-          }
+        } else {
+            RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
         }
 
-        @Override
-        public void onPermissionDenied() {
-          // do nothing
-        }
-      });
+        final Button btnReqPermission = findViewById(R.id.btn_req);
+        btnReqPermission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RuntimePermissionUtil.requestPermission(SplashActivity.this, requestBasicPermissions, 100);
+            }
+        });
     }
-  }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull final String[] permissions,
+            @NonNull final int[] grantResults) {
+        if (requestCode == 100) {
+            RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
+                @Override
+                public void onPermissionDenied() {
+                    // do nothing
+                }
+
+                @Override
+                public void onPermissionGranted() {
+                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+                            && grantResults[1] == PackageManager.PERMISSION_GRANTED
+                            && grantResults[2] == PackageManager.PERMISSION_GRANTED
+                            && grantResults[3] == PackageManager.PERMISSION_GRANTED
+                            && !launched) {
+                        loadMainActivity();
+                    }
+                }
+            });
+        }
+    }
+
+    private void loadMainActivity() {
+
+        // Reload Activity
+        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        launched = true;
+        finish();
+    }
+
+    private static void setFullScreen(Activity activity) {
+        // Call before calling setContentView();
+        activity.getWindow()
+                .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
 }

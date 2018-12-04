@@ -67,8 +67,8 @@ dependencies {
 }
 
 // Bintray info
-def LIB_MODULE_NAME = 'easydeviceinfo'
-def LIB_MODULE_DESC = 'Android library to get device information in a super easy way'
+final def LIB_MODULE_NAME = 'easydeviceinfo'
+final def LIB_MODULE_DESC = 'Android library to get device information in a super easy way'
 
 ext {
   bintrayRepo = 'maven'
