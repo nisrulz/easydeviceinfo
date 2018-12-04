@@ -35,7 +35,7 @@ buildscript {
             "junit"                      : "4.12",
 
             // Google Play Services
-            "google_play_services"       : "16.0.0",
+            "gps_ads_id"                 : "16.0.0",
 
     ]
 
@@ -52,7 +52,7 @@ buildscript {
             "support_annotations"        : "com.android.support:support-annotations:${versions.support_lib}",
 
             // Google Play Services
-            "gps_ads_id"                 : "com.google.android.gms:play-services-ads-identifier:${versions.google_play_services}",
+            "gps_ads_id"                 : "com.google.android.gms:play-services-ads-identifier:${versions.gps_ads_id}",
 
             // Testing
             "junit"                      : "junit:junit:${versions.junit}"
@@ -87,8 +87,8 @@ task clean(type: Delete) {
 
 ext {
     // EasyDeviceInfo
-    easyDeviceInfoVersionCode = 25
-    easyDeviceInfoVersionName = "2.4.1"
+    easyDeviceInfoVersionCode = 26
+    easyDeviceInfoVersionName = "2.5.0"
     easyDeviceInfoPomUrl = "https://github.com/nisrulz/easydeviceinfo"
     easyDeviceInfoPomGitUrl = "https://github.com/nisrulz/easydeviceinfo.git"
     easyDeviceInfoGithubRepo = "nisrulz/easydeviceinfo"
