@@ -19,7 +19,7 @@ package github.nisrulz.easydeviceinfo.common;
 /**
  * Easy device info class.
  */
-public class EasyDeviceInfo {
+public final class EasyDeviceInfo {
 
     /**
      * The Name.
@@ -29,7 +29,7 @@ public class EasyDeviceInfo {
     /**
      * The constant debuggable.
      */
-    public static boolean debuggable = false;
+    public static boolean debuggable;
 
     /**
      * The Not found val.
@@ -40,7 +40,7 @@ public class EasyDeviceInfo {
      * Debug.
      */
     public static void debug() {
-        EasyDeviceInfo.debuggable = true;
+        debuggable = true;
     }
 
     /**
@@ -49,8 +49,7 @@ public class EasyDeviceInfo {
      * @return the library version
      */
     public static String getLibraryVersion() {
-        return nameOfLib + " : v" + BuildConfig.VERSION_NAME + " [build-v" + String.valueOf(
-                BuildConfig.VERSION_CODE) + "]";
+        return EasyDeviceInfo.nameOfLib + " : v" + BuildConfig.VERSION_NAME + " [build-v" + BuildConfig.VERSION_CODE + ']';
     }
 
     /**
@@ -59,9 +58,9 @@ public class EasyDeviceInfo {
      * @param notFoundVal the not found val
      * @param debugFlag   the debug flag
      */
-    public static void setConfigs(String notFoundVal, boolean debugFlag) {
+    public static void setConfigs(final String notFoundVal, final boolean debugFlag) {
         EasyDeviceInfo.notFoundVal = notFoundVal;
-        EasyDeviceInfo.debuggable = debugFlag;
+        debuggable = debugFlag;
     }
 
     /**
@@ -69,7 +68,7 @@ public class EasyDeviceInfo {
      *
      * @param notFoundVal the not found val
      */
-    public static void setNotFoundVal(String notFoundVal) {
+    public static void setNotFoundVal(final String notFoundVal) {
         EasyDeviceInfo.notFoundVal = notFoundVal;
     }
 

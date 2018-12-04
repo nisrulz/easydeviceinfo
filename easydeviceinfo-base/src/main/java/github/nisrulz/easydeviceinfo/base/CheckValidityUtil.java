@@ -33,9 +33,9 @@ final class CheckValidityUtil {
      * @param data the data
      * @return the string
      */
-    static String checkValidData(final String data) {
+    static String checkValidData(String data) {
         String tempData = data;
-        if (tempData == null || tempData.length() == 0) {
+        if ((tempData == null) || tempData.isEmpty()) {
             tempData = EasyDeviceInfo.notFoundVal;
         }
         return tempData;
@@ -47,9 +47,9 @@ final class CheckValidityUtil {
      * @param data the data
      * @return the string [ ]
      */
-    static String[] checkValidData(final String[] data) {
+    static String[] checkValidData(String[] data) {
         String[] tempData = data;
-        if (tempData == null || tempData.length == 0) {
+        if ((tempData == null) || (tempData.length == 0)) {
             tempData = new String[]{EasyDeviceInfo.notFoundVal};
         }
         return tempData;
@@ -61,9 +61,9 @@ final class CheckValidityUtil {
      * @param result the result
      * @return the string
      */
-    static String handleIllegalCharacterInResult(final String result) {
+    static String handleIllegalCharacterInResult(String result) {
         String tempResult = result;
-        if (tempResult != null && tempResult.contains(" ")) {
+        if ((tempResult != null) && tempResult.contains(" ")) {
             tempResult = tempResult.replaceAll(" ", "_");
         }
         return tempResult;

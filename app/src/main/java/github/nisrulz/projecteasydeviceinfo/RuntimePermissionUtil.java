@@ -21,17 +21,17 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 
-class RuntimePermissionUtil {
+final class RuntimePermissionUtil {
 
-    public static boolean checkPermissonGranted(Context context, String permission) {
+    public static boolean checkPermissonGranted(final Context context, final String permission) {
         return (ActivityCompat.checkSelfPermission(context, permission)
                 == PackageManager.PERMISSION_GRANTED);
     }
 
-    public static void onRequestPermissionsResult(int[] grantResults,
-            RPResultListener rpResultListener) {
+    public static void onRequestPermissionsResult(final int[] grantResults,
+            final RPResultListener rpResultListener) {
         if (grantResults.length > 0) {
-            for (int grantResult : grantResults) {
+            for (final int grantResult : grantResults) {
                 if (grantResult == PackageManager.PERMISSION_GRANTED) {
                     rpResultListener.onPermissionGranted();
                 } else {
@@ -41,14 +41,14 @@ class RuntimePermissionUtil {
         }
     }
 
-    public static void requestPermission(final Activity activity, final String permission,
-            final int REQUEST_CODE) {
+    public static void requestPermission(Activity activity, String permission,
+            int REQUEST_CODE) {
         // No explanation needed, we can request the permission.
         ActivityCompat.requestPermissions(activity, new String[]{permission}, REQUEST_CODE);
     }
 
-    public static void requestPermission(final Activity activity, final String[] permissions,
-            final int REQUEST_CODE) {
+    public static void requestPermission(Activity activity, String[] permissions,
+            int REQUEST_CODE) {
         // No explanation needed, we can request the permission.
         ActivityCompat.requestPermissions(activity, permissions, REQUEST_CODE);
     }

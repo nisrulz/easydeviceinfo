@@ -17,6 +17,7 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.os.Build;
+import android.os.Build.VERSION;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**
@@ -32,13 +33,13 @@ public class EasyCpuMod {
     public final String getStringSupported32bitABIS() {
         String result = null;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            String[] supportedABIS = Build.SUPPORTED_32_BIT_ABIS;
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            final String[] supportedABIS = Build.SUPPORTED_32_BIT_ABIS;
 
-            StringBuilder supportedABIString = new StringBuilder();
+            final StringBuilder supportedABIString = new StringBuilder();
             if (supportedABIS.length > 0) {
-                for (String abis : supportedABIS) {
-                    supportedABIString.append(abis).append("_");
+                for (final String abis : supportedABIS) {
+                    supportedABIString.append(abis).append('_');
                 }
                 supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
             } else {
@@ -59,13 +60,13 @@ public class EasyCpuMod {
      */
     public final String getStringSupported64bitABIS() {
         String result = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            String[] supportedABIS = Build.SUPPORTED_64_BIT_ABIS;
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            final String[] supportedABIS = Build.SUPPORTED_64_BIT_ABIS;
 
-            StringBuilder supportedABIString = new StringBuilder();
+            final StringBuilder supportedABIString = new StringBuilder();
             if (supportedABIS.length > 0) {
-                for (String abis : supportedABIS) {
-                    supportedABIString.append(abis).append("_");
+                for (final String abis : supportedABIS) {
+                    supportedABIString.append(abis).append('_');
                 }
                 supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
             } else {
@@ -84,12 +85,12 @@ public class EasyCpuMod {
      */
     public final String getStringSupportedABIS() {
         String result = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            String[] supportedABIS = Build.SUPPORTED_ABIS;
-            StringBuilder supportedABIString = new StringBuilder();
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            final String[] supportedABIS = Build.SUPPORTED_ABIS;
+            final StringBuilder supportedABIString = new StringBuilder();
             if (supportedABIS.length > 0) {
-                for (String abis : supportedABIS) {
-                    supportedABIString.append(abis).append("_");
+                for (final String abis : supportedABIS) {
+                    supportedABIString.append(abis).append('_');
                 }
                 supportedABIString.deleteCharAt(supportedABIString.lastIndexOf("_"));
             } else {
@@ -107,8 +108,8 @@ public class EasyCpuMod {
      * @return the string [ ]
      */
     public final String[] getSupported32bitABIS() {
-        String[] result = new String[]{EasyDeviceInfo.notFoundVal};
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        String[] result = {EasyDeviceInfo.notFoundVal};
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             result = Build.SUPPORTED_32_BIT_ABIS;
         }
         return CheckValidityUtil.checkValidData(result);
@@ -120,8 +121,8 @@ public class EasyCpuMod {
      * @return the string [ ]
      */
     public final String[] getSupported64bitABIS() {
-        String[] result = new String[]{EasyDeviceInfo.notFoundVal};
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        String[] result = {EasyDeviceInfo.notFoundVal};
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             result = Build.SUPPORTED_64_BIT_ABIS;
         }
         return CheckValidityUtil.checkValidData(result);
@@ -133,8 +134,8 @@ public class EasyCpuMod {
      * @return the string [ ]
      */
     public final String[] getSupportedABIS() {
-        String[] result = new String[]{EasyDeviceInfo.notFoundVal};
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        String[] result = {EasyDeviceInfo.notFoundVal};
+        if (VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             result = Build.SUPPORTED_ABIS;
         }
         return CheckValidityUtil.checkValidData(result);

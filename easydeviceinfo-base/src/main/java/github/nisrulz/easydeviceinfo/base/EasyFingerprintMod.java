@@ -17,10 +17,12 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.Manifest.permission;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
+import android.os.Build.VERSION;
 import android.support.annotation.RequiresPermission;
 
 /**
@@ -28,7 +30,7 @@ import android.support.annotation.RequiresPermission;
  */
 public class EasyFingerprintMod {
 
-    private FingerprintManager fingerprintManager = null;
+    private FingerprintManager fingerprintManager;
 
     /**
      * Instantiates a new Easy fingerprint mod.
@@ -40,10 +42,10 @@ public class EasyFingerprintMod {
      * @param context the context
      */
     @TargetApi(23)
-    @RequiresPermission(Manifest.permission.USE_FINGERPRINT)
-    public EasyFingerprintMod(final Context context) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            fingerprintManager =
+    @RequiresPermission(permission.USE_FINGERPRINT)
+    public EasyFingerprintMod(Context context) {
+        if (VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            this.fingerprintManager =
                     (FingerprintManager) context.getSystemService(Context.FINGERPRINT_SERVICE);
         }
     }
@@ -58,9 +60,9 @@ public class EasyFingerprintMod {
      * @return the boolean
      */
     @SuppressLint("NewApi")
-    @RequiresPermission(Manifest.permission.USE_FINGERPRINT)
+    @RequiresPermission(permission.USE_FINGERPRINT)
     public final boolean areFingerprintsEnrolled() {
-        return fingerprintManager != null && fingerprintManager.hasEnrolledFingerprints();
+        return (fingerprintManager != null) && this.fingerprintManager.hasEnrolledFingerprints();
     }
 
     /**
@@ -73,8 +75,8 @@ public class EasyFingerprintMod {
      * @return the boolean
      */
     @SuppressLint("NewApi")
-    @RequiresPermission(Manifest.permission.USE_FINGERPRINT)
+    @RequiresPermission(permission.USE_FINGERPRINT)
     public final boolean isFingerprintSensorPresent() {
-        return fingerprintManager != null && fingerprintManager.isHardwareDetected();
+        return (fingerprintManager != null) && this.fingerprintManager.isHardwareDetected();
     }
 }

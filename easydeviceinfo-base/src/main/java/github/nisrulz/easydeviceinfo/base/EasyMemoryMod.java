@@ -16,17 +16,15 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
-import static android.os.Build.VERSION;
 import static android.os.Build.VERSION_CODES;
 import static android.os.Environment.MEDIA_MOUNTED;
 import static android.os.Environment.getDataDirectory;
 import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStorageState;
 
-import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
+import android.os.Build;
 import android.os.StatFs;
 import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
@@ -53,7 +51,7 @@ public class EasyMemoryMod {
      *
      * @param context the context
      */
-    public EasyMemoryMod(final Context context) {
+    public EasyMemoryMod(Context context) {
         this.context = context;
     }
 
@@ -63,8 +61,8 @@ public class EasyMemoryMod {
      * @param valInBytes the val in bytes
      * @return the float
      */
-    public float convertToGb(long valInBytes) {
-        return (float) valInBytes / (BYTEFACTOR * BYTEFACTOR * BYTEFACTOR);
+    public float convertToGb(final long valInBytes) {
+        return (float) valInBytes / (EasyMemoryMod.BYTEFACTOR * EasyMemoryMod.BYTEFACTOR * EasyMemoryMod.BYTEFACTOR);
     }
 
     /**
@@ -73,8 +71,8 @@ public class EasyMemoryMod {
      * @param valInBytes the val in bytes
      * @return the float
      */
-    public float convertToKb(long valInBytes) {
-        return (float) valInBytes / BYTEFACTOR;
+    public float convertToKb(final long valInBytes) {
+        return (float) valInBytes / EasyMemoryMod.BYTEFACTOR;
     }
 
     /**
@@ -83,8 +81,8 @@ public class EasyMemoryMod {
      * @param valInBytes the val in bytes
      * @return the float
      */
-    public float convertToMb(long valInBytes) {
-        return (float) valInBytes / (BYTEFACTOR * BYTEFACTOR);
+    public float convertToMb(final long valInBytes) {
+        return (float) valInBytes / (EasyMemoryMod.BYTEFACTOR * EasyMemoryMod.BYTEFACTOR);
     }
 
     /**
@@ -94,8 +92,9 @@ public class EasyMemoryMod {
      * @return the float
      */
     @SuppressWarnings("NumericOverflow")
-    public float convertToTb(long valInBytes) {
-        return (float) valInBytes / (BYTEFACTOR * BYTEFACTOR * BYTEFACTOR * BYTEFACTOR);
+    public float convertToTb(final long valInBytes) {
+        return (float) valInBytes / (EasyMemoryMod.BYTEFACTOR * EasyMemoryMod.BYTEFACTOR * EasyMemoryMod.BYTEFACTOR
+                * EasyMemoryMod.BYTEFACTOR);
     }
 
     /**
@@ -104,12 +103,12 @@ public class EasyMemoryMod {
      * @return the available external memory size
      */
     public final long getAvailableExternalMemorySize() {
-        if (externalMemoryAvailable()) {
-            File path = getExternalStorageDirectory();
-            StatFs stat = new StatFs(path.getPath());
-            long blockSize;
-            long availableBlocks;
-            if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
+        if (this.externalMemoryAvailable()) {
+            final File path = getExternalStorageDirectory();
+            final StatFs stat = new StatFs(path.getPath());
+            final long blockSize;
+            final long availableBlocks;
+            if (Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
                 blockSize = stat.getBlockSizeLong();
                 availableBlocks = stat.getAvailableBlocksLong();
             } else {
@@ -128,11 +127,11 @@ public class EasyMemoryMod {
      * @return the available internal memory size
      */
     public final long getAvailableInternalMemorySize() {
-        File path = getDataDirectory();
-        StatFs stat = new StatFs(path.getPath());
-        long blockSize;
-        long availableBlocks;
-        if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
+        final File path = getDataDirectory();
+        final StatFs stat = new StatFs(path.getPath());
+        final long blockSize;
+        final long availableBlocks;
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
             blockSize = stat.getBlockSizeLong();
             availableBlocks = stat.getAvailableBlocksLong();
         } else {
@@ -148,12 +147,12 @@ public class EasyMemoryMod {
      * @return the total external memory size
      */
     public final long getTotalExternalMemorySize() {
-        if (externalMemoryAvailable()) {
-            File path = getExternalStorageDirectory();
-            StatFs stat = new StatFs(path.getPath());
-            long blockSize;
-            long totalBlocks;
-            if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
+        if (this.externalMemoryAvailable()) {
+            final File path = getExternalStorageDirectory();
+            final StatFs stat = new StatFs(path.getPath());
+            final long blockSize;
+            final long totalBlocks;
+            if (Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
                 blockSize = stat.getBlockSizeLong();
                 totalBlocks = stat.getBlockCountLong();
             } else {
@@ -172,11 +171,11 @@ public class EasyMemoryMod {
      * @return the total internal memory size
      */
     public final long getTotalInternalMemorySize() {
-        File path = getDataDirectory();
-        StatFs stat = new StatFs(path.getPath());
-        long blockSize;
-        long totalBlocks;
-        if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
+        final File path = getDataDirectory();
+        final StatFs stat = new StatFs(path.getPath());
+        final long blockSize;
+        final long totalBlocks;
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN_MR2) {
             blockSize = stat.getBlockSizeLong();
             totalBlocks = stat.getBlockCountLong();
         } else {
@@ -193,32 +192,32 @@ public class EasyMemoryMod {
      */
     public final long getTotalRAM() {
         long totalMemory = 0;
-        if (VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
-            MemoryInfo mi = new MemoryInfo();
-            ActivityManager activityManager =
-                    (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
+            final ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+            final ActivityManager activityManager =
+                    (ActivityManager) this.context.getSystemService(Context.ACTIVITY_SERVICE);
             if (activityManager != null) {
                 activityManager.getMemoryInfo(mi);
                 totalMemory = mi.totalMem;
             }
         } else {
             RandomAccessFile reader = null;
-            String load;
+            final String load;
             try {
                 reader = new RandomAccessFile("/proc/meminfo", "r");
                 load = reader.readLine().replaceAll("\\D+", "");
-                totalMemory = (long) Integer.parseInt(load);
-            } catch (IOException e) {
+                totalMemory = Integer.parseInt(load);
+            } catch (final IOException e) {
                 if (EasyDeviceInfo.debuggable) {
-                    Log.e(EasyDeviceInfo.nameOfLib, IO_EXCEPTION, e);
+                    Log.e(EasyDeviceInfo.nameOfLib, EasyMemoryMod.IO_EXCEPTION, e);
                 }
             } finally {
                 if (reader != null) {
                     try {
                         reader.close();
-                    } catch (IOException e) {
+                    } catch (final IOException e) {
                         if (EasyDeviceInfo.debuggable) {
-                            Log.e(EasyDeviceInfo.nameOfLib, IO_EXCEPTION, e);
+                            Log.e(EasyDeviceInfo.nameOfLib, EasyMemoryMod.IO_EXCEPTION, e);
                         }
                     }
                 }

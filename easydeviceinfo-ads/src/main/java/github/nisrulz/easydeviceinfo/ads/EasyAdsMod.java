@@ -19,6 +19,7 @@ package github.nisrulz.easydeviceinfo.ads;
 import android.content.Context;
 import android.util.Log;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient.Info;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
@@ -50,7 +51,7 @@ public class EasyAdsMod {
      *
      * @param context the context
      */
-    public EasyAdsMod(Context context) {
+    public EasyAdsMod(final Context context) {
         this.context = context;
     }
 
@@ -59,19 +60,19 @@ public class EasyAdsMod {
      *
      * @param callback the callback
      */
-    public final void getAndroidAdId(final AdIdentifierCallback callback) {
+    public final void getAndroidAdId(final EasyAdsMod.AdIdentifierCallback callback) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                retrieveAdId(callback);
+                EasyAdsMod.this.retrieveAdId(callback);
             }
         }).start();
     }
 
-    private void retrieveAdId(final AdIdentifierCallback callback) {
-        AdvertisingIdClient.Info adInfo;
+    void retrieveAdId(EasyAdsMod.AdIdentifierCallback callback) {
+        final Info adInfo;
         try {
-            adInfo = AdvertisingIdClient.getAdvertisingIdInfo(context);
+            adInfo = AdvertisingIdClient.getAdvertisingIdInfo(this.context);
             String androidAdId = EasyDeviceInfo.notFoundVal;
             boolean adDoNotTrack = false;
             if (adInfo != null) {
@@ -84,11 +85,11 @@ public class EasyAdsMod {
 
             //Send Data to callback
             callback.onSuccess(androidAdId, adDoNotTrack);
-        } catch (IOException | GooglePlayServicesNotAvailableException e) {
+        } catch (final IOException | GooglePlayServicesNotAvailableException e) {
             // Unrecoverable error connecting to Google Play services (e.g.,
             // the old version of the service doesn't support getting AdvertisingId).
             Log.d(EasyDeviceInfo.nameOfLib, "Google Play Services Not Available Exception", e);
-        } catch (GooglePlayServicesRepairableException e) {
+        } catch (final GooglePlayServicesRepairableException e) {
             Log.d(EasyDeviceInfo.nameOfLib, "Google Play Services Repairable Exception", e);
         }
     }

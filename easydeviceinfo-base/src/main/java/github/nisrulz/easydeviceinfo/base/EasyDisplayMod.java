@@ -18,6 +18,7 @@ package github.nisrulz.easydeviceinfo.base;
 
 import android.content.Context;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.MotionEvent;
@@ -37,15 +38,11 @@ public class EasyDisplayMod {
      *
      * @param context the context
      */
-    public EasyDisplayMod(final Context context) {
+    public EasyDisplayMod(Context context) {
         this.context = context;
 
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        if (wm != null) {
-            display = wm.getDefaultDisplay();
-        } else {
-            display = null;
-        }
+        final WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        this.display = wm != null ? wm.getDefaultDisplay() : null;
     }
 
     /**
@@ -55,7 +52,7 @@ public class EasyDisplayMod {
      */
     public final String getDensity() {
         String densityStr = null;
-        final int density = context.getResources().getDisplayMetrics().densityDpi;
+        int density = this.context.getResources().getDisplayMetrics().densityDpi;
         switch (density) {
             case DisplayMetrics.DENSITY_LOW:
                 densityStr = "LDPI";
@@ -94,8 +91,8 @@ public class EasyDisplayMod {
      * @param event the event
      * @return the int [ ]
      */
-    public final int[] getDisplayXYCoordinates(final MotionEvent event) {
-        int[] coordinates = new int[2];
+    public final int[] getDisplayXYCoordinates(MotionEvent event) {
+        final int[] coordinates = new int[2];
         coordinates[0] = 0;
         coordinates[1] = 0;
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -106,31 +103,28 @@ public class EasyDisplayMod {
     }
 
     public final int getLayoutDirection() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return context.getResources().getConfiguration().getLayoutDirection();
-        } else {
-            return context.getResources().getConfiguration().SCREENLAYOUT_LAYOUTDIR_LTR;
-        }
+        return VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 ? this.context.getResources().getConfiguration()
+                .getLayoutDirection() : this.context.getResources().getConfiguration().SCREENLAYOUT_LAYOUTDIR_LTR;
     }
 
     public final int getOrientation() {
-        return context.getResources().getConfiguration().orientation;
+        return this.context.getResources().getConfiguration().orientation;
     }
 
     public final float getPhysicalSize() {
-        DisplayMetrics metrics = new DisplayMetrics();
+        final DisplayMetrics metrics = new DisplayMetrics();
 
         if (display != null) {
-            display.getMetrics(metrics);
-            float x = (float) Math.pow(metrics.widthPixels / metrics.xdpi, 2);
-            float y = (float) Math.pow(metrics.heightPixels / metrics.ydpi, 2);
+            this.display.getMetrics(metrics);
+            final float x = (float) StrictMath.pow(metrics.widthPixels / metrics.xdpi, 2);
+            final float y = (float) StrictMath.pow(metrics.heightPixels / metrics.ydpi, 2);
             return (float) Math.sqrt(x + y);
         }
-        return 0f;
+        return 0.0f;
     }
 
     public final float getRefreshRate() {
-        return display.getRefreshRate();
+        return this.display.getRefreshRate();
     }
 
     /**
@@ -139,19 +133,16 @@ public class EasyDisplayMod {
      * @return the resolution
      */
     public final String getResolution() {
-        DisplayMetrics metrics = new DisplayMetrics();
+        final DisplayMetrics metrics = new DisplayMetrics();
         if (display != null) {
-            display.getMetrics(metrics);
+            this.display.getMetrics(metrics);
             return CheckValidityUtil.checkValidData(metrics.heightPixels + "x" + metrics.widthPixels);
         }
         return CheckValidityUtil.checkValidData("");
     }
 
     public final boolean isScreenRound() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return context.getResources().getConfiguration().isScreenRound();
-        } else {
-            return false;
-        }
+        return VERSION.SDK_INT >= Build.VERSION_CODES.M ? this.context.getResources().getConfiguration()
+                .isScreenRound() : false;
     }
 }

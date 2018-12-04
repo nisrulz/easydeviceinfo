@@ -17,11 +17,13 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.Manifest.permission;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.provider.Settings.Secure;
 import android.support.annotation.RequiresPermission;
 
 /**
@@ -36,7 +38,7 @@ public class EasyBluetoothMod {
      *
      * @param context the context
      */
-    public EasyBluetoothMod(final Context context) {
+    public EasyBluetoothMod(Context context) {
         this.context = context;
     }
 
@@ -51,21 +53,21 @@ public class EasyBluetoothMod {
      * @deprecated
      */
     @SuppressLint("HardwareIds")
-    @RequiresPermission(Manifest.permission.BLUETOOTH)
+    @RequiresPermission(permission.BLUETOOTH)
     @Deprecated
     public final String getBluetoothMAC() {
         String result = "00:00:00:00:00:00";
-        if (PermissionUtil.hasPermission(context, Manifest.permission.BLUETOOTH)) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-                    && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+        if (PermissionUtil.hasPermission(this.context, permission.BLUETOOTH)) {
+            if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                    && (Build.VERSION.SDK_INT < Build.VERSION_CODES.O)) {
                 // Hardware ID are restricted in Android 6+
                 // https://developer.android.com/about/versions/marshmallow/android-6.0-changes.html#behavior-hardware-id
                 // Getting bluetooth mac via reflection for devices with Android 6+
-                result = android.provider.Settings.Secure.getString(context.getContentResolver(),
+                result = Secure.getString(this.context.getContentResolver(),
                         "bluetooth_address");
             } else {
-                BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
-                result = bta != null ? bta.getAddress() : result;
+                final BluetoothAdapter bta = BluetoothAdapter.getDefaultAdapter();
+                result = (bta != null) ? bta.getAddress() : result;
             }
         }
         return CheckValidityUtil.checkValidData(result);
@@ -77,8 +79,8 @@ public class EasyBluetoothMod {
      * @return true if the device has a Bluetooth LE compatible chipset
      */
     public final boolean hasBluetoothLe() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2
-                && context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
+        return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+                && this.context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE);
     }
 
     /**
@@ -86,10 +88,10 @@ public class EasyBluetoothMod {
      *
      * @return true if the device has Bluetooth LE advertising features
      */
-    @RequiresPermission(Manifest.permission.BLUETOOTH)
+    @RequiresPermission(permission.BLUETOOTH)
     public final boolean hasBluetoothLeAdvertising() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
-                && hasBluetoothLe()
+        return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                && this.hasBluetoothLe()
                 && BluetoothAdapter.getDefaultAdapter().isMultipleAdvertisementSupported();
     }
 }

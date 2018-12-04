@@ -34,7 +34,7 @@ public class EasyBatteryMod {
      *
      * @param context the context
      */
-    public EasyBatteryMod(final Context context) {
+    public EasyBatteryMod(Context context) {
         this.context = context;
     }
 
@@ -46,14 +46,10 @@ public class EasyBatteryMod {
     @BatteryHealth
     public final int getBatteryHealth() {
         int health = BatteryHealth.HAVING_ISSUES;
-        Intent batteryStatus = getBatteryStatusIntent();
+        final Intent batteryStatus = this.getBatteryStatusIntent();
         if (batteryStatus != null) {
             health = batteryStatus.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
-            if (health == BatteryManager.BATTERY_HEALTH_GOOD) {
-                health = BatteryHealth.GOOD;
-            } else {
-                health = BatteryHealth.HAVING_ISSUES;
-            }
+            health = health == BatteryManager.BATTERY_HEALTH_GOOD ? BatteryHealth.GOOD : BatteryHealth.HAVING_ISSUES;
         }
         return health;
     }
@@ -65,10 +61,10 @@ public class EasyBatteryMod {
      */
     public final int getBatteryPercentage() {
         int percentage = 0;
-        Intent batteryStatus = getBatteryStatusIntent();
+        final Intent batteryStatus = this.getBatteryStatusIntent();
         if (batteryStatus != null) {
-            int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-            int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+            final int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            final int scale = batteryStatus.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
             percentage = (int) ((level / (float) scale) * 100);
         }
 
@@ -82,7 +78,7 @@ public class EasyBatteryMod {
      */
     public final String getBatteryTechnology() {
         return CheckValidityUtil.checkValidData(
-                getBatteryStatusIntent().getStringExtra(BatteryManager.EXTRA_TECHNOLOGY));
+                this.getBatteryStatusIntent().getStringExtra(BatteryManager.EXTRA_TECHNOLOGY));
     }
 
     /**
@@ -92,7 +88,7 @@ public class EasyBatteryMod {
      */
     public final float getBatteryTemperature() {
         float temp = 0.0f;
-        Intent batteryStatus = getBatteryStatusIntent();
+        final Intent batteryStatus = this.getBatteryStatusIntent();
         if (batteryStatus != null) {
             temp = (float) (batteryStatus.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, 0) / 10.0);
         }
@@ -106,7 +102,7 @@ public class EasyBatteryMod {
      */
     public final int getBatteryVoltage() {
         int volt = 0;
-        Intent batteryStatus = getBatteryStatusIntent();
+        final Intent batteryStatus = this.getBatteryStatusIntent();
         if (batteryStatus != null) {
             volt = batteryStatus.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
         }
@@ -120,8 +116,8 @@ public class EasyBatteryMod {
      */
     @ChargingVia
     public final int getChargingSource() {
-        Intent batteryStatus = getBatteryStatusIntent();
-        int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
+        final Intent batteryStatus = this.getBatteryStatusIntent();
+        final int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
 
         switch (chargePlug) {
             case BatteryManager.BATTERY_PLUGGED_AC:
@@ -141,7 +137,7 @@ public class EasyBatteryMod {
      * @return the boolean
      */
     public final boolean isBatteryPresent() {
-        return getBatteryStatusIntent().getExtras() != null && getBatteryStatusIntent().getExtras()
+        return (getBatteryStatusIntent().getExtras() != null) && this.getBatteryStatusIntent().getExtras()
                 .getBoolean(BatteryManager.EXTRA_PRESENT);
     }
 
@@ -151,14 +147,14 @@ public class EasyBatteryMod {
      * @return is battery charging boolean
      */
     public final boolean isDeviceCharging() {
-        Intent batteryStatus = getBatteryStatusIntent();
-        int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-        return status == BatteryManager.BATTERY_STATUS_CHARGING
-                || status == BatteryManager.BATTERY_STATUS_FULL;
+        final Intent batteryStatus = this.getBatteryStatusIntent();
+        final int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+        return (status == BatteryManager.BATTERY_STATUS_CHARGING)
+                || (status == BatteryManager.BATTERY_STATUS_FULL);
     }
 
     private Intent getBatteryStatusIntent() {
-        IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        return context.registerReceiver(null, batFilter);
+        final IntentFilter batFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        return this.context.registerReceiver(null, batFilter);
     }
 }

@@ -37,8 +37,8 @@ final class PermissionUtil {
      * @param permission the permission
      * @return the boolean
      */
-    static boolean hasPermission(final Context context, final String permission) {
-        boolean permGranted =
+    static boolean hasPermission(Context context, String permission) {
+        final boolean permGranted =
                 context.checkCallingOrSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
         if (EasyDeviceInfo.debuggable && !permGranted) {
             Log.e(EasyDeviceInfo.nameOfLib, ">\t" + permission);

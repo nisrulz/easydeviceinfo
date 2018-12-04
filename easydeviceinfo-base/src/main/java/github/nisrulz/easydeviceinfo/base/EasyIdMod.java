@@ -17,6 +17,7 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.Manifest.permission;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
@@ -24,7 +25,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.provider.Settings;
+import android.provider.Settings.Secure;
 import android.support.annotation.RequiresPermission;
 import android.util.Log;
 import android.webkit.WebSettings;
@@ -44,7 +47,7 @@ public class EasyIdMod {
      *
      * @param context the context
      */
-    public EasyIdMod(final Context context) {
+    public EasyIdMod(Context context) {
         this.context = context;
     }
 
@@ -58,13 +61,13 @@ public class EasyIdMod {
      * @return the string [ ]
      * @deprecated
      */
-    @RequiresPermission(Manifest.permission.GET_ACCOUNTS)
+    @RequiresPermission(permission.GET_ACCOUNTS)
     @Deprecated
     public final String[] getAccounts() {
         String[] result = null;
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O && PermissionUtil.hasPermission(context,
-                Manifest.permission.GET_ACCOUNTS)) {
-            Account[] accounts = AccountManager.get(context).getAccountsByType("com.google");
+        if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.O) && PermissionUtil.hasPermission(this.context,
+                permission.GET_ACCOUNTS)) {
+            final Account[] accounts = AccountManager.get(this.context).getAccountsByType("com.google");
             result = new String[accounts.length];
             for (int i = 0; i < accounts.length; i++) {
                 result[i] = accounts[i].name;
@@ -83,7 +86,7 @@ public class EasyIdMod {
     @Deprecated
     public final String getAndroidID() {
         return CheckValidityUtil.checkValidData(
-                Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID));
+                Secure.getString(this.context.getContentResolver(), Secure.ANDROID_ID));
     }
 
     /**
@@ -97,24 +100,24 @@ public class EasyIdMod {
      */
     @RequiresPermission("com.google.android.providers.gsf.permission.READ_GSERVICES")
     public final String getGSFID() {
-        final Uri uri = Uri.parse("content://com.google.android.gsf.gservices");
-        final String idKey = "android_id";
+        Uri uri = Uri.parse("content://com.google.android.gsf.gservices");
+        String idKey = "android_id";
 
-        String[] params = {idKey};
-        Cursor c = context.getContentResolver().query(uri, null, null, params, null);
+        final String[] params = {idKey};
+        final Cursor c = this.context.getContentResolver().query(uri, null, null, params, null);
 
         if (c == null) {
             return EasyDeviceInfo.notFoundVal;
-        } else if (!c.moveToFirst() || c.getColumnCount() < 2) {
+        } else if (!c.moveToFirst() || (c.getColumnCount() < 2)) {
             c.close();
             return EasyDeviceInfo.notFoundVal;
         }
 
         try {
-            String gsfID = Long.toHexString(Long.parseLong(c.getString(1)));
+            final String gsfID = Long.toHexString(Long.parseLong(c.getString(1)));
             c.close();
             return gsfID;
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException e) {
             c.close();
             return EasyDeviceInfo.notFoundVal;
         }
@@ -136,11 +139,8 @@ public class EasyIdMod {
         // If there are collisions, there will be overlapping data
         String devIDShort = "35" + (Build.BOARD.length() % 10) + (Build.BRAND.length() % 10);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            devIDShort += (Build.SUPPORTED_ABIS[0].length() % 10);
-        } else {
-            devIDShort += (Build.CPU_ABI.length() % 10);
-        }
+        devIDShort += VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? Build.SUPPORTED_ABIS[0].length() % 10
+                : Build.CPU_ABI.length() % 10;
 
         devIDShort +=
                 (Build.DEVICE.length() % 10) + (Build.MANUFACTURER.length() % 10) + (Build.MODEL.length()
@@ -155,7 +155,7 @@ public class EasyIdMod {
 
             // Go ahead and return the serial for api => 9
             return new UUID(devIDShort.hashCode(), serial.hashCode()).toString();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // String needs to be initialized
             if (EasyDeviceInfo.debuggable) {
                 Log.e(EasyDeviceInfo.nameOfLib, "getPseudoUniqueID: ", e);
@@ -173,13 +173,10 @@ public class EasyIdMod {
      * @return the ua
      */
     public final String getUA() {
-        final String systemUa = System.getProperty("http.agent");
-        String result;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            result = WebSettings.getDefaultUserAgent(context) + "__" + systemUa;
-        } else {
-            result = new WebView(context).getSettings().getUserAgentString() + "__" + systemUa;
-        }
+        String systemUa = System.getProperty("http.agent");
+        final String result;
+        result = VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 ? WebSettings.getDefaultUserAgent(this.context)
+                + "__" + systemUa : new WebView(this.context).getSettings().getUserAgentString() + "__" + systemUa;
         return CheckValidityUtil.checkValidData(result);
     }
 }

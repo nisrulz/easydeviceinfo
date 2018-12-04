@@ -17,6 +17,7 @@
 package github.nisrulz.easydeviceinfo.base;
 
 import android.Manifest;
+import android.Manifest.permission;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
@@ -44,9 +45,9 @@ public class EasySimMod {
      *
      * @param context the context
      */
-    public EasySimMod(final Context context) {
+    public EasySimMod(Context context) {
         this.context = context;
-        tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        this.tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
     }
 
     /**
@@ -58,7 +59,7 @@ public class EasySimMod {
      *
      * @return the active multi sim info
      */
-    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    @RequiresPermission(permission.READ_PHONE_STATE)
     public final List<SubscriptionInfo> getActiveMultiSimInfo() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1 && PermissionUtil.hasPermission(
                 context, Manifest.permission.READ_PHONE_STATE)) {
@@ -85,8 +86,8 @@ public class EasySimMod {
      */
     public final String getCarrier() {
         String result = null;
-        if (tm != null && tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) {
-            result = tm.getNetworkOperatorName().toLowerCase(Locale.getDefault());
+        if ((tm != null) && (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA)) {
+            result = this.tm.getNetworkOperatorName().toLowerCase(Locale.getDefault());
         }
         return CheckValidityUtil.checkValidData(
                 CheckValidityUtil.handleIllegalCharacterInResult(result));
@@ -98,11 +99,11 @@ public class EasySimMod {
      * @return the country
      */
     public final String getCountry() {
-        String result;
-        if (tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_READY) {
-            result = tm.getSimCountryIso().toLowerCase(Locale.getDefault());
+        final String result;
+        if ((tm != null) && (tm.getSimState() == TelephonyManager.SIM_STATE_READY)) {
+            result = this.tm.getSimCountryIso().toLowerCase(Locale.getDefault());
         } else {
-            Locale locale = Locale.getDefault();
+            final Locale locale = Locale.getDefault();
             result = locale.getCountry().toLowerCase(locale);
         }
         return CheckValidityUtil.checkValidData(
@@ -119,11 +120,11 @@ public class EasySimMod {
      * @return the imsi
      */
     @SuppressLint("HardwareIds")
-    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    @RequiresPermission(permission.READ_PHONE_STATE)
     public final String getIMSI() {
         String result = null;
-        if (tm != null && PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
-            result = tm.getSubscriberId();
+        if ((tm != null) && PermissionUtil.hasPermission(this.context, permission.READ_PHONE_STATE)) {
+            result = this.tm.getSubscriberId();
         }
 
         return CheckValidityUtil.checkValidData(result);
@@ -138,9 +139,9 @@ public class EasySimMod {
      *
      * @return the number of active sim
      */
-    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    @RequiresPermission(permission.READ_PHONE_STATE)
     public final int getNumberOfActiveSim() {
-        return getActiveMultiSimInfo().size();
+        return this.getActiveMultiSimInfo().size();
     }
 
     /**
@@ -153,11 +154,11 @@ public class EasySimMod {
      * @return the sim serial
      */
     @SuppressLint("HardwareIds")
-    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    @RequiresPermission(permission.READ_PHONE_STATE)
     public final String getSIMSerial() {
         String result = null;
-        if (tm != null && PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
-            result = tm.getSimSerialNumber();
+        if ((tm != null) && PermissionUtil.hasPermission(this.context, permission.READ_PHONE_STATE)) {
+            result = this.tm.getSimSerialNumber();
         }
         return CheckValidityUtil.checkValidData(result);
     }
@@ -171,7 +172,7 @@ public class EasySimMod {
      *
      * @return the boolean
      */
-    @RequiresPermission(Manifest.permission.READ_PHONE_STATE)
+    @RequiresPermission(permission.READ_PHONE_STATE)
     public final boolean isMultiSim() {
         return getActiveMultiSimInfo().size() > 1;
     }
@@ -182,6 +183,6 @@ public class EasySimMod {
      * @return the boolean
      */
     public final boolean isSimNetworkLocked() {
-        return tm != null && tm.getSimState() == TelephonyManager.SIM_STATE_NETWORK_LOCKED;
+        return (tm != null) && (tm.getSimState() == TelephonyManager.SIM_STATE_NETWORK_LOCKED);
     }
 }

@@ -19,6 +19,7 @@ package github.nisrulz.easydeviceinfo.base;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
@@ -36,7 +37,7 @@ public class EasyAppMod {
      *
      * @param context the context
      */
-    public EasyAppMod(final Context context) {
+    public EasyAppMod(Context context) {
         this.context = context;
     }
 
@@ -46,7 +47,7 @@ public class EasyAppMod {
      * @return the activity name
      */
     public final String getActivityName() {
-        return CheckValidityUtil.checkValidData(context.getClass().getSimpleName());
+        return CheckValidityUtil.checkValidData(this.context.getClass().getSimpleName());
     }
 
     /**
@@ -55,17 +56,17 @@ public class EasyAppMod {
      * @return the app name
      */
     public final String getAppName() {
-        String result;
-        final PackageManager pm = context.getPackageManager();
+        final String result;
+        PackageManager pm = this.context.getPackageManager();
         ApplicationInfo ai = null;
         try {
-            ai = pm.getApplicationInfo(context.getPackageName(), 0);
-        } catch (PackageManager.NameNotFoundException e) {
+            ai = pm.getApplicationInfo(this.context.getPackageName(), 0);
+        } catch (final NameNotFoundException e) {
             if (EasyDeviceInfo.debuggable) {
-                Log.d(EasyDeviceInfo.nameOfLib, NAME_NOT_FOUND_EXCEPTION, e);
+                Log.d(EasyDeviceInfo.nameOfLib, EasyAppMod.NAME_NOT_FOUND_EXCEPTION, e);
             }
         }
-        result = ai != null ? (String) pm.getApplicationLabel(ai) : null;
+        result = (ai != null) ? (String) pm.getApplicationLabel(ai) : null;
         return CheckValidityUtil.checkValidData(result);
     }
 
@@ -77,10 +78,10 @@ public class EasyAppMod {
     public final String getAppVersion() {
         String result = null;
         try {
-            result = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
+            result = this.context.getPackageManager().getPackageInfo(this.context.getPackageName(), 0).versionName;
+        } catch (final NameNotFoundException e) {
             if (EasyDeviceInfo.debuggable) {
-                Log.e(EasyDeviceInfo.nameOfLib, NAME_NOT_FOUND_EXCEPTION, e);
+                Log.e(EasyDeviceInfo.nameOfLib, EasyAppMod.NAME_NOT_FOUND_EXCEPTION, e);
             }
         }
         return CheckValidityUtil.checkValidData(result);
@@ -95,10 +96,10 @@ public class EasyAppMod {
         String result = null;
         try {
             result = String.valueOf(
-                    context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionCode);
-        } catch (PackageManager.NameNotFoundException e) {
+                    this.context.getPackageManager().getPackageInfo(this.context.getPackageName(), 0).versionCode);
+        } catch (final NameNotFoundException e) {
             if (EasyDeviceInfo.debuggable) {
-                Log.e(EasyDeviceInfo.nameOfLib, NAME_NOT_FOUND_EXCEPTION, e);
+                Log.e(EasyDeviceInfo.nameOfLib, EasyAppMod.NAME_NOT_FOUND_EXCEPTION, e);
             }
         }
         return CheckValidityUtil.checkValidData(result);
@@ -110,7 +111,7 @@ public class EasyAppMod {
      * @return the package name
      */
     public final String getPackageName() {
-        return CheckValidityUtil.checkValidData(context.getPackageName());
+        return CheckValidityUtil.checkValidData(this.context.getPackageName());
     }
 
     /**
@@ -119,7 +120,7 @@ public class EasyAppMod {
      * @return the store
      */
     public final String getStore() {
-        String result = context.getPackageManager().getInstallerPackageName(context.getPackageName());
+        final String result = this.context.getPackageManager().getInstallerPackageName(this.context.getPackageName());
         return CheckValidityUtil.checkValidData(result);
     }
 
@@ -129,7 +130,7 @@ public class EasyAppMod {
      * @param packageName the package name
      * @return the boolean
      */
-    public final boolean isAppInstalled(String packageName) {
+    public final boolean isAppInstalled(final String packageName) {
         return context.getPackageManager().getLaunchIntentForPackage(packageName) != null;
     }
 
@@ -139,7 +140,7 @@ public class EasyAppMod {
      * @param permission the permission
      * @return the boolean
      */
-    public final boolean isPermissionGranted(final String permission) {
+    public final boolean isPermissionGranted(String permission) {
         return context.checkCallingPermission(permission) == PackageManager.PERMISSION_GRANTED;
     }
 }

@@ -42,7 +42,7 @@ public class EasyConfigMod {
      *
      * @param context the context
      */
-    public EasyConfigMod(final Context context) {
+    public EasyConfigMod(Context context) {
         this.context = context;
     }
 
@@ -63,7 +63,7 @@ public class EasyConfigMod {
     @RingerMode
     public final int getDeviceRingerMode() {
         int ringerMode = RingerMode.NORMAL;
-        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        final AudioManager audioManager = (AudioManager) this.context.getSystemService(Context.AUDIO_SERVICE);
         if (audioManager != null) {
             switch (audioManager.getRingerMode()) {
                 case RINGER_MODE_NORMAL:
@@ -90,7 +90,7 @@ public class EasyConfigMod {
      * @return the formatted date
      */
     public final String getFormattedDate() {
-        DateFormat dateInstance = SimpleDateFormat.getDateInstance();
+        final DateFormat dateInstance = SimpleDateFormat.getDateInstance();
         return dateInstance.format(Calendar.getInstance().getTime());
     }
 
@@ -100,7 +100,7 @@ public class EasyConfigMod {
      * @return the formatted time
      */
     public final String getFormattedTime() {
-        DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
+        final DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
         return timeInstance.format(Calendar.getInstance().getTime());
     }
 
@@ -110,8 +110,8 @@ public class EasyConfigMod {
      * @return the formatted up time
      */
     public final String getFormattedUpTime() {
-        DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
-        return timeInstance.format(SystemClock.uptimeMillis());
+        final DateFormat timeInstance = SimpleDateFormat.getTimeInstance();
+        return timeInstance.format(Long.valueOf(SystemClock.uptimeMillis()));
     }
 
     /**
@@ -147,11 +147,11 @@ public class EasyConfigMod {
      * @return the boolean
      */
     public final boolean isRunningOnEmulator() {
-        boolean isGenyMotion = Build.MANUFACTURER.contains("Genymotion")
+        final boolean isGenyMotion = Build.MANUFACTURER.contains("Genymotion")
                 || Build.PRODUCT.contains("vbox86p")
                 || Build.DEVICE.contains("vbox86p")
                 || Build.HARDWARE.contains("vbox86");
-        boolean isGenericEmulator = Build.BRAND.contains("generic")
+        final boolean isGenericEmulator = Build.BRAND.contains("generic")
                 || Build.DEVICE.contains("generic")
                 || Build.PRODUCT.contains("sdk")
                 || Build.HARDWARE.contains("goldfish");

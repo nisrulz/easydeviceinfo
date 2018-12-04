@@ -33,8 +33,8 @@ public class EasySensorMod {
      *
      * @param context the context
      */
-    public EasySensorMod(final Context context) {
-        sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+    public EasySensorMod(Context context) {
+        this.sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
     }
 
     /**
@@ -43,6 +43,6 @@ public class EasySensorMod {
      * @return the all sensors
      */
     public List<Sensor> getAllSensors() {
-        return sensorManager.getSensorList(Sensor.TYPE_ALL);
+        return this.sensorManager.getSensorList(Sensor.TYPE_ALL);
     }
 }

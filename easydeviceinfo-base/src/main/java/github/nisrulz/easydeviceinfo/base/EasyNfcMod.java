@@ -24,15 +24,15 @@ import android.nfc.NfcAdapter;
  */
 public class EasyNfcMod {
 
-    private NfcAdapter nfcAdapter = null;
+    private NfcAdapter nfcAdapter;
 
     /**
      * Instantiates a new Easy nfc mod.
      *
      * @param context the context
      */
-    public EasyNfcMod(final Context context) {
-        nfcAdapter = NfcAdapter.getDefaultAdapter(context);
+    public EasyNfcMod(Context context) {
+        this.nfcAdapter = NfcAdapter.getDefaultAdapter(context);
     }
 
     /**
@@ -41,7 +41,7 @@ public class EasyNfcMod {
      * @return the boolean
      */
     public final boolean isNfcEnabled() {
-        return nfcAdapter != null && nfcAdapter.isEnabled();
+        return (nfcAdapter != null) && this.nfcAdapter.isEnabled();
     }
 
     /**
