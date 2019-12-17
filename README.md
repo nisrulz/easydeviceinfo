@@ -36,6 +36,10 @@
     <a href="https://snowdream.github.io/awesome-android/Other.html#Utility">
         <img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"/>
     </a>
+    <!-- Number of Android apps (AppBrain) -->
+    <a href="https://www.appbrain.com/stats/libraries/details/easydeviceinfo/easydeviceinfo">
+        <img src="https://www.appbrain.com/stats/libraries/shield/easydeviceinfo.svg">
+    </a>
     <!-- GitHub stars -->
     <a href="https://github.com/nisrulz/easydeviceinfo">
         <img src="https://img.shields.io/github/stars/nisrulz/easydeviceinfo.svg?style=social&label=Star"/>
