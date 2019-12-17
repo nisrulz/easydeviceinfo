@@ -214,7 +214,7 @@ This project was created by [Nishant Srivastava](https://github.com/nisrulz/nisr
 
 > If you appreciate my work, consider buying me a cup of :coffee: to keep me recharged :metal:
 >  + [PayPal](https://www.paypal.me/nisrulz/5usd)
->  + Bitcoin Address: 13PjuJcfVW2Ad81fawqwLtku4bZLv1AxCL
+
 >
 > I love using my work and I'm available for contract work. Freelancing helps to maintain and keep [my open source projects](https://github.com/nisrulz/) up to date!
 
