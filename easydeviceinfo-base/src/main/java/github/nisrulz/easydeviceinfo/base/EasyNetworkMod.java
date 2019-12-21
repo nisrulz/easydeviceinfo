@@ -26,10 +26,12 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.annotation.RequiresPermission;
+
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.net.Inet4Address;
 import java.net.InetAddress;

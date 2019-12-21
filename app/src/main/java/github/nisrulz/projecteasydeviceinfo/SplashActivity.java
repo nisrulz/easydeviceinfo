@@ -23,12 +23,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -38,6 +39,13 @@ public class SplashActivity extends AppCompatActivity {
     };
 
     boolean launched;
+
+    private static void setFullScreen(final Activity activity) {
+        // Call before calling setContentView();
+        activity.getWindow()
+                .setFlags(LayoutParams.FLAG_FULLSCREEN,
+                        LayoutParams.FLAG_FULLSCREEN);
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -76,7 +84,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(final int requestCode, @NonNull String[] permissions,
-            @NonNull final int[] grantResults) {
+                                           @NonNull final int[] grantResults) {
         if (requestCode == 100) {
             RuntimePermissionUtil.onRequestPermissionsResult(grantResults, new RPResultListener() {
                 @Override
@@ -105,12 +113,5 @@ public class SplashActivity extends AppCompatActivity {
         this.overridePendingTransition(anim.fade_in, anim.fade_out);
         this.launched = true;
         this.finish();
-    }
-
-    private static void setFullScreen(final Activity activity) {
-        // Call before calling setContentView();
-        activity.getWindow()
-                .setFlags(LayoutParams.FLAG_FULLSCREEN,
-                        LayoutParams.FLAG_FULLSCREEN);
     }
 }

@@ -16,19 +16,20 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
-import static android.media.AudioManager.RINGER_MODE_NORMAL;
-import static android.media.AudioManager.RINGER_MODE_SILENT;
-import static android.media.AudioManager.RINGER_MODE_VIBRATE;
-
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Environment;
 import android.os.SystemClock;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.media.AudioManager.RINGER_MODE_NORMAL;
+import static android.media.AudioManager.RINGER_MODE_SILENT;
+import static android.media.AudioManager.RINGER_MODE_VIBRATE;
 
 /**
  * EasyConfig Mod Class

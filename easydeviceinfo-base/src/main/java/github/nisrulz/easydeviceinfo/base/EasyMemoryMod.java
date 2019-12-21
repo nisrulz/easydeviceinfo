@@ -16,25 +16,27 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.os.Build;
+import android.os.StatFs;
+import android.util.Log;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
+
 import static android.os.Build.VERSION_CODES;
 import static android.os.Environment.MEDIA_MOUNTED;
 import static android.os.Environment.getDataDirectory;
 import static android.os.Environment.getExternalStorageDirectory;
 import static android.os.Environment.getExternalStorageState;
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.os.Build;
-import android.os.StatFs;
-import android.util.Log;
-import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
-
 /**
  * EasyMemory Mod Class
- *
+ * <p>
  * Deprecation warning suppressed since it is handled in the code
  */
 @SuppressWarnings("deprecation")

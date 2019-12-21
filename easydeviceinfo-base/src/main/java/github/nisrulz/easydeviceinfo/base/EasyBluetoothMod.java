@@ -16,7 +16,6 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
-import android.Manifest;
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
@@ -24,7 +23,9 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.provider.Settings.Secure;
-import android.support.annotation.RequiresPermission;
+
+import androidx.annotation.RequiresApi;
+import androidx.annotation.RequiresPermission;
 
 /**
  * EasyBluetooth Mod Class
@@ -88,6 +89,7 @@ public class EasyBluetoothMod {
      *
      * @return true if the device has Bluetooth LE advertising features
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @RequiresPermission(permission.BLUETOOTH)
     public final boolean hasBluetoothLeAdvertising() {
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)

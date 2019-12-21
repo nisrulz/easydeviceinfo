@@ -16,12 +16,6 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
-import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
-import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
-import static android.telephony.TelephonyManager.PHONE_TYPE_CDMA;
-import static android.telephony.TelephonyManager.PHONE_TYPE_GSM;
-import static android.telephony.TelephonyManager.PHONE_TYPE_NONE;
-
 import android.Manifest;
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
@@ -30,14 +24,23 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
-import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
-import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
+
+import androidx.annotation.RequiresPermission;
+
 import java.io.File;
 import java.util.Locale;
+
+import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
+
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
+import static android.telephony.TelephonyManager.PHONE_TYPE_CDMA;
+import static android.telephony.TelephonyManager.PHONE_TYPE_GSM;
+import static android.telephony.TelephonyManager.PHONE_TYPE_NONE;
 
 /**
  * EasyDevice Mod Class
@@ -234,9 +237,9 @@ public class EasyDeviceMod {
 
     /**
      * Gets IMEI number
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
      * @return the imei
@@ -386,9 +389,9 @@ public class EasyDeviceMod {
 
     /**
      * Gets phone no.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
      * @return the phone no

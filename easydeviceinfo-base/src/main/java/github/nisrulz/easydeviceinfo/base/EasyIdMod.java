@@ -16,7 +16,6 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
-import android.Manifest;
 import android.Manifest.permission;
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -26,14 +25,16 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.provider.Settings;
 import android.provider.Settings.Secure;
-import android.support.annotation.RequiresPermission;
 import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
+
+import androidx.annotation.RequiresPermission;
+
 import java.util.UUID;
+
+import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**
  * EasyId Mod Class

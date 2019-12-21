@@ -18,6 +18,7 @@ package github.nisrulz.easydeviceinfo.base;
 
 import android.os.Build;
 import android.os.Build.VERSION;
+
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**

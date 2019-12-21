@@ -23,7 +23,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build.VERSION;
-import android.support.annotation.RequiresPermission;
+
+import androidx.annotation.RequiresPermission;
 
 /**
  * The type Easy fingerprint mod.

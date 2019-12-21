@@ -16,21 +16,24 @@
 
 package github.nisrulz.projecteasydeviceinfo;
 
-import android.Manifest;
 import android.Manifest.permission;
 import android.R.layout;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.hardware.Sensor;
-import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.support.v4.util.ArrayMap;
-import android.support.v7.app.AppCompatActivity;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.ArrayMap;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import github.nisrulz.easydeviceinfo.ads.EasyAdsMod;
 import github.nisrulz.easydeviceinfo.ads.EasyAdsMod.AdIdentifierCallback;
 import github.nisrulz.easydeviceinfo.base.BatteryHealth;
@@ -56,10 +59,7 @@ import github.nisrulz.easydeviceinfo.base.OrientationType;
 import github.nisrulz.easydeviceinfo.base.PhoneType;
 import github.nisrulz.easydeviceinfo.base.RingerMode;
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
-import github.nisrulz.projecteasydeviceinfo.R.id;
 import github.nisrulz.projecteasydeviceinfo.R.string;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 

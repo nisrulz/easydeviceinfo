@@ -36,6 +36,10 @@ public final class EasyDeviceInfo {
      */
     public static String notFoundVal = "unknown";
 
+    private EasyDeviceInfo() {
+
+    }
+
     /**
      * Debug.
      */
@@ -70,9 +74,5 @@ public final class EasyDeviceInfo {
      */
     public static void setNotFoundVal(final String notFoundVal) {
         EasyDeviceInfo.notFoundVal = notFoundVal;
-    }
-
-    private EasyDeviceInfo() {
-
     }
 }

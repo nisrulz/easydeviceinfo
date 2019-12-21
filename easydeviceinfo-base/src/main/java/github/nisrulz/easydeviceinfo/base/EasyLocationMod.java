@@ -16,21 +16,21 @@
 
 package github.nisrulz.easydeviceinfo.base;
 
-import android.Manifest;
 import android.Manifest.permission;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
-import android.support.annotation.RequiresPermission;
+
+import androidx.annotation.RequiresPermission;
 
 /**
  * EasyLocation Mod Class
- *
+ * <p>
  * You need to declare the below permission in the manifest file to use this properly
- *
+ * <p>
  * For Network based location
  * <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
- *
+ * <p>
  * For more accurate location updates via GPS and network both
  * <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
  */

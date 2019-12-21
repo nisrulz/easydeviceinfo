@@ -21,15 +21,18 @@ import android.Manifest.permission;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresPermission;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
+
+import androidx.annotation.RequiresPermission;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**
  * EasySim Mod Class
@@ -52,9 +55,9 @@ public class EasySimMod {
 
     /**
      * Gets active multi sim info.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
      * @return the active multi sim info
@@ -112,9 +115,9 @@ public class EasySimMod {
 
     /**
      * Gets imsi.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
      * @return the imsi
@@ -132,9 +135,9 @@ public class EasySimMod {
 
     /**
      * Gets number of active sim.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
      * @return the number of active sim
@@ -146,9 +149,9 @@ public class EasySimMod {
 
     /**
      * Gets SIM serial number.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
      * @return the sim serial
@@ -165,9 +168,9 @@ public class EasySimMod {
 
     /**
      * Is multi sim.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
      *
      * @return the boolean
