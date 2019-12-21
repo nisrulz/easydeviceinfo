@@ -22,29 +22,29 @@ object Versions {
     const val targetSDK = compileSDK
 
     // Plugins
-    const val androidGradlePlugin = "3.5.0"
+    const val androidGradlePlugin = "3.6.0-rc01"
     const val bintrayPlugin = "1.8.4"
     const val androidMavenPlugin = "2.1"
 
     // Dependencies
-    const val kotlin = "1.3.50"
-    const val support = "1.0.0"
+    const val kotlin = "1.3.61"
+    const val annotation = "1.1.0"
     const val appCompat = "1.0.2"
+    const val adIdentifier = "1.0.0-alpha03"
 
     // Testing
     const val junit = "4.12"
     const val junitExt = "1.1.1"
     const val espresso = "3.2.0"
-    const val testRunner = "1.2.0"
     const val testRules = "1.2.0"
     const val mockito = "2.12.0"
     const val robolectric = "4.3"
 
     // App
-    const val appCode = 1
-    const val appName = "1.0.0"
+    const val appCode = 2
+    const val appName = "1.1.0"
 
     // Library
-    const val libraryCode = 17
-    const val libraryName = "2.0.0"
+    const val libraryCode = 26
+    const val libraryName = "2.5.0"
 }

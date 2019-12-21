@@ -13,70 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// Configs
+apply from: "$rootProject.projectDir/configs/library.gradle"
+apply from: "$rootProject.projectDir/configs/common.gradle"
 
-apply plugin: 'com.android.library'
-
-android {
-  compileSdkVersion versions.compile_sdk
-
-  defaultConfig {
-    minSdkVersion versions.min_sdk
-    targetSdkVersion versions.target_sdk
-    versionCode rootProject.ext.easyDeviceInfoVersionCode
-    versionName rootProject.ext.easyDeviceInfoVersionName
-  }
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-  }
-
-  // Ignore Java 8 Doclint errors
-  if (JavaVersion.current().isJava8Compatible()) {
-    allprojects {
-      tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
-      }
-    }
-  }
-}
+ext.setupModuleNamesForPublishing(ModuleName.common, ModuleDesc.common)
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-  testImplementation deps.junit
+    implementation Dependencies.annotation
 }
-
-// Bintray info
-final def LIB_MODULE_NAME = 'easydeviceinfo-common'
-final def LIB_MODULE_DESC = 'Common module for EasyDeviceInfo'
-
-ext {
-  bintrayRepo = 'maven'
-  bintrayName = LIB_MODULE_NAME // Has to be same as your library module nameOfLib
-
-  publishedGroupId = GROUP
-  libraryName = LIB_MODULE_NAME
-  artifact = LIB_MODULE_NAME // Has to be same as your library module nameOfLib
-
-  libraryDescription = LIB_MODULE_DESC
-
-  // Your github repo link
-  siteUrl = rootProject.ext.easyDeviceInfoPomUrl
-  gitUrl = rootProject.ext.easyDeviceInfoPomGitUrl
-  githubRepository = rootProject.ext.easyDeviceInfoGithubRepo
-
-  libraryVersion = rootProject.ext.easyDeviceInfoVersionName
-
-  developerId = POM_DEVELOPER_ID
-  developerName = POM_DEVELOPER_NAME
-  developerEmail = POM_DEVELOPER_EMAILID
-
-  licenseName = POM_LICENCE_NAME
-  licenseUrl = POM_LICENCE_URL
-  allLicenses = [POM_ALL_LICENCES]
-}
-
-// Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/bintrayv1.gradle'

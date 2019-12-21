@@ -16,29 +16,20 @@
 
 apply plugin: 'com.android.application'
 
+// Configs
+apply from: "$rootProject.projectDir/configs/common.gradle"
+
 android {
-  compileSdkVersion versions.compile_sdk
+    defaultConfig {
+        applicationId "github.nisrulz.projecteasydeviceinfo"
 
-  defaultConfig {
-    minSdkVersion versions.min_sdk
-    targetSdkVersion versions.target_sdk
-    applicationId "github.nisrulz.projecteasydeviceinfo"
-    versionCode 2
-    versionName "1.1"
-  }
-
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        versionCode Versions.appCode
+        versionName Versions.appName
     }
-  }
 }
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
-  testImplementation deps.junit
-  implementation deps.app_compat
+    implementation Dependencies.appCompat
 
-  implementation project(':easydeviceinfo')
+    implementation project(':easydeviceinfo')
 }
