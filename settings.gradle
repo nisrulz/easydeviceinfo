@@ -14,5 +14,8 @@
  * limitations under the License.
  */
 
-include ':app', ':easydeviceinfo', ':easydeviceinfo-base', ':easydeviceinfo-ads',
-    ':easydeviceinfo-common'
+include ':app'
+include ':easydeviceinfo'
+include ':easydeviceinfo-base'
+include ':easydeviceinfo-ads'
+include ':easydeviceinfo-common'
