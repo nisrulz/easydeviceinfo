@@ -30,4 +30,5 @@ dependencies {
     // Including the sub-module as module dependency
     api project(':easydeviceinfo-ads')
     api project(':easydeviceinfo-base')
+    api project(':easydeviceinfo-ktx')
 }

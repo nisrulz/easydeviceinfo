@@ -27,6 +27,7 @@ object ModuleName {
     const val common = "easydeviceinfo-common"
     const val base = "easydeviceinfo-base"
     const val ads = "easydeviceinfo-ads"
+    const val ktx = "easydeviceinfo-ktx"
 }
 
 object ModuleDesc {
@@ -34,4 +35,5 @@ object ModuleDesc {
     const val common = "Common module for EasyDeviceInfo"
     const val base = "Base module for EasyDeviceInfo"
     const val ads = "Ads module for EasyDeviceInfo"
+    const val ktx = "Kotlin Extensions for EasyDeviceInfo"
 }

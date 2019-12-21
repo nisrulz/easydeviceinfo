@@ -13,10 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-rootProject.name='EasyDeviceInfoProject'
-include ':app'
-include ':easydeviceinfo'
-include ':easydeviceinfo-base'
-include ':easydeviceinfo-ads'
-include ':easydeviceinfo-common'
-include ':easydeviceinfo-ktx'
+// Configs
+apply from: "$rootProject.projectDir/configs/library.gradle"
+apply from: "$rootProject.projectDir/configs/common.gradle"
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+ext.setupModuleNamesForPublishing(ModuleName.ktx, ModuleDesc.ktx)
+
+dependencies {
+    implementation Dependencies.kotlinStdLib
+
+    // Including the sub-module as Jcenter dependency
+    // api "com.github.nisrulz:easydeviceinfo-common:$Versions.libraryName"
+
+    // Including the sub-module as module dependency
+    api project(':easydeviceinfo-common')
+}
