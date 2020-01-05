@@ -18,12 +18,17 @@ package github.nisrulz.easydeviceinfo.ads;
 
 import android.content.Context;
 import android.util.Log;
-import com.google.android.gms.ads.identifier.AdvertisingIdClient;
-import com.google.android.gms.ads.identifier.AdvertisingIdClient.Info;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
+
+import androidx.ads.identifier.AdvertisingIdClient;
+import androidx.ads.identifier.AdvertisingIdInfo;
+
+import com.google.common.util.concurrent.ListenableFuture;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
 import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
-import java.io.IOException;
 
 /**
  * The type Easy ads mod.
@@ -44,7 +49,8 @@ public class EasyAdsMod {
         void onSuccess(String adIdentifier, boolean adDonotTrack);
     }
 
-    private final Context context;
+    private Context context;
+    private final Executor executor = Executors.newSingleThreadExecutor();
 
     /**
      * Instantiates a new Easy ads mod.
@@ -52,7 +58,7 @@ public class EasyAdsMod {
      * @param context the context
      */
     public EasyAdsMod(final Context context) {
-        this.context = context;
+        this.context = context.getApplicationContext();
     }
 
     /**
@@ -60,37 +66,43 @@ public class EasyAdsMod {
      *
      * @param callback the callback
      */
-    public final void getAndroidAdId(final EasyAdsMod.AdIdentifierCallback callback) {
-        new Thread(new Runnable() {
+    public final void getAndroidAdId(final AdIdentifierCallback callback) {
+        executor.execute(new Runnable() {
             @Override
             public void run() {
-                EasyAdsMod.this.retrieveAdId(callback);
+                retrieveAdId(callback);
             }
-        }).start();
+        });
     }
 
-    void retrieveAdId(EasyAdsMod.AdIdentifierCallback callback) {
-        final Info adInfo;
-        try {
-            adInfo = AdvertisingIdClient.getAdvertisingIdInfo(this.context);
+    private void retrieveAdId(AdIdentifierCallback callback) {
+        if (AdvertisingIdClient.isAdvertisingIdProviderAvailable(context)) {
+            ListenableFuture<AdvertisingIdInfo> advertisingIdInfoListenableFuture =
+                    AdvertisingIdClient.getAdvertisingIdInfo(context);
+
             String androidAdId = EasyDeviceInfo.notFoundVal;
             boolean adDoNotTrack = false;
-            if (adInfo != null) {
-                androidAdId = adInfo.getId();
-                adDoNotTrack = adInfo.isLimitAdTrackingEnabled();
+
+            try {
+                AdvertisingIdInfo advertisingIdInfo = advertisingIdInfoListenableFuture.get();
+                adDoNotTrack = advertisingIdInfo.isLimitAdTrackingEnabled();
+                androidAdId = advertisingIdInfo.getId();
                 if (androidAdId == null) {
                     androidAdId = EasyDeviceInfo.notFoundVal;
                 }
+                //Send Data to callback
+                callback.onSuccess(androidAdId, adDoNotTrack);
+            } catch (ExecutionException e) {
+                Log.e(EasyDeviceInfo.nameOfLib, "The Advertising ID execution exception");
+            } catch (InterruptedException e) {
+                Log.e(EasyDeviceInfo.nameOfLib, "The Advertising ID access interrupted");
             }
-
-            //Send Data to callback
-            callback.onSuccess(androidAdId, adDoNotTrack);
-        } catch (final IOException | GooglePlayServicesNotAvailableException e) {
-            // Unrecoverable error connecting to Google Play services (e.g.,
-            // the old version of the service doesn't support getting AdvertisingId).
-            Log.d(EasyDeviceInfo.nameOfLib, "Google Play Services Not Available Exception", e);
-        } catch (final GooglePlayServicesRepairableException e) {
-            Log.d(EasyDeviceInfo.nameOfLib, "Google Play Services Repairable Exception", e);
+        } else {
+            Log.e(EasyDeviceInfo.nameOfLib, "The Advertising ID client library is unavailable. Use a different library to perform any required ads use cases.");
         }
+    }
+
+    public void clear() {
+        this.context = null;
     }
 }
