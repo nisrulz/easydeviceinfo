@@ -65,12 +65,16 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayAdapter<String> adapter = null;
 
+    private EasyAdsMod easyAdsMod = null;
+
     @SuppressLint("MissingPermission")
     @TargetApi(VERSION_CODES.LOLLIPOP_MR1)
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
+
+        easyAdsMod = new EasyAdsMod(getApplicationContext());
 
         //Data Array List of Info Object
         final ArrayList<String> data = new ArrayList<>();
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             emailString.append('-');
         }
 
-        final EasyAdsMod easyAdsMod = new EasyAdsMod(this);
+
         easyAdsMod.getAndroidAdId(new AdIdentifierCallback() {
             @Override
             public void onSuccess(final String adIdentifier, final boolean adDonotTrack) {
@@ -181,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (easySimMod.isMultiSim()) {
             final List<SubscriptionInfo> activeMultiSimInfo = easySimMod.getActiveMultiSimInfo();
-            if (activeMultiSimInfo != null) {
+            if (activeMultiSimInfo.size() > 0) {
                 final StringBuilder stringBuilder = new StringBuilder();
                 for (int i = 0; i < activeMultiSimInfo.size(); i++) {
                     stringBuilder.append("\nSIM ")
@@ -451,5 +455,11 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         this.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        easyAdsMod.clear();
+        super.onDestroy();
     }
 }
