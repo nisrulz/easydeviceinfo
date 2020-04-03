@@ -22,12 +22,12 @@ object Versions {
     const val targetSDK = compileSDK
 
     // Plugins
-    const val androidGradlePlugin = "3.6.0"
+    const val androidGradlePlugin = "3.6.1"
     const val bintrayPlugin = "1.8.4"
     const val androidMavenPlugin = "2.1"
 
     // Dependencies
-    const val kotlin = "1.3.61"
+    const val kotlin = "1.3.71"
     const val annotation = "1.1.0"
     const val appCompat = "1.1.0"
     const val adIdentifier = "1.0.0-alpha03"
