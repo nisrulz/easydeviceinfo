@@ -460,7 +460,14 @@ public class EasyDeviceMod {
         codename = "Nougat";
         break;
       case Build.VERSION_CODES.O:
-        codename = "O";
+      case Build.VERSION_CODES.O_MR1:
+        codename = "Oreo";
+        break;
+      case Build.VERSION_CODES.P:
+        codename = "Pie";
+        break;
+      case Build.VERSION_CODES.Q:
+        codename = "Q";
         break;
       default:
         codename = EasyDeviceInfo.notFoundVal;
