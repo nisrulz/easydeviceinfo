@@ -385,7 +385,8 @@ public class EasyDeviceMod {
   @SuppressLint("HardwareIds")
   public final String getSerial() {
     String result = null;
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+    if (Build.VERSION.SDK_INT < Build.
+        S.O) {
       result = Build.SERIAL;
     } else {
       if (PermissionUtil.hasPermission(context, Manifest.permission.READ_PHONE_STATE)) {
@@ -462,6 +463,17 @@ public class EasyDeviceMod {
       case Build.VERSION_CODES.O:
         codename = "O";
         break;
+      case VERSION_CODES.O_MR1:
+         codename = "Oreo";
+         break;
+      case VERSION_CODES.P:
+         codename = "Pie";
+         break;
+      case VERSION_CODES.Q:
+         codename = "Q";
+      case VERSION_CODES.R:
+         codename = "Red Velvet Cake (RVC)";
+         break;
       default:
         codename = EasyDeviceInfo.notFoundVal;
         break;
