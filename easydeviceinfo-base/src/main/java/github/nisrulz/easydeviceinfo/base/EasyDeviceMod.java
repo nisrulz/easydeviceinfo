@@ -190,10 +190,9 @@ public class EasyDeviceMod {
    */
 
   @DeviceType
-  public final int getDeviceType(Activity activity) {
-    DisplayMetrics metrics = new DisplayMetrics();
+  public final int getDeviceType() {
+    DisplayMetrics metrics = new Resources.getSystem().getDisplayMetrics();
     activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
     float yInches = metrics.heightPixels / metrics.ydpi;
     float xInches = metrics.widthPixels / metrics.xdpi;
     double diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
