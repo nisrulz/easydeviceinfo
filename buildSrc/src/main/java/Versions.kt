@@ -18,14 +18,14 @@ object Versions {
 
     // Build Config
     const val minSDK = 14
-    const val compileSDK = 29
+    const val compileSDK = 30
     const val targetSDK = compileSDK
 
     // Plugins
     const val androidGradlePlugin = "4.1.3"
 
     // Dependencies
-    const val kotlin = "1.3.72"
+    const val kotlin = "1.4.31"
     const val annotation = "1.1.0"
     const val appCompat = "1.1.0"
     const val adIdentifier = "1.0.0-alpha03"
