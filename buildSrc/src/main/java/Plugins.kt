@@ -20,9 +20,4 @@ object Plugins {
 
     // Kotlin
     const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-
-
-    // Publish
-    const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:${Versions.bintrayPlugin}"
-    const val androidMaven = "com.github.dcendents:android-maven-gradle-plugin:${Versions.androidMavenPlugin}"
 }

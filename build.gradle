@@ -26,10 +26,6 @@ buildscript {
     dependencies {
         classpath Plugins.android
 
-        // Publish to Jcenter/Bintray
-        classpath Plugins.bintray
-        classpath Plugins.androidMaven
-
         // Kotlin Plugin
         classpath Plugins.kotlin
 
