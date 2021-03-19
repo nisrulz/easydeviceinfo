@@ -18,8 +18,11 @@ apply plugin: 'com.android.library'
 
 android {
     defaultConfig {
-        versionCode Versions.libraryCode
-        versionName Versions.libraryName
+        versionCode
+        versionName
+
+        buildConfigField 'int', 'VERSION_CODE', "${Versions.libraryCode}"
+        buildConfigField 'String', 'VERSION_NAME', "\"${Versions.libraryName}\""
     }
 
     // Ignore Java 8 Doclint errors

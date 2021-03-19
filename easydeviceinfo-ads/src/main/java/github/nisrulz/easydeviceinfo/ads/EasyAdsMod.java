@@ -21,6 +21,7 @@ import android.util.Log;
 
 import androidx.ads.identifier.AdvertisingIdClient;
 import androidx.ads.identifier.AdvertisingIdInfo;
+import androidx.annotation.NonNull;
 
 import com.google.common.util.concurrent.ListenableFuture;
 
@@ -46,7 +47,7 @@ public class EasyAdsMod {
          * @param adIdentifier the ad identifier
          * @param adDonotTrack the ad donot track
          */
-        void onSuccess(String adIdentifier, boolean adDonotTrack);
+        void onSuccess(@NonNull String adIdentifier, boolean adDonotTrack);
     }
 
     private Context context;
@@ -57,7 +58,7 @@ public class EasyAdsMod {
      *
      * @param context the context
      */
-    public EasyAdsMod(final Context context) {
+    public EasyAdsMod(@NonNull final Context context) {
         this.context = context.getApplicationContext();
     }
 
@@ -66,7 +67,7 @@ public class EasyAdsMod {
      *
      * @param callback the callback
      */
-    public final void getAndroidAdId(final AdIdentifierCallback callback) {
+    public final void getAndroidAdId(@NonNull final AdIdentifierCallback callback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {

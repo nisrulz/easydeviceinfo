@@ -340,10 +340,12 @@ public class MainActivity extends AppCompatActivity {
             case NetworkType.CELLULAR_3G:
                 deviceDataMap.put(this.getString(string.network_type), "Cellular 3G");
                 break;
-            case NetworkType.CELLULAR_4G:
-                deviceDataMap.put(this.getString(string.network_type), "Cellular 4G");
+            case NetworkType.CELLULAR_4G_OR_5G_NSA:
+                deviceDataMap.put(this.getString(string.network_type), "Cellular 4G/5G NSA");
                 break;
-
+            case NetworkType.CELLULAR_5G_SA:
+                deviceDataMap.put(this.getString(string.network_type), "Cellular 5G SA");
+                break;
             case NetworkType.WIFI_WIFIMAX:
                 deviceDataMap.put(this.getString(string.network_type), "Wifi/WifiMax");
                 break;

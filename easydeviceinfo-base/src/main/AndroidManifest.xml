@@ -14,6 +14,4 @@
   ~ limitations under the License.
   -->
 
-<manifest package="github.nisrulz.easydeviceinfo.base">
-    <uses-permission name="android.permission.READ_PRIVILEGED_PHONE_STATE" />
-</manifest>
+<manifest package="github.nisrulz.easydeviceinfo.base" />
