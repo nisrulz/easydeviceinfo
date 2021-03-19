@@ -68,7 +68,3 @@ project.ext.setupModuleNamesForPublishing = { final String libModuleName,
         libraryDescription = libModuleDescription
     }
 }
-
-// Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/bintrayv1.gradle'
