@@ -366,17 +366,6 @@ public class MainActivity extends AppCompatActivity {
         deviceDataMap.put("Battery voltage",
                 easyBatteryMod.getBatteryVoltage() + " mV");
 
-        @BatteryHealth final int batteryHealth = easyBatteryMod.getBatteryHealth();
-        switch (batteryHealth) {
-            case BatteryHealth.GOOD:
-                deviceDataMap.put("Battery health", "Good");
-                break;
-            case BatteryHealth.HAVING_ISSUES:
-            default:
-                deviceDataMap.put("Battery health", "Having issues");
-                break;
-        }
-
         @ChargingVia final int isChargingVia = easyBatteryMod.getChargingSource();
         switch (isChargingVia) {
             case ChargingVia.AC:
@@ -391,6 +380,17 @@ public class MainActivity extends AppCompatActivity {
             case ChargingVia.UNKNOWN_SOURCE:
             default:
                 deviceDataMap.put(this.getString(R.string.device_charging_via), "Unknown Source");
+                break;
+        }
+
+        @BatteryHealth final int batteryHealth = easyBatteryMod.getBatteryHealth();
+        switch (batteryHealth) {
+            case BatteryHealth.GOOD:
+                deviceDataMap.put("Battery health", "Good");
+                break;
+            case BatteryHealth.HAVING_ISSUES:
+            default:
+                deviceDataMap.put("Battery health", "Having issues");
                 break;
         }
 

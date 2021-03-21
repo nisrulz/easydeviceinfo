@@ -117,18 +117,22 @@ public class EasyBatteryMod {
     @ChargingVia
     public final int getChargingSource() {
         final Intent batteryStatus = this.getBatteryStatusIntent();
+        int result = ChargingVia.UNKNOWN_SOURCE;
         final int chargePlug = batteryStatus.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
 
         switch (chargePlug) {
             case BatteryManager.BATTERY_PLUGGED_AC:
-                return ChargingVia.AC;
+                result = ChargingVia.AC;
+                break;
             case BatteryManager.BATTERY_PLUGGED_USB:
-                return ChargingVia.USB;
+                result = ChargingVia.USB;
+                break;
             case BatteryManager.BATTERY_PLUGGED_WIRELESS:
-                return ChargingVia.WIRELESS;
-            default:
-                return ChargingVia.UNKNOWN_SOURCE;
+                result = ChargingVia.WIRELESS;
+                break;
         }
+
+        return result;
     }
 
     /**

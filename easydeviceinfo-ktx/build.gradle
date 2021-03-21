@@ -22,7 +22,7 @@ ext.setupModuleNamesForPublishing(ModuleName.ktx, ModuleDesc.ktx)
 dependencies {
     implementation Dependencies.kotlinStdLib
 
-    // Including the sub-module as Jcenter dependency
+    // Including the sub-module as remote maven dependency
     // api "com.github.nisrulz:easydeviceinfo-common:$Versions.libraryName"
 
     // Including the sub-module as module dependency
