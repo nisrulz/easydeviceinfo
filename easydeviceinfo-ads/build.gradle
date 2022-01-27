@@ -23,7 +23,7 @@ ext.setupModuleNamesForPublishing(ModuleName.ads, ModuleDesc.ads)
 dependencies {
     implementation Dependencies.adIdentifier
 
-    // Including the sub-module as Jcenter dependency
+    // Including the sub-module as remote maven dependency
     // api "com.github.nisrulz:easydeviceinfo-common:$Versions.libraryName"
 
     // Including the sub-module as module dependency

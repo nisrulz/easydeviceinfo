@@ -359,6 +359,9 @@ public class EasyDeviceMod {
                 break;
             case VERSION_CODES.Q:
                 codename = "Q";
+            break;
+            case VERSION_CODES.R:
+                codename = "11";
                 break;
             default:
                 codename = EasyDeviceInfo.notFoundVal;

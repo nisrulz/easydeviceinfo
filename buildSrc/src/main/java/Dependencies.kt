@@ -17,7 +17,7 @@
 object Dependencies {
 
     // Kotlin
-    const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
 
     // Testing
     const val junit = "junit:junit:${Versions.junit}"

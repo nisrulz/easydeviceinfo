@@ -30,9 +30,9 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
 
-import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -41,6 +41,8 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
+
+import github.nisrulz.easydeviceinfo.common.EasyDeviceInfo;
 
 /**
  * EasyNetwork Mod Class
@@ -121,16 +123,16 @@ public class EasyNetworkMod {
 
     /**
      * Gets network type.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      * <uses-permission android:name="android.permission.INTERNET"/>
      *
      * @return the network type
      */
     @RequiresPermission(allOf = {
-            permission.ACCESS_NETWORK_STATE, permission.INTERNET
+            permission.ACCESS_NETWORK_STATE, permission.INTERNET, permission.READ_PHONE_STATE
     })
     @NetworkType
     public final int getNetworkType() {
@@ -178,7 +180,12 @@ public class EasyNetworkMod {
                                 break;
                             // Cellular Data 4G
                             case TelephonyManager.NETWORK_TYPE_LTE:
-                                result = NetworkType.CELLULAR_4G;
+                            case TelephonyManager.NETWORK_TYPE_IWLAN:
+                                result = NetworkType.CELLULAR_4G_OR_5G_NSA;
+                                break;
+                            // Cellular Data 5G
+                            case TelephonyManager.NETWORK_TYPE_NR:
+                                result = NetworkType.CELLULAR_5G_SA;
                                 break;
                             // Cellular Data Unknown Generation
                             default:
@@ -194,9 +201,9 @@ public class EasyNetworkMod {
 
     /**
      * Gets BSSID of Connected WiFi
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
      * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      *
@@ -233,9 +240,9 @@ public class EasyNetworkMod {
 
     /**
      * Gets Link Speed of Connected WiFi
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
      * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      *
@@ -272,9 +279,9 @@ public class EasyNetworkMod {
 
     /**
      * Gets WiFi MAC Address
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
      *
      * @return the wifi mac
@@ -334,9 +341,9 @@ public class EasyNetworkMod {
 
     /**
      * Gets SSID of Connected WiFi
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
      * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      *
@@ -373,9 +380,9 @@ public class EasyNetworkMod {
 
     /**
      * Is network available boolean.
-     *
+     * <p>
      * You need to declare the below permission in the manifest file to use this properly
-     *
+     * <p>
      * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
      * <uses-permission android:name="android.permission.INTERNET"/>
      *
@@ -401,6 +408,7 @@ public class EasyNetworkMod {
      * @return true if a Wi-Fi Aware compatible chipset is present in the device.
      * @see <a href="https://developer.android.com/guide/topics/connectivity/wifi-aware.html">https://developer.android.com/guide/topics/connectivity/wifi-aware.html</a>
      */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public final boolean isWifiAwareAvailable() {
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) && this.context.getPackageManager()
                 .hasSystemFeature(PackageManager.FEATURE_WIFI_AWARE);

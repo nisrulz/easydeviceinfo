@@ -340,10 +340,12 @@ public class MainActivity extends AppCompatActivity {
             case NetworkType.CELLULAR_3G:
                 deviceDataMap.put(this.getString(string.network_type), "Cellular 3G");
                 break;
-            case NetworkType.CELLULAR_4G:
-                deviceDataMap.put(this.getString(string.network_type), "Cellular 4G");
+            case NetworkType.CELLULAR_4G_OR_5G_NSA:
+                deviceDataMap.put(this.getString(string.network_type), "Cellular 4G/5G NSA");
                 break;
-
+            case NetworkType.CELLULAR_5G_SA:
+                deviceDataMap.put(this.getString(string.network_type), "Cellular 5G SA");
+                break;
             case NetworkType.WIFI_WIFIMAX:
                 deviceDataMap.put(this.getString(string.network_type), "Wifi/WifiMax");
                 break;
@@ -364,17 +366,6 @@ public class MainActivity extends AppCompatActivity {
         deviceDataMap.put("Battery voltage",
                 easyBatteryMod.getBatteryVoltage() + " mV");
 
-        @BatteryHealth final int batteryHealth = easyBatteryMod.getBatteryHealth();
-        switch (batteryHealth) {
-            case BatteryHealth.GOOD:
-                deviceDataMap.put("Battery health", "Good");
-                break;
-            case BatteryHealth.HAVING_ISSUES:
-            default:
-                deviceDataMap.put("Battery health", "Having issues");
-                break;
-        }
-
         @ChargingVia final int isChargingVia = easyBatteryMod.getChargingSource();
         switch (isChargingVia) {
             case ChargingVia.AC:
@@ -389,6 +380,17 @@ public class MainActivity extends AppCompatActivity {
             case ChargingVia.UNKNOWN_SOURCE:
             default:
                 deviceDataMap.put(this.getString(R.string.device_charging_via), "Unknown Source");
+                break;
+        }
+
+        @BatteryHealth final int batteryHealth = easyBatteryMod.getBatteryHealth();
+        switch (batteryHealth) {
+            case BatteryHealth.GOOD:
+                deviceDataMap.put("Battery health", "Good");
+                break;
+            case BatteryHealth.HAVING_ISSUES:
+            default:
+                deviceDataMap.put("Battery health", "Having issues");
                 break;
         }
 
