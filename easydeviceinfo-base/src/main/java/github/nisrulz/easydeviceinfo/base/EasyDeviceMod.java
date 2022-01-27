@@ -358,8 +358,8 @@ public class EasyDeviceMod {
                 codename = "Pie";
                 break;
             case VERSION_CODES.Q:
-                codename = "10";
-                break;
+                codename = "Q";
+            break;
             case VERSION_CODES.R:
                 codename = "11";
                 break;
