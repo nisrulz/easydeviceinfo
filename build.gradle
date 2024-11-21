@@ -20,15 +20,20 @@ buildscript {
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+
+        jcenter() {
+            content {
+                // This is an AGP issue. Its been fixed in Canary version. Ideally it would be backported
+                // to stable version soon.
+                // https://github.com/signalapp/Signal-Android/issues/10906#issuecomment-774448564
+                includeModule("org.jetbrains.trove4j", "trove4j")
+            }
+        }
     }
 
     dependencies {
         classpath Plugins.android
-
-        // Publish to Jcenter/Bintray
-        classpath Plugins.bintray
-        classpath Plugins.androidMaven
 
         // Kotlin Plugin
         classpath Plugins.kotlin
@@ -41,6 +46,21 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+
+        // Required by Lint (com.android.tools.lint:lint-gradle:27.1.3)
+        jcenter() {
+            content {
+                // This is an AGP issue. Its been fixed in Canary version. Ideally it would be backported
+                // to stable version soon.
+                // https://github.com/signalapp/Signal-Android/issues/10906#issuecomment-774448564
+                includeModule("org.jetbrains.trove4j", "trove4j")
+            }
+        }
     }
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
